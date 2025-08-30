@@ -2,22 +2,35 @@
 /vendor/
 /var/
 /node_modules/
-/.env
-.env.local
-.env.test
 /public/build/
 /public/bundles/
+/public/uploads/
+
+# Fichiers de configuration locaux
+/.env
+/.env.local
+/.env.*.local
 
 # Logs et cache
-/logs/
-/cache/
+/log/
+/var/cache/
+/var/log/
+/var/sessions/
 /*.log
 
 # Docker / MySQL / runtime
-mysql/*.sock
+docker-compose.override.yml
+mysql/mysql.sock
 mysql/*.cnf
 mysql/ib*
 mysql/#*
 mysql/*.err
 mysql/*.log
-docker-compose.override.yml
+mysql/binlog.*
+mysql/undo_*
+mysql/performance_schema/
+mysql/sys/
+mysql/ecoride/*.ibd
+# MySQL / BDD locaux
+/mysql/
+/app/.env*
