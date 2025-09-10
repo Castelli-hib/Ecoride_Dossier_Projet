@@ -53,3 +53,15 @@
 - `docker-compose ps` → Voir les services lancés  
 - `docker-compose logs -f` → Voir les logs  
 - `docker-compose down` → Arrêter et supprimer les conteneurs  
+
+## Vider le cache
+
+## !/bin/bash
+
+## Script pour vider et réchauffer le cache Symfony dans Docker
+
+- `docker exec -it php bash -c "rm -rf var/cache/*"`
+
+- `docker exec -it php php bin/console cache:warmup`
+
+ echo "Cache vidé et reconstruit avec succès !"

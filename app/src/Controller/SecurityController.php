@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ResetPasswordRequestFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -50,7 +51,7 @@ class SecurityController extends AbstractController
         return $this->render('security/forgot_password.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
-        ]);
+        ]);             
     }
 
     #[Route('/logout', name: 'app_logout')]
@@ -58,5 +59,15 @@ class SecurityController extends AbstractController
     {
         // Symfony intercepte automatiquement cette route
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route('/forgot_password', name: 'forgotten_password')]
+    public function forgottenPassword()
+    {
+        $form = $this->createForm(ResetPasswordRequestFormType::class);
+
+        return $this->render('security/forgot_password.html.twig', [
+            'requestPasswordForm' => $form->createView(),
+        ]);
     }
 }

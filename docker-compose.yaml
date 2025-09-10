@@ -9,6 +9,7 @@ services:
       MYSQL_DATABASE: ecoride
       MYSQL_USER: symfony
       MYSQL_PASSWORD: symfony
+      # MYSQL_SSL_MODE: DISABLED
     ports:
       - '4306:3306'
     volumes:

@@ -22,7 +22,15 @@
 
 	<body>
 		{% include 'partials/_navbar.html.twig' %}
+
+		
 		{% include 'partials/_header.html.twig' %}
+
+		{% for messages in app.flashes %}
+			{% for message in messages %}
+				<p>{{ message|raw }}</p>
+			{% endfor %}
+		{% endfor %}
 
 		{% block body %}{% endblock %}
 		{% include 'partials/_footer.html.twig' %}
