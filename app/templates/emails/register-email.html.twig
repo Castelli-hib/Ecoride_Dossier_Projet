@@ -2,6 +2,6 @@
 <p>Bonjour {{ user.firstname }},</p>
 <p>Pour activer votre compte, veuillez cliquer sur le lien ci-dessous :</p>
 <p>
-    <a href="{{ absolute_url(path('verify_user')) }}">Activer mon compte</a>
+    <a href="{{ absolute_url(path('verify_user', { token: token })) }}">Activer mon compte</a>
     {{ token }}
 </p>
