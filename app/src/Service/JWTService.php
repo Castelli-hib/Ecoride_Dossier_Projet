@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Service;
 
 use DateTimeImmutable;
@@ -17,10 +18,10 @@ class JWTService
      */
     public function generate(array $header, array $payload, string $secret, int $validity = 10800): string
     {
-        if($validity > 0){
+        if ($validity > 0) {
             $now = new DateTimeImmutable();
             $exp = $now->getTimestamp() + $validity;
-    
+
             $payload['iat'] = $now->getTimestamp();
             $payload['exp'] = $exp;
         }
@@ -36,7 +37,7 @@ class JWTService
         // On génère la signature
         $secret = base64_encode($secret);
         $signature = hash_hmac('sha256', $base64Header . '.' . $base64Payload, $secret, true);
-        
+
         $base64Signature = base64_encode($signature);
         $signature = str_replace(['+', '/', '='], ['-', '_', ''], $base64Signature);
 

@@ -81,7 +81,7 @@ class SecurityController extends AbstractController
                     $user->getEmail(),
                     'Récupération de mot de passe sur le site EcoRide',
                     'emails/password_reset',
-                    compact('user', 'url')
+                    compact('user', 'url') // ['user' => $user, 'url' => $url]
                 );
 
                 $this->addFlash('success', 'Email envoyé avec succès');
