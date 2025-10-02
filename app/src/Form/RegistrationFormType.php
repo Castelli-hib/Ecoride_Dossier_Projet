@@ -2,7 +2,15 @@
 
 namespace App\Form;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\User;
+use App\Service\JWTService;
+use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use App\Service\SendEmailService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -12,6 +20,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+
+use Doctrine\ORM\EntityManagerInterface;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,7 +34,7 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('phoneNumber')
 
-            // ✅ Adresse : 4 champs distincts
+            // Adresse : 4 champs distincts
             ->add('street')
             ->add('addressComplement')
             ->add('postalCode')

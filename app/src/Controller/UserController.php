@@ -23,13 +23,7 @@ final class UserController extends AbstractController
             'controller_name' => 'ProfileUser',
         ]);
     }
-    #[Route('/dashboard', name: 'app_dashboard')]
-    public function dashboard(): Response
-    {
-        return $this->render('pages/user/dashboard.html.twig', [
-            'controller_name' => 'Dashboard',
-        ]);
-    }
+
     #[Route('/historical', name: 'app_historical')]
     public function historical(): Response
     {

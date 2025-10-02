@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Route as AppRoute;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -16,13 +18,17 @@ final class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/covoiturage', name: 'app_covoiturage')]
-    public function covoiturage(): Response
-    {
-        return $this->render('covoiturage.html.twig', [
-            'controller_name' => 'Covoiturage',
-        ]);
-    }
+    // 
+    // #[Route('/covoiturage', name: 'app_covoiturage')]
+    // public function covoiturage(EntityManagerInterface $em): Response
+    // {
+    //     // Récupérer tous les trajets
+    //     $routes = $em->getRepository(AppRoute::class)->findAll();
+
+    //     return $this->render('covoiturage/index.html.twig', [
+    //         'routes' => $routes,
+    //     ]);
+    // }
 
 
 }

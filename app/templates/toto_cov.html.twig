@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Covoiturage — Ecoride | Covoiturage dans votre région
+{% endblock %}
+
+{% block body %}
+
+	<section class="container homepage-section">>
+		{% include 'homepage/_search-form.html.twig' %}
+
+		
+	</section>
+
+	<section class="container homepage-section">>
+		{% include 'homepage/_search-form.html.twig' %}
+
+		<div class="container mt-4">
+			<h1>Liste des trajets disponibles</h1>
+
+			{% if routes is empty %}
+				<p>Aucun trajet n’a encore été publié.</p>
+			{% else %}
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Départ</th>
+							<th>Arrivée</th>
+							<th>Date</th>
+							<th>Heure</th>
+							<th>Durée</th>
+							<th>Conducteur</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for route in routes %}
+							<tr>
+								<td>{{ route.departureTown }}</td>
+								<td>{{ route.arrivalTown }}</td>
+								<td>{{ route.departureDay|date('d/m/Y') }}</td>
+								<td>{{ route.departureTime|date('H:i') }}</td>
+								<td>{{ route.travelTime }}
+									min</td>
+								<td>{{ route.user.firstname }}
+									{{ route.user.lastname }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endif %}
+		</div>
+
+	</section>
+{% endblock %}

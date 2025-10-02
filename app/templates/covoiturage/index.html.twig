@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Covoiturage{% endblock %}
+
+{# Inclusion du formulaire de recherche #}
+{# {% include '_partials/_search_form.html.twig' with { form: form } %} #}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Trajets disponibles</h1>
+
+    {{ form_start(form) }}
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                {{ form_row(form.departure) }}
+            </div>
+            <div class="col-md-3">
+                {{ form_row(form.arrival) }}
+            </div>
+            <div class="col-md-2">
+                {{ form_row(form.date) }}
+            </div>
+            <div class="col-md-2">
+                {{ form_row(form.passengers) }} 
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button class="btn btn-primary w-100">Rechercher</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+    {% if routes is empty %}
+        <p>Aucun trajet disponible pour le moment.</p>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Départ</th>
+                    <th>Arrivée</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Durée</th>
+                    <th>Conducteur</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for route in routes %}
+                    <tr>
+                        <td>{{ route.departureTown }}</td>
+                        <td>{{ route.arrivalTown }}</td>
+                        <td>{{ route.departureDay|date('d/m/Y') }}</td>
+                        <td>{{ route.departureTime|date('H:i') }}</td>
+                        <td>{{ route.travelTime }} min</td>
+                        <td>{{ route.user.firstname }} {{ route.user.lastname }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}
