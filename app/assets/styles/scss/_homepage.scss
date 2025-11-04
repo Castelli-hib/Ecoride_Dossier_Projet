@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+
+.homepage-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 1rem;
+  background: linear-gradient(
+    180deg,
+    lighten($primary-color, 40%) 0%,
+    $light-bg 100%
+  );
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-section h1 {
+  color: $primary-color;
+  text-align: center;
+  font-size: 2rem;
+}

@@ -3,7 +3,11 @@
 {% block title %}M'inscrire{% endblock %}
 
 {% block javascripts %}
+    {# ImportMap officiel (si tout fonctionne) #}
     {# {{ importmap('register') }} #}
+
+    {# Fallback simple et fiable, Charge le fichier sans passer par importmap #}
+    <script type="module" src="{{ asset('assets/js/register.js') }}"></script>
 {% endblock %}
 
 {% block body %}

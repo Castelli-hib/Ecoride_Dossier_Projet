@@ -20,9 +20,10 @@ return [
     ],
     'register' => [
         'version' => '0.0.0',
+        'entrypoint' => true,
     ],
     'cadence' => [
-        'version' => '3.0.6',
+        'version' => '0.0.12',
     ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',

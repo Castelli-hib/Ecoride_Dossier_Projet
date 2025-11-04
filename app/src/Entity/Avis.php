@@ -29,6 +29,9 @@ class Avis
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
+    #[ORM\ManyToOne(inversedBy: 'avis')]
+    private ?Route $route = null;
+
 
     // -----------------------
     // Lifecycle Callbacks
@@ -98,4 +101,17 @@ class Avis
         $this->user = $user;
         return $this;
     }
+
+        // 🔗 RELATION ROUTE
+    public function getRoute(): ?Route
+    {
+        return $this->route;
+    }
+
+    public function setRoute(?Route $route): static
+    {
+        $this->route = $route;
+        return $this;
+    }
+
 }

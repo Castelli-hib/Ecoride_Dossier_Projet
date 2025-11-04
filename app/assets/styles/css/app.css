@@ -1,33 +1,50 @@
-#couleur {
-  color: #839c49;
-}
-
 body {
-  background-color: white;
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  background-color: #f8f9fa;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
-.text-red {
-  color: red;
-}
-.text-orange {
-  color: orange;
-}
-.text-green {
-  color: green;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.password-strength-bar {
-  width: 100%;
-  height: 8px;
-  background-color: #ddd;
-  border-radius: 4px;
-  margin-top: 5px;
-  overflow: hidden;
+.btn-primary {
+  background-color: #98B67F;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: rgb(133.7059701493, 169.0343283582, 104.2656716418);
 }
 
-.bar {
-  height: 100%;
-  width: 0%;
-  transition: width 0.3s ease, background-color 0.3s ease;
-  border-radius: 4px;
+.btn-outline {
+  background-color: transparent;
+  color: #98B67F;
+  border: 2px solid #98B67F;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background-color: #98B67F;
+  color: #ffffff;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.card h3 {
+  color: #98B67F;
 }/*# sourceMappingURL=app.css.map */

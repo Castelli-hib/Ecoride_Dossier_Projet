@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\VehicleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VehicleRepository::class)]
@@ -27,19 +25,17 @@ class Vehicle
     #[ORM\Column]
     private ?bool $isActif = null;
 
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'vehicle')]
-    private Collection $userVehicle;
+    // 🔗 Relation ManyToOne vers User
+    #[ORM\ManyToOne(inversedBy: 'vehicles', targetEntity: User::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $userVehicle = null;
 
-    #[ORM\ManyToOne(inversedBy: 'vehicles')]
+    #[ORM\ManyToOne(inversedBy: 'vehicles', targetEntity: Brand::class)]
     private ?Brand $brandVehicle = null;
 
-    public function __construct()
-    {
-        $this->userVehicle = new ArrayCollection();
-    }
+    // ==========================
+    // GETTERS / SETTERS
+    // ==========================
 
     public function getId(): ?int
     {
@@ -54,7 +50,6 @@ class Vehicle
     public function setYear(string $year): static
     {
         $this->year = $year;
-
         return $this;
     }
 
@@ -66,7 +61,6 @@ class Vehicle
     public function setStatus(string $status): static
     {
         $this->status = $status;
-
         return $this;
     }
 
@@ -78,7 +72,6 @@ class Vehicle
     public function setKilometer(int $kilometer): static
     {
         $this->kilometer = $kilometer;
-
         return $this;
     }
 
@@ -90,40 +83,22 @@ class Vehicle
     public function setIsActif(bool $isActif): static
     {
         $this->isActif = $isActif;
-
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUserVehicle(): Collection
+    // 🔗 RELATION USER
+    public function getUserVehicle(): ?User
     {
         return $this->userVehicle;
     }
 
-    public function addUserVehicle(User $userVehicle): static
+    public function setUserVehicle(?User $userVehicle): static
     {
-        if (!$this->userVehicle->contains($userVehicle)) {
-            $this->userVehicle->add($userVehicle);
-            $userVehicle->setVehicle($this);
-        }
-
+        $this->userVehicle = $userVehicle;
         return $this;
     }
 
-    public function removeUserVehicle(User $userVehicle): static
-    {
-        if ($this->userVehicle->removeElement($userVehicle)) {
-            // set the owning side to null (unless already changed)
-            if ($userVehicle->getVehicle() === $this) {
-                $userVehicle->setVehicle(null);
-            }
-        }
-
-        return $this;
-    }
-
+    // 🔗 RELATION BRAND
     public function getBrandVehicle(): ?Brand
     {
         return $this->brandVehicle;
@@ -132,7 +107,6 @@ class Vehicle
     public function setBrandVehicle(?Brand $brandVehicle): static
     {
         $this->brandVehicle = $brandVehicle;
-
         return $this;
     }
 }

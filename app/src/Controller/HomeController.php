@@ -8,6 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Entity\Contact;
+use App\Form\ContactType;
+use Symfony\Component\HttpFoundation\Request;
 
 final class HomeController extends AbstractController
 {
@@ -23,17 +26,25 @@ final class HomeController extends AbstractController
             
         ]);
 }
-    // 
-    // #[Route('/covoiturage', name: 'app_covoiturage')]
-    // public function covoiturage(EntityManagerInterface $em): Response
-    // {
-    //     // Récupérer tous les trajets
-    //     $routes = $em->getRepository(AppRoute::class)->findAll();
+    #[Route('/contact', name: 'app_contact')]
+public function contact(Request $request, EntityManagerInterface $em): Response
+{
+    $contact = new Contact();
+    $form = $this->createForm(ContactType::class, $contact);
+    $form->handleRequest($request);
 
-    //     return $this->render('covoiturage/index.html.twig', [
-    //         'routes' => $routes,
-    //     ]);
-    // }
+    if ($form->isSubmitted() && $form->isValid()) {
+        $em->persist($contact);
+        $em->flush();
+
+        $this->addFlash('success', 'Votre message a bien été envoyé.');
+        return $this->redirectToRoute('app_contact');
+    }
+
+    return $this->render('contact.html.twig', [
+        'form' => $form->createView(),
+    ]);
+}
 
 
 }

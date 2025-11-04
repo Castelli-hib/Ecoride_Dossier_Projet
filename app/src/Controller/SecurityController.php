@@ -80,7 +80,7 @@ class SecurityController extends AbstractController
                     'no-reply@ecoride.fr',
                     $user->getEmail(),
                     'Récupération de mot de passe sur le site EcoRide',
-                    'emails/password_reset',
+                    'emails/password_reset.html.twig',
                     compact('user', 'url') // ['user' => $user, 'url' => $url]
                 );
 

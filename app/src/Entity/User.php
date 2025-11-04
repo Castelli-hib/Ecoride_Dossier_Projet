@@ -20,7 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     #[Assert\Length(
-        min: 3, 
+        min: 3,
         max: 50,
         minMessage: 'Le nom d\'utilisateur doit faire au moins {{ limit }} caractères',
         maxMessage: 'Le nom d\'utilisateur ne peut pas dépasser {{ limit }} caractères'
@@ -63,16 +63,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
-    /**
-     * @var Collection<int, Route>
-     */
-    #[ORM\OneToMany(targetEntity: Route::class, mappedBy: 'user')]
+    #[ORM\Column(length: 64, nullable: true)]
+    private ?string $resetToken = null;
+
+    //  Relations
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Preferences::class, cascade: ['persist', 'remove'])]
+    private ?Preferences $preferences = null;
+
+    #[ORM\OneToMany(mappedBy: 'userVehicle', targetEntity: Vehicle::class)]
+    private Collection $vehicles;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Route::class)]
     private Collection $routes;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Avis::class, cascade: ['persist', 'remove'])]
+    private Collection $avis;
+
+    #[ORM\OneToMany(mappedBy: 'passager', targetEntity: Reservation::class, cascade: ['persist', 'remove'])]
+    private Collection $reservations;
+
 
     public function __construct()
     {
         $this->routes = new ArrayCollection();
+        $this->vehicles = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
+
 
     // ==========================
     // GETTERS & SETTERS
@@ -185,7 +203,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // garantit que tout le monde a au moins ROLE_USER
         $roles[] = 'ROLE_USER';
         return array_unique($roles);
     }
@@ -218,20 +235,94 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // ==========================
-    // Implémentation UserInterface
-    // ==========================
-
-    public function getUserIdentifier(): string
+    public function getResetToken(): ?string
     {
-        return (string) $this->email; // identifiant unique pour la connexion
+        return $this->resetToken;
     }
 
-    public function eraseCredentials(): void
+    public function setResetToken(?string $resetToken): static
     {
-        // Si tu stockes des infos sensibles (ex: mot de passe en clair temporaire), nettoie-les ici
+        $this->resetToken = $resetToken;
+        return $this;
     }
 
+    // ==========================
+    // RELATIONS
+    // ==========================
+
+    public function getPreferences(): ?Preferences
+    {
+        return $this->preferences;
+    }
+
+    public function setPreferences(?Preferences $preferences): static
+    {
+        $this->preferences = $preferences;
+
+        if ($preferences !== null && $preferences->getUser() !== $this) {
+            $preferences->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vehicle>
+     */
+    public function getVehicles(): Collection
+    {
+        return $this->vehicles;
+    }
+
+    public function addVehicle(Vehicle $vehicle): static
+    {
+        if (!$this->vehicles->contains($vehicle)) {
+            $this->vehicles->add($vehicle);
+            $vehicle->setUserVehicle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVehicle(Vehicle $vehicle): static
+    {
+        if ($this->vehicles->removeElement($vehicle)) {
+            if ($vehicle->getUserVehicle() === $this) {
+                $vehicle->setUserVehicle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): static
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis->add($avi);
+            $avi->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): static
+    {
+        if ($this->avis->removeElement($avi)) {
+            if ($avi->getUser() === $this) {
+                $avi->setUser(null);
+            }
+        }
+
+        return $this;
+    }
     /**
      * @return Collection<int, Route>
      */
@@ -253,12 +344,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeRoute(Route $route): static
     {
         if ($this->routes->removeElement($route)) {
-            // set the owning side to null (unless already changed)
             if ($route->getUser() === $this) {
                 $route->setUser(null);
             }
         }
 
         return $this;
+    }
+
+    // ==========================
+    // SECURITY INTERFACE
+    // ==========================
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Pour nettoyer des données sensibles si nécessaire
     }
 }

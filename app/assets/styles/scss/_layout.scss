@@ -1,0 +1,16 @@
+@use 'variables';
+
+body {
+  font-family: variables.$font-main;
+  background-color: variables.$light-bg;
+//   color: variables.$text-color;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

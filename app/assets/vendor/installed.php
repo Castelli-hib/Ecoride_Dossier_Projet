@@ -30,16 +30,6 @@
     array (
     ),
   ),
-  'cadence' => 
-  array (
-    'version' => '3.0.6',
-    'dependencies' => 
-    array (
-    ),
-    'extraFiles' => 
-    array (
-    ),
-  ),
   '@hotwired/stimulus' => 
   array (
     'version' => '3.2.2',
@@ -53,6 +43,16 @@
   '@hotwired/turbo' => 
   array (
     'version' => '7.3.0',
+    'dependencies' => 
+    array (
+    ),
+    'extraFiles' => 
+    array (
+    ),
+  ),
+  'cadence' => 
+  array (
+    'version' => '0.0.12',
     'dependencies' => 
     array (
     ),
