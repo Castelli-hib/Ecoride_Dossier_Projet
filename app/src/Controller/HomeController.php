@@ -19,7 +19,7 @@ final class HomeController extends AbstractController
     {
         // récupère tous les trajets
         // $routes = $routeRepository->findAll();
-        $routes = $routeRepository->findLatest(5);
+        $routes = $routeRepository->findLatest(3);
 
         return $this->render('index.html.twig', [
             'routes' => $routes,
