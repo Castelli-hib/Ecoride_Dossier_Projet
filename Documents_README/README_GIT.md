@@ -93,6 +93,8 @@ git push -u origin feature/readme
 
 ## (Optionnel) Créer une Pull Request sur GitHub pour fusionner feature/readme dans devop une fois que tout est prêt et relu
 
+pull request ? (a voir)
+
 ## Ajouter le dossier à l’index Git
 
 git add Documents_README/
@@ -105,9 +107,9 @@ git commit -m "Ajout du dossier Documents_README avec tous les README"
 
 git checkout -b feature/ma-feature
 
-## Commit
+## Commit (s'engager)
 
-git add .
+git add .git status
 git commit -m "Message clair"
 
 ## Premier push
@@ -131,3 +133,14 @@ astuce : si vous prévoyez de pousser une nouvelle branche locale qui suivra son
 « git push -u » pour définir la configuration en amont lors de la poussée.
 
 astuce : désactivez ce message avec « git config set advice.setUpstreamFailure false »
+
+git log
+
+ci/cd cd d=deploiment (paramatrage du piplemine)
+circleci.com (gitLab) liste d'instruction, liste les étapes
+
+## git cherry-pick + id 'du commit'
+
+## git cherry-pick + id +i
+
+récupere le commit
