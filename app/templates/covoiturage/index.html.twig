@@ -14,7 +14,7 @@
 		<div class="container mt-4">
 
 
-			{{ form_start(form) }}
+			{# {{ form_start(form) }}
 			<div class="row g-3 mb-4">
 				<div class="col-md-3">
 					{{ form_row(form.departure) }}
@@ -33,13 +33,15 @@
 						<button class="btn btn-primary covoiturage-btn-search">Rechercher</button>
 				</div>
 			</div>
-			{{ form_end(form) }}
+			{{ form_end(form) }} #}
 
+			{% include 'homepage/_search-form.html.twig' %}
+			
 			{% if routes is empty %}
 				<p>Aucun trajet disponible pour le moment.</p>
 			{% else %}
 
-				<h1>Trajets disponibles</h1>
+				{# <h1>Trajets disponibles</h1> #}
 
 
 				<div
@@ -74,10 +76,10 @@
 									</li>
 									<li class="list-group-item my-2">
 										<img src="{{ asset('/images/user-icon.svg')}}" class="me-2"/>
-										Nbre de places</li>
+										Nbre de places: {{ random([1, 2, 3, 4, 5]) }}</li>
 									<li class="list-group-item my-2">
 										<img src="{{ asset('/images/credit-icon.svg')}}" class="me-2"/>
-										Crédits</li>
+										Crédits: {{ random([3, 8, 6, 10]) }}</li>
 									{# {{dump(route)}} #}
 								</ul>
 								<a href="#" class="btn btn-primary w-100">Réserver</a>

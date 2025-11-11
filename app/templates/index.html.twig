@@ -4,18 +4,19 @@
 {% endblock %}
 
 {% block body %}
-	<section class="container homepage-section">>
+	<section class="container homepage-section">
 
 		{% include 'homepage/_search-form.html.twig' %}
 		{% include 'homepage/_featurette-section.html.twig' %}
+		
 
-		<header>
+		{# <header>
 			<h1 class="homepage-section__title">Bienvenue sur Ecoride</h1>
 			<p class="homepage-section__subtitle">Le site de covoiturage dans votre région</p>
-		</header>
+		</header> #}
 		<main>
 			<section class="container homepage-section">
-				<h2>Derniers trajets</h2>
+				{# <h2>Derniers trajets</h2> #}
 
 				{% if routes is empty %}
 					<p>Aucun trajet disponible pour l'instant.</p>
@@ -53,10 +54,10 @@
 										</li>
 										<li class="list-group-item my-2">
 											<img src="{{ asset('/images/user-icon.svg')}}" class="me-2"/>
-											Nbre de places</li>
+											Nbre de places: {{ random([1, 2, 3, 4, 5]) }}</li>
 										<li class="list-group-item my-2">
 											<img src="{{ asset('/images/credit-icon.svg')}}" class="me-2"/>
-											Crédits</li>
+											Crédits: {{ random([3, 8, 6, 10]) }}</li>
 
 										{# {{dump(route)}} #}
 									</ul>

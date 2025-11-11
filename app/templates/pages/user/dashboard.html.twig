@@ -5,8 +5,9 @@
 		<div
 			class="row">
 			<!-- MENU LATERAL -->
-			<div class="col-md-3">
-				<h1 class="h2">Dashboard</h1>
+			<div
+				class="col-md-3">
+				{# <h1 class="h2">Dashboard</h1> #}
 				<div class="list-group">
 					<a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action active">
 						Mon compte
@@ -49,8 +50,23 @@
 			<!-- CONTENU PRINCIPAL -->
 			<div class="col-md-9">
 				{# {{ dump(app.user) }} #}
-				<h1>Bienvenue
-					{{ app.user.firstname }}</h1>
+				{# <h1>Bienvenue
+									{{ app.user.firstname }}</h1> #}
+
+					{% if "ROLE_PASSAGER" in app.user.roles %}<h2 id="preferences"> Mes préférences</h2>
+					{% if routes is empty %}
+						<p>Vous n’avez pas encore ajouté de préférences.</p>
+					{% else %}
+						<ul>
+							{% for route in routes %}
+								<li>{{ route.departureTown }}
+									→
+									{{ route.arrivalTown }}
+									({{ route.departureDay|date('d/m/Y') }})</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				{% endif %}
 
 				{# {% if isConducteur %} #}
 				{% if "ROLE_CONDUCTEUR" in app.user.roles %}

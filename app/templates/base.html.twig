@@ -18,9 +18,17 @@
 	<body>
 		{% set route = app.request.attributes.get('_route') %}
 
-		{% if app.user and route not in ['app_register', 'app_login', 'app_homepage'] %}
+		{# {% if app.user and route not in ['app_register', 'app_homepage'] %}
 			{% include 'partials/_navbar_deco.html.twig' %}
 		{% else %}
+			{% include 'partials/_navbar.html.twig' %}
+		{% endif %} #}
+		{# {% include 'partials/_navbar.html.twig' %} #}
+		{% if app.user %}
+			{# connecté #}
+			{% include 'partials/_navbar_deco.html.twig' %}
+		{% else %}
+			{# déconnecté #}
 			{% include 'partials/_navbar.html.twig' %}
 		{% endif %}
 
