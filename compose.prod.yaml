@@ -1,0 +1,43 @@
+services:
+  database:
+    container_name: database
+    restart: always
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: ecoride
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    volumes:
+      - mysql:/var/lib/mysql
+    healthcheck:
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-psecret"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  app:
+    container_name: app
+    restart: none
+    image: ecoride
+    environment:
+      DATABASE_URL: "mysql://symfony:symfony@database:3306/ecoride"
+      APP_ENV: prod
+      APP_DEBUG: 0
+      APP_SECRET: "secretdefense"
+    working_dir: /var/www
+    command: >
+      sh -c " php bin/console doctrine:database:create --if-not-exists  &&
+              php bin/console doctrine:migrations:migrate -n &&
+              php bin/console doctrine:fixtures:load -n &&
+              exec apache2-foreground"
+    ports:
+      - 8888:80
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  mysql:
