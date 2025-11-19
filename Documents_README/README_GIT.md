@@ -154,4 +154,3 @@ git checkout dev
 git pull origin dev
 git merge feature/deployment
 git push origin dev
-
