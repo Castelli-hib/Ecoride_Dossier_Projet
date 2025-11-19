@@ -248,11 +248,12 @@ ecoride/
 ## Aperçu du projet
 
 ![Diagramme Merise](Documents_README/images/Diagramme_Classe_Merise.png)
-![Chutier couleur](Documents_README/images/chutier_couleur.png)
+![Chutier couleur](Documents_README/images/chutier_couleur.jpg)
 ![Sirat](Documents_README/images/sirat-825x510.jpg)
 ![Home Page](Documents_README/images/HomePage.jpg)
-![Covoiturage](Documents_README/images/Covoiturage.jpg)
-![Connexion](Documents_README/images/Connexion.jpg)
+![Covoiturages](Documents_README/images/covoiturages.jpg)
+![Connexion](Documents_README/images/connexion.jpg)
+![Connexion 2x](Documents_README/images/Connexion2x.png)
 ![iPhone SE 3 HomePage](Documents_README/images/iPhoneSE3_HomePage.jpg)
-![Main Ecoride](Documents_README/images/Main_Ecoride.jpg)
+![Main Ecoride](Documents_README/images/main_ecoride.jpg)
 ![Palette photo](Documents_README/images/Palette_photo.jpg)
