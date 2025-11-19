@@ -247,13 +247,13 @@ ecoride/
 
 ## Aperçu du projet
 
-![Diagramme Merise](Documents_README/images/Diagramme_Classe_Merise.png)
-![Chutier couleur](Documents_README/images/chutier_couleur.jpg)
-![Sirat](Documents_README/images/sirat-825x510.jpg)
-![Home Page](Documents_README/images/HomePage.jpg)
-![Covoiturages](Documents_README/images/covoiturages.jpg)
-![Connexion](Documents_README/images/connexion.jpg)
-![Connexion 2x](Documents_README/images/Connexion2x.png)
-![iPhone SE 3 HomePage](Documents_README/images/iPhoneSE3_HomePage.jpg)
-![Main Ecoride](Documents_README/images/main_ecoride.jpg)
-![Palette photo](Documents_README/images/Palette_photo.jpg)
+![diagramme_classe_merise](Documents_README/images/diagramme_classe_merise.png)
+![Chutier_couleur](Documents_README/images/chutier_couleur.jpg)
+![sirat](Documents_README/images/sirat-825x510.jpg)
+![homepage](Documents_README/images/homepage.jpg)
+![covoiturages](Documents_README/images/covoiturages.jpg)
+![connexion](Documents_README/images/connexion.jpg)
+![connexion2x](Documents_README/images/connexion2x.png)
+![iPhonese3_homepage](Documents_README/images/iPhonese3_homepage.jpg)
+![main_ecoride](Documents_README/images/main_ecoride.jpg)
+![palette_photo](Documents_README/images/palette_photo.jpg)
