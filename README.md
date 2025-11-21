@@ -248,6 +248,10 @@ ecoride/
 ├── mkdocs.yml
 └── README.md
 
+## Trello
+
+[Trello](https://trello.com/invite/b/67d3ff9ce75f86d98936cabd/ATTI663336a4d09955f2b335a42da9883ac61595A83A/gestion-des-taches)
+
 ## Maquettes
 
 Les maquettes sont disponibles sur [Figma](https://www.figma.com/design/cBeUm9wiFxE9pEoBkRrYgE/Ecoride_Wireframe?node-id=0-1&p=f&t=6eMbCQXzb5Z80TqD-0)
