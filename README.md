@@ -151,8 +151,8 @@ Exemple Repository (QueryBuilder)
 2. Le serveur génère un **jeton JWT signé**
 3. Le client appelle l’API avec :
 
-```http
 Authorization: Bearer <token>
+
 Contenu du jeton
 email
 
@@ -166,6 +166,7 @@ https://jwt.io/
 ---
 
 ## Prochaines étapes
+
 - API interne complète
 - Module messagerie interne
 - Espace admin complet (EasyAdmin)
@@ -175,6 +176,7 @@ https://jwt.io/
 - Intégration CI/CD Docker
 
 ## Améliorations backend
+
 - Optimisation QueryBuilder
 - Mise en cache (Redis)
 - Services dédiés pour trajets
@@ -182,6 +184,7 @@ https://jwt.io/
 ## Annexes techniques
 
 ## Problèmes Docker courants
+
 | Problème | Solution |
 |----------|----------|
 | Certificats manquants | apt-get install ca-certificates |
@@ -190,6 +193,7 @@ https://jwt.io/
 | Conflit Live Sass Compiler | désinstaller extension |
 
 ## Commandes utiles
+
 ```bash
 docker compose up -d
 symfony serve -d
@@ -244,9 +248,10 @@ ecoride/
 
 ---
 
-## Aperçu du projet
+### Aperçu du projet
 
 ![Diagramme Merise](Documents_README/images/diagramme_classe_merise.png?raw=true)
+
 ![Chutier couleur](Documents_README/images/chutier_couleur.jpg?raw=true)
 ![Sirat](Documents_README/images/sirat-825x510.jpg?raw=true)
 ![Homepage](Documents_README/images/homepage.jpg?raw=true)
