@@ -20,7 +20,7 @@ Bienvenue dans la documentation officielle du projet **Ecoride**, une plateforme
 
 ## Environnement de développement
 
-## Système
+### Système
 
 - Windows 11 + WSL2 (Ubuntu ou Debian)
 - Docker Desktop
@@ -29,27 +29,40 @@ Bienvenue dans la documentation officielle du projet **Ecoride**, une plateforme
 - Node / npm / NVM
 - VSCode
 
-## Installation WSL2
+### Installation WSL2
 
+```bash
 wsl --install
 sudo apt update && sudo apt upgrade -y
-Installation Docker
+```
+
+### Installation Docker
+
 Docker Desktop avec backend WSL2
 
+```bash
 docker --version
 docker compose version
-Installation Node via NVM
-nvm use 20
-Installation du projet Symfony
+```
 
+### Installation Node via NVM
+
+```bash
+nvm use 20
+```
+
+### Installation du projet Symfony
+
+```bash
 symfony new app --webapp
 composer install
+```
 
 ---
 
 ## Architecture logicielle et Docker
 
-## Conteneurs utilisés
+### Conteneurs utilisés
 
 | Service       | Rôle |
 |---------------|------|
@@ -58,7 +71,7 @@ composer install
 | phpmyadmin    | Interface SQL |
 | mailhog       | Test SMTP |
 
-## Arborescence projet
+### Arborescence projet
 
 ecoride/
   app/
@@ -71,15 +84,13 @@ ecoride/
 
 ## Front-end
 
----
-
-## Technologies
+### Technologies
 
 - Bootstrap 5
 - SCSS personnalisé
 - Mobile-first → Desktop
 
-## Composants prévus
+### Composants prévus
 
 - Header / Navbar
 - Section Hero
@@ -87,26 +98,26 @@ ecoride/
 - Formulaires (inscription, recherche, réservation)
 - Thème responsive conforme à la charte graphique
 
-## Structure SCSS
+### Structure SCSS
 
 assets/
-styles/
-base/
-components/
-layout/
-pages/
+  styles/
+    base/
+    components/
+    layout/
+    pages/
 
-## Structure
+### Structure Symfony
 
 src/
-Controller/
-Entity/
-Repository/
-Form/
-Security/
-Service/
+  Controller/
+  Entity/
+  Repository/
+  Form/
+  Security/
+  Service/
 
-## Entités existantes
+### Entités existantes
 
 - User
 - Route
@@ -117,22 +128,28 @@ Service/
 - Contact
 - Avis
 
-### À ajouter
+#### À ajouter
 
 - Credit
 - Litige
 
+---
+
 ## Migrations
 
+```bash
 symfony console make:migration
 symfony console doctrine:migrations:migrate
-Fixtures
+```
 
+### Fixtures
+
+```bash
 composer require --dev orm-fixtures fakerphp/faker
 symfony console doctrine:fixtures:load
-Exemple Repository (QueryBuilder)
+```
 
-## Objectifs
+### Objectifs Repository
 
 - Recherche de trajets
 - Réservations
@@ -148,18 +165,20 @@ Exemple Repository (QueryBuilder)
 ### Fonctionnement
 
 1. L’utilisateur se connecte  
-2. Le serveur génère un **jeton JWT signé**
+2. Le serveur génère un **jeton JWT signé**  
 3. Le client appelle l’API avec :
 
-- Authorization: Bearer <token>
+```http
+Authorization: Bearer <token>
+```
 
-Contenu du jeton
-email
-rôles
-date d’expiration
+Contenu du jeton :
 
-Référence
-https://jwt.io/
+- email
+- rôles
+- date d’expiration
+
+Référence : [https://jwt.io/](https://jwt.io/)
 
 ---
 
@@ -173,15 +192,19 @@ https://jwt.io/
 - Statistiques admin
 - Intégration CI/CD Docker
 
+---
+
 ## Améliorations backend
 
 - Optimisation QueryBuilder
 - Mise en cache (Redis)
 - Services dédiés pour trajets
 
+---
+
 ## Annexes techniques
 
-## Problèmes Docker courants
+### Problèmes Docker courants
 
 | Problème | Solution |
 |----------|----------|
@@ -190,6 +213,8 @@ https://jwt.io/
 | Variables SCSS non chargées | utiliser `@use` au lieu de `@import` |
 | Conflit Live Sass Compiler | désinstaller extension |
 
+---
+
 ## Commandes utiles
 
 ```bash
@@ -197,82 +222,78 @@ docker compose up -d
 symfony serve -d
 symfony console cache:clear
 npm run build
+```
+
+### Structure globale du projet
+
 
 ecoride/
-│
-├── app/                        # Projet Symfony
+├── app/
 │   ├── bin/
 │   ├── config/
 │   ├── public/
 │   ├── src/
-│   │   ├── Controller/
-│   │   ├── Entity/
-│   │   ├── Repository/
-│   │   ├── Form/
-│   │   ├── Security/
-│   │   └── Service/
 │   ├── templates/
 │   ├── translations/
 │   ├── dockerfile.dev
 │   ├── dockerfile-prod
 │   └── apache/
-│       ├── default.conf
-│       └── default-ssl.conf
-│
-├── compose.yaml                # docker-compose multi-services
-├── mysql/                      # volume persistant MySQL
-│
-├── docs/                       # Documentation MkDocs
-│   ├── index.md
-│   ├── presentation.md
-│   ├── environnement.md
-│   ├── architecture.md
-│   ├── frontend.md
-│   ├── backend.md
-│   ├── api.md
-│   ├── securite.md
-│   ├── roadmap.md
-│   └── annexes.md
-│
-├── assets/                     # Front-end static assets
-│   ├── js/
-│   └── scss/
-│
-├── tests/                      # Tests PHPUnit
+├── compose.yaml
+├── mysql/
+├── docs/
+├── assets/
+├── tests/
 ├── var/
 ├── vendor/
-├── mkdocs.yml                  # Config MkDocs Material
+├── mkdocs.yml
 └── README.md
 
----
 ## Maquettes
----
 
-## Les maquettes sont disponibles sur [Figma]
-[Figma](https://www.figma.com/design/cBeUm9wiFxE9pEoBkRrYgE/Ecoride_Wireframe?node-id=0-1&p=f&t=6eMbCQXzb5Z80TqD-0)
+Les maquettes sont disponibles sur [Figma](https://www.figma.com/design/cBeUm9wiFxE9pEoBkRrYgE/Ecoride_Wireframe?node-id=0-1&p=f&t=6eMbCQXzb5Z80TqD-0)
 
 ### Aperçu du projet
 
+#### Diagramme de classe
+
 ![Diagramme Merise](Documents_README/images/diagramme_classe_merise.png?raw=true)
+
+### Code couleur
 
 ![Chutier couleur](Documents_README/images/chutier_couleur.jpg?raw=true)
 
-![Sirat](Documents_README/images/sirat-825x510.jpg?raw=true)
+### Illustration
 
-![Homepage](Documents_README/images/homepage.jpg?raw=true)
+![Sirat](Documents_README/images/sirat-825x510.jpg?raw=true)  
 
-![Covoiturages](Documents_README/images/covoiturages.jpg?raw=true)
+### Page d'accueil
 
-![Connexion](Documents_README/images/connexion.jpg?raw=true)
+![Homepage](Documents_README/images/homepage.jpg?raw=true)  
 
-![Connexion2x](Documents_README/images/connexion2x.png?raw=true)
+### Page covoiturage
 
-![iPhone SE3 Homepage](Documents_README/images/iphonese3_homepage.jpg?raw=true)
+![Covoiturages](Documents_README/images/covoiturages.jpg?raw=true)  
 
-![Main Ecoride](Documents_README/images/main_ecoride.jpg?raw=true)
+### Page de connexion
 
-![Palette photo](Documents_README/images/palette_photo.jpg?raw=true)
+![Connexion](Documents_README/images/connexion.jpg?raw=true) 
+
+### Page de connexion mobil-first
+
+![Connexion2x](Documents_README/images/connexion2x.png?raw=true)  
+
+### Page d'accueil mobil-first
+
+![iPhone SE3 Homepage](Documents_README/images/iphonese3_homepage.jpg?raw=true)  
+
+### Main
+
+![Main Ecoride](Documents_README/images/main_ecoride.jpg?raw=true) 
+
+### Pallette de couleur
+
+![Palette photo](Documents_README/images/palette_photo.jpg?raw=true)  
+
+### Main deux roues
 
 ![Covoiturage](Documents_README/images/covoiturage.jpg?raw=true)
-
-![Homepage](https://raw.githubusercontent.com/Castelli-hib/ecoride_1erdepot/main/Documents_README/images/homepage.jpg)
