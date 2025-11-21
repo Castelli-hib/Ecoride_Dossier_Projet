@@ -73,14 +73,12 @@ composer install
 
 ### Arborescence projet
 
-```
 ecoride/
   app/
     dockerfile.dev
     apache/default.conf
   compose.yaml
   mysql/
-```
 
 ---
 
@@ -102,18 +100,15 @@ ecoride/
 
 ### Structure SCSS
 
-```
 assets/
   styles/
     base/
     components/
     layout/
     pages/
-```
 
 ### Structure Symfony
 
-```
 src/
   Controller/
   Entity/
@@ -121,7 +116,6 @@ src/
   Form/
   Security/
   Service/
-```
 
 ### Entités existantes
 
@@ -232,7 +226,7 @@ npm run build
 
 ### Structure globale du projet
 
-```
+
 ecoride/
 ├── app/
 │   ├── bin/
@@ -253,9 +247,6 @@ ecoride/
 ├── vendor/
 ├── mkdocs.yml
 └── README.md
-```
-
----
 
 ## Maquettes
 
@@ -263,14 +254,46 @@ Les maquettes sont disponibles sur [Figma](https://www.figma.com/design/cBeUm9wi
 
 ### Aperçu du projet
 
-![Diagramme Merise](Documents_README/images/diagramme_classe_merise.png?raw=true)  
-![Chutier couleur](Documents_README/images/chutier_couleur.jpg?raw=true)  
+#### Diagramme de classe
+
+![Diagramme Merise](Documents_README/images/diagramme_classe_merise.png?raw=true)
+
+### Code couleur
+
+![Chutier couleur](Documents_README/images/chutier_couleur.jpg?raw=true)
+
+### Illustration
+
 ![Sirat](Documents_README/images/sirat-825x510.jpg?raw=true)  
+
+### Page d'accueil
+
 ![Homepage](Documents_README/images/homepage.jpg?raw=true)  
+
+### Page covoiturage
+
 ![Covoiturages](Documents_README/images/covoiturages.jpg?raw=true)  
-![Connexion](Documents_README/images/connexion.jpg?raw=true)  
+
+### Page de connexion
+
+![Connexion](Documents_README/images/connexion.jpg?raw=true) 
+
+### Page de connexion mobil-first
+
 ![Connexion2x](Documents_README/images/connexion2x.png?raw=true)  
+
+### Page d'accueil mobil-first
+
 ![iPhone SE3 Homepage](Documents_README/images/iphonese3_homepage.jpg?raw=true)  
-![Main Ecoride](Documents_README/images/main_ecoride.jpg?raw=true)  
+
+### Main
+
+![Main Ecoride](Documents_README/images/main_ecoride.jpg?raw=true) 
+
+### Pallette de couleur
+
 ![Palette photo](Documents_README/images/palette_photo.jpg?raw=true)  
+
+### Main deux roues
+
 ![Covoiturage](Documents_README/images/covoiturage.jpg?raw=true)
