@@ -1,16 +1,16 @@
 # Symfony / PHP
-/app/vendor/
-/app/var/
-/.env
-/.env.local
-/.env.test
-/.env.dev
-/.phpunit.result.cache
+app/vendor/
+app/var/
+.env
+.env.local
+.env.test
+.env.dev
+.phpunit.result.cache
 
 # Node / JS
-/app/node_modules
-/app/public/build/
-/app/assets/app.js.map
+app/node_modules
+app/public/build/
+app/assets/app.js.map
 
 # Docker
 docker-compose.override.yml
