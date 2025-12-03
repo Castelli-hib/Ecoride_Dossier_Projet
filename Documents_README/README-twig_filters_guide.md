@@ -31,7 +31,7 @@ Certains filtres acceptent des **arguments** :
 | `date`              | Formate une date                                             | `{{ myDate&#124;date('d/m/Y') }}` |
 | `number_format`     | Formate un nombre avec séparateur                           | `{{ 12345.678&#124;number_format(2, ',', ' ') }}` → `12 345,68` |
 | `join`              | Concatène les éléments d’un tableau                         | `{{ ['a', 'b', 'c']&#124;join(', ') }}` → `a, b, c` |
-| `replace`           | Remplace une chaîne par une autre                           | `{{ 'Bonjour'&#124;replace({'jour': 'soir'}) }}` → `Bonsoir` |
+<!-- | `replace`           | Remplace une chaîne par une autre                           | `{{ 'Bonjour'&#124;replace({'jour': 'soir'}) }}` → `Bonsoir` | -->
 | `default`           | Valeur par défaut si vide ou nul                            | `{{ nom&#124;default('Inconnu') }}` |
 | `trim`              | Supprime les espaces autour                                 | `{{ '  Hello  '&#124;trim }}` → `Hello` |
 | `nl2br`             | Remplace les `\n` par des `<br>`                            | `{{ texte&#124;nl2br }}` |
