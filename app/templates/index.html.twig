@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil — Ecoride | Covoiturage dans votre région
+{% endblock %}
+
+{% block body %}
+	<section class="container homepage-section">
+
+		{% include 'homepage/_search-form.html.twig' %}
+		{% include 'homepage/_featurette-section.html.twig' %}
+		
+
+		{# <header>
+			<h1 class="homepage-section__title">Bienvenue sur Ecoride</h1>
+			<p class="homepage-section__subtitle">Le site de covoiturage dans votre région</p>
+		</header> #}
+		<main>
+			<section class="container homepage-section">
+				{# <h2>Derniers trajets</h2> #}
+
+				{% if routes is empty %}
+					<p>Aucun trajet disponible pour l'instant.</p>
+				{% else %}
+
+					<div
+						class="route-card-wrapper d-flex flex-wrap justify-content-evenly gap-3 my-5">
+						{# {% for i in 0..3 %} // COMMENTER SVP MME #}
+						{% for route in routes %}
+
+							<div class="card covoiturage-card" style="width: 17.5rem;">
+								<img src="{{ asset('/images/Ajaccio-Vieux-Port1.png')}}" class="card-img-top" alt="...">
+								<div
+									class="card-body">
+									{# <h5 class="card-title text-center">Porto-Vecchio > Bastia</h5> #}
+									<ul class="list-group mb-3">
+										<li
+											class="list-group-item my-2 d-flex align-items-center">
+											{# <span class="location-icon me-2"></span>Porto-Vecchio</li> #}
+											<span class="location-icon me-2"></span>
+											{{ route.departureTown }}</li>
+										<li
+											class="list-group-item my-2 d-flex align-items-center">
+											{# <span class="location-icon me-2"></span>Bastia</li> #}
+											<span class="location-icon me-2"></span>
+											{{ route.arrivalTown }}</li>
+										<li class="list-group-item my-2 d-flex justify-content-start">
+											<img src="{{ asset('/images/calendar-icon.svg')}}" class="me-2"/>
+											<span>
+												Date du trajet :<br/>
+												{{ route.departureDay|date('d/m/Y') }}
+												-
+												{{ route.departureTime|date('H:i') }}
+											</span>
+										</li>
+										<li class="list-group-item my-2">
+											<img src="{{ asset('/images/user-icon.svg')}}" class="me-2"/>
+											Nbre de places: {{ random([1, 2, 3, 4, 5]) }}</li>
+										<li class="list-group-item my-2">
+											<img src="{{ asset('/images/credit-icon.svg')}}" class="me-2"/>
+											Crédits: {{ random([3, 8, 6, 10]) }}</li>
+
+										{# {{dump(route)}} #}
+									</ul>
+									<a href="#" class="btn btn-primary w-100">Réserver</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</section>
+		</main>
+
+		{% include 'homepage/_description-section.html.twig' %}
+
+	</section>
+{% endblock %}

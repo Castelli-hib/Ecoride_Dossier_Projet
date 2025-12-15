@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Covoiturage
+{% endblock %}
+
+{# Inclusion du formulaire de recherche #}
+{# {% include '_partials/_search_form.html.twig' with { form: form } %} #}
+
+{% block body %}
+	{# <header class="hero"> #}
+
+	<div class="hero-content">
+
+		<div class="container mt-4">
+
+
+			{# {{ form_start(form) }}
+			<div class="row g-3 mb-4">
+				<div class="col-md-3">
+					{{ form_row(form.departure) }}
+				</div>
+				<div class="col-md-3">
+					{{ form_row(form.arrival) }}
+				</div>
+				<div class="col-md-2">
+					{{ form_row(form.date) }}
+				</div>
+				<div class="col-md-2">
+					{{ form_row(form.passengers) }}
+				</div>
+
+				<div class="col-12 col-md-2">
+						<button class="btn btn-primary covoiturage-btn-search">Rechercher</button>
+				</div>
+			</div>
+			{{ form_end(form) }} #}
+
+			{% include 'homepage/_search-form.html.twig' %}
+			
+			{% if routes is empty %}
+				<p>Aucun trajet disponible pour le moment.</p>
+			{% else %}
+
+				{# <h1>Trajets disponibles</h1> #}
+
+
+				<div
+					class="route-card-wrapper d-flex flex-wrap justify-content-evenly gap-3 my-5">
+					{# {% for i in 0..3 %} // COMMENTER SVP MME #}
+					{% for route in routes %}
+
+						<div class="card covoiturage-card" style="width: 17.5rem;">
+							<img src="{{ asset('/images/Ajaccio-Vieux-Port1.png')}}" class="card-img-top" alt="...">
+							<div
+								class="card-body">
+								{# <h5 class="card-title text-center">Porto-Vecchio > Bastia</h5> #}
+								<ul class="list-group mb-3">
+									<li
+										class="list-group-item my-2 d-flex align-items-center">
+										{# <span class="location-icon me-2"></span>Porto-Vecchio</li> #}
+										<span class="location-icon me-2"></span>
+										{{ route.departureTown }}</li>
+									<li
+										class="list-group-item my-2 d-flex align-items-center">
+										{# <span class="location-icon me-2"></span>Bastia</li> #}
+										<span class="location-icon me-2"></span>
+										{{ route.arrivalTown }}</li>
+									<li class="list-group-item my-2 d-flex justify-content-start">
+										<img src="{{ asset('/images/calendar-icon.svg')}}" class="me-2"/>
+										<span>
+											Date du trajet :<br/>
+											{{ route.departureDay|date('d/m/Y') }}
+											-
+											{{ route.departureTime|date('H:i') }}
+										</span>
+									</li>
+									<li class="list-group-item my-2">
+										<img src="{{ asset('/images/user-icon.svg')}}" class="me-2"/>
+										Nbre de places: {{ random([1, 2, 3, 4, 5]) }}</li>
+									<li class="list-group-item my-2">
+										<img src="{{ asset('/images/credit-icon.svg')}}" class="me-2"/>
+										Crédits: {{ random([3, 8, 6, 10]) }}</li>
+									{# {{dump(route)}} #}
+								</ul>
+								<a href="#" class="btn btn-primary w-100">Réserver</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+
+				<div class="table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Départ</th>
+								<th>Arrivée</th>
+								<th>Date</th>
+								<th>Heure</th>
+								<th>Durée</th>
+								<th>Conducteur</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for route in routes %}
+								<tr>
+									<td>{{ route.departureTown }}</td>
+									<td>{{ route.arrivalTown }}</td>
+									<td>{{ route.departureDay|date('d/m/Y') }}</td>
+									<td>{{ route.departureTime|date('H:i') }}</td>
+									<td>{{ route.travelTime }}
+										min</td>
+									<td>{{ route.user.firstname }}
+										{{ route.user.lastname }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

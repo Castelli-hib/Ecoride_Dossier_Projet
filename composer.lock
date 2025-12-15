@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "be86620c6b99c61a52ce235d2ef818e5",
     "packages": [
         {
@@ -1932,6 +1933,11 @@
             },
             "time": "2025-08-30T15:50:23+00:00"
         },
+=======
+    "content-hash": "6a4b51d2afa8c10b8769e43ffb77142a",
+    "packages": [],
+    "packages-dev": [
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
         {
             "name": "psr/cache",
             "version": "3.0.0",
@@ -1982,6 +1988,7 @@
             "time": "2021-02-03T23:26:27+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "psr/clock",
             "version": "1.0.0",
             "source": {
@@ -2030,6 +2037,8 @@
             "time": "2022-11-25T14:36:26+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "psr/container",
             "version": "2.0.2",
             "source": {
@@ -2133,6 +2142,7 @@
             "time": "2019-01-08T18:20:26+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "psr/link",
             "version": "2.0.1",
             "source": {
@@ -2189,6 +2199,8 @@
             "time": "2021-03-11T23:00:27+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "psr/log",
             "version": "3.0.2",
             "source": {
@@ -2239,6 +2251,7 @@
             "time": "2024-09-11T13:17:53+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/apache-pack",
             "version": "v1.0.1",
             "source": {
@@ -2418,6 +2431,8 @@
             "time": "2025-10-15T18:45:57+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/cache",
             "version": "v7.3.6",
             "source": {
@@ -2596,6 +2611,7 @@
             "time": "2025-03-13T15:25:07+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/clock",
             "version": "v7.3.0",
             "source": {
@@ -2670,6 +2686,8 @@
             "time": "2024-09-25T14:21:43+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/config",
             "version": "v7.3.6",
             "source": {
@@ -2749,6 +2767,7 @@
             "time": "2025-11-02T08:04:43+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/console",
             "version": "v7.3.6",
             "source": {
@@ -2847,6 +2866,8 @@
             "time": "2025-11-04T01:21:42+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/dependency-injection",
             "version": "v7.3.6",
             "source": {
@@ -2998,6 +3019,7 @@
             "time": "2024-09-25T14:21:43+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/doctrine-bridge",
             "version": "v7.3.5",
             "source": {
@@ -3265,6 +3287,8 @@
             "time": "2025-07-10T08:29:33+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/error-handler",
             "version": "v7.3.6",
             "source": {
@@ -3506,6 +3530,7 @@
             "time": "2024-09-25T14:21:43+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/expression-language",
             "version": "v7.3.2",
             "source": {
@@ -3574,6 +3599,8 @@
             "time": "2025-07-10T08:29:33+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/filesystem",
             "version": "v7.3.6",
             "source": {
@@ -3712,6 +3739,7 @@
             "time": "2025-10-15T18:45:57+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/flex",
             "version": "v2.10.0",
             "source": {
@@ -3886,6 +3914,8 @@
             "time": "2025-10-31T09:25:04+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/framework-bundle",
             "version": "v7.3.6",
             "source": {
@@ -4044,6 +4074,7 @@
             "time": "2025-10-30T09:42:24+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/http-client",
             "version": "v7.3.6",
             "source": {
@@ -4222,6 +4253,8 @@
             "time": "2025-04-29T11:18:49+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/http-foundation",
             "version": "v7.3.7",
             "source": {
@@ -4423,6 +4456,7 @@
             "time": "2025-11-12T11:38:40+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/intl",
             "version": "v7.3.5",
             "source": {
@@ -5177,13 +5211,34 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/380872130d3a5dd3ace2f4010d95125fde5d5c70",
                 "reference": "380872130d3a5dd3ace2f4010d95125fde5d5c70",
+=======
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.33.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/a3cc8b044a6ea513310cbd48ef7333b384945638",
+                "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638",
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
             },
+<<<<<<< HEAD
             "suggest": {
                 "ext-intl": "For best performance"
+=======
+            "provide": {
+                "ext-ctype": "*"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             },
             "type": "library",
             "extra": {
@@ -5197,7 +5252,11 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
+<<<<<<< HEAD
                     "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+=======
+                    "Symfony\\Polyfill\\Ctype\\": ""
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5206,14 +5265,20 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Nicolas Grekas",
                     "email": "p@tchwork.com"
+=======
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
                 },
                 {
                     "name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
+<<<<<<< HEAD
             "description": "Symfony polyfill for intl's grapheme_* functions",
             "homepage": "https://symfony.com",
             "keywords": [
@@ -5486,6 +5551,18 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.33.0"
+=======
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.33.0"
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             },
             "funding": [
                 {
@@ -5673,6 +5750,7 @@
             "time": "2025-07-08T02:45:35+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/polyfill-php84",
             "version": "v1.33.0",
             "source": {
@@ -6071,6 +6149,8 @@
             "time": "2025-10-05T22:12:41+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/routing",
             "version": "v7.3.6",
             "source": {
@@ -6156,6 +6236,7 @@
             "time": "2025-11-05T07:57:47+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/runtime",
             "version": "v7.3.4",
             "source": {
@@ -6705,6 +6786,8 @@
             "time": "2025-10-08T11:26:21+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/service-contracts",
             "version": "v3.6.1",
             "source": {
@@ -6792,6 +6875,7 @@
             "time": "2025-07-15T11:30:57+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/stimulus-bundle",
             "version": "v2.31.0",
             "source": {
@@ -7117,6 +7201,8 @@
             "time": "2025-09-07T11:39:36+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/translation-contracts",
             "version": "v3.6.1",
             "source": {
@@ -7402,6 +7488,7 @@
             "time": "2025-09-10T12:00:31+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/type-info",
             "version": "v7.3.5",
             "source": {
@@ -7851,6 +7938,8 @@
             "time": "2025-11-08T16:29:29+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/var-dumper",
             "version": "v7.3.5",
             "source": {
@@ -8019,6 +8108,7 @@
             "time": "2025-09-11T10:12:26+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/web-link",
             "version": "v7.3.0",
             "source": {
@@ -10661,6 +10751,8 @@
             "time": "2025-06-23T16:12:08+00:00"
         },
         {
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             "name": "symfony/web-profiler-bundle",
             "version": "v7.3.5",
             "source": {
@@ -10750,6 +10842,7 @@
             "time": "2025-10-06T13:36:11+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "theseer/tokenizer",
             "version": "1.3.0",
             "source": {
@@ -10774,6 +10867,43 @@
                 "classmap": [
                     "src/"
                 ]
+=======
+            "name": "twig/twig",
+            "version": "v3.22.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "4509984193026de413baf4ba80f68590a7f2c51d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4509984193026de413baf4ba80f68590a7f2c51d",
+                "reference": "4509984193026de413baf4ba80f68590a7f2c51d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1.0",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0",
+                "psr/container": "^1.0|^2.0",
+                "symfony/phpunit-bridge": "^5.4.9|^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Resources/core.php",
+                    "src/Resources/debug.php",
+                    "src/Resources/escaper.php",
+                    "src/Resources/string_loader.php"
+                ],
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10781,6 +10911,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Arne Blankerts",
                     "email": "arne@blankerts.de",
                     "role": "Developer"
@@ -10810,6 +10941,51 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
+=======
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Twig Team",
+                    "role": "Contributors"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "templating"
+            ],
+            "support": {
+                "issues": "https://github.com/twigphp/Twig/issues",
+                "source": "https://github.com/twigphp/Twig/tree/v3.22.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-10-29T15:56:47+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

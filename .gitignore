@@ -1,15 +1,27 @@
 # Symfony / PHP
 /vendor/
+<<<<<<< HEAD
 /var/
 .env
 .env.local
 .env.*.local
 /.phpunit.result.cache
+=======
+var/
+.env
+.env.local
+.env.test
+.env.dev
+.phpunit.result.cache
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
 
 # Node / JS
 /node_modules/
 /public/build/
+<<<<<<< HEAD
 /public/bundles/
+=======
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
 /assets/app.js.map
 
 # Docker
@@ -20,6 +32,7 @@ postgres_data/
 redis_data/
 
 # IDE & système
+<<<<<<< HEAD
 .idea/
 .vscode/
 .DS_Store
@@ -27,3 +40,23 @@ Thumbs.db
 
 # Logs & cache
 *.log
+=======
+/.idea/
+/.vscode/
+/.DS_Store
+Thumbs.db
+
+# Cache divers
+*.log
+
+# mysql
+/mysql
+
+# etc - certificat
+/etc
+
+# assets vendor
+/public/assets/
+/assets/vendor/
+app2/
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d

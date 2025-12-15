@@ -1,0 +1,49 @@
+FROM php:8.3-apache
+
+# Installe les dépendances système et PHP nécessaires
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    zip \
+    libonig-dev \
+    libxml2-dev \
+    libzip-dev \
+    libicu-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libwebp-dev \
+    libfreetype6-dev \
+    zlib1g-dev \
+    build-essential \
+    curl \
+    g++ \
+    && docker-php-ext-install pdo pdo_mysql intl opcache zip \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu
+
+# Active le module rewrite pour Symfony
+RUN a2enmod rewrite && a2enmod ssl && a2enmod socache_shmcb
+
+
+# Définit le dossier de travail
+WORKDIR /var/www
+
+# Copie le projet Symfony
+COPY . /var/www
+
+# Installe Composer (version officielle)
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Installe Symfony CLI
+RUN curl -sS https://get.symfony.com/cli/installer | bash \
+    && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
+
+# Configure Git (optionnel) ci-joint mes informations personnelles si vous voulez mon 06 ? 
+RUN git config --global user.email "marie.castelli@adiktionstudio.com" \
+    && git config --global user.name "Castelli-hib"
+
+# Configure les certificats SSL
+RUN apt-get update && \
+    apt-get install -y ca-certificates curl && \
+    mkdir -p /etc/ssl/certs && \
+    update-ca-certificates    

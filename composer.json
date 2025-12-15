@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "type": "project-ecoride",
     "license": "proprietary",
     "minimum-stability": "beta",
@@ -113,5 +114,9 @@
         "symfony/maker-bundle": ">=1.64",
         "symfony/stopwatch": "7.3.*",
         "symfony/web-profiler-bundle": "7.3.*"
+=======
+    "require-dev": {
+        "symfony/web-profiler-bundle": "^7.3"
+>>>>>>> 938e8444e6e4756114f569f520257ba961653b4d
     }
 }
