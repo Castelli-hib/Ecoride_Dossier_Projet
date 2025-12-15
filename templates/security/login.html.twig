@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Me connecter
+{% endblock %}
+
+{% block importmap %}
+	{{ importmap(['app', 'register']) }}
+{% endblock %}
+
+{% block body %}
+	<div class="container my-4">
+
+		<form method="post" class="d-flex justify-content-center">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="mb-3">
+					Vous êtes déjà connecté en tant que
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}">Me déconnecter</a>
+				</div>
+			{% endif %}
+
+
+			<div class="card p-3" style="max-width: 28rem;">
+				<h1 class="h3 text-center fw-bold mb-3">Me connecter</h1>
+				<div class="card-body">
+					<div class="mb-3">
+						<label for="email" class="mb-2">Email</label>
+						<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+					</div>
+
+
+					<div class="mb-3">
+						<label for="password" class="mb-2">Mot de passe</label>
+						<input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+					</div>
+
+					<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+					<button class="btn btn-lg btn-dark w-100 mt-2 mb-3" type="submit">
+						Me connecter
+					</button>
+					<p>
+						<a href="{{ path('forgot_password') }}">Mot de passe oublié ?</a>
+					</p>
+					<p>Pas encore de compte ?
+						<a href="{{ path('app_register') }}">S'inscrire</a>
+					</p>
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+{% endblock %}

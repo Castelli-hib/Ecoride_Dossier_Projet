@@ -1,0 +1,29 @@
+# Symfony / PHP
+/vendor/
+/var/
+.env
+.env.local
+.env.*.local
+/.phpunit.result.cache
+
+# Node / JS
+/node_modules/
+/public/build/
+/public/bundles/
+/assets/app.js.map
+
+# Docker
+docker-compose.override.yml
+.env.docker
+mysql_data/
+postgres_data/
+redis_data/
+
+# IDE & système
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs & cache
+*.log

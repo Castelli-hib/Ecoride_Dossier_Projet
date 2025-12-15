@@ -1,0 +1,25 @@
+# Normalisation des fins de ligne
+* text=auto
+
+# LF = Line Feed (utilisé sur Linux/macOS)
+# CRLF = Carriage Return + Line Feed (utilisé sur Windows)
+
+# Toujours LF pour le code (meilleur pour Symfony/Docker)
+*.php text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.twig text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# CRLF pour les fichiers batch Windows
+*.bat text eol=crlf
+
+# Git essaie de garder une cohérence entre les systèmes d’exploitation :
+# il stocke les fichiers en LF dans le dépôt Git (pour la compatibilité Linux)
+# il les convertit en CRLF sur ton poste Windows pour que ton éditeur (VS Code, etc.) les lise correctement.il les convertit en CRLF sur ton poste Windows pour que ton éditeur (VS Code, etc.) les lise correctement.
+
+# git add --renormalize .

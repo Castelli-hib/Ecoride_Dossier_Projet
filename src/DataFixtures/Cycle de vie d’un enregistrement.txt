@@ -1,0 +1,49 @@
+Cycle de vie d’un enregistrement Doctrine
+┌────────────────────────────┐
+│ Ton code PHP (ex: Fixture) │
+└──────────────┬─────────────┘
+               │
+               │   new User()
+               ▼
+        ┌────────────────┐
+        │ Entité créée   │
+        │ (objet PHP)    │
+        └────────────────┘
+               │
+               │  $manager->persist($user)
+               ▼
+┌──────────────────────────────────────────────┐
+│ Doctrine (Unit of Work = Mémoire temporaire) │
+│                                              │
+│  Stocke les objets à insérer ou mettre à jour │
+│  Rien n’est encore écrit dans la base !       │
+└──────────────────────────────────────────────┘
+               │
+               │  $manager->flush()
+               ▼
+┌────────────────────────────┐
+│ Doctrine génère le SQL     │
+│  → INSERT INTO user (...)  │
+│  → UPDATE ...              │
+│  → DELETE ...              │
+└──────────────┬─────────────┘
+               │
+               ▼
+        ┌────────────────┐
+        │ Base de données │
+        │  Données réelles  │
+        └────────────────┘
+
+En résumé
+Étape	Action	Où ça se passe	Résultat
+new User()	Tu crées un objet PHP	Mémoire	Rien dans la base
+persist($user)	Tu demandes à Doctrine de suivre cet objet	“Unit of Work” interne	Préparation
+flush()	Doctrine exécute les requêtes SQL nécessaires	Base de données	Les données sont enregistrées⚙️ Exemple concret
+$user = new User();
+$user->setUsername('Marie');
+
+$manager->persist($user); //  Stocké dans la mémoire Doctrine
+// Rien n’est encore dans MySQL
+
+$manager->flush();        //  Doctrine écrit dans la BDD
+// INSERT INTO user (username) VALUES ('Marie')

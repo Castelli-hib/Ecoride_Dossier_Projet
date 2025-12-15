@@ -1,0 +1,84 @@
+<div class="container destination-form-container">
+	<div class="row destination-form-wrapper bg-light border-3 rounded-3 p-3 pt-5 pb-5 pb-lg-4">
+		<div class="col-12 col-md-6 col-lg-3">
+			<div class="d-flex align-items-center justify-content-between mb-2">
+
+				<div class="w-100">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="input-departure">
+							<img src="{{ asset('assets/images/icons/location.svg') }}" height="22" width="22" class="icon"/>
+							<span class="mx-2">
+								Départ
+							</span>
+						</span>
+						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="input-departure">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-6 col-lg-3">
+
+			<div class="d-flex align-items-center justify-content-between mb-2">
+
+				<div class="w-100">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGroup-sizing-default">
+							<img src="{{ asset('assets/images/icons/location.svg') }}" height="22" width="22" class="icon"/>
+							<span class="mx-2">
+								Destination
+							</span>
+						</span>
+						<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 col-md-6 col-lg-3">
+			<div class="w-100">
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="input-calendar">
+						<img
+						src="{{ asset('assets/images/icons/calendar.svg') }}" height="22" width="22" class="icon"/>
+					{# <span class="mx-2">
+																																																														Quand
+																																																													</span> #}
+					</span>
+					<input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="input-calendar">
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 col-md-6 col-lg-2">
+
+			<div class="w-100">
+				<div class="input-group mb-3 inline-block d-flex align-items-center">
+					<label class="input-group-text" for="traveler-qty">
+						<div class="d-flex align-items-center">
+							<img
+							src="{{ asset('assets/images/icons/user.svg') }}" height="22" width="22" class="icon"/>
+						{# <span class="ms-2">Passager</span> #}
+						</div>
+					</label>
+
+					<select class="form-select" id="traveler-qty">
+						<option selected>...</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="5">C'est pas un bus non plus...</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-12 col-md-6 col-lg-1">
+			<button type=" button" class="btn btn-primary w-100">
+				<img src="{{ asset('assets/images/icons/search-icon.svg') }}" height="22" width="22" class="icon search-icon"/>
+				<span class="d-inline d-lg-none ms-2">Rechercher</span>
+			</button>
+		</div>
+	</div>
