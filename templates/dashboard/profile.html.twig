@@ -1,53 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon Profil
+{% block title %}Mon profil
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid mt-4">
+	<div class="container-fluid py-4">
 
 		<div
-			class="card p-2" style="max-width: 10rem;">
-			<!-- MENU LATERAL -->
-			<div class="col-md-3 ">
-				{# <h1 class="h2 ">Dashboard</h1> #}
-				<div class="list-group">
-					<a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action active">
-						Mon compte
-					</a>
-					<a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action">
-						Mon profil
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						Mes crédits
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						Mes avis
-					</a>
+			class="row">
 
-					{% if "ROLE_CONDUCTEUR" in app.user.roles %}
-						<a href="{{ path('app_dashboard_add_route') }}" class="list-group-item list-group-item-action">
-							Ajouter un trajet
-						</a>
-						<a href="{{ path('app_dashboard') }}#trajets" class="list-group-item list-group-item-action">
-							Mes trajets
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
-							Mes véhicules
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
-							Mes préférences
-						</a>
+			{# ===== MENU LATERAL ===== #}
+			<aside class="col-12 col-md-4 col-lg-3 mb-4">
+				<div class="card shadow-sm">
+					<div class="card-body p-0">
 
-					{% endif %}
+						<nav class="list-group list-group-flush">
+							<a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action active">
+								Mon compte
+							</a>
 
-					{% if "ROLE_PASSAGER" in app.user.roles %}
-						<a href="{{ path('app_dashboard') }}#reservations" class="list-group-item list-group-item-action">
-							Mes réservations
-						</a>
+							<a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action">
+								Mon profil
+							</a>
 
-					{% endif %}
+							<a href="#" class="list-group-item list-group-item-action">
+								Mes crédits
+							</a>
+
+							<a href="#" class="list-group-item list-group-item-action">
+								Mes avis
+							</a>
+
+							{% if "ROLE_CONDUCTEUR" in app.user.roles %}
+								<div class="list-group-item text-muted small">
+									Conducteur
+								</div>
+
+								<a href="{{ path('app_dashboard_add_route') }}" class="list-group-item list-group-item-action">
+									Ajouter un trajet
+								</a>
+
+								<a href="{{ path('app_dashboard') }}#trajets" class="list-group-item list-group-item-action">
+									Mes trajets
+								</a>
+
+								<a href="#" class="list-group-item list-group-item-action">
+									Mes véhicules
+								</a>
+
+								<a href="#" class="list-group-item list-group-item-action">
+									Mes préférences
+								</a>
+							{% endif %}
+
+							{% if "ROLE_PASSAGER" in app.user.roles %}
+								<div class="list-group-item text-muted small">
+									Passager
+								</div>
+
+								<a href="{{ path('app_dashboard') }}#reservations" class="list-group-item list-group-item-action">
+									Mes réservations
+								</a>
+							{% endif %}
+						</nav>
+
+					</div>
 				</div>
-			</div>
+			</aside>
+
+			{# ===== CONTENU PRINCIPAL (plus tard) ===== #}
+			<main class="col-12 col-md-8 col-lg-9">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h1 class="h4 mb-3">Mon espace personnel</h1>
+						<p class="text-muted">
+							Sélectionnez une option dans le menu pour gérer votre compte.
+						</p>
+					</div>
+				</div>
+			</main>
+
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

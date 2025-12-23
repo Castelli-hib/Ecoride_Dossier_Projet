@@ -1,5 +1,15 @@
+@use '../utils' as u;
+
+body {
+  font-family: u.$font-main;
+  font-size: u.$font-size-base;
+  line-height: u.$line-height-base;
+  background-color: u.$grey-light;
+  color: u.$black;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 u.$space-md;
 }

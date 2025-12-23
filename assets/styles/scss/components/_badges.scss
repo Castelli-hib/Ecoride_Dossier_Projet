@@ -1,0 +1,16 @@
+@use '../utils' as u;
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: u.$radius-sm;
+  font-size: 0.75rem;
+  color: u.$white;
+
+  &--driver {
+    background-color: u.$green-main;
+  }
+
+  &--passenger {
+    background-color: u.$blue-main;
+  }
+}

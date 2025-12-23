@@ -1,17 +1,15 @@
-@use '../utils/variables' as v;
+@use '../utils' as u;
 
 .card {
-  background-color: v.$white;
-  border-radius: v.$radius-md;
-  box-shadow: v.$shadow-soft;
-//   padding: v.$spacing-md;
-  margin-bottom: v.$spacing-md;
+  background-color: u.$white;
+  border-radius: u.$radius-md;
+  box-shadow: u.$shadow-soft;
 
   h3 {
-    color: v.$green-dark;
+    color: u.$green-dark;
   }
 }
 
-.covoiturage-card{
-    overflow: hidden;
+.covoiturage-card {
+  overflow: hidden;
 }

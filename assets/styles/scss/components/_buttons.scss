@@ -1,35 +1,43 @@
-@use '../utils/variables' as v;
-@use '../utils/mixins' as m;
-
+@use '../utils' as u;
 
 // =====================
-// Petits éléments réutilisables (boutons, cartes, formulaires, etc.)
+// Boutons
 // =====================
 
-// .btn-primary {
-//   @include button-style($green-main);
-// }
-
-.btn-outline {
-  background-color: transparent;
-  color: v.$green-main;
-  border: 2px solid v.$green-main;
-  border-radius: v.$radius-sm;
-  padding: v.$spacing-xs v.$spacing-md;
-  transition: all 0.3s ease;
+.eco-btn {
+  font-family: u.$font-main;
+  padding: 0.5rem 1rem;
+  border-radius: u.$radius-sm;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 
   &:hover {
-    background-color: v.$green-main;
-    color: v.$white;
+    transform: translateY(-1px);
+    background-color: u.$green-dark;
+  }
+
+  &--primary {
+    background-color: u.$green-main;
+    color: u.$white;
+  }
+
+  &--secondary {
+    background-color: u.$beige-main;
+    color: u.$white;
+  }
+
+  &--full {
+    width: 100%;
   }
 }
+.btn--disabled {
+  background-color: u.$grey-light;
+  color: u.$grey-dark;
+  cursor: not-allowed;
+  opacity: 0.6;
 
-
-.btn.covoiturage-btn-search {
-    margin-top: 0;
-    width: 100%;
-    @media screen and (width >= 768px) {
-        margin-top: 33px;
-        width: fit-content;
-    }
+  &:hover {
+    transform: none;
+  }
 }
