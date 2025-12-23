@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Avis{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- MENU LATERAL -->
+        <div class="col-md-3">
+            <div class="card p-2 mb-3" style="max-width: 12rem;">
+                <div class="list-group">
+                    <a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action">
+                        Mon compte
+                    </a>
+                    <a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action">
+                        Mon profil
+                    </a>
+                    <a href="{{ path('avis_index') }}" class="list-group-item list-group-item-action active">
+                        Mes avis
+                    </a>
+
+                    {% if 'ROLE_CONDUCTEUR' in app.user.roles %}
+                        <a href="{{ path('app_dashboard_add_route') }}" class="list-group-item list-group-item-action">
+                            Ajouter un trajet
+                        </a>
+                        <a href="{{ path('app_dashboard') }}#trajets" class="list-group-item list-group-item-action">
+                            Mes trajets
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            Mes véhicules
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            Mes préférences
+                        </a>
+                    {% endif %}
+
+                    {% if 'ROLE_PASSAGER' in app.user.roles %}
+                        <a href="{{ path('app_dashboard') }}#reservations" class="list-group-item list-group-item-action">
+                            Mes réservations
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTENU PRINCIPAL -->
+        <div class="col-md-9">
+            <h2>Mes Avis Reçus</h2>
+            {% if avisRecus|length > 0 %}
+                <ul class="list-group mb-4">
+                    {% for avis in avisRecus %}
+                        <li class="list-group-item">
+                            <strong>{{ avis.userRater.username }}</strong> :
+                            {{ avis.comment }} 
+                            <span class="badge bg-primary">{{ avis.notation }}/5</span>
+                            <em class="text-muted">le {{ avis.createdAt|date('d/m/Y H:i') }}</em>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p>Note moyenne reçue : {{ moyenne is not null ? moyenne|number_format(2, '.', ',') : 'Aucune note' }}</p>
+            {% else %}
+                <p>Aucun avis reçu pour le moment.</p>
+            {% endif %}
+
+            <h2>Mes Avis Envoyés</h2>
+            {% if avisEnvoyes|length > 0 %}
+                <ul class="list-group">
+                    {% for avis in avisEnvoyes %}
+                        <li class="list-group-item">
+                            <strong>{{ avis.userRated.username }}</strong> :
+                            {{ avis.comment }} 
+                            <span class="badge bg-secondary">{{ avis.notation }}/5</span>
+                            <em class="text-muted">le {{ avis.createdAt|date('d/m/Y H:i') }}</em>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Aucun avis envoyé pour le moment.</p>
+            {% endif %}
+
+            <a href="{{ path('avis_new') }}" class="btn btn-success mt-3">Ajouter un avis</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

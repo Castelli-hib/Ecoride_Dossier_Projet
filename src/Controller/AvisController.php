@@ -3,13 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Avis;
-use App\Form\AvisType;
+use App\Form\AvisFormType;
 use App\Repository\AvisRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/avis')]
 class AvisController extends AbstractController
@@ -19,20 +19,16 @@ class AvisController extends AbstractController
     {
         $user = $this->getUser();
 
-        $avisReçus = $avisRepository->findBy(['userRated' => $user]);
-        $avisEnvoyés = $avisRepository->findBy(['userRater' => $user]);
+        $avisRecus = $avisRepository->findBy(['userRated' => $user]);
+        $avisEnvoyes = $avisRepository->findBy(['userRater' => $user]);
 
-        // Calcul note moyenne
-        $total = 0;
-        $count = count($avisReçus);
-        foreach ($avisReçus as $avis) {
-            $total += $avis->getNote();
-        }
+        $total = array_sum(array_map(fn($a) => $a->getNotation(), $avisRecus));
+        $count = count($avisRecus);
         $moyenne = $count ? $total / $count : null;
 
         return $this->render('avis/index.html.twig', [
-            'avisReçus' => $avisReçus,
-            'avisEnvoyes' => $avisEnvoyés,
+            'avisRecus' => $avisRecus,
+            'avisEnvoyes' => $avisEnvoyes,
             'moyenne' => $moyenne,
         ]);
     }
@@ -40,17 +36,22 @@ class AvisController extends AbstractController
     #[Route('/new', name: 'avis_new')]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
-        $avis = new Avis();
-        $avis->setUserRater($this->getUser());
-        $avis->setCreatedAt(new \DateTime());
+        $user = $this->getUser();
+        if (!$user) {
+            throw $this->createAccessDeniedException('Vous devez être connecté pour créer un avis.');
+        }
 
-        $form = $this->createForm(AvisType::class, $avis);
+        $avis = new Avis();
+        $avis->setUserRater($user);
+
+        $form = $this->createForm(AvisFormType::class, $avis, ['is_edit' => false]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($avis);
             $em->flush();
 
+            $this->addFlash('success', 'Avis ajouté avec succès !');
             return $this->redirectToRoute('avis_index');
         }
 
@@ -58,4 +59,27 @@ class AvisController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/{id}/edit', name: 'avis_edit')]
+    public function edit(Avis $avis, Request $request, EntityManagerInterface $em): Response
+    {
+        // userRated et createdAt ne sont pas modifiables
+        $form = $this->createForm(AvisFormType::class, $avis, ['is_edit' => true]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+
+            $this->addFlash('success', 'Avis modifié avec succès !');
+            return $this->redirectToRoute('avis_index');
+        }
+
+        return $this->render('avis/edit.html.twig', [
+            'form' => $form->createView(),
+            'avis' => $avis,
+        ]);
+    }
 }
+
+// dump($_ENV['DATABASE_URL']);
+// die;
