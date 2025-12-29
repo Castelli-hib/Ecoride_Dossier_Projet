@@ -3,38 +3,48 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-    <h1>Modifier mon profil</h1>
+<div class="container profile">
+  <div class="profile__container">
+    <div class="profile__card">
 
-    {{ form_start(profilForm) }}
-        {{ form_row(profilForm.firstname) }}
-        {{ form_row(profilForm.lastname) }}
-        {# {{ form_row(profilForm.username) }} #}
-        {# {{ form_row(profilForm.email) }} #}
-        {{ form_row(profilForm.phoneNumber) }}
-        {{ form_row(profilForm.street) }}
-        {{ form_row(profilForm.addressComplement) }}
-        {{ form_row(profilForm.postalCode) }}
-        {{ form_row(profilForm.city) }}
+      <h1 class="profile__title">
+        Modifier mon profil
+      </h1>
 
-        {# affichage modifiable des rôles (checkbox) #}
-        {{ form_row(profilForm.roles) }}
+      {{ form_start(profilForm, { attr: { class: 'profile__form' } }) }}
 
-        {# affichage en lecture seule des rôles actuels #}
-        <p>
-            Rôles actuels :
-            {% for role in user.roles %}
-                {% if role == 'ROLE_CONDUCTEUR' %}
-                    Conducteur
-                {% endif %}
-                {% if role == 'ROLE_PASSAGER' %}
-                    Passager
-                {% endif %}
-            {% else %}
-                Aucun rôle attribué.
-            {% endfor %}
-        </p>
+        <div class="profile__section">
+          {{ form_row(profilForm.firstname) }}
+          {{ form_row(profilForm.lastname) }}
+        </div>
 
-        <button class="btn btn-primary">Mettre à jour</button>
-    {{ form_end(profilForm) }}
-	<p> Pour une question de sécurité, vous serez redirigé vers la page de connexion, et si t'es pas content tu te barres !</p>
+        <div class="profile__section">
+          {{ form_row(profilForm.phoneNumber) }}
+        </div>
+
+        <div class="profile__section">
+          {{ form_row(profilForm.street) }}
+          {{ form_row(profilForm.addressComplement) }}
+        </div>
+
+        <div class="profile__section profile__grid profile__grid--2">
+          {{ form_row(profilForm.postalCode) }}
+          {{ form_row(profilForm.city) }}
+        </div>
+
+        {% if profilForm.roles is defined %}
+          <div class="profile__section">
+            {{ form_row(profilForm.roles) }}
+          </div>
+        {% endif %}
+
+        <button class="eco-btn eco-btn--primary profile__submit">
+          Mettre à jour
+        </button>
+
+      {{ form_end(profilForm) }}
+
+    </div>
+  </div>
+</div>
 {% endblock %}

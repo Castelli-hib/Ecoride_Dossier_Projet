@@ -1,0 +1,22 @@
+<li class="avis-item avis-item--{{ type }}">
+    <div class="avis-item__header">
+        <strong class="avis-item__user">
+            {{ type == 'received'
+                ? avis.userRater.username
+                : avis.userRated.username
+            }}
+        </strong>
+
+        <span class="avis-item__rating">
+            {{ avis.notation }}/5
+        </span>
+    </div>
+
+    <p class="avis-item__comment">
+        {{ avis.comment }}
+    </p>
+
+    <time class="avis-item__date">
+        {{ avis.createdAt|date('d/m/Y') }}
+    </time>
+</li>

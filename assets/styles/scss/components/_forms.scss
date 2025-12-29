@@ -1,8 +1,24 @@
-// @use '../utils/variables' as *;
+@use '../utils' as u;
 
-.destination-form-wrapper {
+form {
+  font-family: u.$font-main;
+  font-size: 1rem;
+  color: u.$black;
 
-    .search-icon{
-        filter: invert(1);
-    }
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: u.$space-sm;
+    border: 1px solid u.$grey-medium;
+    border-radius: u.$radius-sm;
+    background-color: u.$white;
+  }
+
+  label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
 }

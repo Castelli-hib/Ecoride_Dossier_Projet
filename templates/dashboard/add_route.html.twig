@@ -3,13 +3,22 @@
 {% block title %}Ajouter un trajet{% endblock %}
 
 {% block body %}
-<h1> {{ app.user.firstname }} </h1>
-<div class="container mt-4">
-    <h1>Ajouter un trajet</h1>
+<div class="container-fluid mt-4">
+    <div class="row">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btn-primary mt-3">Enregistrer</button>
-    {{ form_end(form) }}
+        <!-- Sidebar -->
+        {% include 'dashboard/_sidebar.html.twig' %}
+
+        <!-- Contenu principal -->
+        <div class="col-md-9">
+            <h1>Ajouter un trajet</h1>
+
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary mt-3">Ajouter</button>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
 </div>
 {% endblock %}

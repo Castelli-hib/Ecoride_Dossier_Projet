@@ -20,39 +20,48 @@ final class CovoiturageController extends AbstractController
         $form = $this->createForm(SearchRideFormType::class, $search, ['method' => 'GET']);
         $form->handleRequest($request);
 
+        // $connection = $em->getConnection();
+        // try {
+        //     $connection->connect();
+        //     dump('Connexion OK');
+        // } catch (\Exception $e) {
+        //     dump('Erreur connexion : ' . $e->getMessage());
+        // }
+        // die;
+
         $qb = $em->getRepository(AppRoute::class)->createQueryBuilder('r');
 
         // --- Recherche par champ du formulaire ---
         if (!empty($search->departure)) {
             $qb->andWhere('LOWER(r.departureTown) LIKE :departure')
-               ->setParameter('departure', '%'.mb_strtolower($search->departure).'%');
+                ->setParameter('departure', '%' . mb_strtolower($search->departure) . '%');
         }
 
         if (!empty($search->arrival)) {
             $qb->andWhere('LOWER(r.arrivalTown) LIKE :arrival')
-               ->setParameter('arrival', '%'.mb_strtolower($search->arrival).'%');
+                ->setParameter('arrival', '%' . mb_strtolower($search->arrival) . '%');
         }
 
         if ($search->date instanceof \DateTimeInterface) {
             $qb->andWhere('r.departureDay = :date')
-               ->setParameter('date', $search->date->format('Y-m-d'));
+                ->setParameter('date', $search->date->format('Y-m-d'));
         }
 
         if (!empty($search->passengers)) {
             $qb->andWhere('r.availableSeats >= :passengers')
-               ->setParameter('passengers', $search->passengers);
+                ->setParameter('passengers', $search->passengers);
         }
 
         // --- Recherche rapide via ?q= ---
         if ($request->query->has('q')) {
             $q = mb_strtolower($request->query->get('q'));
             $qb->andWhere('LOWER(r.departureTown) LIKE :q OR LOWER(r.arrivalTown) LIKE :q')
-               ->setParameter('q', "%$q%");
+                ->setParameter('q', "%$q%");
         }
 
         // --- Tri par date et heure ---
         $qb->orderBy('r.departureDay', 'ASC')
-           ->addOrderBy('r.departureTime', 'ASC');
+            ->addOrderBy('r.departureTime', 'ASC');
 
         $routes = $qb->getQuery()->getResult();
 
@@ -62,3 +71,7 @@ final class CovoiturageController extends AbstractController
         ]);
     }
 }
+// Dans ton contrôleur
+// dump($_ENV['DATABASE_URL'] ?? 'ENV NOT SET');
+// dump($_SERVER['DATABASE_URL'] ?? 'SERVER NOT SET');
+// die('STOP DB DEBUG');

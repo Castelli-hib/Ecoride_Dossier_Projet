@@ -1,67 +1,73 @@
 {% extends 'base.html.twig' %}
 
-
-{% block title %}Mes trajets
-{% endblock %}
+{% block title %}Mes trajets{% endblock %}
 
 {% block body %}
+<div class="container-fluid mt-4">
+    <div class="row">
 
-	<div class="container-fluid mt-4">
-		<div
-			class="row">
-			<!-- MENU LATERAL -->
-			<div class="col-md-3">
-				<h1 class="h2">Dashboard</h1>
-				<div class="list-group">
-					<a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action active">
-						Mon compte
-					</a>
-					<a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action">
-						Mon profil
-					</a>
-
-
-				</div>
-			</div>
-
-            <!-- CONTENU PRINCIPAL -->
-        <div class="col-md-9">
-            <h1> {{ user.firstname }} </h1>
-            <p>Mes informations.</p>
+        <!-- MENU LATERAL -->
+        <div class="col-md-3">
+            <h1 class="h2">Dashboard</h1>
+            <div class="list-group">
+                <a href="{{ path('app_dashboard') }}"
+                   class="list-group-item list-group-item-action">
+                    Mon compte
+                </a>
+                <a href="{{ path('app_user_profile') }}"
+                   class="list-group-item list-group-item-action">
+                    Mon profil
+                </a>
+                <a href="{{ path('app_user_routes') }}"
+                   class="list-group-item list-group-item-action active">
+                    Mes trajets
+                </a>
+            </div>
         </div>
 
-			<div class="container mt-4">
-				<h1>Mes trajets</h1>
+        <!-- CONTENU PRINCIPAL -->
+        <div class="col-md-9">
+            <h1>Mes trajets</h1>
 
-				<a href="{{ path('app_dashboard_add_route') }}" class="btn btn-primary mb-3">
-					Ajouter un trajet</a>
+            <a href="{{ path('app_dashboard_add_route') }}"
+               class="btn btn-primary mb-3">
+                Ajouter un trajet
+            </a>
 
-				{% if routes is empty %}
-					<p>Vous n'avez pas encore de trajets enregistrés.</p>
-				{% else %}
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Départ</th>
-								<th>Arrivée</th>
-								<th>Date</th>
-								<th>Heure</th>
-								<th>Durée</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for route in routes %}
-								<tr>
-									<td>{{ route.departureTown }}</td>
-									<td>{{ route.arrivalTown }}</td>
-									<td>{{ route.departureDay|date('d/m/Y') }}</td>
-									<td>{{ route.departureTime|date('H:i') }}</td>
-									<td>{{ route.travelTime }}
-										min</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				{% endif %}
-			</div>
-		{% endblock %}
+            {% if routes is empty %}
+                <div class="alert alert-info">
+                    Vous n'avez pas encore de trajets enregistrés.
+                </div>
+            {% else %}
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>Départ</th>
+                            <th>Arrivée</th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th>Durée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for route in routes %}
+                            <tr>
+                                <td>{{ route.departureTown }}</td>
+                                <td>{{ route.arrivalTown }}</td>
+                                <td>{{ route.departureDay|date('d/m/Y') }}</td>
+                                <td>{{ route.departureTime|date('H:i') }}</td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        {{ route.travelTime }} min
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

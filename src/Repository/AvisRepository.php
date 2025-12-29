@@ -39,27 +39,27 @@ class AvisRepository extends ServiceEntityRepository
 
     public function getAverageRating(User $user): float
     {
-        return (float) $this->createQueryBuilder('a')
-            ->select('AVG(a.rating)')
-            ->where('a.userRated = :user')
-            ->setParameter('user', $user)
-            ->getQuery()
-            ->getSingleScalarResult();
+        return (float) (
+            $this->createQueryBuilder('a')
+                ->select('AVG(a.notation)')
+                ->where('a.userRated = :user')
+                ->setParameter('user', $user)
+                ->getQuery()
+                ->getSingleScalarResult()
+            ?? 0
+        );
     }
 
+    // 🔒 RÈGLE MÉTIER : 1 avis max par utilisateur
     public function hasUserRated(User $rater, User $rated): bool
     {
-        $count = $this->createQueryBuilder('a')
+        return $this->createQueryBuilder('a')
             ->select('COUNT(a.id)')
             ->where('a.userRater = :rater')
             ->andWhere('a.userRated = :rated')
-            ->setParameters([
-                'rater' => $rater,
-                'rated' => $rated,
-            ])
+            ->setParameter('rater', $rater)
+            ->setParameter('rated', $rated)
             ->getQuery()
-            ->getSingleScalarResult();
-
-        return $count > 0;
+            ->getSingleScalarResult() > 0;
     }
 }

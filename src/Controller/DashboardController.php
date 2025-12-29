@@ -8,31 +8,30 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class DashboardController extends AbstractController
 {
     #[Route('/dashboard', name: 'app_dashboard')]
     public function index(EntityManagerInterface $em): Response
     {
-        // $this->denyAccessUnlessGranted('ROLE_USER'); // empeche l'accès si non connecté
+        // Sécurité : uniquement pour les utilisateurs connectés
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
-        // $user = $this->getUser();
+        $user = $this->getUser();
+        $isConducteur = $this->isGranted('ROLE_CONDUCTEUR');
+        $isPassager   = $this->isGranted('ROLE_PASSAGER');
 
-        // $isConducteur = $this->isGranted('ROLE_CONDUCTEUR');
-        // $isPassager   = $this->isGranted('ROLE_PASSAGER');
+        // Si conducteur → récupérer ses trajets
+        $routes = $isConducteur ? $em->getRepository(AppRoute::class)->findBy(['user' => $user]) : [];
 
-        // Si conducteur → ses trajets
-        // $routes = $isConducteur ? $em->getRepository(AppRoute::class)->findBy(['user' => $user]) : [];
-        $routes = [];
-        // Si passager → ses réservations (a implémenter plus tard)
-        // $reservations = $isPassager ? [] : [];
-        $reservations = []; 
+        // Si passager → récupérer ses réservations (à compléter si nécessaire)
+        $reservations = $isPassager ? [] : [];
 
         return $this->render('pages/user/dashboard.html.twig', [
-            // 'user'         => $user,
-            // 'isConducteur' => $isConducteur,
-            // 'isPassager'   => $isPassager,
+            'user'         => $user,
+            'isConducteur' => $isConducteur,
+            'isPassager'   => $isPassager,
             'routes'       => $routes,
             'reservations' => $reservations,
         ]);
@@ -41,13 +40,15 @@ final class DashboardController extends AbstractController
     #[Route('/dashboard/add-route', name: 'app_dashboard_add_route')]
     public function addRoute(Request $request, EntityManagerInterface $em): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_CONDUCTEUR'); // logique : seuls les conducteurs ajoutent des trajets
+        // Seuls les conducteurs peuvent ajouter des trajets
+        $this->denyAccessUnlessGranted('ROLE_CONDUCTEUR');
 
         $route = new AppRoute();
         $form = $this->createForm(RouteFormType::class, $route);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Lier le trajet à l'utilisateur connecté
             $route->setUser($this->getUser());
             $em->persist($route);
             $em->flush();
