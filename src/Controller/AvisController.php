@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/avis')]
 class AvisController extends AbstractController
@@ -34,11 +34,14 @@ class AvisController extends AbstractController
     }
 
     #[Route('/new', name: 'avis_new')]
-    public function new(Request $request, EntityManagerInterface $em): Response
-    {
+    public function new(
+        Request $request,
+        EntityManagerInterface $em,
+        AvisRepository $avisRepository
+    ): Response {
         $user = $this->getUser();
         if (!$user) {
-            throw $this->createAccessDeniedException('Vous devez être connecté pour créer un avis.');
+            throw $this->createAccessDeniedException('Vous devez être connecté.');
         }
 
         $avis = new Avis();
@@ -47,7 +50,16 @@ class AvisController extends AbstractController
         $form = $this->createForm(AvisFormType::class, $avis, ['is_edit' => false]);
         $form->handleRequest($request);
 
+        // 🔒 RÈGLE MÉTIER : 1 AVIS MAX
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $ratedUser = $avis->getUserRated();
+
+            if ($avisRepository->hasUserRated($user, $ratedUser)) {
+                $this->addFlash('warning', 'Vous avez déjà laissé un avis.');
+                return $this->redirectToRoute('avis_index');
+            }
+
             $em->persist($avis);
             $em->flush();
 
@@ -63,13 +75,11 @@ class AvisController extends AbstractController
     #[Route('/{id}/edit', name: 'avis_edit')]
     public function edit(Avis $avis, Request $request, EntityManagerInterface $em): Response
     {
-        // userRated et createdAt ne sont pas modifiables
         $form = $this->createForm(AvisFormType::class, $avis, ['is_edit' => true]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-
             $this->addFlash('success', 'Avis modifié avec succès !');
             return $this->redirectToRoute('avis_index');
         }
@@ -79,6 +89,7 @@ class AvisController extends AbstractController
             'avis' => $avis,
         ]);
     }
+    
 }
 
 // dump($_ENV['DATABASE_URL']);

@@ -1,0 +1,77 @@
+@use '../utils' as u;
+
+.avis {
+  padding: u.$space-md;
+
+  &__header {
+    margin-bottom: u.$space-lg;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+  }
+
+  &__subtitle {
+    color: u.$grey-dark;
+    font-size: 0.9rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: u.$space-lg;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__block-title {
+    margin-bottom: u.$space-sm;
+    font-size: 1.1rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__empty {
+    font-size: 0.85rem;
+    color: u.$grey-dark;
+  }
+
+  &__actions {
+    margin-top: u.$space-lg;
+    text-align: center;
+  }
+}
+
+.avis-item {
+  padding: u.$space-sm;
+  border-radius: u.$radius-md;
+  background-color: u.$grey-light;
+  margin-bottom: u.$space-sm;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: u.$space-xs;
+  }
+
+  &__rating {
+    font-weight: bold;
+    color: u.$green-main;
+  }
+
+  &__comment {
+    font-size: 0.9rem;
+    margin-bottom: u.$space-xs;
+  }
+
+  &__date {
+    font-size: 0.75rem;
+    color: u.$grey-dark;
+  }
+}
