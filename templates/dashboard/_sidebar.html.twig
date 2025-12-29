@@ -1,0 +1,42 @@
+<div class="col-md-3">
+    <h1 class="h2">Dashboard</h1>
+
+    <div class="list-group">
+        <a href="{{ path('app_dashboard') }}"
+           class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_dashboard' ? 'active' }}">
+            Mon compte
+        </a>
+
+        <a href="{{ path('app_user_profile') }}"
+           class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_user_profile' ? 'active' }}">
+            Mon profil
+        </a>
+
+        <a href="{{ path('credits_index') }}"
+           class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'credits_index' ? 'active' }}">
+            Mes crédits
+        </a>
+
+        <a href="{{ path('avis_index') }}"
+           class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') starts with 'avis' ? 'active' }}">
+            Avis
+        </a>
+
+        {% if 'ROLE_CONDUCTEUR' in app.user.roles %}
+            <a href="{{ path('app_user_routes') }}"
+               class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') starts with 'app_user_routes' ? 'active' }}">
+                Mes trajets
+            </a>
+
+            <a href="{{ path('app_user_vehicles') }}"
+               class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') starts with 'app_user_vehicles' ? 'active' }}">
+                Mes véhicules
+            </a>
+
+            <a href="{{ path('app_dashboard_add_vehicle') }}"
+               class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_dashboard_add_vehicle' ? 'active' }}">
+                Ajouter un véhicule
+            </a>
+        {% endif %}
+    </div>
+</div>

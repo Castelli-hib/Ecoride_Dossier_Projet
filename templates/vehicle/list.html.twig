@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Véhicules
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid mt-4">
+		<div
+			class="row">
+			<!-- MENU LATÉRAL -->
+			<div class="col-md-3">
+				<h1 class="h2">Dashboard</h1>
+				<div class="list-group">
+					<a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_dashboard' %}active{% endif %}">
+						Mon compte
+					</a>
+					<a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_profile' %}active{% endif %}">
+						Mon profil
+					</a>
+					<a href="{{ path('app_user_routes') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_routes' %}active{% endif %}">
+						Mes trajets
+					</a>
+					{% if "ROLE_CONDUCTEUR" in app.user.roles %}
+						<a href="{{ path('app_user_vehicles') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_vehicles' %}active{% endif %}">
+							Mes véhicules
+						</a>
+						<a href="{{ path('app_dashboard_add_vehicle') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_dashboard_add_vehicle' %}active{% endif %}">
+							Ajouter un véhicule
+						</a>
+					{% endif %}
+					<a href="{{ path('credits_index') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'credits_index' %}active{% endif %}">
+						Mes crédits
+					</a>
+					<a href="{{ path('avis_index') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'avis_index' %}active{% endif %}">
+						Avis
+					</a>
+					<a href="#" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_preferences' %}active{% endif %}">
+						Mes préférences
+					</a>
+				</div>
+			</div>
+
+			<!-- CONTENU PRINCIPAL -->
+			<div class="col-md-9">
+				<h1>Mes véhicules</h1>
+				{% if vehicles is empty %}
+					<p>Vous n'avez pas encore de véhicules enregistrés.</p>
+					<a href="{{ path('app_dashboard_add_vehicle') }}" class="btn btn-primary">Ajouter un véhicule</a>
+				{% else %}
+					<table class="table mt-3">
+						<thead>
+							<tr>
+								<th>Modèle</th>
+								<th>Motorisation</th>
+								<th>Catégorie</th>
+								<th>Places</th>
+								<th>Année</th>
+								<th>Kilométrage</th>
+								<th>Actif</th>
+								<th>Statut</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for vehicle in vehicles %}
+								<tr>
+									{# ===== Brand ===== #}
+									<td>{{ vehicle.brandVehicle.model }}</td>
+									<td>{{ vehicle.brandVehicle.motorization }}</td>
+									<td>{{ vehicle.brandVehicle.category }}</td>
+									<td>{{ vehicle.brandVehicle.numberPlace }}</td>
+
+									{# ===== Vehicle ===== #}
+									<td>{{ vehicle.year }}</td>
+									<td>{{ vehicle.kilometer }}</td>
+									<td>{{ vehicle.isActif ? 'Oui' : 'Non' }}</td>
+									<td>{{ vehicle.status }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
