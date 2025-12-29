@@ -1,22 +1,30 @@
-@use '../utils/variables' as v;
+@use '../utils' as u;
 
+.profile-card {
+  background-color: u.$white;
+  padding: u.$space-md;
+  border-radius: u.$radius-md;
+  box-shadow: u.$shadow-soft;
+
+  h1 {
+    margin-bottom: u.$space-sm;
+  }
+
+  .btn {
+    margin-top: u.$space-sm;
+  }
+}
 
 .homepage-section {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 3rem 1rem;
-  // background: linear-gradient(
-  //   180deg,
-  //   lighten($primary-color, 40%) 0%,
-  //   $light-bg 100%
-  // );
-  border-radius: 1rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  gap: u.$space-lg;
+  padding: u.$space-xl u.$space-md;
+  border-radius: u.$radius-lg;
+  box-shadow: u.$shadow-soft;
 }
 
 .homepage-section h1 {
-  // color: v.$primary-color;
   text-align: center;
   font-size: 2rem;
 }

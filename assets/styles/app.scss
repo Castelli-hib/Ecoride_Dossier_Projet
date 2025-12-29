@@ -1,5 +1,19 @@
-@use './scss/base';
-@use './scss/components';
-@use './scss/layouts';
-@use './scss/pages';
+// ==============================
+// POINT D’ENTRÉE SCSS
+// ==============================
+
+// 1. Utils (variables + mixins)
 @use './scss/utils';
+
+// 2. Base (reset, couleurs globales)
+@use './scss/base';
+
+// 3. Components (boutons, cards, forms)
+@use './scss/components';
+
+// 4. Layouts (navbar, footer, container)
+@use './scss/layouts';
+
+// 5. Pages (homepage, profile…)
+@use './scss/pages';
+

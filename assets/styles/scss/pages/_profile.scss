@@ -1,0 +1,74 @@
+@use '../utils' as u;
+
+.profile {
+  padding: u.$space-lg 0;
+
+  &__container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    background-color: u.$white;
+    padding: u.$space-lg;
+    border-radius: u.$radius-md;
+    box-shadow: u.$shadow-soft;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: u.$space-lg;
+  }
+
+  &__section {
+    margin-bottom: u.$space-lg;
+    margin-left: u.$space-sm;
+  }
+
+  &__section-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: u.$grey-dark;
+    margin-bottom: u.$space-sm;
+  }
+
+  &__hint {
+    font-size: 0.85rem;
+    color: u.$grey-dark;
+    margin-bottom: u.$space-sm;
+  }
+
+  &__roles {
+    display: flex;
+    gap: u.$space-xs;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__submit {
+    margin-top: u.$space-md;
+    width: 100%;
+  }
+
+  &__security-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: u.$grey-dark;
+    margin-top: u.$space-sm;
+  }
+
+  &__grid {
+    display: grid;
+    gap: u.$space-sm;
+
+    &--2 {
+      grid-template-columns: 1fr;
+    }
+
+    &--address {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,15 +1,22 @@
+{# templates/dashboard/add_route.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Ajouter un trajet{% endblock %}
 
 {% block body %}
-<h1> {{ app.user.firstname }} </h1>
-<div class="container mt-4">
-    <h1>Ajouter un trajet</h1>
+<h1>Ajouter un nouveau trajet</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btn-primary mt-3">Enregistrer</button>
-    {{ form_end(form) }}
-</div>
+{{ form_start(form) }}
+    {{ form_row(form.departureTown) }}
+    {{ form_row(form.arrivalTown) }}
+    {{ form_row(form.departureDay) }}
+    {{ form_row(form.departureTime) }}
+    {{ form_row(form.travelTime) }}
+    {{ form_row(form.correspondance) }}
+    {{ form_row(form.correspondanceDetail) }}
+
+    <button class="btn btn-success mt-3">Enregistrer</button>
+{{ form_end(form) }}
+
+<p><a href="{{ path('app_dashboard') }}">Retour au dashboard</a></p>
 {% endblock %}
