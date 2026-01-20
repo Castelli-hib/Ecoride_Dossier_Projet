@@ -3,18 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Vehicle;
+use App\Entity\Brand;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class VehicleFormType extends AbstractType
 {
@@ -22,82 +18,26 @@ class VehicleFormType extends AbstractType
     {
         $builder
 
-            // Marque
-            ->add('brand', TextType::class, [
-                'label' => 'Marque',
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 2]),
-                ],
+            // 🔹 Lien avec Brand (relation Doctrine)
+            ->add('brandVehicle', EntityType::class, [
+                'class' => Brand::class,
+                'choice_label' => 'model',
+                'label' => 'Véhicule',
+                'placeholder' => 'Choisir un modèle',
             ])
 
-            // Modèle
-            ->add('model', TextType::class, [
-                'label' => 'Modèle',
-                'constraints' => [
-                    new NotBlank(),
-                ],
-            ])
-
-            // Immatriculation
-            ->add('licensePlate', TextType::class, [
-                'label' => 'Immatriculation',
-                'attr' => ['placeholder' => 'AB-123-CD'],
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 7, 'max' => 10]),
-                ],
-            ])
-
-            // Nombre de places
-            ->add('seats', IntegerType::class, [
-                'label' => 'Nombre de places',
-            ])
-
-            // Carburant
-            ->add('fuelType', ChoiceType::class, [
-                'label' => 'Carburant',
-                'choices' => [
-                    'Essence' => 'essence',
-                    'Diesel' => 'diesel',
-                    'Électrique' => 'electrique',
-                    'Hybride' => 'hybride',
-                    'GPL' => 'gpl',
-                ],
-            ])
-
-            // Couleur
-            ->add('color', TextType::class, [
-                'label' => 'Couleur',
-            ])
-
-            // Photo (upload)
-            ->add('photo', FileType::class, [
-                'label' => 'Photo du véhicule',
-                'mapped' => false, // important !
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '4M',
-                        'mimeTypes' => ['image/jpeg', 'image/png'],
-                        'mimeTypesMessage' => 'Formats acceptés : JPG, PNG',
-                    ])
-                ],
-            ])
-
-            // Année
-            ->add('year', IntegerType::class, [
+            // 🔹 Année
+            ->add('year', TextType::class, [
                 'label' => 'Année',
             ])
 
-            // Description
-            ->add('description', TextareaType::class, [
-                'label' => 'Description',
-                'required' => false,
+            // 🔹 Kilométrage
+            ->add('kilometer', IntegerType::class, [
+                'label' => 'Kilométrage',
             ])
 
-            // Statut actif/inactif
-            ->add('isActive', CheckboxType::class, [
+            // 🔹 Actif / Inactif
+            ->add('isActif', CheckboxType::class, [
                 'label' => 'Actif',
                 'required' => false,
             ]);

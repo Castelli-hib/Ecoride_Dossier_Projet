@@ -38,7 +38,7 @@ class CreditRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->where('c.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('c.updatedAt', 'DESC')
+            ->orderBy('c.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
     }

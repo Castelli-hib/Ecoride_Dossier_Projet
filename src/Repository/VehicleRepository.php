@@ -17,22 +17,42 @@ class VehicleRepository extends ServiceEntityRepository
         parent::__construct($registry, Vehicle::class);
     }
 
+    /**
+     * Retourne tous les véhicules d'un utilisateur
+     */
     public function findByUser(User $user): array
     {
         return $this->createQueryBuilder('v')
-            ->where('v.user = :user')
+            ->where('v.userVehicle = :user')  // nom exact du champ dans Vehicle
             ->setParameter('user', $user)
-            ->orderBy('v.createdAt', 'DESC')
+            ->orderBy('v.id', 'DESC') // tu peux remplacer v.id par v.year ou autre
             ->getQuery()
             ->getResult();
     }
 
+    /**
+     * Recherche des véhicules par marque
+     */
     public function searchByBrand(string $brand): array
     {
         return $this->createQueryBuilder('v')
-            ->join('v.brand', 'b')
+            ->leftJoin('v.brandVehicle', 'b') // nom exact du champ
+            ->addSelect('b')
             ->where('b.name LIKE :brand')
             ->setParameter('brand', "%$brand%")
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Récupère les véhicules actifs uniquement
+     */
+    public function findActiveVehicles(): array
+    {
+        return $this->createQueryBuilder('v')
+            ->where('v.isActif = :actif')
+            ->setParameter('actif', true)
+            ->orderBy('v.id', 'DESC')
             ->getQuery()
             ->getResult();
     }

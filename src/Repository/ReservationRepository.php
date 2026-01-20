@@ -53,10 +53,8 @@ class ReservationRepository extends ServiceEntityRepository
             ->select('COUNT(r.id)')
             ->where('r.passager = :user')
             ->andWhere('r.route = :route')
-            ->setParameters([
-                'user' => $user,
-                'route' => $route,
-            ])
+            ->setParameter('user', $user)
+            ->setParameter('route', $route)
             ->getQuery()
             ->getSingleScalarResult();
 

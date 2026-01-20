@@ -1,5 +1,5 @@
 ######################################################
-# 1 - image essentiel - Installation des dependences
+# 1 - IMAGE ESSENTIELLE - Installation des dépendances système et PHP
 ######################################################
 FROM php:8.3-apache AS essential
 
@@ -19,21 +19,18 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     g++ \
-    && docker-php-ext-install pdo pdo_mysql intl opcache zip \
+    && docker-php-ext-install pdo pdo_mysql intl opcache zip bcmath \
     && pecl install apcu \
     && docker-php-ext-enable apcu
 
-# Active le module rewrite pour Symfony
-RUN a2enmod rewrite && a2enmod ssl && a2enmod socache_shmcb
+# Active les modules Apache utiles pour Symfony
+RUN a2enmod rewrite ssl socache_shmcb
 
-# configurer le serveur apache ( réécriture URL pour Symfony ) 
-COPY  ./apache/default.conf /etc/apache2/sites-available/000-default.conf
-
-######################################################
-
+# Copie la configuration Apache
+COPY ./apache/default.conf /etc/apache2/sites-available/000-default.conf
 
 ######################################################
-# 2 - contruction de l'image - Run importmap + compile assets
+# 2 - BUILD IMAGE - Installer les dépendances et compiler les assets
 ######################################################
 FROM essential AS build
 
@@ -42,56 +39,54 @@ WORKDIR /app
 ENV APP_ENV=prod
 ENV DEBUG=0
 
-# Installe Composer (version officielle), node et npm
+# Copier Composer depuis l'image officielle
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Copier tout le projet
 COPY . .
 
-# Installer les dépendances du projet 
-# RUN composer install --no-dev  --no-progress --optimize-autoloader
-# RUN composer install  --no-progress --optimize-autoloader
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction --no-progress
+# Installer toutes les dépendances, y compris dev pour builder correctement
+RUN composer install --no-interaction --optimize-autoloader
 
+# Compiler les assets et importmap
 RUN php bin/console importmap:install --env=prod -n
 RUN php bin/console sass:build --env=prod
 RUN php bin/console asset-map:compile --env=prod
 
-
-# Nettoyage du cache
+# Nettoyer et préchauffer le cache
 RUN php bin/console cache:clear
 RUN php bin/console cache:warmup
 
 ######################################################
-
-
+# 3 - BUILD NODE POUR LES ASSETS JS
 ######################################################
-# 2.5 image node pour builder le JS 
-######################################################
-FROM node:25.1.0-alpine3.22 AS build-2
-
-COPY --from=build /app /app
+FROM node:25.1.0-alpine3.22 AS build-node
 
 WORKDIR /app
+COPY --from=build /app /app
 
 RUN npm ci
 RUN npm run build
 
 ######################################################
-
-
+# 4 - IMAGE FINALE PROD LÉGÈRE
 ######################################################
-# 3 - image final legère qui sera deployé sur le registery de github
-######################################################
-FROM essential
+FROM php:8.3-apache AS prod
 
 WORKDIR /var/www
 
-# Recupération de app buildé pour var/www
-COPY --from=build-2 /app /var/www/
+# Installer les extensions PHP de base et bcmath pour prod
+RUN apt-get update && apt-get install -y \
+    libonig-dev libxml2-dev libzip-dev libicu-dev libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev zlib1g-dev \
+    && docker-php-ext-install pdo pdo_mysql intl opcache zip bcmath \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu \
+    && a2enmod rewrite ssl socache_shmcb
 
-# Ensure necessary directories exist and have correct permissions
+# Copier l'application buildée
+COPY --from=build-node /app /var/www/
+
+# Créer les dossiers cache/log et permissions
 RUN mkdir -p var/cache var/log \
     && chown -R www-data:www-data /var/www \
     && chmod -R 775 var
-
-######################################################

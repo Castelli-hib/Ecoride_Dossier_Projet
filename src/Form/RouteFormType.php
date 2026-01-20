@@ -32,6 +32,11 @@ class RouteFormType extends AbstractType
             ->add('correspondanceDetail', TextType::class, [
                 'required' => false,
             ]);
+            // ->add('maxSeats', IntegerType::class, [
+            //     'label' => 'Nombre maximum de places',
+            //     'required' => true,
+            //     'attr' => ['min' => 1, 'max' => 10]
+            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

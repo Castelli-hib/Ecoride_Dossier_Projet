@@ -52,10 +52,8 @@ class RouteRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('r')
             ->where('r.departureTown LIKE :d')
             ->andWhere('r.arrivalTown LIKE :a')
-            ->setParameters([
-                'd' => "%$departure%",
-                'a' => "%$arrival%"
-            ]);
+            ->setParameter('d', "%$departure%")
+            ->setParameter('a', "%$arrival%");
 
         if ($date) {
             $qb->andWhere('r.departureDay >= :date')

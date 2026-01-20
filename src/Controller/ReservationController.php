@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ReservationController extends AbstractController
 {
-    #[Route('/reservation/{id}', name:'reservation_create', methods:['POST'])]
+    #[Route('/reservation/{id}', name: 'reservation_create', methods: ['POST'])]
     #[IsGranted('ROLE_USER')]
     public function create(
         Trip $route,
@@ -22,16 +22,17 @@ class ReservationController extends AbstractController
     ): Response {
         $user = $this->getUser();
 
-        if ($route->getAvailableSeats() <= 0) {
-            $this->addFlash('danger', 'Plus de places disponibles.');
-            return $this->redirectToRoute('app_all_routes');
-        }
+        // Vérifie s'il reste des places via la méthode de l'entité
+        // if (!$route->hasAvailableSeats()) {
+        //     $this->addFlash('danger', 'Plus de places disponibles.');
+        //     return $this->redirectToRoute('app_all_routes');
+        // }
 
+        // Création de la réservation
         $reservation = new Reservation();
-        $reservation->setUser($user);
+        $reservation->setPassager($user);
         $reservation->setRoute($route);
-
-        $route->setAvailableSeats($route->getAvailableSeats() - 1);
+        $reservation->setDateReservation(new \DateTimeImmutable());
 
         $em->persist($reservation);
         $em->flush();
@@ -40,12 +41,12 @@ class ReservationController extends AbstractController
         return $this->redirectToRoute('app_user_reservations');
     }
 
-    #[Route('/mes-reservations', name:'app_user_reservations')]
+    #[Route('/mes-reservations', name: 'app_user_reservations')]
     #[IsGranted('ROLE_USER')]
     public function list(EntityManagerInterface $em): Response
     {
         $reservations = $em->getRepository(Reservation::class)->findBy([
-            'user' => $this->getUser()
+            'passager' => $this->getUser()
         ]);
 
         return $this->render('reservation/list.html.twig', [

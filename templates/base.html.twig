@@ -13,7 +13,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
 		{{ encore_entry_link_tags('app') }}
-		
+
 
 		{% block stylesheets %}{% endblock %}
 	</head>
@@ -44,5 +44,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
 
 		{% block javascripts %}{% endblock %}
+
+		{% block javascripts %}
+			{{ parent() }}
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		{% endblock %}
 	</body>
 </html>
