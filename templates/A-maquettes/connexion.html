@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EcoRide - Connexion</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#98B67F",
+                        secondary: "#80B5D0",
+                        accent: "#9B8B9C",
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#111827",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .hero-overlay {
+            background-color: rgba(152, 182, 127, 0.4);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <header class="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center">
+                        <span class="text-3xl font-bold text-primary italic">Eco</span>
+                        <div
+                            class="w-8 h-8 mx-1 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                            <img alt="Tire icon" class="w-6 h-6"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmebJWxoPjFAFh-WBEBj87d6JptL7RQM_5GzaoEO7cTyXoUtU0pkhWP_hCCGbC7cSEe24QAehq6aWVT1wUWFqj2hbabkVmibAVLoUE4OxJCY0wPDAhRppIJZavdBS7r938zJsjE_vV27aLOd0mdAqMH12kI-zubowm4QdR0Nn39bWTPxmR_7btKKy04wg4WN0_VygY3IxZJuPAR1-LI81CidyZxOulpHaFDJ46fttAz8Zofzt1EQe9q9rvuQZtpqDgX0J8m8WjgWo" />
+                        </div>
+                        <span class="text-3xl font-bold text-secondary italic">Ride</span>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a class="text-gray-700 dark:text-gray-200 hover:text-primary font-medium transition"
+                        href="#">Accueil</a>
+                    <a class="text-gray-700 dark:text-gray-200 hover:text-primary font-medium transition"
+                        href="#">Covoiturage</a>
+                    <a class="text-primary font-semibold border-b-2 border-primary" href="#">Connexion</a>
+                    <a class="text-gray-700 dark:text-gray-200 hover:text-primary font-medium transition"
+                        href="#">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <span class="material-icons text-3xl cursor-pointer">menu</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="relative h-64 md:h-80 w-full overflow-hidden">
+        <img alt="Scenic road through forest" class="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKirPDdxvT2RCBYQU_08UCbRkfop4mTIpx1B1SN7ZhTPh6afu8QywH6hHPBT2zCprTfPNSh5DHrvg67ZzeGJZVyxq98YPBHWdoF9KVskH-5L4B38IGkdBppEZtkl2fg8nJSZZMFaKrnD94xMbZ8qtBO4IHRIgCF4DRgBsjBmVaJ3VTIo6JVvw588JJfLZ83Au_7ZY-IAa4-SyDdXzNuPs9cwBko89kBYnveXvDyU9fyWlb5Ve5PwOt40CcnbGqCabzZXgdwJ_1kiA" />
+        <div class="absolute inset-0 hero-overlay flex items-center justify-center">
+            <h1 class="text-white text-4xl md:text-5xl font-bold tracking-tight drop-shadow-md">
+                Espace Connexion
+            </h1>
+        </div>
+    </div>
+    <main class="flex-grow flex items-center justify-center py-16 px-4">
+        <div
+            class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
+            <div class="bg-secondary p-8 flex flex-col items-center">
+                <div
+                    class="w-20 h-20 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-inner">
+                    <span class="material-icons text-secondary dark:text-gray-300 text-5xl">person</span>
+                </div>
+            </div>
+            <div class="p-8 md:p-10">
+                <h2 class="text-primary text-center font-medium text-lg mb-8">
+                    Connectez-vous à votre compte
+                </h2>
+                <form action="#" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1"
+                            for="email">Email</label>
+                        <input
+                            class="w-full border-0 border-b-2 border-gray-200 dark:border-gray-700 bg-transparent px-0 py-2 focus:ring-0 focus:border-secondary transition-colors dark:text-white"
+                            id="email" placeholder="votre@email.com" type="email" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1"
+                            for="password">Mot de passe</label>
+                        <input
+                            class="w-full border-0 border-b-2 border-gray-200 dark:border-gray-700 bg-transparent px-0 py-2 focus:ring-0 focus:border-secondary transition-colors dark:text-white"
+                            id="password" placeholder="••••••••" type="password" />
+                    </div>
+                    <div class="pt-6">
+                        <button
+                            class="w-full bg-secondary hover:bg-opacity-90 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-md active:transform active:scale-95 uppercase tracking-wider"
+                            type="submit">
+                            Se connecter
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+                        <a class="hover:underline" href="#">Mot de passe oublié ?</a>
+                        <a class="text-primary font-semibold hover:underline" href="#">Créer un compte</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-secondary text-white pt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12">
+                <div class="space-y-6">
+                    <div class="flex items-start gap-3">
+                        <span class="material-icons">directions_bus</span>
+                        <div>
+                            <p class="font-bold">EcoRide</p>
+                            <p class="text-sm opacity-90">
+                                Route de Muratello, 20137 Portivechju
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-icons">phone</span>
+                        <div>
+                            <p class="text-sm opacity-90">06 18 53 04 13</p>
+                            <p class="text-sm opacity-90">
+                                contact@ecoride.corsica
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="material-icons">business_center</span>
+                        <div class="text-sm opacity-90">
+                            <p>
+                                <a class="hover:underline" href="#">Mentions légales</a>
+                            </p>
+                            <p>
+                                <a class="hover:underline" href="#">CGV - CGU</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <ul class="space-y-2 text-sm opacity-90">
+                        <li>
+                            <a class="hover:underline" href="#">Home</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="#">Covoiturage</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="#">Rechercher un trajet</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="space-y-2 text-sm opacity-90">
+                        <li>
+                            <a class="hover:underline" href="#">Rechercher un trajet</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="#">S'inscrire</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="#">Se connecter</a>
+                        </li>
+                        <li>
+                            <a class="hover:underline" href="#">Réserver</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-8">
+                    <div>
+                        <p class="text-sm font-semibold mb-3">
+                            Les Trajets
+                        </p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold mb-3">
+                            Les bons plans
+                        </p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                            <div class="w-full aspect-square bg-white bg-opacity-30 rounded-md"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-sm font-semibold mb-3">
+                            S'inscrire à la newsletter
+                        </p>
+                        <div class="flex">
+                            <input
+                                class="w-full rounded-l-md border-0 bg-white text-gray-800 px-3 py-2 text-sm focus:ring-0"
+                                type="text" placeholder="Votre email" />
+                            <button class="bg-primary px-4 rounded-r-md">
+                                <span class="material-icons align-middle">send</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold mb-3">
+                            Louez vos protections moto
+                        </p>
+                        <div class="flex gap-2">
+                            <div class="w-10 h-10 bg-white bg-opacity-30 rounded"></div>
+                            <div class="w-10 h-10 bg-white bg-opacity-30 rounded"></div>
+                            <div class="w-10 h-10 bg-white bg-opacity-30 rounded"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold mb-3">Un litige</p>
+                        <input class="w-full rounded-md border-0 bg-white text-gray-800 px-3 py-2 text-sm focus:ring-0"
+                            type="text" placeholder="Votre litige" />
+                    </div>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-white bg-opacity-30 flex items-center justify-center cursor-pointer">
+                            <img alt="Facebook" class="w-5 h-5"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ7LHVWUsjWWrR3170nVjoP3-EsV_Te98XKte859EanU2n1XQLzOlvYibx8zcZjwKTythqe1H03wi8MhhEZKmGAy4ht_InerUShf_MAYbhgh6A8rrCbJ1qdoUeYimCu_0CFWX50Bx6f9ytwKQGKtW7GLjauy0FdUIjb56UKf2vQIcg1yhmHJWdC5nouPtIFsgasKThhd0fGZ8zupa5IpqxfaliEl5TC353v172eJk-0ccXGHhX9lTRcAscilHf_saHQpestqdhYok" />
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full bg-white bg-opacity-30 flex items-center justify-center cursor-pointer">
+                            <img alt="Twitter" class="w-5 h-5"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6csb-PTBzhOkuzrfxwvHtvBW-cI_xw-LGR3ypAjpeCT6SQlOpAJUlW4GPVcpKerik40vNZyEJM-0GyOhlLzoGSxLx_RbCYfQocTaakvrXlIxjDO9G0GMSPkNrM6QyhTtP9i3B8lj5d_2qSREjcfAvFGloDCgnz-oioRdpFq5_vkYs7cJtBEzUDj2ZzEm_HlwdItjsFmUMny00bfIZWwNZ4rfvNhe3s3-xNrXsYxlt_AtHc26gkmPLuXxW0LYNmYoFulliNDhUemM" />
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full bg-white bg-opacity-30 flex items-center justify-center cursor-pointer">
+                            <img alt="Instagram" class="w-5 h-5"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaTLI8vi3jlZZW_nMXsC4sFqpiMhrusv-7hei6scatbUQCxZ7Q1uSNbmgQ965rOncSrCgD3FkXJ8IUNY37J4SI1Ku1jF5tXK7tBPWZ3X28V3nUSgmlnXK3OPVEdUfxuQMWuTsRIHHBRms6C1J9A947aUf127daI9mO3fEFl2v5zq3VzMTmD9FGsVRTX57fFURPC2iVg6YNaHismNiZjDEi3jyE462GOmg26AeMsGo4h-eK0DpYe3N44Be_8xyuah-n8-H6D3aQ3Rg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-primary py-4 text-center text-sm font-medium">
+            <p>© 2025 Ecoride — Simplifiez vos déplacements au quotidien</p>
+        </div>
+    </footer>
+</body>
+
+</html>

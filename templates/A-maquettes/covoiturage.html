@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EcoRide - Covoiturage et Mobilité Durable</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;family=Playfair+Display:wght@700;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;family=Outfit:wght@400;600;800;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+   <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#98B67F", // Primary Green
+                        secondary: "#B5A07C", // Secondary Gold
+                        userblue: "#80B5D0", // User Blue
+                        tertiary: "#E2C57F", // Tertiary Yellow
+                        neutralgrey: "#9B8B9C", // Neutral Purple-Grey
+                        "background-light": "#ffffff",
+                        "background-dark": "#1a1c18",
+                        "surface-light": "#f8f9f6",
+                        "surface-dark": "#23261f",
+                    },
+                    fontFamily: {
+                        display: ["Outfit", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        xl: "24px",
+                        "2xl": "32px",
+                    },
+                },
+            },
+        };
+    </script>
+
+<style type="text/tailwindcss">
+        .hero-bg {
+                background-image: linear-gradient(
+                        rgba(0, 0, 0, 0.1),
+                        rgba(0, 0, 0, 0.1)
+                    ),
+                    url(https://lh3.googleusercontent.com/aida-public/AB6AXuDVt-aZB-1lWUB3KoTVGDF4jYe6uL8l-NnrhjbcPKuAmLzmID3sv7aAbXieGx1q8VX819Ga41iIzPvckbQbPx_z2Ho_CdHWwhaC6ujjmWJsHhwwD2Y50nuDNmFPk42haGYdsXXYW7l-qQxHfN3KdX_9vq65tCjlVzreST_cn7DTTvOJLPxM8lyhW8BjK7j6YePArH_lh-SfsZtvOUbxlcbM7KH08H03FFHhi9Ge-zPPtNAIXcy0bPX6MBqmclxkOt4p99BdKBKbaPQ);
+                background-size: cover;
+                background-position: center;
+            }
+            .text-gradient {
+                background: linear-gradient(135deg, #94b07d 0%, #c9b17c 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .star-filled {
+                font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0,
+                    "opsz" 20;
+            }
+            .hero-gradient {
+                background: linear-gradient(
+                        rgba(0, 0, 0, 0.3),
+                        rgba(0, 0, 0, 0.3)
+                    ),
+                    url("images/vintagecar-covoiturage.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+        </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-neutral-800 dark:text-neutral-100 transition-colors duration-200">
+    <header
+        class="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-neutral-100 dark:border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined">eco</span>
+                </div>
+                <span class="text-2xl font-bold text-gray-900 dark:text-white">Eco<span
+                        class="text-primary">Ride</span></span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="font-medium hover:text-primary transition-colors" href="homepage.html">Accueil</a>
+                <a class="font-medium hover:text-primary transition-colors" href="covoiturage.html">Covoiturage</a>
+                <a class="font-medium hover:text-primary transition-colors" href="connexion.html">Connexion</a>
+                <a class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-primary/20"
+                    href="contact.html">Contact</a>
+            </nav>
+
+
+            <button class="md:hidden text-neutral-600 dark:text-neutral-300">
+                <span class="material-icons-round">menu</span>
+            </button>
+        </div>
+    </header>
+    <section class="relative h-[600px] flex flex-col items-center px-6 hero-gradient">
+
+        <div class="text-center z-10 text-white max-w-3xl mt-32 mb-16">
+            <h1 class="text-5xl md:text-6xl font-display font-extrabold mb-6 drop-shadow-lg">
+                Voyagez vert, voyagez ensemble
+            </h1>
+            <p class="text-xl md:text-2xl font-light opacity-90 mb-8">
+                La première solution de mobilité partagée en Corse, du
+                littoral aux sommets.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button
+                    class="bg-primary hover:bg-opacity-90 text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all text-lg">Proposer
+                    un trajet</button>
+                <button
+                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold transition-all text-lg">En
+                    savoir plus</button>
+            </div>
+        </div>
+
+        <div class="max-w-6xl w-full bg-white dark:bg-neutral-900 p-4 md:p-8 rounded-xl shadow-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="relative group">
+                    <label
+                        class="absolute -top-6 left-1 text-sm font-semibold text-white md:text-neutral-500 dark:md:text-neutral-400">
+                        Départ
+                    </label>
+                    <div
+                        class="flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-transparent focus-within:border-primary px-4 py-4 rounded-lg transition-all">
+                        <span class="material-icons-round text-primary">trip_origin</span>
+                        <input
+                            class="bg-transparent border-none focus:ring-0 w-full placeholder:text-neutral-400 text-sm md:text-base"
+                            placeholder="D'où partez-vous ?" type="text" />
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <label
+                        class="absolute -top-6 left-1 text-sm font-semibold text-white md:text-neutral-500 dark:md:text-neutral-400">
+                        Destination
+                    </label>
+                    <div
+                        class="flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-transparent focus-within:border-primary px-4 py-4 rounded-lg transition-all">
+                        <span class="material-icons-round text-userblue">place</span>
+                        <input
+                            class="bg-transparent border-none focus:ring-0 w-full placeholder:text-neutral-400 text-sm md:text-base"
+                            placeholder="Où allez-vous ?" type="text" />
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <label
+                        class="absolute -top-6 left-1 text-sm font-semibold text-white md:text-neutral-500 dark:md:text-neutral-400">
+                        Quand
+                    </label>
+                    <div
+                        class="flex items-center gap-3 bg-neutral-50 dark:bg-neutral-800 border-2 border-transparent focus-within:border-primary px-4 py-4 rounded-lg transition-all">
+                        <span class="material-icons-round text-neutralgrey">calendar_today</span>
+                        <input
+                            class="bg-transparent border-none focus:ring-0 w-full text-neutral-600 dark:text-neutral-300 text-sm md:text-base"
+                            type="date" title="Sélectionnez une date de voyage" />
+                    </div>
+                </div>
+
+                <button
+                    class="bg-tertiary hover:bg-[#D5B86F] text-neutral-900 font-bold py-4 rounded-lg transition-all flex items-center justify-center gap-2 text-lg shadow-lg">
+                    <span class="material-icons-round">search</span>
+                    Rechercher
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="py-24 container mx-auto px-6">
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-3xl md:text-4xl font-display font-bold">
+                Derniers Covoiturages
+            </h2>
+            <a class="text-primary font-semibold flex items-center gap-1 hover:underline" href="#">Voir tout
+                <span class="material-icons-round text-sm">arrow_forward</span></a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+                class="group bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100 dark:border-neutral-800">
+                <div class="h-48 overflow-hidden">
+                    <img alt="Porto-Vecchio"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1xjdat47agvHDQO_E7_l1hvdGbhMCau5Wc7ulm_y2i6JbW1Fu9-yYRL1k1ryM9hBPyI3yP5u7pScd1m1UFXAD_v9TRXSvhfo3OnvbtIzrgvpuuN1rNCNGG3DL5fM6NHvY_aMry6uHf5UaeeRvEaloyqO41XBR7__yygH5rXqSOP9I4n5LzDipM1nXBwziVDAy7d_NuD2Rms8uArF6q6lyxIKdq_Zk6UsVFh7mrZIOR4i0HBNfCoQ3SRL_amqgBXOHQjm8Ta0OSnY" />
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-primary text-lg">radio_button_checked</span>
+                            <span class="font-semibold">Porto-Vecchio</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-userblue text-lg">radio_button_checked</span>
+                            <span class="font-semibold">Bastia</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">calendar_month</span>
+                            <span>Demain, 08:30</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">people</span>
+                            <span>2 places disponibles</span>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-4 pt-4 border-t border-neutral-50 dark:border-neutral-800 flex justify-between items-center">
+                        <span class="text-xs uppercase tracking-wider font-bold text-neutralgrey">Crédits</span>
+                        <span class="text-xl font-bold text-primary">12 €</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100 dark:border-neutral-800">
+                <div class="h-48 overflow-hidden">
+                    <img alt="Ajaccio"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsHzHJTpNiK2ANi5iXyC5tA1GNTQtpS69djn1cHTh5rBkwkakcjNXtOzAhlwlho7qY9dbsZ6rLCtqLBKuwz3rhQd6bzCRCAj88Bs2czGvglvfAUQfZFfW3fkTkYhpz2rON3DhfILxByZAwTahbialNPLtEKIk4w11EAwasl24Zu9XebbLhOfOSmgt8lWl9MPX0eGNyBlam2i0wMcIFFX5HyEfNsy9i9FZO0NBX698A9MMrXB6ASDe7FR80tscqkLCc7gGpIbURDm8" />
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-primary text-lg">radio_button_checked</span>
+                            <span class="font-semibold">Ajaccio</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-userblue text-lg">radio_button_checked</span>
+                            <span class="font-semibold">Corte</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">calendar_month</span>
+                            <span>Auj. 17:45</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">people</span>
+                            <span>1 place restante</span>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-4 pt-4 border-t border-neutral-50 dark:border-neutral-800 flex justify-between items-center">
+                        <span class="text-xs uppercase tracking-wider font-bold text-neutralgrey">Crédits</span>
+                        <span class="text-xl font-bold text-primary">8 €</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100 dark:border-neutral-800">
+                <div class="h-48 overflow-hidden">
+                    <img alt="Porticcio"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZiBuNi0VS64gCvJbF_abMVEZuN-gJNcktnHEuGbQCwsSAbDQbs8ZvDCL2y1eMkPYCw3-XRTdhnuOewaIsZpLyO6aGPTqs_5I9rs1eiHaHbqMo9IwvwL7ezBc21-idksjWALuyInIPjAJeCBoy9Vp1Qw_kxDRrEdiK6My74aRPWccLGV4XNHQUddxLh39MCeUYcIzv3dycALnPzKd3Ns0asagMSbAq0Aj4sOmbCof2oglSciYoubXMgJtTwUYGaZcADJxmqzFBCe8" />
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-primary text-lg">radio_button_checked</span>
+                            <span class="font-semibold">Porticcio</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-userblue text-lg">radio_button_checked</span>
+                            <span class="font-semibold">Sartène</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">calendar_month</span>
+                            <span>Mer. 09:00</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">people</span>
+                            <span>3 places disponibles</span>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-4 pt-4 border-t border-neutral-50 dark:border-neutral-800 flex justify-between items-center">
+                        <span class="text-xs uppercase tracking-wider font-bold text-neutralgrey">Crédits</span>
+                        <span class="text-xl font-bold text-primary">15 €</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="group bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100 dark:border-neutral-800">
+                <div class="h-48 overflow-hidden">
+                    <img alt="Ile-Rousse"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWMit2JNzdG-pWTAB6VpVt7g_tAXkoHkLNl3HMq-H8jm7nBXG9ISHqs4TWU04Ti4ajBn6gnllG2KQMh1MlF1tGJ8q_WI5u59so5kWYOnzQ4KfmQ86rH3qdLsq0zFCuN6C1LIuOC2mH4EulWxUaXqCAaJ6Fa23pnK-OvRGBLV2vE5Ub_fffzmHKSbYvx7elMDOhvIWcMiVSw2zG4zpYdHnejqGr8h9kt57ozyQikrHqozMABcUUXpjL1iw9sm-_fehNIXBavpGCdKo" />
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col gap-3 mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-primary text-lg">radio_button_checked</span>
+                            <span class="font-semibold">L'Île-Rousse</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-icons-round text-userblue text-lg">radio_button_checked</span>
+                            <span class="font-semibold">St-Florent</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">calendar_month</span>
+                            <span>Jeu. 14:20</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons-round text-base">people</span>
+                            <span>2 places disponibles</span>
+                        </div>
+                    </div>
+                    <div
+                        class="mt-4 pt-4 border-t border-neutral-50 dark:border-neutral-800 flex justify-between items-center">
+                        <span class="text-xs uppercase tracking-wider font-bold text-neutralgrey">Crédits</span>
+                        <span class="text-xl font-bold text-primary">10 €</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-neutral-50 dark:bg-neutral-900/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                        <span class="material-icons-round text-primary text-3xl">chat_bubble_outline</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">
+                        À votre service 7j/7
+                    </h3>
+                    <p class="text-neutralgrey leading-relaxed">
+                        Notre équipe est à votre disposition pour répondre à
+                        toutes vos questions par mail ou sur nos réseaux
+                        sociaux.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-userblue/10 flex items-center justify-center mb-6">
+                        <span class="material-icons-round text-userblue text-3xl">directions_car</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">
+                        EcoRide vous accompagne
+                    </h3>
+                    <p class="text-neutralgrey leading-relaxed">
+                        Bénéficiez du remboursement de votre trajet en tant
+                        que conducteur ou passager via notre système de
+                        protection sécurisé.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+                        <span class="material-icons-round text-secondary text-3xl">verified_user</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">
+                        Sécurité de vos informations
+                    </h3>
+                    <p class="text-neutralgrey leading-relaxed">
+                        Une équipe dédiée à la protection de vos données
+                        confidentielles. Vos informations sont chiffrées de
+                        bout en bout.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-secondary py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="flex items-center gap-6">
+                    <div class="bg-white p-4 rounded-full shadow-lg">
+                        <span class="material-icons-round text-secondary text-5xl">pedal_bike</span>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white">
+                            Adieu les embouteillages, filez en 2 roues
+                        </h2>
+                        <p class="text-white/80 mt-2">
+                            Découvrez nos services de partage de vélos
+                            électriques.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full lg:w-auto">
+                    <a class="bg-white hover:bg-neutral-50 py-4 px-6 rounded-lg flex items-center justify-between shadow-md transition-all group"
+                        href="#">
+                        <span class="font-bold text-neutral-800">P-Vecchio → Propriano</span>
+                        <span
+                            class="material-icons-round text-secondary group-hover:translate-x-1 transition-transform">chevron_right</span>
+                    </a>
+                    <a class="bg-white hover:bg-neutral-50 py-4 px-6 rounded-lg flex items-center justify-between shadow-md transition-all group"
+                        href="#">
+                        <span class="font-bold text-neutral-800">Corte → Ajaccio</span>
+                        <span
+                            class="material-icons-round text-secondary group-hover:translate-x-1 transition-transform">chevron_right</span>
+                    </a>
+                    <a class="bg-white hover:bg-neutral-50 py-4 px-6 rounded-lg flex items-center justify-between shadow-md transition-all group"
+                        href="#">
+                        <span class="font-bold text-neutral-800">L'Île-Rousse → Calvi</span>
+                        <span
+                            class="material-icons-round text-secondary group-hover:translate-x-1 transition-transform">chevron_right</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-20">
+            <div class="lg:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-primary/20 rounded-full blur-3xl"></div>
+                    <div
+                        class="relative bg-white dark:bg-neutral-800 p-12 rounded-3xl shadow-xl border border-neutral-100 dark:border-neutral-700">
+                        <div class="w-48 h-48 md:w-64 md:h-64 flex flex-col items-center justify-center text-primary">
+                            <span class="material-icons-round text-[120px] md:text-[180px]">eco</span>
+                            <span class="text-3xl md:text-4xl font-display font-black -mt-4">EcoRide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-primary mb-8">
+                    EcoRide : Vos routes au quotidien
+                </h2>
+                <div class="space-y-12">
+                    <div class="flex gap-6">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="material-icons-round">map</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">
+                                Planifiez vos trajets
+                            </h4>
+                            <p class="text-neutralgrey leading-relaxed">
+                                Privilégiez les deux roues ou le partage,
+                                sur des trajets à haute densité de
+                                circulation. En pleine saison, circulez plus
+                                sereinement sur des axes très fréquentés.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div
+                            class="flex-shrink-0 w-14 h-14 bg-secondary text-white rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="material-icons-round">electric_bike</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">
+                                Réservez votre équipement
+                            </h4>
+                            <p class="text-neutralgrey leading-relaxed">
+                                EcoRide propose un service de matériels
+                                adaptés aux deux roues, pour des trajets en
+                                toutes sécurités : casques, gants et
+                                accessoires réfléchissants.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-[#eef2ea] dark:bg-[#151713] pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined text-sm">eco</span>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900 dark:text-white">Eco<span
+                                class="text-primary">Ride</span></span>
+                    </div>
+                    <div class="space-y-4 text-gray-600 dark:text-gray-400">
+                        <div class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary">location_on</span>
+                            <p>Route de Muratello, 20137 Porto-Vecchio</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary">phone</span>
+                            <p>06 18 53 04 13</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary">mail</span>
+                            <p>contact@ecoride.corsica</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm">
+                        Navigation
+                    </h4>
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-400">
+                        <li>
+                            <a class="hover:text-primary transition-colors" href="#">Accueil</a>
+                        </li>
+                        <li>
+                            <a class="hover:text-primary transition-colors" href="#">Covoiturage</a>
+                        </li>
+                        <li>
+                            <a class="hover:text-primary transition-colors" href="#">Rechercher un trajet</a>
+                        </li>
+                        <li>
+                            <a class="hover:text-primary transition-colors" href="#">Se connecter</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm">
+                        Les Trajets
+                    </h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <img alt="Mountain road" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGTbnLsE8GtFkzeerddIitPu6Yk4Q_jR3yVtPdcGpbdzWl2MiGJjdz1_e6sdmXD6dDqSN7BtKFeWpQvkJ9Q7YQu_orAEQ3lJ0YkwLuwonqJNwiU_K8MQqUPDW9O-eGqvNGqQB7XZD645eYktSNl17f58y4--RZOscHBhwzjc-UPtbkzBXMRZ98l8zYM_54m2bjaLTmatC5jL_IdDQnAkuxEbv3M1keMogLxeNfxHU-nbffbL3jSPCBmJK4tV0V_mTaMMEFr32N7WM" />
+                        </div>
+                        <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <img alt="River view" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC0aVuiMEoGjhtNhLzye_-7V7-Pi5Fh1xETHowkClyNgn3ObYtaPFtEQSy5hf_1cdwMxpfCkXhgFt9u2ypHGVQz_GRwII_-fPqLcSiA82QKTchyV3d6ozzuUovnk1y6gDVp_oY-W3C2HNdZQy318a0eCtL2JycMwrHSRnM6A2sEh9oSHuSnM9zDS6sOrjGeRbTOb4osEGsxofxqBjPDwBfwIwGjKAg9bV4R_HkCHnge6n55HAkzB1uorPerFgDfWSc5wfbTO9l3QQ" />
+                        </div>
+                        <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <img alt="Lakeside" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr75uMndrZG0-V6X81hgYnuCZUCpaViCb-MOBJEQ7498LlGZmjNUHiNoHweNQ_xHVHyFUOhqUm83KX2JZ7yjs0WbK0w3HZWmr8GmxyEOoq45eH3J9KGSTrrZVj-XbRJ_jQycPk_J23cL96pWjN1LrOimxu2bYFPcAvx3U83-A7YN6cwa9MYV0EdpAu_Gvc8fSfj9n6g37vUeRt-JKWZCwJTFFhjvjQF8YtxOs8gLfWS_GfOhTnOCP0wupdbo6flD-qB7RHrlCMV6w" />
+                        </div>
+                        <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <img alt="Landscape" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uDb_rNijnqMT2_yrdbbEbv-8g5Rr3RPvwV4lfKW0frWrVvyHusJx-M6OSQ1ZwhxAMOTlEfyDSaK4IwrnBHbbILzzEJ7ZddILCxweeVbmIfysn8BG-SeOQIO4Oq-fF71nLRuCS5U8X9ykIF7pTOdwHkdiOonjK102V2D2cepHO-kUnFgye9Y04bRNr58hR6jQ-bYNnbND1677_B8PDP3u9rWzb6STkwdZEXcGI8RAH896CyuGc9_BuhFzxbJdL1f1nI5p-qKgvFs" />
+                        </div>
+                        <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <div class="w-full h-full bg-primary/20 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined">add</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h4 class="font-bold text-gray-900 dark:text-white uppercase tracking-wider text-sm">
+                        Newsletter
+                    </h4>
+                    <div class="relative">
+                        <input
+                            class="w-full pl-4 pr-12 py-3 bg-white dark:bg-gray-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-sm"
+                            placeholder="Votre email" type="email" />
+                        <button
+                            class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white p-1.5 rounded-lg">
+                            <span class="material-symbols-outlined text-sm">send</span>
+                        </button>
+                    </div>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center shadow-sm hover:text-primary transition-colors cursor-pointer">
+                            <span class="material-symbols-outlined text-lg">social_leaderboard</span>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center shadow-sm hover:text-primary transition-colors cursor-pointer">
+                            <span class="material-symbols-outlined text-lg">alternate_email</span>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center shadow-sm hover:text-primary transition-colors cursor-pointer">
+                            <span class="material-symbols-outlined text-lg">camera_alt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>
+                    © 2025 EcoRide — Simplifiez vos déplacements au
+                    quotidien
+                </p>
+                <div class="flex gap-6">
+                    <a class="hover:text-primary" href="#">Mentions légales</a>
+                    <a class="hover:text-primary" href="#">CGV - CGU</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Dashboard Chauffeur</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;display=swap"
+            rel="stylesheet"
+        />
+        <style type="text/tailwindcss">
+            :root {
+                --primary-green: #98b67f;
+                --user-blue: #80b5d0;
+                --accent-neutral: #9b8b9c;
+                --bg-light: #f9fafb;
+            }
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+        </style>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#98B67F",
+                            secondary: "#80B5D0",
+                            accent: "#9B8B9C",
+                            "background-light": "#F9FAFB",
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body class="bg-background-light text-gray-900 min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center">
+                            <span class="text-3xl font-bold text-primary italic"
+                                >Eco</span
+                            >
+                            <div
+                                class="w-8 h-8 mx-1 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden"
+                            >
+                                <img
+                                    alt="Tire icon"
+                                    class="w-6 h-6"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmebJWxoPjFAFh-WBEBj87d6JptL7RQM_5GzaoEO7cTyXoUtU0pkhWP_hCCGbC7cSEe24QAehq6aWVT1wUWFqj2hbabkVmibAVLoUE4OxJCY0wPDAhRppIJZavdBS7r938zJsjE_vV27aLOd0mdAqMH12kI-zubowm4QdR0Nn39bWTPxmR_7btKKy04wg4WN0_VygY3IxZJuPAR1-LI81CidyZxOulpHaFDJ46fttAz8Zofzt1EQe9q9rvuQZtpqDgX0J8m8WjgWo"
+                                />
+                            </div>
+                            <span
+                                class="text-3xl font-bold text-secondary italic"
+                                >Ride</span
+                            >
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex flex-1 max-w-md mx-8">
+                        <div class="relative w-full">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                                >search</span
+                            >
+                            <input
+                                class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm focus:ring-secondary focus:border-secondary"
+                                placeholder="Rechercher un trajet..."
+                                type="text"
+                            />
+                        </div>
+                    </div>
+                    <nav class="hidden md:flex space-x-6 items-center">
+                        <a
+                            class="text-gray-700 hover:text-primary font-medium transition"
+                            href="#"
+                            >Accueil</a
+                        >
+                        <a
+                            class="text-gray-700 hover:text-primary font-medium transition"
+                            href="#"
+                            >Covoiturage</a
+                        >
+                        <a
+                            class="text-gray-700 hover:text-primary font-medium transition"
+                            href="#"
+                            >Contact</a
+                        >
+                        <div
+                            class="flex items-center gap-3 pl-4 border-l border-gray-200"
+                        >
+                            <div class="text-right hidden xl:block">
+                                <p class="text-xs font-bold text-gray-900">
+                                    Jean Dupont
+                                </p>
+                                <p
+                                    class="text-[10px] text-primary uppercase font-bold tracking-wider"
+                                >
+                                    Chauffeur
+                                </p>
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >person</span
+                                >
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="md:hidden">
+                        <span
+                            class="material-symbols-outlined text-3xl cursor-pointer"
+                            >menu</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div
+            class="flex-grow flex max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 gap-8"
+        >
+            <aside class="w-64 flex-shrink-0 hidden lg:block">
+                <nav class="space-y-1">
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >account_circle</span
+                        >
+                        <span class="font-medium">Mon profil</span>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >payments</span
+                        >
+                        <span class="font-medium">Mes crédits</span>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >star</span
+                        >
+                        <span class="font-medium">Mes avis</span>
+                    </a>
+                    <div
+                        class="pt-4 pb-2 px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                    >
+                        Trajets
+                    </div>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-white bg-primary rounded-lg shadow-sm transition"
+                        href="#"
+                    >
+                        <span class="material-symbols-outlined"
+                            >add_circle</span
+                        >
+                        <span class="font-medium">Ajouter un trajet</span>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >route</span
+                        >
+                        <span class="font-medium">Mes trajets</span>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >directions_car</span
+                        >
+                        <span class="font-medium">Mes véhicules</span>
+                    </a>
+                    <div
+                        class="pt-4 pb-2 px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                    >
+                        Compte
+                    </div>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >settings</span
+                        >
+                        <span class="font-medium">Mes préférences</span>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-400 group-hover:text-secondary"
+                            >event_available</span
+                        >
+                        <span class="font-medium">Mes réservations</span>
+                    </a>
+                </nav>
+            </aside>
+            <main class="flex-1">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800">
+                        Tableau de bord Chauffeur
+                    </h2>
+                    <p class="text-gray-500">
+                        Bienvenue, Jean ! Voici le résumé de votre activité.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary"
+                                    >event</span
+                                >
+                            </div>
+                            <span
+                                class="text-xs font-bold text-primary bg-green-50 px-2 py-1 rounded-full"
+                                >+2 cette semaine</span
+                            >
+                        </div>
+                        <p class="text-sm text-gray-500 font-medium">
+                            Trajets à venir
+                        </p>
+                        <p class="text-3xl font-bold text-gray-800">4</p>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-secondary"
+                                    >payments</span
+                                >
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 font-medium">
+                            Crédits cumulés
+                        </p>
+                        <p class="text-3xl font-bold text-gray-800">
+                            1,250
+                            <span
+                                class="text-lg font-normal text-gray-400 italic"
+                                >cr</span
+                            >
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
+                    >
+                        <div class="flex items-center justify-between mb-4">
+                            <div
+                                class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-accent"
+                                    >star</span
+                                >
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="text-sm font-bold text-gray-800"
+                                    >4.9</span
+                                >
+                                <span
+                                    class="material-symbols-outlined text-yellow-400 text-sm fill-current"
+                                    >star</span
+                                >
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 font-medium">
+                            Note moyenne
+                        </p>
+                        <p class="text-3xl font-bold text-gray-800">
+                            128
+                            <span
+                                class="text-lg font-normal text-gray-400 italic"
+                                >avis</span
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                    <section
+                        class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                    >
+                        <div
+                            class="p-6 border-b border-gray-50 flex justify-between items-center"
+                        >
+                            <h3
+                                class="font-bold text-gray-800 flex items-center gap-2"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary"
+                                    >calendar_month</span
+                                >
+                                Prochains trajets
+                            </h3>
+                            <a
+                                class="text-xs font-bold text-secondary hover:underline"
+                                href="#"
+                                >Voir tout</a
+                            >
+                        </div>
+                        <div class="divide-y divide-gray-50">
+                            <div
+                                class="p-4 hover:bg-gray-50 transition flex items-center justify-between"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="text-center bg-gray-50 rounded-lg p-2 min-w-[60px]"
+                                    >
+                                        <p
+                                            class="text-[10px] uppercase font-bold text-gray-400"
+                                        >
+                                            Mar
+                                        </p>
+                                        <p
+                                            class="text-xl font-bold text-gray-800"
+                                        >
+                                            12
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="font-bold text-gray-800 text-sm"
+                                        >
+                                            Porto-Vecchio → Ajaccio
+                                        </p>
+                                        <p class="text-xs text-gray-500">
+                                            08:30 • 3 places disponibles
+                                        </p>
+                                    </div>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-gray-300"
+                                    >chevron_right</span
+                                >
+                            </div>
+                            <div
+                                class="p-4 hover:bg-gray-50 transition flex items-center justify-between"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="text-center bg-gray-50 rounded-lg p-2 min-w-[60px]"
+                                    >
+                                        <p
+                                            class="text-[10px] uppercase font-bold text-gray-400"
+                                        >
+                                            Ven
+                                        </p>
+                                        <p
+                                            class="text-xl font-bold text-gray-800"
+                                        >
+                                            15
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="font-bold text-gray-800 text-sm"
+                                        >
+                                            Bastia → Porto-Vecchio
+                                        </p>
+                                        <p class="text-xs text-gray-500">
+                                            17:15 • Complet
+                                        </p>
+                                    </div>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-gray-300"
+                                    >chevron_right</span
+                                >
+                            </div>
+                        </div>
+                    </section>
+                    <section
+                        class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                    >
+                        <div
+                            class="p-6 border-b border-gray-50 flex justify-between items-center"
+                        >
+                            <h3
+                                class="font-bold text-gray-800 flex items-center gap-2"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-accent"
+                                    >reviews</span
+                                >
+                                Derniers avis
+                            </h3>
+                            <a
+                                class="text-xs font-bold text-secondary hover:underline"
+                                href="#"
+                                >Voir tout</a
+                            >
+                        </div>
+                        <div class="p-6 space-y-6">
+                            <div class="flex gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-100 flex-shrink-0 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-gray-400"
+                                        >person</span
+                                    >
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span
+                                            class="text-sm font-bold text-gray-800"
+                                            >Marie L.</span
+                                        >
+                                        <div
+                                            class="flex text-yellow-400 scale-75 origin-right"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <p
+                                        class="text-xs text-gray-500 leading-relaxed italic"
+                                    >
+                                        "Super trajet ! Jean est très ponctuel
+                                        et conduit prudemment. Je recommande
+                                        vivement."
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-gray-100 flex-shrink-0 flex items-center justify-center"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-gray-400"
+                                        >person</span
+                                    >
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span
+                                            class="text-sm font-bold text-gray-800"
+                                            >Marc O.</span
+                                        >
+                                        <div
+                                            class="flex text-yellow-400 scale-75 origin-right"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill-current"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined"
+                                                >star</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <p
+                                        class="text-xs text-gray-500 leading-relaxed italic"
+                                    >
+                                        "Trajet agréable, bonne discussion."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <footer class="bg-secondary text-white pt-12 mt-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12"
+                >
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined"
+                                >directions_bus</span
+                            >
+                            <div>
+                                <p class="font-bold">EcoRide</p>
+                                <p class="text-sm opacity-90">
+                                    Route de Muratello, 20137 Portivechju
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined">phone</span>
+                            <div>
+                                <p class="text-sm opacity-90">06 18 53 04 13</p>
+                                <p class="text-sm opacity-90">
+                                    contact@ecoride.corsica
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined"
+                                >business_center</span
+                            >
+                            <div class="text-sm opacity-90">
+                                <p>
+                                    <a class="hover:underline" href="#"
+                                        >Mentions légales</a
+                                    >
+                                </p>
+                                <p>
+                                    <a class="hover:underline" href="#"
+                                        >CGV - CGU</a
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <ul class="space-y-2 text-sm opacity-90">
+                            <li>
+                                <a class="hover:underline" href="#">Home</a>
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#"
+                                    >Covoiturage</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#"
+                                    >Rechercher un trajet</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        <ul class="space-y-2 text-sm opacity-90">
+                            <li>
+                                <a class="hover:underline" href="#"
+                                    >Rechercher un trajet</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#"
+                                    >S'inscrire</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#"
+                                    >Se connecter</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#">Réserver</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-sm font-semibold mb-3">
+                                Les Trajets
+                            </p>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold mb-3">
+                                Les bons plans
+                            </p>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                                <div
+                                    class="w-full aspect-square bg-white bg-opacity-30 rounded-md"
+                                ></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-sm font-semibold mb-3">
+                                S'inscrire à la newsletter
+                            </p>
+                            <div class="flex">
+                                <input
+                                    class="w-full rounded-l-md border-0 bg-white text-gray-800 px-3 py-2 text-sm focus:ring-0"
+                                    type="text" placeholder="Votre email"
+                                />
+                                <button class="bg-primary px-4 rounded-r-md">
+                                    <span
+                                        class="material-symbols-outlined align-middle"
+                                        >send</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white bg-opacity-30 flex items-center justify-center cursor-pointer"
+                            >
+                                <img
+                                    alt="Facebook"
+                                    class="w-5 h-5"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ7LHVWUsjWWrR3170nVjoP3-EsV_Te98XKte859EanU2n1XQLzOlvYibx8zcZjwKTythqe1H03wi8MhhEZKmGAy4ht_InerUShf_MAYbhgh6A8rrCbJ1qdoUeYimCu_0CFWX50Bx6f9ytwKQGKtW7GLjauy0FdUIjb56UKf2vQIcg1yhmHJWdC5nouPtIFsgasKThhd0fGZ8zupa5IpqxfaliEl5TC353v172eJk-0ccXGHhX9lTRcAscilHf_saHQpestqdhYok"
+                                />
+                            </div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-white bg-opacity-30 flex items-center justify-center cursor-pointer"
+                            >
+                                <img
+                                    alt="Twitter"
+                                    class="w-5 h-5"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6csb-PTBzhOkuzrfxwvHtvBW-cI_xw-LGR3ypAjpeCT6SQlOpAJUlW4GPVcpKerik40vNZyEJM-0GyOhlLzoGSxLx_RbCYfQocTaakvrXlIxjDO9G0GMSPkNrM6QyhTtP9i3B8lj5d_2qSREjcfAvFGloDCgnz-oioRdpFq5_vkYs7cJtBEzUDj2ZzEm_HlwdItjsFmUMny00bfIZWwNZ4rfvNhe3s3-xNrXsYxlt_AtHc26gkmPLuXxW0LYNmYoFulliNDhUemM"
+                                />
+                            </div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-white bg-opacity-30 flex items-center justify-center cursor-pointer"
+                            >
+                                <img
+                                    alt="Instagram"
+                                    class="w-5 h-5"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaTLI8vi3jlZZW_nMXsC4sFqpiMhrusv-7hei6scatbUQCxZ7Q1uSNbmgQ965rOncSrCgD3FkXJ8IUNY37J4SI1Ku1jF5tXK7tBPWZ3X28V3nUSgmlnXK3OPVEdUfxuQMWuTsRIHHBRms6C1J9A947aUf127daI9mO3fEFl2v5zq3VzMTmD9FGsVRTX57fFURPC2iVg6YNaHismNiZjDEi3jyE462GOmg26AeMsGo4h-eK0DpYe3N44Be_8xyuah-n8-H6D3aQ3Rg"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-primary py-4 text-center text-sm font-medium">
+                <p>© 2025 Ecoride — Simplifiez vos déplacements au quotidien</p>
+            </div>
+        </footer>
+    </body>
+</html>

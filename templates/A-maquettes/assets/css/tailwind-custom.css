@@ -1,0 +1,32 @@
+    .hero-bg {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1)),
+            url(https://lh3.googleusercontent.com/aida-public/AB6AXuDVt-aZB-1lWUB3KoTVGDF4jYe6uL8l-NnrhjbcPKuAmLzmID3sv7aAbXieGx1q8VX819Ga41iIzPvckbQbPx_z2Ho_CdHWwhaC6ujjmWJsHhwwD2Y50nuDNmFPk42haGYdsXXYW7l-qQxHfN3KdX_9vq65tCjlVzreST_cn7DTTvOJLPxM8lyhW8BjK7j6YePArH_lh-SfsZtvOUbxlcbM7KH08H03FFHhi9Ge-zPPtNAIXcy0bPX6MBqmclxkOt4p99BdKBKbaPQ);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, #94b07d 0%, #c9b17c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+            "opsz" 24;
+    }
+
+    .star-filled {
+        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0,
+            "opsz" 20;
+    }
+
+    .hero-gradient {
+        background: linear-gradient(rgba(0, 0, 0, 0.3),
+                rgba(0, 0, 0, 0.3)),
+            url("https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+        background-size: cover;
+        background-position: center;
+    }

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EcoRide - À Propos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#99b681",
+                        "secondary-gold": "#B5A07C",
+                        "user-blue": "#80B5D0",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#191c16",
+                        "footer-beige": "#F5F5DC",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .material-symbols-outlined-filled {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #99b681;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#141513] dark:text-white min-h-screen">
+    <!-- Sticky Header -->
+    <header
+        class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-solid border-[#f2f3f2] px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div class="size-8 text-primary">
+                <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                        fill-rule="evenodd"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold leading-tight tracking-tight">EcoRide</h2>
+        </div>
+        <div class="flex items-center gap-3">
+            <button
+                class="bg-primary text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">Connexion</button>
+            <button class="p-2 text-[#141513] dark:text-white">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+    <!-- Main Mobile Container (Centered on Desktop) -->
+    <main class="max-w-[480px] mx-auto bg-white dark:bg-background-dark shadow-xl min-h-screen pb-20">
+        <!-- Hero Section -->
+        <section
+            class="relative h-[520px] w-full flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-black/40 z-10"></div>
+                <img alt="Scenic mountain road with trees" class="w-full h-full object-cover"
+                    data-alt="Winding mountain road surrounded by green forest"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkRdYi9GRYofxgc4qGgJMJZHDp_6Wp3j_ChVLJZtJ4xqVM_komyX2lYPD_AjLTFZ8EdadMrhyvNK9ErwFcHLgATQHuq7d35DtNhZZfSvF05k6OCYEOeLCySBj7HfDeProwdm49yPBhvLz3eqjewpwUICP8TwTOPsG0_k4rzxsb749ON97e7AXxFkS4wrEeF9fZxnnHgNCF2KdI4dDKAEjy2anIyEDSbDGfV65iuPkxLLkZh4DvMwRJ2Lx7iHN1Ydj76PiE04oCQv0" />
+            </div>
+            <div class="relative z-20 flex flex-col gap-6 w-full">
+                <div class="flex flex-col gap-2">
+                    <h1 class="text-white text-4xl font-black leading-tight tracking-tight drop-shadow-lg">
+                        Ben oui je reprend tout !
+                    </h1>
+                    <p class="text-white/90 text-base font-medium drop-shadow-md">
+                        Votre plateforme de covoiturage écologique
+                    </p>
+                </div>
+                <div class="flex flex-col gap-3 w-full">
+                    <button
+                        class="w-full bg-primary text-white h-12 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg">
+                        <span class="material-symbols-outlined">search</span>
+                        Rechercher un trajet
+                    </button>
+                    <button
+                        class="w-full bg-secondary-gold text-white h-12 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg">
+                        <span class="material-symbols-outlined">add_circle</span>
+                        Proposer un trajet
+                    </button>
+                </div>
+                <!-- Integrated Search Bar (Simplified Mobile) -->
+                <div
+                    class="bg-white/95 dark:bg-background-dark/95 p-4 rounded-xl shadow-2xl mt-4 flex flex-col gap-3 text-left">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Départ</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">location_on</span>
+                            <input
+                                class="w-full pl-9 pr-4 py-2 bg-gray-50 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary"
+                                placeholder="Ville de départ" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Arrivée</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">flag</span>
+                            <input
+                                class="w-full pl-9 pr-4 py-2 bg-gray-50 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary"
+                                placeholder="Ville d'arrivée" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[10px] font-bold uppercase text-gray-500 ml-1">Date</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">calendar_month</span>
+                            <input
+                                class="w-full pl-9 pr-4 py-2 bg-gray-50 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary"
+                                type="date" placeholder="Sélectionner une date" title="Sélectionner une date" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Impact Section -->
+        <section class="p-6 bg-primary/10 dark:bg-primary/5">
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">eco</span>
+                Notre Impact
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white dark:bg-background-dark p-4 rounded-xl border border-primary/20 shadow-sm">
+                    <p class="text-2xl font-black text-primary">12.5k</p>
+                    <p class="text-xs font-medium text-gray-500">Tonnes de CO2 sauvées</p>
+                </div>
+                <div class="bg-white dark:bg-background-dark p-4 rounded-xl border border-primary/20 shadow-sm">
+                    <p class="text-2xl font-black text-primary">450k</p>
+                    <p class="text-xs font-medium text-gray-500">Trajets partagés</p>
+                </div>
+            </div>
+        </section>
+        <!-- Modern Grid: How it works -->
+        <section class="p-6 space-y-8">
+            <div>
+                <h3 class="text-xl font-bold mb-6">Comment ça marche ?</h3>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="size-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">search</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base">1. Trouvez votre trajet</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Indiquez vos villes de départ et
+                                d'arrivée ainsi que votre date.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="size-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">event_available</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base">2. Réservez en ligne</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Choisissez le conducteur qui vous
+                                convient et payez en toute sécurité.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="size-10 bg-primary/20 rounded-full flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">directions_car</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base">3. Voyagez ensemble</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Retrouvez votre conducteur au point de
+                                rendez-vous et profitez !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Inscription & Contact Grid -->
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-user-blue/10 dark:bg-user-blue/5 p-6 rounded-2xl border border-user-blue/20">
+                    <h4 class="font-bold text-lg mb-2">Comment s'inscrire ?</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Rejoignez notre communauté de 100,000+
+                        membres engagés pour la planète.</p>
+                    <button class="text-user-blue font-bold text-sm flex items-center gap-1">
+                        Créer mon compte <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div
+                    class="bg-secondary-gold/10 dark:bg-secondary-gold/5 p-6 rounded-2xl border border-secondary-gold/20">
+                    <h4 class="font-bold text-lg mb-2">Nous contacter</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Une question ? Notre équipe est là pour
+                        vous aider 7j/7.</p>
+                    <button class="text-secondary-gold font-bold text-sm flex items-center gap-1">
+                        Envoyer un message <span class="material-symbols-outlined text-sm">mail</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Footer Area -->
+        <footer class="bg-footer-beige dark:bg-[#2a2a22] p-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="space-y-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="size-6 text-primary">
+                            <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-lg font-bold">EcoRide</h2>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">123 Rue de la Nature<br />75001 Paris, France
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm font-medium">
+                    <a class="hover:text-primary transition-colors" href="#">Trajets populaires</a>
+                    <a class="hover:text-primary transition-colors" href="#">Aide / FAQ</a>
+                    <a class="hover:text-primary transition-colors" href="#">Presse</a>
+                    <a class="hover:text-primary transition-colors" href="#">Mentions légales</a>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm mb-4">Moments partagés</h4>
+                    <div class="grid grid-cols-3 gap-2">
+                        <img alt="Group traveling" class="aspect-square rounded-lg object-cover"
+                            data-alt="Friends laughing during a car trip"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBTfG6nMBYxBvNt6z1zqwwT2k8et78ZZWxmpLLQt5HhhJbLrLzfAuBndX0WWWjZPAaJpfqKXndNLRmdJf1c7yeQLE_7z0oBY1BflZJJpXBPRly_LX85K_n5286C_LpmbBkVYQJXq-ccqyLmUJOodC_sEcK3WpyBq4gQRYzarYBIoVsHWymhnkCC47FziTWrt9MHddjFS4y6oSyGRo_BuCp0VgVZbs8LXQTGKh4jBgGDmt9O-05a8xHLnHimtojhX3YWLkH9VoEOLo" />
+                        <img alt="Driving" class="aspect-square rounded-lg object-cover"
+                            data-alt="Hands on steering wheel driving through landscape"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuByFNXhNinRyxuZLxqNVL9qbNF1dxlRSblsF0nbr7Vwg8_-9vRAsgLotNhU3r7HJSzp7LQQZmzo0C2cMNfRMvDfi9OsFDwDgX1kf9YgzBeUlOJlGCipSGx76jRmczE97K9ahr7p8-jfuD5wAQ-Bf2GWQDK1UvVGcEQEKpmpu9J662D6a-J07udasQn6EhmHaBFlnLFgjQUHrWodvsMSbHfaotOO36qN4s88brnz-NAch7lHNfYZWFyP7RGSaUNWluEp9YXWcgGf8Cw" />
+                        <img alt="Nature" class="aspect-square rounded-lg object-cover"
+                            data-alt="Beautiful green landscape from car window"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyw3eYjE83oX_zaYViKsTUSp6YOMR_d9P2Ew_Muq89qAnRxirFHO5lnL8TvMRuaXHbxIAiqz45I4ny5ct-TztMzGUWzN1Pn3v5dQXkCLbdJh0VJcnFl7qBBBuWvJsgmRYLX3U_bTzbPneDuJmrVuEgCLCTtnUY8N-sIP_VfRp3bw_CnOLwOFSx6ysBm2acyv31J4qpvVwWWyRuB3W7SLci0Kx99m1_vkqLDIsTkE8g-vIfkQn0woCvZZsJS0IbqlijloCeCOMVnkw" />
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-gray-300 dark:border-gray-700">
+                    <h4 class="font-bold text-sm mb-2">Newsletter</h4>
+                    <div class="flex gap-2">
+                        <input
+                            class="flex-1 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-background-dark text-sm px-4"
+                            placeholder="Votre email" type="email" />
+                        <button class="bg-primary p-2 rounded-lg text-white">
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-[10px] text-gray-400 mt-12">© 2023 EcoRide. Tous droits réservés.</p>
+        </footer>
+    </main>
+    <!-- Fixed Bottom Navigation -->
+    <nav
+        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 h-16 flex items-center justify-around px-4 z-50">
+        <button class="flex flex-col items-center gap-1 text-primary">
+            <span class="material-symbols-outlined material-symbols-outlined-filled">home</span>
+            <span class="text-[10px] font-bold">Accueil</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-gray-400">
+            <span class="material-symbols-outlined">search</span>
+            <span class="text-[10px] font-bold">Rechercher</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-gray-400">
+            <span class="material-symbols-outlined">route</span>
+            <span class="text-[10px] font-bold">Mes trajets</span>
+        </button>
+        <button class="flex flex-col items-center gap-1 text-gray-400">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[10px] font-bold">Compte</span>
+        </button>
+    </nav>
+</body>
+
+</html>

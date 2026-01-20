@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EcoRide - Mes Véhicules</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "secondary-gold": "#B5A07C",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        .user-avatar {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuChbSeVeBXBQkFnjVOAAXpff0gt7qOckQXSLp8E8sdAXNBa-j8EKRMZZ93sRTY2uFWcLlzZTdHcgybq-g6tMAdBkJxbGme45SPI6Cw0bC wsnZusDqlw3pMZe0OAj6v1tn2USNbwBkkRm9BarlxNSNCS4fvoz1h38bQ5XLuAtKaWTP5VtfyoRfbIuPjpVMD5NI7onYg5KngE5F4FQu_VEqZ-vOyuk4Mpgri8Zi_HVHfBjJHybhAoy7lxR6BYpsOh4zQWqn3z78DXe08');
+        }
+
+        .vehicle-card-1 {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDr33REljg58VJt1RUJax1o8xsueD0W19OTbI0gIT-pavxSEyfvfFfoUYsMaUxTBZjRu5wG1M9h-USkG1aa1R3wD6qtBZuQxg-wSUWu6CQnUkVrsz2w4Ft3L0kFEM11iDMLeKvbuQyCNbJuma8UnL9g8oHDi7n1o63SQVUxAhROvzD-Wk_RP4jtjG-hFHi5lZeWYi-ypJsJ9zwH1avUoaGUzTe9jVg0TqhXkhUtI-y4NGyIP8rGrc2wmAHRza6uVjgYz5PHpCHuFNM');
+        }
+
+        .vehicle-card-2 {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDwsVqy1yZodiFWDCXBje0_sonOOkYDGdqiRpkLe0JmqvPpqA3Nz9h_iFtPHFDHUfgdUY9vHJrA23EX-oxeakMd6yVVtQAYkSq7v5sempX8-T92gvF3awlNRCZwELVd3coNtUKWpyv7g7euhNg8hLBSwfPRGH21OQcEUcxYDosCgwDtOqC5cBcEWDeRdbPnhiRXLCqVlojQ5EGiZVBAZRa7K3nggl7RS2LZ6jG-m4bhfGkDsb74adeMTpEdyVCMzPMwEQKInF3gds');
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased transition-colors duration-200">
+    <div class="flex min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside
+            class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed h-full z-20">
+            <div class="p-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined">eco</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-none">EcoRide</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Carpooling Platform</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex-1 px-4 space-y-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-sm font-medium">Tableau de bord</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined">directions_car</span>
+                    <span class="text-sm font-medium">Mes Trajets</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined fill-icon">directions_car_filled</span>
+                    <span class="text-sm font-semibold">Mes Véhicules</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined">chat_bubble</span>
+                    <span class="text-sm font-medium">Messages</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                    href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span class="text-sm font-medium">Paramètres</span>
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-3 p-2 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                    <div class="w-8 h-8 rounded-full bg-slate-300 bg-cover bg-center user-avatar"
+                        data-alt="User profile avatar">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-xs font-semibold truncate">Jean Dupont</p>
+                        <p class="text-[10px] text-slate-500 truncate">Conducteur Vérifié</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 ml-72">
+            <div class="max-w-6xl mx-auto p-8">
+                <!-- Breadcrumbs -->
+                <nav class="flex items-center gap-2 mb-6 text-sm">
+                    <a class="text-primary hover:underline font-medium" href="#">Accueil</a>
+                    <span class="text-slate-400">/</span>
+                    <span class="text-slate-600 dark:text-slate-400">Mes Véhicules</span>
+                </nav>
+                <!-- Page Heading -->
+                <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl font-black tracking-tight mb-2">Mes Véhicules</h2>
+                        <p class="text-slate-600 dark:text-slate-400">Gérez votre flotte de véhicules pour vos trajets
+                            de covoiturage. Vous pouvez ajouter jusqu'à 3 véhicules actifs.</p>
+                    </div>
+                </div>
+                <!-- Vehicle Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Vehicle Card 1 -->
+                    <div
+                        class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 group hover:shadow-md transition-shadow">
+                        <div class="h-40 bg-slate-100 dark:bg-slate-800 relative bg-cover bg-center vehicle-card-1"
+                            data-alt="White Tesla Model 3 front view">
+                            <div class="absolute top-3 right-3 flex gap-2">
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-sm">edit</span>
+                                </button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-sm">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-lg font-bold">Tesla Model 3</h3>
+                                    <p class="text-sm font-mono text-slate-500 dark:text-slate-400">AB-123-CD</p>
+                                </div>
+                                <span
+                                    class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider rounded">Actif</span>
+                            </div>
+                            <div class="flex items-center gap-4 py-3 border-t border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-white border border-slate-200"></div>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400">Blanc</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-slate-400">event_seat</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400">4 places</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vehicle Card 2 -->
+                    <div
+                        class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800 group hover:shadow-md transition-shadow">
+                        <div class="h-40 bg-slate-100 dark:bg-slate-800 relative bg-cover bg-center vehicle-card-2"
+                            data-alt="Black Renault Clio compact car">
+                            <div class="absolute top-3 right-3 flex gap-2">
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-sm">edit</span>
+                                </button>
+                                <button
+                                    class="w-8 h-8 rounded-full bg-white/90 dark:bg-slate-900/90 text-red-500 flex items-center justify-center hover:bg-red-500 hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined text-sm">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-lg font-bold">Renault Clio</h3>
+                                    <p class="text-sm font-mono text-slate-500 dark:text-slate-400">EF-456-GH</p>
+                                </div>
+                                <span
+                                    class="px-2 py-1 bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider rounded">Secondaire</span>
+                            </div>
+                            <div class="flex items-center gap-4 py-3 border-t border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-black"></div>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400">Noir</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-sm text-slate-400">event_seat</span>
+                                    <span class="text-xs text-slate-600 dark:text-slate-400">3 places</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Vehicle Card -->
+                    <div
+                        class="relative group cursor-pointer overflow-hidden rounded-xl border-2 border-dashed border-secondary-gold/50 bg-secondary-gold/5 hover:bg-secondary-gold/10 hover:border-secondary-gold transition-all flex flex-col items-center justify-center p-8 min-h-[310px]">
+                        <div
+                            class="w-16 h-16 rounded-full bg-secondary-gold flex items-center justify-center text-white mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl font-bold">add</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">Ajouter un véhicule</h3>
+                        <p class="text-center text-sm text-slate-500 dark:text-slate-400 mt-2">Enregistrez une nouvelle
+                            voiture pour vos futurs trajets</p>
+                        <!-- Overlay Button Style for the Card-as-a-button -->
+                        <button
+                            class="mt-6 px-6 py-2 bg-secondary-gold text-white text-sm font-bold rounded-lg tracking-wide uppercase">
+                            Commencer
+                        </button>
+                    </div>
+                </div>
+                <!-- Info Section -->
+                <div class="mt-12 p-6 bg-primary/5 dark:bg-primary/10 rounded-xl border border-primary/10">
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-primary">info</span>
+                        <div>
+                            <h4 class="font-bold text-primary mb-1">Pourquoi enregistrer mon véhicule ?</h4>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Enregistrer votre véhicule permet aux passagers de vous identifier plus facilement au
+                                point de rendez-vous. Assurez-vous que les informations (plaque, couleur, modèle) sont à
+                                jour pour garantir la sécurité et le confort de tous.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

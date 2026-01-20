@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Mon Profil</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            "user-blue": "#80B5D0",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+                display: inline-block;
+                line-height: 1;
+                text-transform: none;
+                letter-spacing: normal;
+                word-wrap: normal;
+                white-space: nowrap;
+                direction: ltr;
+            }
+            .profile-avatar-bg {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3opPIM1JPZAXfoWeZdD7MYbjg_QGuJhJvtG3IP9Pv5AgsKMv5kEn4L-HBvgV03qwmUto711VfiNbtZTvQiFDMJYmYjcSa9NS3oLO-LTb9swVam74hZTX0qxFk1_MV3lYPi0HZdaQRr_g3qiMxgjziE1XcF8fvS8i8aT1c-9NxX5QWkpOAp7x7kvi9mNCU5yDGIALgZuHzEaO50fV58F9uSoVvri2MKUROad1tMke_A0OmQSOe-pMHN5e0gjMTqgoW0x5gw_niW74");
+            }
+        </style>
+    </head>
+    <body
+        class="font-display bg-background-light dark:bg-background-dark text-[#141712] dark:text-stone-100 antialiased"
+    >
+        <div class="flex min-h-screen">
+            <!-- Sidebar Navigation -->
+            <aside
+                class="w-72 border-r border-[#edefeb] dark:border-stone-800 bg-white dark:bg-stone-900 sticky top-0 h-screen flex flex-col justify-between p-6"
+            >
+                <div class="flex flex-col gap-8">
+                    <!-- Logo -->
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="bg-primary size-10 rounded-xl flex items-center justify-center text-white"
+                        >
+                            <span class="material-symbols-outlined text-2xl"
+                                >eco</span
+                            >
+                        </div>
+                        <div class="flex flex-col">
+                            <h1
+                                class="text-[#141712] dark:text-white text-base font-bold leading-tight"
+                            >
+                                EcoRide
+                            </h1>
+                            <p
+                                class="text-[#717f66] dark:text-stone-400 text-xs font-normal"
+                            >
+                                Covoiturage éco-responsable
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Nav Items -->
+                    <nav class="flex flex-col gap-2">
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#717f66] dark:text-stone-400 hover:bg-[#f0f2ee] dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >dashboard</span
+                            >
+                            <span class="text-sm font-medium"
+                                >Tableau de bord</span
+                            >
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#717f66] dark:text-stone-400 hover:bg-[#f0f2ee] dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >directions_car</span
+                            >
+                            <span class="text-sm font-medium">Mes trajets</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#717f66] dark:text-stone-400 hover:bg-[#f0f2ee] dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined">forum</span>
+                            <span class="text-sm font-medium">Messagerie</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg"
+                            href="#"
+                        >
+                            <span
+                                class="material-symbols-outlined [font-variation-settings:'FILL'_1]"
+                                >person</span
+                            >
+                            <span class="text-sm font-medium">Mon Profil</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#717f66] dark:text-stone-400 hover:bg-[#f0f2ee] dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >settings</span
+                            >
+                            <span class="text-sm font-medium">Paramètres</span>
+                        </a>
+                    </nav>
+                </div>
+                <!-- Bottom Nav -->
+                <div
+                    class="border-t border-[#edefeb] dark:border-stone-800 pt-6"
+                >
+                    <button
+                        class="flex items-center gap-3 px-3 py-2 w-full text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors"
+                    >
+                        <span class="material-symbols-outlined">logout</span>
+                        <span class="text-sm font-medium">Déconnexion</span>
+                    </button>
+                </div>
+            </aside>
+            <!-- Main Content -->
+            <main class="flex-1 flex flex-col">
+                <!-- Header -->
+                <header
+                    class="h-16 flex items-center justify-between px-8 bg-white dark:bg-stone-900 border-b border-[#edefeb] dark:border-stone-800"
+                >
+                    <div class="flex items-center gap-4">
+                        <h2
+                            class="text-[#141712] dark:text-white text-lg font-bold"
+                        >
+                            Mon Profil
+                        </h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex gap-2">
+                            <button
+                                class="p-2 rounded-lg bg-[#edefeb] dark:bg-stone-800 text-[#141712] dark:text-white"
+                            >
+                                <span class="material-symbols-outlined text-xl"
+                                    >notifications</span
+                                >
+                            </button>
+                            <button
+                                class="p-2 rounded-lg bg-[#edefeb] dark:bg-stone-800 text-[#141712] dark:text-white"
+                            >
+                                <span class="material-symbols-outlined text-xl"
+                                    >chat</span
+                                >
+                            </button>
+                        </div>
+                        <div
+                            class="size-10 rounded-full border border-primary p-0.5"
+                        >
+                            <div
+                                class="w-full h-full rounded-full bg-cover bg-center profile-avatar-bg"
+                                data-alt="Avatar de l'utilisateur en cercle"
+                            ></div>
+                        </div>
+                    </div>
+                </header>
+                <div class="p-8 max-w-6xl mx-auto w-full">
+                    <!-- Breadcrumbs -->
+                    <nav
+                        class="flex items-center gap-2 mb-8 text-sm text-[#717f66] dark:text-stone-400"
+                    >
+                        <a class="hover:text-primary transition-colors" href="#"
+                            >Tableau de bord</a
+                        >
+                        <span class="material-symbols-outlined text-xs"
+                            >chevron_right</span
+                        >
+                        <span class="text-[#141712] dark:text-white font-medium"
+                            >Mon Profil</span
+                        >
+                    </nav>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Left Sidebar Profile Card -->
+                        <div class="lg:col-span-4 flex flex-col gap-6">
+                            <div
+                                class="bg-user-blue p-8 rounded-xl flex flex-col items-center text-center shadow-sm"
+                            >
+                                <div class="relative group">
+                                    <div
+                                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-32 border-4 border-white shadow-lg mb-4 profile-large-avatar"
+                                        data-alt="Grande photo de profil ronde de Jean Dupont"
+                                    ></div>
+                                    <button
+                                        class="absolute bottom-6 right-0 bg-white p-2 rounded-full shadow-md text-[#141712] hover:scale-105 transition-transform"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-sm"
+                                            >photo_camera</span
+                                        >
+                                    </button>
+                                </div>
+                                <h3 class="text-white text-2xl font-bold mb-1">
+                                    Jean Dupont
+                                </h3>
+                                <p class="text-white/80 text-sm mb-4">
+                                    Membre depuis Janvier 2023
+                                </p>
+                                <div
+                                    class="flex items-center gap-1.5 px-3 py-1 bg-white/20 rounded-full text-white text-xs font-semibold backdrop-blur-sm"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        >verified</span
+                                    >
+                                    Profil Vérifié
+                                </div>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-stone-900 border border-[#edefeb] dark:border-stone-800 p-6 rounded-xl"
+                            >
+                                <h4
+                                    class="text-[#141712] dark:text-white text-sm font-bold mb-4"
+                                >
+                                    Statistiques du compte
+                                </h4>
+                                <div class="flex flex-col gap-4">
+                                    <div
+                                        class="flex items-center justify-between"
+                                    >
+                                        <span
+                                            class="text-[#717f66] dark:text-stone-400 text-sm"
+                                            >Trajets effectués</span
+                                        >
+                                        <span
+                                            class="text-[#141712] dark:text-white text-sm font-bold"
+                                            >24</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between"
+                                    >
+                                        <span
+                                            class="text-[#717f66] dark:text-stone-400 text-sm"
+                                            >Note moyenne</span
+                                        >
+                                        <div class="flex items-center gap-1">
+                                            <span
+                                                class="text-[#141712] dark:text-white text-sm font-bold"
+                                                >4.8</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined text-yellow-400 text-sm [font-variation-settings:'FILL'_1]"
+                                                >star</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Form Content -->
+                        <div class="lg:col-span-8">
+                            <div
+                                class="bg-white dark:bg-stone-900 border border-[#edefeb] dark:border-stone-800 rounded-xl overflow-hidden"
+                            >
+                                <div
+                                    class="px-8 py-6 border-b border-[#edefeb] dark:border-stone-800"
+                                >
+                                    <h2
+                                        class="text-[#141712] dark:text-white text-xl font-bold"
+                                    >
+                                        Informations personnelles
+                                    </h2>
+                                    <p
+                                        class="text-[#717f66] dark:text-stone-400 text-sm"
+                                    >
+                                        Gérez vos coordonnées et votre
+                                        présentation
+                                    </p>
+                                </div>
+                                <form class="p-8 flex flex-col gap-6">
+                                    <div
+                                        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                    >
+                                        <div class="flex flex-col gap-2">
+                                            <label
+                                                class="text-[#141712] dark:text-stone-200 text-sm font-bold"
+                                                >Prénom</label
+                                            >
+                                            <input
+                                                class="w-full px-4 py-2 rounded-lg border border-[#edefeb] dark:border-stone-700 bg-background-light dark:bg-stone-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-[#141712] dark:text-white transition-all"
+                                                type="text"
+                                                value="Jean"
+                                                placeholder="Entrez votre prénom"
+                                            />
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <label
+                                                class="text-[#141712] dark:text-stone-200 text-sm font-bold"
+                                                >Nom</label
+                                            >
+                                            <input
+                                                class="w-full px-4 py-2 rounded-lg border border-[#edefeb] dark:border-stone-700 bg-background-light dark:bg-stone-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-[#141712] dark:text-white transition-all"
+                                                type="text"
+                                                value="Dupont"
+                                                placeholder="Entrez votre nom"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                    >
+                                        <div class="flex flex-col gap-2">
+                                            <label
+                                                class="text-[#141712] dark:text-stone-200 text-sm font-bold"
+                                                >Email</label
+                                            >
+                                            <div class="relative">
+                                                <input
+                                                    class="w-full pl-4 pr-10 py-2 rounded-lg border border-[#edefeb] dark:border-stone-700 bg-background-light dark:bg-stone-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-[#141712] dark:text-white transition-all"
+                                                    type="email"
+                                                    value="jean.dupont@email.com"
+                                                    placeholder="Entrez votre email"
+                                                />
+                                                <span
+                                                    class="material-symbols-outlined absolute right-3 top-2.5 text-green-500 text-lg"
+                                                    >check_circle</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <label
+                                                class="text-[#141712] dark:text-stone-200 text-sm font-bold"
+                                                >Numéro de téléphone</label
+                                            >
+                                            <input
+                                                class="w-full px-4 py-2 rounded-lg border border-[#edefeb] dark:border-stone-700 bg-background-light dark:bg-stone-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-[#141712] dark:text-white transition-all"
+                                                type="tel"
+                                                value="06 12 34 56 78"
+                                                placeholder="Entrez votre numéro de téléphone"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <label
+                                            class="text-[#141712] dark:text-stone-200 text-sm font-bold"
+                                            >Bio</label
+                                        >
+                                        <textarea
+                                            class="w-full px-4 py-2 rounded-lg border border-[#edefeb] dark:border-stone-700 bg-background-light dark:bg-stone-800 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-[#141712] dark:text-white transition-all resize-none"
+                                            placeholder="Dites-en plus sur vous..."
+                                            rows="4"
+                                        >
+Bonjour ! Je suis un passionné de nature et je voyage souvent entre Lyon et Paris pour le travail. Au plaisir de partager la route avec vous !</textarea
+                                        >
+                                        <p
+                                            class="text-[#717f66] dark:text-stone-400 text-xs"
+                                        >
+                                            Une courte description aide les
+                                            autres membres à mieux vous
+                                            connaître.
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="flex justify-end pt-4 gap-4 border-t border-[#edefeb] dark:border-stone-800"
+                                    >
+                                        <button
+                                            class="px-6 py-2 rounded-lg text-[#717f66] dark:text-stone-400 hover:bg-[#edefeb] dark:hover:bg-stone-800 font-bold transition-all"
+                                            type="button"
+                                        >
+                                            Annuler
+                                        </button>
+                                        <button
+                                            class="px-8 py-2 rounded-lg bg-primary text-white font-bold hover:opacity-90 shadow-md transition-all flex items-center gap-2"
+                                            type="submit"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-lg"
+                                                >save</span
+                                            >
+                                            Enregistrer
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Preferences Section -->
+                            <div
+                                class="mt-8 bg-white dark:bg-stone-900 border border-[#edefeb] dark:border-stone-800 rounded-xl overflow-hidden"
+                            >
+                                <div
+                                    class="px-8 py-6 border-b border-[#edefeb] dark:border-stone-800"
+                                >
+                                    <h2
+                                        class="text-[#141712] dark:text-white text-xl font-bold"
+                                    >
+                                        Préférences de voyage
+                                    </h2>
+                                </div>
+                                <div
+                                    class="p-8 grid grid-cols-2 md:grid-cols-4 gap-4"
+                                >
+                                    <div
+                                        class="flex flex-col items-center p-4 rounded-xl border border-primary bg-primary/5 gap-2"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-primary"
+                                            >smoke_free</span
+                                        >
+                                        <span
+                                            class="text-xs font-medium text-[#141712] dark:text-white text-center"
+                                            >Non-fumeur</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center p-4 rounded-xl border border-[#edefeb] dark:border-stone-800 gap-2 opacity-50"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-[#717f66]"
+                                            >pets</span
+                                        >
+                                        <span
+                                            class="text-xs font-medium text-[#717f66] text-center"
+                                            >Pas d'animaux</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center p-4 rounded-xl border border-primary bg-primary/5 gap-2"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-primary"
+                                            >music_note</span
+                                        >
+                                        <span
+                                            class="text-xs font-medium text-[#141712] dark:text-white text-center"
+                                            >Musique OK</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center p-4 rounded-xl border border-primary bg-primary/5 gap-2"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-primary"
+                                            >chat_bubble</span
+                                        >
+                                        <span
+                                            class="text-xs font-medium text-[#141712] dark:text-white text-center"
+                                            >Discute volontiers</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

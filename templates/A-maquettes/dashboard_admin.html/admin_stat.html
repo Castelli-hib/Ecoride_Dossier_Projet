@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide Admin - Statistiques Détaillées</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            secondary: "#B5A07C",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .chart-gradient-green {
+                background: linear-gradient(
+                    180deg,
+                    rgba(153, 182, 129, 0.2) 0%,
+                    rgba(153, 182, 129, 0) 100%
+                );
+            }
+            .profile-avatar {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7whU7-CrSgV0686VBUIjJodBs11iNf5wo3f7JGy6oFtLfneUtFnHVGqubK4FCqtPmUrDDJiupRAZADEMqmhIchdGM7bFWlZoMKIeuBs4SnZgtB2iPPrubswAkPQrEek8TjpRFORQZNLNfXgjDapapq0-Z4sw0vwMNqA8nGulET8oTD3WJ9Yaf05ma67K9Iw7_FLNog27bU3kBOjK8v9oQxNzUvor2q7YuZ41afWzcQS8K0VlulTnUsbU9TyWsc0XppLynjTtyrvQ");
+            }
+            .gradient-stop-primary {
+                stop-color: #99b681;
+                stop-opacity: 1;
+            }
+            .gradient-stop-transparent {
+                stop-color: #99b681;
+                stop-opacity: 0;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark font-display text-[#141712] dark:text-stone-100"
+    >
+        <div class="flex min-h-screen">
+            <!-- SideNavBar -->
+            <aside
+                class="w-64 border-r border-[#edefeb] dark:border-stone-800 bg-white dark:bg-stone-900 flex flex-col fixed h-full"
+            >
+                <div class="p-6 flex flex-col gap-8">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 profile-avatar"
+                            data-alt="Admin profile picture"
+                        ></div>
+                        <div class="flex flex-col">
+                            <h1
+                                class="text-[#141712] dark:text-stone-100 text-sm font-bold leading-normal"
+                            >
+                                EcoRide Admin
+                            </h1>
+                            <p
+                                class="text-[#717f66] dark:text-stone-400 text-xs font-normal"
+                            >
+                                Super Admin
+                            </p>
+                        </div>
+                    </div>
+                    <nav class="flex flex-col gap-2">
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >dashboard</span
+                            >
+                            <p class="text-sm font-medium">Tableau de bord</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined">group</span>
+                            <p class="text-sm font-medium">Utilisateurs</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >directions_car</span
+                            >
+                            <p class="text-sm font-medium">Trajets</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >analytics</span
+                            >
+                            <p class="text-sm font-medium">Statistiques</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >settings</span
+                            >
+                            <p class="text-sm font-medium">Paramètres</p>
+                        </a>
+                    </nav>
+                </div>
+                <div
+                    class="mt-auto p-6 border-t border-[#edefeb] dark:border-stone-800"
+                >
+                    <button
+                        class="flex items-center gap-3 px-3 py-2 text-red-500 w-full rounded-lg hover:bg-red-50 dark:hover:bg-red-900/10"
+                    >
+                        <span class="material-symbols-outlined">logout</span>
+                        <p class="text-sm font-medium">Déconnexion</p>
+                    </button>
+                </div>
+            </aside>
+            <!-- Main Content -->
+            <main class="flex-1 ml-64 flex flex-col">
+                <!-- TopNavBar -->
+                <header
+                    class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#edefeb] dark:border-stone-800 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md px-10 py-3"
+                >
+                    <div
+                        class="flex items-center gap-4 text-[#141712] dark:text-stone-100"
+                    >
+                        <div class="size-6 text-primary">
+                            <span class="material-symbols-outlined text-3xl"
+                                >eco</span
+                            >
+                        </div>
+                        <h2 class="text-lg font-bold tracking-tight">
+                            EcoRide Statistics
+                        </h2>
+                    </div>
+                    <div class="flex flex-1 justify-end gap-4 items-center">
+                        <label class="flex flex-col min-w-40 h-10 max-w-64">
+                            <div
+                                class="flex w-full flex-1 items-stretch rounded-lg h-full border border-[#edefeb] dark:border-stone-700"
+                            >
+                                <div
+                                    class="text-[#717f66] flex bg-stone-50 dark:bg-stone-800 items-center justify-center pl-3 rounded-l-lg"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >search</span
+                                    >
+                                </div>
+                                <input
+                                    class="form-input flex w-full min-w-0 flex-1 rounded-r-lg text-[#141712] dark:text-stone-100 focus:ring-0 border-none bg-stone-50 dark:bg-stone-800 px-3 text-sm font-normal"
+                                    placeholder="Rechercher..."
+                                />
+                            </div>
+                        </label>
+                        <div class="flex gap-2">
+                            <button
+                                class="flex items-center justify-center rounded-lg h-10 w-10 bg-stone-100 dark:bg-stone-800 text-[#141712] dark:text-stone-100"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >notifications</span
+                                >
+                            </button>
+                            <button
+                                class="flex items-center justify-center rounded-lg h-10 w-10 bg-stone-100 dark:bg-stone-800 text-[#141712] dark:text-stone-100"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >account_circle</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </header>
+                <div
+                    class="p-8 max-w-[1200px] mx-auto w-full flex flex-col gap-6"
+                >
+                    <!-- Breadcrumbs -->
+                    <div class="flex items-center gap-2 text-sm">
+                        <a
+                            class="text-[#717f66] dark:text-stone-400 font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Admin</a
+                        >
+                        <span
+                            class="text-[#717f66] dark:text-stone-400 font-medium"
+                            >/</span
+                        >
+                        <span class="text-primary font-bold"
+                            >Statistiques Détaillées</span
+                        >
+                    </div>
+                    <!-- PageHeading -->
+                    <div class="flex flex-wrap justify-between items-end gap-3">
+                        <div class="flex flex-col gap-1">
+                            <h1
+                                class="text-[#141712] dark:text-stone-100 text-3xl font-black tracking-tight"
+                            >
+                                Analyse des Performances
+                            </h1>
+                            <p
+                                class="text-[#717f66] dark:text-stone-400 text-base"
+                            >
+                                Suivez l'activité et l'impact écologique de la
+                                plateforme en temps réel.
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <button
+                                class="flex items-center gap-2 rounded-lg h-11 px-4 bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-sm font-bold"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >calendar_today</span
+                                >
+                                <span>30 derniers jours</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-2 rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold hover:bg-opacity-90 transition-all shadow-sm"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >download</span
+                                >
+                                <span>Exporter le rapport</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Stats KPI Cards -->
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+                    >
+                        <div
+                            class="bg-white dark:bg-stone-900 flex flex-col gap-2 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                        >
+                            <div class="flex justify-between items-start">
+                                <p
+                                    class="text-[#717f66] dark:text-stone-400 text-sm font-medium"
+                                >
+                                    Total Trajets
+                                </p>
+                                <span
+                                    class="material-symbols-outlined text-primary"
+                                    >route</span
+                                >
+                            </div>
+                            <p
+                                class="text-[#141712] dark:text-stone-100 text-2xl font-bold leading-tight"
+                            >
+                                12,450
+                            </p>
+                            <div class="flex items-center gap-1">
+                                <span class="text-green-600 text-xs font-bold"
+                                    >+12.5%</span
+                                >
+                                <span class="text-stone-400 text-[10px]"
+                                    >vs mois dernier</span
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-stone-900 flex flex-col gap-2 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                        >
+                            <div class="flex justify-between items-start">
+                                <p
+                                    class="text-[#717f66] dark:text-stone-400 text-sm font-medium"
+                                >
+                                    Crédits Générés
+                                </p>
+                                <span
+                                    class="material-symbols-outlined text-secondary"
+                                    >payments</span
+                                >
+                            </div>
+                            <p
+                                class="text-[#141712] dark:text-stone-100 text-2xl font-bold leading-tight"
+                            >
+                                45,200 €
+                            </p>
+                            <div class="flex items-center gap-1">
+                                <span class="text-green-600 text-xs font-bold"
+                                    >+5.2%</span
+                                >
+                                <span class="text-stone-400 text-[10px]"
+                                    >vs mois dernier</span
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-stone-900 flex flex-col gap-2 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                        >
+                            <div class="flex justify-between items-start">
+                                <p
+                                    class="text-[#717f66] dark:text-stone-400 text-sm font-medium"
+                                >
+                                    Nouveaux Membres
+                                </p>
+                                <span
+                                    class="material-symbols-outlined text-primary"
+                                    >person_add</span
+                                >
+                            </div>
+                            <p
+                                class="text-[#141712] dark:text-stone-100 text-2xl font-bold leading-tight"
+                            >
+                                842
+                            </p>
+                            <div class="flex items-center gap-1">
+                                <span class="text-green-600 text-xs font-bold"
+                                    >+18.0%</span
+                                >
+                                <span class="text-stone-400 text-[10px]"
+                                    >vs mois dernier</span
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-stone-900 flex flex-col gap-2 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                        >
+                            <div class="flex justify-between items-start">
+                                <p
+                                    class="text-[#717f66] dark:text-stone-400 text-sm font-medium"
+                                >
+                                    CO2 Économisé
+                                </p>
+                                <span
+                                    class="material-symbols-outlined text-primary"
+                                    >eco</span
+                                >
+                            </div>
+                            <p
+                                class="text-[#141712] dark:text-stone-100 text-2xl font-bold leading-tight"
+                            >
+                                12.5 T
+                            </p>
+                            <div class="flex items-center gap-1">
+                                <span class="text-red-500 text-xs font-bold"
+                                    >-2.1%</span
+                                >
+                                <span class="text-stone-400 text-[10px]"
+                                    >vs mois dernier</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Main Line Chart -->
+                    <div
+                        class="bg-white dark:bg-stone-900 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                    >
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3
+                                    class="text-lg font-bold text-[#141712] dark:text-stone-100"
+                                >
+                                    Trajets par jour
+                                </h3>
+                                <p
+                                    class="text-sm text-[#717f66] dark:text-stone-400"
+                                >
+                                    Évolution de l'activité sur les 30 derniers
+                                    jours
+                                </p>
+                            </div>
+                            <div class="flex gap-2">
+                                <span
+                                    class="flex items-center gap-1 text-xs font-medium text-stone-500"
+                                >
+                                    <span
+                                        class="size-2 rounded-full bg-primary"
+                                    ></span>
+                                    Ce mois
+                                </span>
+                                <span
+                                    class="flex items-center gap-1 text-xs font-medium text-stone-500"
+                                >
+                                    <span
+                                        class="size-2 rounded-full bg-stone-300"
+                                    ></span>
+                                    Mois précédent
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Visual Placeholder for Line Chart -->
+                        <div class="h-64 w-full relative">
+                            <svg class="w-full h-full" viewbox="0 0 1000 200">
+                                <!-- Background Grid -->
+                                <line
+                                    stroke="#f0f0f0"
+                                    stroke-width="1"
+                                    x1="0"
+                                    x2="1000"
+                                    y1="50"
+                                    y2="50"
+                                ></line>
+                                <line
+                                    stroke="#f0f0f0"
+                                    stroke-width="1"
+                                    x1="0"
+                                    x2="1000"
+                                    y1="100"
+                                    y2="100"
+                                ></line>
+                                <line
+                                    stroke="#f0f0f0"
+                                    stroke-width="1"
+                                    x1="0"
+                                    x2="1000"
+                                    y1="150"
+                                    y2="150"
+                                ></line>
+                                <!-- Line 1 (Primary) -->
+                                <path
+                                    d="M0,180 Q50,150 100,160 T200,120 T300,140 T400,80 T500,100 T600,60 T700,90 T800,40 T900,70 T1000,30"
+                                    fill="none"
+                                    stroke="#99b681"
+                                    stroke-width="3"
+                                ></path>
+                                <!-- Gradient Area -->
+                                <path
+                                    d="M0,180 Q50,150 100,160 T200,120 T300,140 T400,80 T500,100 T600,60 T700,90 T800,40 T900,70 T1000,30 V200 H0 Z"
+                                    fill="url(#grad1)"
+                                    fill-opacity="0.1"
+                                ></path>
+                                <defs>
+                                    <lineargradient
+                                        id="grad1"
+                                        x1="0%"
+                                        x2="0%"
+                                        y1="0%"
+                                        y2="100%"
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            class="gradient-stop-primary"
+                                        ></stop>
+                                        <stop
+                                            offset="100%"
+                                            class="gradient-stop-transparent"
+                                        ></stop>
+                                    </lineargradient>
+                                </defs>
+                            </svg>
+                            <div
+                                class="flex justify-between mt-4 text-[10px] text-stone-400 font-medium"
+                            >
+                                <span>01 Oct</span>
+                                <span>07 Oct</span>
+                                <span>14 Oct</span>
+                                <span>21 Oct</span>
+                                <span>28 Oct</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bottom Section: Bar and Pie charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Bar Chart -->
+                        <div
+                            class="bg-white dark:bg-stone-900 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                        >
+                            <div class="mb-6">
+                                <h3
+                                    class="text-lg font-bold text-[#141712] dark:text-stone-100"
+                                >
+                                    Trajets par type de véhicule
+                                </h3>
+                                <p
+                                    class="text-sm text-[#717f66] dark:text-stone-400"
+                                >
+                                    Électrique vs Thermique
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-6 pt-4">
+                                <div class="flex flex-col gap-2">
+                                    <div
+                                        class="flex justify-between text-xs font-bold"
+                                    >
+                                        <span
+                                            class="text-stone-600 dark:text-stone-300"
+                                            >Électrique</span
+                                        >
+                                        <span class="text-primary">64%</span>
+                                    </div>
+                                    <div
+                                        class="w-full h-3 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden"
+                                    >
+                                        <div
+                                            class="h-full bg-primary rounded-full w-[64%]"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <div
+                                        class="flex justify-between text-xs font-bold"
+                                    >
+                                        <span
+                                            class="text-stone-600 dark:text-stone-300"
+                                            >Thermique (Hybride inclus)</span
+                                        >
+                                        <span class="text-secondary">36%</span>
+                                    </div>
+                                    <div
+                                        class="w-full h-3 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden"
+                                    >
+                                        <div
+                                            class="h-full bg-secondary rounded-full w-[36%]"
+                                        ></div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/10 flex items-start gap-3"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary"
+                                        >tips_and_updates</span
+                                    >
+                                    <p
+                                        class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed"
+                                    >
+                                        Les véhicules électriques représentent
+                                        désormais la majorité des trajets, avec
+                                        une croissance de +8% ce mois-ci.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pie Chart / Regions -->
+                        <div
+                            class="bg-white dark:bg-stone-900 rounded-xl p-6 border border-[#edefeb] dark:border-stone-800 shadow-sm"
+                        >
+                            <div class="mb-6">
+                                <h3
+                                    class="text-lg font-bold text-[#141712] dark:text-stone-100"
+                                >
+                                    Répartition par région
+                                </h3>
+                                <p
+                                    class="text-sm text-[#717f66] dark:text-stone-400"
+                                >
+                                    Top destinations actives
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-8">
+                                <div class="relative size-40 shrink-0">
+                                    <svg
+                                        class="size-full transform -rotate-90"
+                                        viewbox="0 0 36 36"
+                                    >
+                                        <circle
+                                            class="stroke-stone-100 dark:stroke-stone-800"
+                                            cx="18"
+                                            cy="18"
+                                            fill="none"
+                                            r="16"
+                                            stroke-width="4"
+                                        ></circle>
+                                        <circle
+                                            class="stroke-primary"
+                                            cx="18"
+                                            cy="18"
+                                            fill="none"
+                                            r="16"
+                                            stroke-dasharray="45 100"
+                                            stroke-linecap="round"
+                                            stroke-width="4"
+                                        ></circle>
+                                        <circle
+                                            class="stroke-secondary"
+                                            cx="18"
+                                            cy="18"
+                                            fill="none"
+                                            r="16"
+                                            stroke-dasharray="25 100"
+                                            stroke-dashoffset="-45"
+                                            stroke-linecap="round"
+                                            stroke-width="4"
+                                        ></circle>
+                                        <circle
+                                            class="stroke-stone-400"
+                                            cx="18"
+                                            cy="18"
+                                            fill="none"
+                                            r="16"
+                                            stroke-dasharray="30 100"
+                                            stroke-dashoffset="-70"
+                                            stroke-linecap="round"
+                                            stroke-width="4"
+                                        ></circle>
+                                    </svg>
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center flex-col"
+                                    >
+                                        <span class="text-xl font-black"
+                                            >12.4k</span
+                                        >
+                                        <span
+                                            class="text-[8px] uppercase tracking-widest text-stone-400"
+                                            >Total</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-3 flex-1">
+                                    <div
+                                        class="flex items-center justify-between text-xs"
+                                    >
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="size-2 rounded-full bg-primary"
+                                            ></span>
+                                            <span class="font-medium"
+                                                >Île-de-France</span
+                                            >
+                                        </div>
+                                        <span class="font-bold">45%</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between text-xs"
+                                    >
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="size-2 rounded-full bg-secondary"
+                                            ></span>
+                                            <span class="font-medium"
+                                                >Auvergne-Rhône-Alpes</span
+                                            >
+                                        </div>
+                                        <span class="font-bold">25%</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between text-xs"
+                                    >
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="size-2 rounded-full bg-stone-400"
+                                            ></span>
+                                            <span class="font-medium"
+                                                >Nouvelle-Aquitaine</span
+                                            >
+                                        </div>
+                                        <span class="font-bold">30%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recent Activity Table -->
+                    <div
+                        class="bg-white dark:bg-stone-900 rounded-xl border border-[#edefeb] dark:border-stone-800 shadow-sm overflow-hidden"
+                    >
+                        <div
+                            class="p-6 border-b border-[#edefeb] dark:border-stone-800 flex justify-between items-center"
+                        >
+                            <h3
+                                class="text-lg font-bold text-[#141712] dark:text-stone-100"
+                            >
+                                Derniers Trajets
+                            </h3>
+                            <a
+                                class="text-primary text-sm font-bold hover:underline"
+                                href="#"
+                                >Voir tout</a
+                            >
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-stone-50 dark:bg-stone-800/50">
+                                    <tr>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-stone-400 uppercase"
+                                        >
+                                            Utilisateur
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-stone-400 uppercase"
+                                        >
+                                            Trajet
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-stone-400 uppercase"
+                                        >
+                                            Date
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-stone-400 uppercase"
+                                        >
+                                            Type
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-stone-400 uppercase text-right"
+                                        >
+                                            Montant
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    class="divide-y divide-stone-100 dark:divide-stone-800"
+                                >
+                                    <tr
+                                        class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-3"
+                                            >
+                                                <div
+                                                    class="size-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-400"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-lg"
+                                                        >person</span
+                                                    >
+                                                </div>
+                                                <span
+                                                    class="text-sm font-semibold"
+                                                    >Jean Dupont</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm">
+                                            Paris → Lyon
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-sm text-stone-500"
+                                        >
+                                            Aujourd'hui, 14:30
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 text-[10px] font-bold uppercase"
+                                                >Électrique</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-sm font-bold text-right"
+                                        >
+                                            32.50 €
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-3"
+                                            >
+                                                <div
+                                                    class="size-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-400"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-lg"
+                                                        >person</span
+                                                    >
+                                                </div>
+                                                <span
+                                                    class="text-sm font-semibold"
+                                                    >Marie Lefebvre</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm">
+                                            Bordeaux → Nantes
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-sm text-stone-500"
+                                        >
+                                            Aujourd'hui, 12:15
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2 py-1 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 text-[10px] font-bold uppercase"
+                                                >Thermique</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-sm font-bold text-right"
+                                        >
+                                            18.00 €
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-3"
+                                            >
+                                                <div
+                                                    class="size-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-400"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-lg"
+                                                        >person</span
+                                                    >
+                                                </div>
+                                                <span
+                                                    class="text-sm font-semibold"
+                                                    >Thomas Bernard</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm">
+                                            Lille → Paris
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-sm text-stone-500"
+                                        >
+                                            Hier, 19:45
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 text-[10px] font-bold uppercase"
+                                                >Électrique</span
+                                            >
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-sm font-bold text-right"
+                                        >
+                                            24.90 €
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer
+                    class="mt-auto border-t border-[#edefeb] dark:border-stone-800 py-6 px-10 text-center"
+                >
+                    <p class="text-xs text-stone-400">
+                        © 2024 EcoRide - Panneau d'administration. Tous droits
+                        réservés.
+                    </p>
+                </footer>
+            </main>
+        </div>
+    </body>
+</html>

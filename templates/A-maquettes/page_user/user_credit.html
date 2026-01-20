@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Mes Crédits</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#9db87f",
+                            "tertiary-yellow": "#E2C57F",
+                            "neutral-purple": "#9B8B9C",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body
+        class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 min-h-screen"
+    >
+        <!-- Navigation Header -->
+        <nav
+            class="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/50 sticky top-0 z-50"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center gap-2">
+                        <div
+                            class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center"
+                        >
+                            <span class="material-icons text-white"
+                                >directions_car</span
+                            >
+                        </div>
+                        <span
+                            class="text-xl font-bold tracking-tight text-primary"
+                            >EcoRide</span
+                        >
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a
+                            class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                            href="#"
+                            >Tableau de bord</a
+                        >
+                        <a
+                            class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                            href="#"
+                            >Mes Trajets</a
+                        >
+                        <a class="text-primary font-medium" href="#"
+                            >Mes Crédits</a
+                        >
+                        <a
+                            class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                            href="#"
+                            >Profil</a
+                        >
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                        >
+                            <span class="material-icons text-slate-500"
+                                >notifications</span
+                            >
+                        </button>
+                        <div
+                            class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border border-slate-300 dark:border-slate-600"
+                        >
+                            <img
+                                alt="Avatar Utilisateur"
+                                class="w-full h-full object-cover"
+                                data-alt="Photo de profil de l'utilisateur"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTa3iolIyXPh_CJpKbz4-aLMri5QqpKjBSXYht-1tmfmCQF2205TeLqMUd3eFzWr4zF05BMGgkQchg-4enA_6fbqfYFLiUqXXuWk2vq0VKRmhAZNAy0aYFqpzCTxqHeR5Sx93T-XeRLjM0L-vZnCpL2mOr-rc1Ri1WuLrqA-KkMRVWtwwBbfJfoBClLvlWXHTgKc1UE-87_1uN44xSuS8TO6jqTLS2y_SWIsOwzg2kiml8mt_z5s8zHLbxKIUWvD6n4fMJQbunco4"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Breadcrumbs -->
+            <nav
+                aria-label="Breadcrumb"
+                class="flex mb-6 text-sm text-slate-500 dark:text-slate-400"
+            >
+                <ol class="flex items-center space-x-2">
+                    <li><a class="hover:text-primary" href="#">Accueil</a></li>
+                    <li class="flex items-center space-x-2">
+                        <span class="material-icons text-sm"
+                            >chevron_right</span
+                        >
+                        <a class="hover:text-primary" href="#">Dashboard</a>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="material-icons text-sm"
+                            >chevron_right</span
+                        >
+                        <span class="text-slate-900 dark:text-white font-medium"
+                            >Mes Crédits</span
+                        >
+                    </li>
+                </ol>
+            </nav>
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Balance Card Section -->
+                <div
+                    class="relative overflow-hidden bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8"
+                >
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <span class="material-icons text-9xl"
+                            >account_balance_wallet</span
+                        >
+                    </div>
+                    <div
+                        class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
+                    >
+                        <div>
+                            <h1
+                                class="text-2xl font-bold text-slate-900 dark:text-white mb-1"
+                            >
+                                Mes Crédits
+                            </h1>
+                            <p class="text-slate-500 dark:text-slate-400">
+                                Gérez votre solde et consultez l'historique de
+                                vos transactions.
+                            </p>
+                            <div class="mt-6 flex items-baseline gap-2">
+                                <span
+                                    class="text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight"
+                                    >450.00</span
+                                >
+                                <span class="text-xl font-medium text-primary"
+                                    >Crédits</span
+                                >
+                            </div>
+                            <div
+                                class="mt-2 flex items-center text-sm text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded w-fit"
+                            >
+                                <span class="material-icons text-xs mr-1"
+                                    >trending_up</span
+                                >
+                                <span>+15% par rapport au mois dernier</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <button
+                                class="bg-tertiary-yellow hover:bg-[#D4B66E] text-slate-900 font-bold py-3 px-8 rounded-lg shadow-sm transition-all flex items-center justify-center gap-2 group"
+                            >
+                                <span
+                                    class="material-icons group-hover:rotate-180 transition-transform duration-300"
+                                    >add_circle</span
+                                >
+                                Recharger mon compte
+                            </button>
+                            <button
+                                class="border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 py-2 px-8 rounded-lg transition-all text-sm font-medium"
+                            >
+                                Télécharger un reçu (PDF)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Transactions History Section -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden"
+                >
+                    <div
+                        class="p-6 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                    >
+                        <h2
+                            class="text-lg font-semibold text-slate-900 dark:text-white"
+                        >
+                            Historique des transactions
+                        </h2>
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <span
+                                    class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"
+                                    >search</span
+                                >
+                                <input
+                                    class="pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-full sm:w-64"
+                                    placeholder="Rechercher un trajet..."
+                                    type="text"
+                                />
+                            </div>
+                            <button
+                                class="p-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-slate-500 hover:text-primary transition-colors"
+                            >
+                                <span class="material-icons text-sm"
+                                    >filter_list</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr
+                                    class="bg-neutral-purple/10 dark:bg-neutral-purple/5"
+                                >
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-purple"
+                                    >
+                                        Date
+                                    </th>
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-purple"
+                                    >
+                                        Description
+                                    </th>
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-purple"
+                                    >
+                                        Type
+                                    </th>
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-purple text-right"
+                                    >
+                                        Montant
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody
+                                class="divide-y divide-slate-200 dark:divide-slate-800"
+                            >
+                                <!-- Row 1 -->
+                                <tr
+                                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                                >
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                        12 Oct 2023
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-medium text-slate-900 dark:text-white"
+                                                >Trajet Paris - Lyon</span
+                                            >
+                                            <span class="text-xs text-slate-500"
+                                                >Covoiturage partagé</span
+                                            >
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                                        >
+                                            Covoiturage
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="text-sm font-bold text-red-500"
+                                            >- 25.00</span
+                                        >
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr
+                                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                                >
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                        10 Oct 2023
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-medium text-slate-900 dark:text-white"
+                                                >Rechargement manuel</span
+                                            >
+                                            <span class="text-xs text-slate-500"
+                                                >Via Carte Bancaire (****
+                                                1234)</span
+                                            >
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300"
+                                        >
+                                            Dépôt
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="text-sm font-bold text-primary"
+                                            >+ 100.00</span
+                                        >
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr
+                                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                                >
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                        08 Oct 2023
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-medium text-slate-900 dark:text-white"
+                                                >Trajet Lille - Bruxelles</span
+                                            >
+                                            <span class="text-xs text-slate-500"
+                                                >Conducteur : Marc D.</span
+                                            >
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                                        >
+                                            Covoiturage
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="text-sm font-bold text-red-500"
+                                            >- 12.50</span
+                                        >
+                                    </td>
+                                </tr>
+                                <!-- Row 4 -->
+                                <tr
+                                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                                >
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                        05 Oct 2023
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-medium text-slate-900 dark:text-white"
+                                                >Prime Éco-Responsable</span
+                                            >
+                                            <span class="text-xs text-slate-500"
+                                                >Bonus 10 trajets
+                                                consécutifs</span
+                                            >
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/20 text-primary dark:bg-primary/10"
+                                        >
+                                            Bonus
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="text-sm font-bold text-primary"
+                                            >+ 50.00</span
+                                        >
+                                    </td>
+                                </tr>
+                                <!-- Row 5 -->
+                                <tr
+                                    class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                                >
+                                    <td
+                                        class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400"
+                                    >
+                                        02 Oct 2023
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="text-sm font-medium text-slate-900 dark:text-white"
+                                                >Annulation Trajet
+                                                Bordeaux</span
+                                            >
+                                            <span class="text-xs text-slate-500"
+                                                >Remboursement intégral</span
+                                            >
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-400"
+                                        >
+                                            Remboursement
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span
+                                            class="text-sm font-bold text-primary"
+                                            >+ 34.00</span
+                                        >
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div
+                        class="p-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between"
+                    >
+                        <span class="text-sm text-slate-500"
+                            >Affichage de 1 à 5 sur 24 transactions</span
+                        >
+                        <div class="flex gap-2">
+                            <button
+                                class="p-2 border border-slate-200 dark:border-slate-700 rounded hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50 transition-colors"
+                                disabled=""
+                            >
+                                <span class="material-icons text-sm"
+                                    >chevron_left</span
+                                >
+                            </button>
+                            <button
+                                class="px-3 py-1 bg-primary text-white rounded text-sm font-medium"
+                            >
+                                1
+                            </button>
+                            <button
+                                class="px-3 py-1 border border-slate-200 dark:border-slate-700 rounded text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                            >
+                                2
+                            </button>
+                            <button
+                                class="px-3 py-1 border border-slate-200 dark:border-slate-700 rounded text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                            >
+                                3
+                            </button>
+                            <button
+                                class="p-2 border border-slate-200 dark:border-slate-700 rounded hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                            >
+                                <span class="material-icons text-sm"
+                                    >chevron_right</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Promotion / Tip Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-primary/10 dark:bg-primary/5 rounded-xl p-6 flex gap-4 items-start border border-primary/20"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0"
+                        >
+                            <span class="material-icons text-white">eco</span>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-bold text-slate-900 dark:text-white mb-1"
+                            >
+                                Saviez-vous ?
+                            </h3>
+                            <p
+                                class="text-sm text-slate-600 dark:text-slate-400"
+                            >
+                                Chaque trajet effectué réduit votre empreinte
+                                carbone de 15kg de CO2 en moyenne. Continuez à
+                                covoiturer pour gagner plus de bonus !
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-tertiary-yellow/10 dark:bg-tertiary-yellow/5 rounded-xl p-6 flex gap-4 items-start border border-tertiary-yellow/20"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-full bg-tertiary-yellow flex items-center justify-center flex-shrink-0"
+                        >
+                            <span class="material-icons text-slate-900"
+                                >card_giftcard</span
+                            >
+                        </div>
+                        <div>
+                            <h3
+                                class="font-bold text-slate-900 dark:text-white mb-1"
+                            >
+                                Parrainage
+                            </h3>
+                            <p
+                                class="text-sm text-slate-600 dark:text-slate-400"
+                            >
+                                Invitez vos amis sur EcoRide et gagnez 10
+                                Crédits lors de leur premier trajet validé !
+                            </p>
+                            <a
+                                class="inline-block mt-2 text-sm font-semibold text-slate-900 underline decoration-tertiary-yellow"
+                                href="#"
+                                >Partager mon lien</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer
+            class="mt-16 py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/30"
+        >
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <p class="text-slate-500 dark:text-slate-400 text-sm">
+                    © 2023 EcoRide Platform. Propulsé par une énergie 100%
+                    renouvelable.
+                </p>
+                <div
+                    class="mt-4 flex justify-center space-x-6 text-xs font-medium text-slate-400"
+                >
+                    <a class="hover:text-primary transition-colors" href="#"
+                        >Conditions Générales</a
+                    >
+                    <a class="hover:text-primary transition-colors" href="#"
+                        >Confidentialité</a
+                    >
+                    <a class="hover:text-primary transition-colors" href="#"
+                        >Aide &amp; Support</a
+                    >
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

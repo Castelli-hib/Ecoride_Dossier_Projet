@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Mes Avis</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#98bc7b",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                            "user-blue": "#80B5D0",
+                            "neutral-grey": "#9B8B9C",
+                        },
+                        fontFamily: {
+                            display: ["Inter", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+                vertical-align: middle;
+            }
+            .material-symbols-outlined.fill {
+                font-variation-settings: "FILL" 1;
+            }
+            .progress-80 {
+                width: 80%;
+            }
+            .progress-15 {
+                width: 15%;
+            }
+            .progress-5 {
+                width: 5%;
+            }
+            .progress-0 {
+                width: 0%;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark font-display text-[#141712] dark:text-[#edefeb]"
+    >
+        <div
+            class="relative flex min-h-screen w-full flex-col overflow-x-hidden"
+        >
+            <!-- Top Navigation Bar -->
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#edefeb] dark:border-[#2c3128] bg-white dark:bg-[#1f231b] px-10 py-3 sticky top-0 z-50"
+            >
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-4 text-primary">
+                        <div class="size-6">
+                            <svg
+                                fill="none"
+                                viewbox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    clip-rule="evenodd"
+                                    d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V44Z"
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h2
+                            class="text-[#141712] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]"
+                        >
+                            EcoRide
+                        </h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-9">
+                        <a
+                            class="text-[#141712] dark:text-[#edefeb] text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Trajets</a
+                        >
+                        <a
+                            class="text-[#141712] dark:text-[#edefeb] text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Rechercher</a
+                        >
+                        <a
+                            class="text-primary text-sm font-bold border-b-2 border-primary"
+                            href="#"
+                            >Mes Avis</a
+                        >
+                        <a
+                            class="text-[#141712] dark:text-[#edefeb] text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Mon Profil</a
+                        >
+                    </nav>
+                </div>
+                <div class="flex flex-1 justify-end gap-6 items-center">
+                    <label
+                        class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64"
+                    >
+                        <div
+                            class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#edefeb] dark:bg-[#2c3128]"
+                        >
+                            <div
+                                class="text-[#718264] flex items-center justify-center pl-4"
+                            >
+                                <span class="material-symbols-outlined text-xl"
+                                    >search</span
+                                >
+                            </div>
+                            <input
+                                class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:outline-0 focus:ring-0 text-[#141712] dark:text-white placeholder:text-[#718264] px-4 pl-2 text-base font-normal"
+                                placeholder="Rechercher un membre"
+                                value=""
+                            />
+                        </div>
+                    </label>
+                    <div class="flex gap-2">
+                        <button
+                            class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#edefeb] dark:bg-[#2c3128] text-[#141712] dark:text-white"
+                        >
+                            <span class="material-symbols-outlined"
+                                >notifications</span
+                            >
+                        </button>
+                        <button
+                            class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary text-white"
+                        >
+                            <span class="material-symbols-outlined"
+                                >account_circle</span
+                            >
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div class="flex flex-1 justify-center py-8">
+                <div class="container flex gap-8 max-w-[1280px] px-6">
+                    <!-- Side Navigation Bar -->
+                    <aside class="w-64 hidden md:flex flex-col gap-6 shrink-0">
+                        <div
+                            class="flex flex-col p-4 bg-white dark:bg-[#1f231b] rounded-xl border border-[#edefeb] dark:border-[#2c3128]"
+                        >
+                            <div class="flex flex-col mb-6">
+                                <h1
+                                    class="text-[#141712] dark:text-white text-base font-bold"
+                                >
+                                    Jean-Marc D.
+                                </h1>
+                                <p
+                                    class="text-neutral-grey text-xs font-normal"
+                                >
+                                    Membre depuis Oct 2023
+                                </p>
+                            </div>
+                            <nav class="flex flex-col gap-2">
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 text-neutral-grey hover:bg-primary/10 hover:text-primary rounded-lg transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >dashboard</span
+                                    >
+                                    <p class="text-sm font-medium">
+                                        Tableau de bord
+                                    </p>
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 text-neutral-grey hover:bg-primary/10 hover:text-primary rounded-lg transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >directions_car</span
+                                    >
+                                    <p class="text-sm font-medium">
+                                        Mes Trajets
+                                    </p>
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined fill"
+                                        >star</span
+                                    >
+                                    <p class="text-sm font-bold">Mes Avis</p>
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 text-neutral-grey hover:bg-primary/10 hover:text-primary rounded-lg transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >payments</span
+                                    >
+                                    <p class="text-sm font-medium">Paiements</p>
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 text-neutral-grey hover:bg-primary/10 hover:text-primary rounded-lg transition-all border-t border-[#edefeb] dark:border-[#2c3128] mt-2 pt-4"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >settings</span
+                                    >
+                                    <p class="text-sm font-medium">
+                                        Paramètres
+                                    </p>
+                                </a>
+                            </nav>
+                        </div>
+                    </aside>
+                    <!-- Main Content -->
+                    <main class="flex-1 flex flex-col gap-6">
+                        <!-- Page Heading -->
+                        <div
+                            class="flex flex-wrap justify-between gap-3 bg-white dark:bg-[#1f231b] p-6 rounded-xl border border-[#edefeb] dark:border-[#2c3128]"
+                        >
+                            <div class="flex min-w-72 flex-col gap-1">
+                                <p
+                                    class="text-[#141712] dark:text-white text-3xl font-black tracking-tight"
+                                >
+                                    Mes Avis
+                                </p>
+                                <p
+                                    class="text-neutral-grey text-base font-normal"
+                                >
+                                    Gérez les retours de vos covoiturages et
+                                    votre réputation.
+                                </p>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm self-start hover:opacity-90 transition-opacity"
+                            >
+                                Laisser un avis
+                            </button>
+                        </div>
+                        <!-- Rating Summary -->
+                        <div
+                            class="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-white dark:bg-[#1f231b] p-6 rounded-xl border border-[#edefeb] dark:border-[#2c3128]"
+                        >
+                            <div
+                                class="flex flex-col gap-2 justify-center border-r border-[#edefeb] dark:border-[#2c3128] pr-6"
+                            >
+                                <p
+                                    class="text-[#141712] dark:text-white text-5xl font-black"
+                                >
+                                    4.8
+                                </p>
+                                <div class="flex gap-1 text-primary">
+                                    <span class="material-symbols-outlined fill"
+                                        >star</span
+                                    >
+                                    <span class="material-symbols-outlined fill"
+                                        >star</span
+                                    >
+                                    <span class="material-symbols-outlined fill"
+                                        >star</span
+                                    >
+                                    <span class="material-symbols-outlined fill"
+                                        >star</span
+                                    >
+                                    <span class="material-symbols-outlined"
+                                        >star_half</span
+                                    >
+                                </div>
+                                <p
+                                    class="text-neutral-grey text-sm font-medium"
+                                >
+                                    Moyenne basée sur 12 avis
+                                </p>
+                            </div>
+                            <div
+                                class="lg:col-span-2 grid grid-cols-[20px_1fr_40px] items-center gap-y-3 gap-x-4"
+                            >
+                                <p
+                                    class="text-[#141712] dark:text-white text-sm font-bold"
+                                >
+                                    5
+                                </p>
+                                <div
+                                    class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-[#edefeb] dark:bg-[#2c3128]"
+                                >
+                                    <div
+                                        class="rounded-full bg-primary progress-80"
+                                    ></div>
+                                </div>
+                                <p
+                                    class="text-neutral-grey text-xs font-bold text-right"
+                                >
+                                    80%
+                                </p>
+                                <p
+                                    class="text-[#141712] dark:text-white text-sm font-bold"
+                                >
+                                    4
+                                </p>
+                                <div
+                                    class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-[#edefeb] dark:bg-[#2c3128]"
+                                >
+                                    <div
+                                        class="rounded-full bg-primary progress-15"
+                                    ></div>
+                                </div>
+                                <p
+                                    class="text-neutral-grey text-xs font-bold text-right"
+                                >
+                                    15%
+                                </p>
+                                <p
+                                    class="text-[#141712] dark:text-white text-sm font-bold"
+                                >
+                                    3
+                                </p>
+                                <div
+                                    class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-[#edefeb] dark:bg-[#2c3128]"
+                                >
+                                    <div
+                                        class="rounded-full bg-primary progress-5"
+                                    ></div>
+                                </div>
+                                <p
+                                    class="text-neutral-grey text-xs font-bold text-right"
+                                >
+                                    5%
+                                </p>
+                                <p
+                                    class="text-[#141712] dark:text-white text-sm font-bold"
+                                >
+                                    2
+                                </p>
+                                <div
+                                    class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-[#edefeb] dark:bg-[#2c3128]"
+                                >
+                                    <div
+                                        class="rounded-full bg-primary progress-0"
+                                    ></div>
+                                </div>
+                                <p
+                                    class="text-neutral-grey text-xs font-bold text-right"
+                                >
+                                    0%
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Tabs Interface -->
+                        <div class="flex flex-col gap-4">
+                            <div
+                                class="border-b border-[#edefeb] dark:border-[#2c3128]"
+                            >
+                                <div class="flex gap-8">
+                                    <a
+                                        class="flex flex-col items-center justify-center border-b-[3px] border-primary text-[#141712] dark:text-white pb-3 pt-2"
+                                        href="#"
+                                    >
+                                        <p
+                                            class="text-sm font-bold tracking-tight"
+                                        >
+                                            Avis reçus (12)
+                                        </p>
+                                    </a>
+                                    <a
+                                        class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-neutral-grey pb-3 pt-2 hover:text-primary transition-colors"
+                                        href="#"
+                                    >
+                                        <p
+                                            class="text-sm font-bold tracking-tight"
+                                        >
+                                            Avis laissés (8)
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Review Cards Container -->
+                            <div class="flex flex-col gap-4">
+                                <!-- Review Card 1 (Received) -->
+                                <div
+                                    class="bg-white dark:bg-[#1f231b] p-6 rounded-xl border border-[#edefeb] dark:border-[#2c3128] hover:shadow-md transition-shadow"
+                                >
+                                    <div
+                                        class="flex justify-between items-start mb-4"
+                                    >
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="size-12 rounded-full overflow-hidden bg-gray-200"
+                                            >
+                                                <img
+                                                    class="w-full h-full object-cover"
+                                                    alt="Photo de profil d'une femme souriante"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2C92x-87IcJQ9SfrufG_0NCqcy5KpLZoArFw7aBEFR9Hh7BmlKh--8s-ej4t52fCDzebpvDaeay5KdezmGq06b38ybifkv7cGascKquqt4rNqZHvL33_DHy9b8BoC64HOlYaw4lPPerU02Sp9CgMIJepwXAHSU2DzUJKkRx_MqECaCIYR24pbqksV0BqxsUMNoK2P724OFHoE5FjzA_YqavTTO3287xmVwtIe3RXQ19W6lxJUO-6q8mE2jYy8aJ_JXk7ZE45pzPM"
+                                                />
+                                            </div>
+                                            <div>
+                                                <h4
+                                                    class="text-user-blue font-bold text-base"
+                                                >
+                                                    Sophie Morel
+                                                </h4>
+                                                <p
+                                                    class="text-neutral-grey text-xs"
+                                                >
+                                                    Passagère • Janvier 2024
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-end gap-1"
+                                        >
+                                            <div
+                                                class="flex gap-0.5 text-primary"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                            </div>
+                                            <p
+                                                class="text-neutral-grey text-[10px] uppercase font-bold tracking-widest"
+                                            >
+                                                Vérifié
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p
+                                        class="text-neutral-grey text-sm leading-relaxed mb-4 italic"
+                                    >
+                                        "Trajet parfait ! Jean-Marc est
+                                        ponctuel, prudent sur la route et très
+                                        sympathique. La voiture était
+                                        impeccable. Je recommande vivement pour
+                                        vos futurs voyages."
+                                    </p>
+                                    <button
+                                        class="text-primary text-xs font-bold flex items-center gap-1 hover:underline"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-sm"
+                                            >reply</span
+                                        >
+                                        Répondre à Sophie
+                                    </button>
+                                </div>
+                                <!-- Review Card 2 (Received) -->
+                                <div
+                                    class="bg-white dark:bg-[#1f231b] p-6 rounded-xl border border-[#edefeb] dark:border-[#2c3128] hover:shadow-md transition-shadow"
+                                >
+                                    <div
+                                        class="flex justify-between items-start mb-4"
+                                    >
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="size-12 rounded-full overflow-hidden bg-gray-200"
+                                            >
+                                                <img
+                                                    class="w-full h-full object-cover"
+                                                    alt="Portrait d'un homme barbu"
+                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgdc8v_r11xXdnKARE2xcKOjk-WwZGdXPla6sYX88dhUqwjaNI_1Kdye--gboBKMc1NOEndbB5W7LbR1brBcJGFiFEBZe0K8lHqg1NPVWCAltmNY0hu0ThqNTsJLL2Q02P-JXM-2dwq5qZXGw1K5TbFs9PpY9zal062sW3UzLuTFuHHtkaYyLr8GPiVJ6IjLSP2HNBuhWRn26RUFa_d1AOrf0X3tu0MtJYgTKjwgVXSb1xInJC3T5sBoBU7nClDkV1ZAwxTZBfn80"
+                                                />
+                                            </div>
+                                            <div>
+                                                <h4
+                                                    class="text-user-blue font-bold text-base"
+                                                >
+                                                    Thomas Bernard
+                                                </h4>
+                                                <p
+                                                    class="text-neutral-grey text-xs"
+                                                >
+                                                    Passager • Décembre 2023
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-col items-end gap-1"
+                                        >
+                                            <div
+                                                class="flex gap-0.5 text-primary"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg fill"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-lg"
+                                                    >star</span
+                                                >
+                                            </div>
+                                            <p
+                                                class="text-neutral-grey text-[10px] uppercase font-bold tracking-widest"
+                                            >
+                                                Vérifié
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p
+                                        class="text-neutral-grey text-sm leading-relaxed italic"
+                                    >
+                                        "Bonne expérience globale. Musique un
+                                        peu forte mais le conducteur l'a baissée
+                                        dès que j'ai demandé. Trajet direct et
+                                        efficace entre Paris et Lyon."
+                                    </p>
+                                </div>
+                                <!-- Example of "Avis Laissés" item showing route (UX demonstration) -->
+                                <div
+                                    class="bg-primary/5 dark:bg-primary/10 p-4 rounded-lg border border-primary/20 flex flex-col gap-3"
+                                >
+                                    <div
+                                        class="flex items-center justify-between"
+                                    >
+                                        <span
+                                            class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase"
+                                            >Avis laissé</span
+                                        >
+                                        <span
+                                            class="text-neutral-grey text-xs flex items-center gap-1"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-sm"
+                                                >route</span
+                                            >
+                                            Paris
+                                            <span
+                                                class="material-symbols-outlined text-sm"
+                                                >arrow_forward</span
+                                            >
+                                            Lyon
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <p class="text-xs text-neutral-grey">
+                                            Pour
+                                            <span
+                                                class="text-user-blue font-bold"
+                                                >Claire L.</span
+                                            >
+                                        </p>
+                                        <div
+                                            class="flex gap-0.5 text-primary scale-75 origin-left"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined fill"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill"
+                                                >star</span
+                                            >
+                                            <span
+                                                class="material-symbols-outlined fill"
+                                                >star</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer
+                class="bg-white dark:bg-[#1f231b] border-t border-[#edefeb] dark:border-[#2c3128] py-12 px-10 mt-auto"
+            >
+                <div
+                    class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8"
+                >
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-primary">
+                            <div class="size-5">
+                                <svg
+                                    fill="none"
+                                    viewbox="0 0 48 48"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                        fill="currentColor"
+                                        fill-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <h2
+                                class="text-[#141712] dark:text-white text-lg font-bold"
+                            >
+                                EcoRide
+                            </h2>
+                        </div>
+                        <p class="text-neutral-grey text-sm">
+                            Votre plateforme de covoiturage écologique et
+                            sécurisée.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h3
+                            class="text-[#141712] dark:text-white font-bold text-sm"
+                        >
+                            Plateforme
+                        </h3>
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Comment ça marche</a
+                        >
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Assurance</a
+                        >
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Tarifs</a
+                        >
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h3
+                            class="text-[#141712] dark:text-white font-bold text-sm"
+                        >
+                            Entreprise
+                        </h3>
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >À propos</a
+                        >
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Contact</a
+                        >
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Blog</a
+                        >
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <h3
+                            class="text-[#141712] dark:text-white font-bold text-sm"
+                        >
+                            Légal
+                        </h3>
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Mentions légales</a
+                        >
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >Confidentialité</a
+                        >
+                        <a
+                            class="text-neutral-grey text-sm hover:text-primary"
+                            href="#"
+                            >CGU</a
+                        >
+                    </div>
+                </div>
+                <div
+                    class="max-w-[1280px] mx-auto mt-12 pt-6 border-t border-[#edefeb] dark:border-[#2c3128] text-center"
+                >
+                    <p class="text-neutral-grey text-xs">
+                        © 2024 EcoRide. Tous droits réservés.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

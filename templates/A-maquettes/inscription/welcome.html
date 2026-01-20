@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Bienvenue</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            "secondary-gold": "#B5A07C",
+                            "user-blue": "#80B5D0",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Plus Jakarta Sans", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.5rem",
+                            lg: "1rem",
+                            xl: "1.5rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .user-avatar {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTJIN-JKChnOxPm2H1Mr1WERD8hs7xygWa-IBe8up6CFuKishnUH1BXR6PxOXqhc35NUtVDLkqFmCf-KEv_cihKB1BiNOLhSNp4NwnH2scvZ5Mdc6UaV0fhmhXaoBW-WKW6qIhrQYS0GZ7p9xs6G_55MOXWJ73iaCbIzELGjv56n_uem4XrUviAy38zxuUA3loGtw7K4P8M3qw-VApWGW0kIiopgwi89hZ6HdRIAgi5ljskFmiEbN1kp3K8RqiamdJGDrdCjfCWxg");
+            }
+            .hero-banner {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDu2Sz3oZJ94HBBbs8OyRUTzy2tAFyf0GpCVLnkHMuUqpXlSPOaFA7YlyuoWm4HqxJsstTyq9GRuOdf5IWM5nQdD5N2H7udweXR5MYmYHBgXxaRv1EncjI2S4es5Lyn8HKWmeKjiVQHGJmDguN6V3LrvUQ75R_2PxyDrktszzT2F-0fPkoEFPVIpapISRcmEXUWuvqEHFJMLCa5pV95onfiWOIGktN7ObflX_L4ZTO0pr9M8lGFTKwxQ__jixa0NZQdYmZo6fTeUQs");
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark text-[#141712] transition-colors duration-300"
+    >
+        <div
+            class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
+        >
+            <div class="layout-container flex h-full grow flex-col">
+                <!-- TopNavBar -->
+                <header
+                    class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#edefeb] dark:border-stone-800 px-10 py-3 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50"
+                >
+                    <div
+                        class="flex items-center gap-4 text-[#141712] dark:text-stone-100"
+                    >
+                        <div class="size-6 text-primary">
+                            <svg
+                                fill="currentColor"
+                                viewbox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    clip-rule="evenodd"
+                                    d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h2
+                            class="text-lg font-bold leading-tight tracking-[-0.015em] font-display"
+                        >
+                            EcoRide
+                        </h2>
+                    </div>
+                    <div class="flex flex-1 justify-end gap-8">
+                        <div class="hidden md:flex items-center gap-9">
+                            <a
+                                class="text-[#141712] dark:text-stone-200 text-sm font-medium leading-normal hover:text-primary transition-colors"
+                                href="#"
+                                >Trajets</a
+                            >
+                            <a
+                                class="text-[#141712] dark:text-stone-200 text-sm font-medium leading-normal hover:text-primary transition-colors"
+                                href="#"
+                                >Comment ça marche</a
+                            >
+                            <a
+                                class="text-[#141712] dark:text-stone-200 text-sm font-medium leading-normal hover:text-primary transition-colors"
+                                href="#"
+                                >Actualités</a
+                            >
+                        </div>
+                        <button
+                            class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-stone-100 dark:bg-stone-800 text-[#141712] dark:text-stone-100 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+                        >
+                            <span class="material-symbols-outlined text-[20px]"
+                                >notifications</span
+                            >
+                        </button>
+                        <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20 user-avatar"
+                            data-alt="User profile avatar placeholder"
+                        ></div>
+                    </div>
+                </header>
+                <main class="flex flex-1 justify-center py-12 md:py-20">
+                    <div
+                        class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 items-center"
+                    >
+                        <!-- HeaderImage (Celebratory Illustration) -->
+                        <div class="w-full max-w-[720px] @container mb-8">
+                            <div class="@[480px]:px-4">
+                                <div
+                                    class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-[320px] shadow-sm hero-banner"
+                                    data-alt="Illustration of happy people carpooling in a green landscape"
+                                ></div>
+                            </div>
+                        </div>
+                        <!-- HeadlineText -->
+                        <div class="max-w-[600px] text-center mb-4">
+                            <h1
+                                class="text-[#141712] dark:text-stone-50 tracking-tight text-[36px] md:text-[42px] font-extrabold leading-tight px-4 font-display"
+                            >
+                                Bienvenue sur EcoRide !
+                            </h1>
+                        </div>
+                        <!-- BodyText -->
+                        <div class="max-w-[540px] text-center mb-10">
+                            <p
+                                class="text-[#141712] dark:text-stone-300 text-lg font-normal leading-relaxed px-4"
+                            >
+                                Votre compte a été créé avec succès.
+                                <br class="hidden md:block" />Prêt pour votre
+                                premier trajet écologique ?
+                            </p>
+                        </div>
+                        <!-- ButtonGroup (CTAs) -->
+                        <div
+                            class="flex flex-col md:flex-row gap-4 w-full max-w-[540px] px-4"
+                        >
+                            <button
+                                class="flex-1 flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:brightness-105 active:scale-[0.98] transition-all shadow-md"
+                            >
+                                <span class="truncate"
+                                    >Rechercher un trajet</span
+                                >
+                            </button>
+                            <button
+                                class="flex-1 flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-secondary-gold text-white text-base font-bold leading-normal tracking-[0.015em] hover:brightness-105 active:scale-[0.98] transition-all shadow-md"
+                            >
+                                <span class="truncate">Proposer un trajet</span>
+                            </button>
+                        </div>
+                        <!-- Secondary Link -->
+                        <div class="mt-8 flex justify-center">
+                            <a
+                                class="flex items-center gap-2 text-user-blue font-semibold text-base hover:underline group transition-all"
+                                href="#"
+                            >
+                                Accéder à mon tableau de bord
+                                <span
+                                    class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform"
+                                    >arrow_forward</span
+                                >
+                            </a>
+                        </div>
+                    </div>
+                </main>
+                <!-- Footer -->
+                <footer
+                    class="bg-white dark:bg-background-dark border-t border-solid border-[#edefeb] dark:border-stone-800 py-12"
+                >
+                    <div
+                        class="max-w-[960px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-8"
+                    >
+                        <div
+                            class="flex items-center gap-2 opacity-60 grayscale dark:invert"
+                        >
+                            <div class="size-5">
+                                <svg
+                                    fill="currentColor"
+                                    viewbox="0 0 48 48"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                        fill-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <span class="font-bold text-sm"
+                                >EcoRide © 2024</span
+                            >
+                        </div>
+                        <div
+                            class="flex gap-6 text-sm text-stone-500 dark:text-stone-400"
+                        >
+                            <a
+                                class="hover:text-primary transition-colors"
+                                href="#"
+                                >Mentions Légales</a
+                            >
+                            <a
+                                class="hover:text-primary transition-colors"
+                                href="#"
+                                >Confidentialité</a
+                            >
+                            <a
+                                class="hover:text-primary transition-colors"
+                                href="#"
+                                >Contact</a
+                            >
+                        </div>
+                        <div class="flex gap-4">
+                            <button
+                                class="size-8 flex items-center justify-center rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-primary transition-colors"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[18px]"
+                                    >public</span
+                                >
+                            </button>
+                            <button
+                                class="size-8 flex items-center justify-center rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-primary transition-colors"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[18px]"
+                                    >share</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

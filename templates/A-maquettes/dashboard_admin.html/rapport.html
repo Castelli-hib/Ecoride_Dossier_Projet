@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide Admin - Exportation de Rapports</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            "secondary-gold": "#B5A07C",
+                            "user-blue": "#80B5D0",
+                            "neutral-purple": "#9B8B9C",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .profile-avatar {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzcN4UNb0efg1hG25_QaDjjQWScEbCobHfhRtT1wGSi-ivYfcrhuCMWdgpA1_0aN1G6E1hLZJ55vi_4rg11NssTvG11NDeYUCKAZy73ccT2vKY7mRpMui7HFuhamyXxUEe_VMq9PVjytWRaFP-ardSoafZ12aKUTPRjFE3CAE3aXatDEBo551-bt6wmXFL_UHVG006uol9Z6jtSogz-7t-WT56XzopJaJwysR9EcQNpKd6yg5_vsAqTlPdkjwoP82maxBxEr6ETr4");
+            }
+            .storage-progress {
+                width: 65%;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark text-[#141712] dark:text-stone-100 min-h-screen"
+    >
+        <div class="flex flex-col min-h-screen">
+            <!-- TopNavBar -->
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 px-6 py-3 lg:px-10"
+            >
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-4 text-primary">
+                        <div class="size-8">
+                            <svg
+                                fill="currentColor"
+                                viewbox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h2
+                            class="text-[#141712] dark:text-white text-lg font-bold leading-tight tracking-tight"
+                        >
+                            EcoRide Admin
+                        </h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-6">
+                        <a
+                            class="text-[#141712] dark:text-stone-300 text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Tableau de bord</a
+                        >
+                        <a
+                            class="text-[#141712] dark:text-stone-300 text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Utilisateurs</a
+                        >
+                        <a
+                            class="text-[#141712] dark:text-stone-300 text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Trajets</a
+                        >
+                        <a
+                            class="text-primary text-sm font-bold border-b-2 border-primary pb-1"
+                            href="#"
+                            >Rapports</a
+                        >
+                    </nav>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="hidden sm:flex items-center bg-stone-100 dark:bg-stone-800 rounded-lg px-3 py-1.5"
+                    >
+                        <span
+                            class="material-symbols-outlined text-stone-500 text-lg"
+                            >search</span
+                        >
+                        <input
+                            class="bg-transparent border-none focus:ring-0 text-sm w-40"
+                            placeholder="Rechercher..."
+                            type="text"
+                        />
+                    </div>
+                    <button
+                        class="p-2 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400"
+                    >
+                        <span class="material-symbols-outlined"
+                            >notifications</span
+                        >
+                    </button>
+                    <div
+                        class="size-9 rounded-full bg-cover bg-center border border-stone-200 profile-avatar"
+                        data-alt="Portrait of admin user profile"
+                    ></div>
+                </div>
+            </header>
+            <div class="flex flex-1">
+                <!-- SideNavBar -->
+                <aside
+                    class="hidden lg:flex w-64 flex-col bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800 p-6"
+                >
+                    <div class="flex flex-col gap-8">
+                        <div class="space-y-1">
+                            <p
+                                class="text-xs font-semibold text-stone-400 uppercase tracking-wider"
+                            >
+                                Menu Principal
+                            </p>
+                            <nav class="flex flex-col gap-1 mt-4">
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >dashboard</span
+                                    >
+                                    <span class="text-sm font-medium"
+                                        >Vue d'ensemble</span
+                                    >
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >group</span
+                                    >
+                                    <span class="text-sm font-medium"
+                                        >Utilisateurs</span
+                                    >
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >directions_car</span
+                                    >
+                                    <span class="text-sm font-medium"
+                                        >Trajets</span
+                                    >
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >analytics</span
+                                    >
+                                    <span class="text-sm font-bold"
+                                        >Rapports</span
+                                    >
+                                </a>
+                                <a
+                                    class="flex items-center gap-3 px-3 py-2 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-800 transition-all"
+                                    href="#"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >settings</span
+                                    >
+                                    <span class="text-sm font-medium"
+                                        >Paramètres</span
+                                    >
+                                </a>
+                            </nav>
+                        </div>
+                        <div
+                            class="mt-auto pt-6 border-t border-stone-100 dark:border-stone-800"
+                        >
+                            <div class="bg-primary/5 p-4 rounded-xl">
+                                <p class="text-xs font-bold text-primary mb-1">
+                                    Stockage Cloud
+                                </p>
+                                <div
+                                    class="w-full bg-stone-200 dark:bg-stone-700 h-1.5 rounded-full overflow-hidden"
+                                >
+                                    <div
+                                        class="bg-primary h-full storage-progress"
+                                    ></div>
+                                </div>
+                                <p class="text-[10px] text-stone-500 mt-2">
+                                    6.5 GB sur 10 GB utilisés
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                <!-- Main Content -->
+                <main
+                    class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 lg:p-10"
+                >
+                    <div class="max-w-5xl mx-auto space-y-8">
+                        <!-- Breadcrumbs -->
+                        <nav
+                            class="flex items-center gap-2 text-sm text-stone-500 font-medium"
+                        >
+                            <a class="hover:text-primary" href="#">Admin</a>
+                            <span class="material-symbols-outlined text-sm"
+                                >chevron_right</span
+                            >
+                            <span class="text-stone-900 dark:text-white"
+                                >Exportation de Rapports</span
+                            >
+                        </nav>
+                        <!-- PageHeading -->
+                        <div class="space-y-2">
+                            <h1
+                                class="text-4xl font-black text-[#141712] dark:text-white tracking-tight"
+                            >
+                                Exportation de Rapports
+                            </h1>
+                            <p class="text-stone-500 max-w-2xl">
+                                Générez et téléchargez les rapports détaillés
+                                sur l'activité des utilisateurs, les trajets
+                                effectués et l'impact environnemental de la
+                                plateforme.
+                            </p>
+                        </div>
+                        <!-- Configuration Section -->
+                        <section
+                            class="bg-white dark:bg-stone-900 rounded-xl shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden"
+                        >
+                            <div
+                                class="p-6 border-b border-stone-100 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-800/30"
+                            >
+                                <h2
+                                    class="text-xl font-bold text-[#141712] dark:text-white flex items-center gap-2"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary"
+                                        >add_chart</span
+                                    >
+                                    Générer un nouveau rapport
+                                </h2>
+                            </div>
+                            <div class="p-8">
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                                >
+                                    <!-- Type Selection -->
+                                    <div class="space-y-3">
+                                        <label
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wide"
+                                            >Type de rapport</label
+                                        >
+                                        <select
+                                            class="w-full rounded-lg border-stone-200 dark:border-stone-700 dark:bg-stone-800 focus:border-secondary-gold focus:ring-secondary-gold text-sm py-2.5"
+                                            aria-label="Type de rapport"
+                                        >
+                                            <option>Trajets effectués</option>
+                                            <option>
+                                                Nouveaux utilisateurs
+                                            </option>
+                                            <option>
+                                                Crédits et Transactions
+                                            </option>
+                                            <option selected="">
+                                                Impact Écologique
+                                            </option>
+                                        </select>
+                                        <p
+                                            class="text-xs text-stone-400 italic flex items-center gap-1"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-xs"
+                                                >info</span
+                                            >
+                                            Inclut les économies de CO2
+                                            estimées.
+                                        </p>
+                                    </div>
+                                    <!-- Date Range -->
+                                    <div class="space-y-3">
+                                        <label
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wide"
+                                            >Période d'activité</label
+                                        >
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <div class="relative">
+                                                <input
+                                                    class="w-full rounded-lg border-stone-200 dark:border-stone-700 dark:bg-stone-800 focus:border-secondary-gold focus:ring-secondary-gold text-sm py-2"
+                                                    type="date"
+                                                    value="2023-10-01"
+                                                    title="Date de début de la période"
+                                                />
+                                                <span
+                                                    class="absolute -top-2 left-2 bg-white dark:bg-stone-800 px-1 text-[10px] text-stone-400"
+                                                    >DU</span
+                                                >
+                                            </div>
+                                            <div class="relative">
+                                                <input
+                                                    class="w-full rounded-lg border-stone-200 dark:border-stone-700 dark:bg-stone-800 focus:border-secondary-gold focus:ring-secondary-gold text-sm py-2"
+                                                    type="date"
+                                                    value="2023-10-31"
+                                                    title="Date de fin de la période"
+                                                />
+                                                <span
+                                                    class="absolute -top-2 left-2 bg-white dark:bg-stone-800 px-1 text-[10px] text-stone-400"
+                                                    >AU</span
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Format Selection -->
+                                    <div class="space-y-3">
+                                        <label
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300 uppercase tracking-wide"
+                                            >Format de sortie</label
+                                        >
+                                        <div
+                                            class="flex p-1 bg-stone-100 dark:bg-stone-800 rounded-lg"
+                                        >
+                                            <button
+                                                class="flex-1 flex items-center justify-center gap-2 py-2 rounded-md bg-white dark:bg-stone-700 shadow-sm text-primary font-bold text-sm"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-sm"
+                                                    >picture_as_pdf</span
+                                                >
+                                                PDF
+                                            </button>
+                                            <button
+                                                class="flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-stone-500 font-medium text-sm hover:text-stone-700 dark:hover:text-stone-300"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-sm"
+                                                    >description</span
+                                                >
+                                                CSV
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Main Action -->
+                                <div class="mt-10 flex flex-col items-center">
+                                    <button
+                                        class="w-full md:w-auto md:min-w-[300px] flex items-center justify-center gap-3 bg-primary hover:bg-[#86a171] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >download_for_offline</span
+                                        >
+                                        Générer et Télécharger
+                                    </button>
+                                    <p class="mt-4 text-xs text-stone-400">
+                                        Le processus peut prendre jusqu'à 30
+                                        secondes selon la quantité de données.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Recent Exports Table -->
+                        <section class="space-y-5">
+                            <div class="flex items-center justify-between px-2">
+                                <h2
+                                    class="text-xl font-bold text-[#141712] dark:text-white"
+                                >
+                                    Historique des exports
+                                </h2>
+                                <button
+                                    class="text-sm font-medium text-primary flex items-center gap-1 hover:underline"
+                                >
+                                    Tout voir
+                                    <span
+                                        class="material-symbols-outlined text-sm"
+                                        >arrow_forward</span
+                                    >
+                                </button>
+                            </div>
+                            <div
+                                class="bg-white dark:bg-stone-900 rounded-xl shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden"
+                            >
+                                <div class="overflow-x-auto">
+                                    <table
+                                        class="w-full text-left border-collapse"
+                                    >
+                                        <thead>
+                                            <tr
+                                                class="bg-stone-50 dark:bg-stone-800/50"
+                                            >
+                                                <th
+                                                    class="px-6 py-4 text-xs font-bold text-neutral-purple uppercase tracking-wider"
+                                                >
+                                                    Nom du fichier
+                                                </th>
+                                                <th
+                                                    class="px-6 py-4 text-xs font-bold text-neutral-purple uppercase tracking-wider"
+                                                >
+                                                    Date de création
+                                                </th>
+                                                <th
+                                                    class="px-6 py-4 text-xs font-bold text-neutral-purple uppercase tracking-wider text-center"
+                                                >
+                                                    Format
+                                                </th>
+                                                <th
+                                                    class="px-6 py-4 text-xs font-bold text-neutral-purple uppercase tracking-wider text-right"
+                                                >
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody
+                                            class="divide-y divide-stone-100 dark:divide-stone-800"
+                                        >
+                                            <tr
+                                                class="hover:bg-stone-50/50 dark:hover:bg-stone-800/30 transition-colors"
+                                            >
+                                                <td class="px-6 py-5">
+                                                    <div
+                                                        class="flex items-center gap-3"
+                                                    >
+                                                        <div
+                                                            class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary"
+                                                        >
+                                                            <span
+                                                                class="material-symbols-outlined text-xl"
+                                                                >eco</span
+                                                            >
+                                                        </div>
+                                                        <div>
+                                                            <p
+                                                                class="text-sm font-bold text-stone-900 dark:text-white"
+                                                            >
+                                                                Impact_Ecologique_Oct23
+                                                            </p>
+                                                            <p
+                                                                class="text-xs text-stone-400"
+                                                            >
+                                                                Taille: 1.2 MB
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-5">
+                                                    <p
+                                                        class="text-sm text-stone-600 dark:text-stone-400 font-medium"
+                                                    >
+                                                        31 Oct 2023, 14:20
+                                                    </p>
+                                                </td>
+                                                <td
+                                                    class="px-6 py-5 text-center"
+                                                >
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-red-100 text-red-600 uppercase border border-red-200"
+                                                        >PDF</span
+                                                    >
+                                                </td>
+                                                <td
+                                                    class="px-6 py-5 text-right"
+                                                >
+                                                    <button
+                                                        class="inline-flex items-center gap-1 text-user-blue hover:text-blue-600 transition-colors font-bold text-sm"
+                                                    >
+                                                        <span
+                                                            class="material-symbols-outlined text-lg"
+                                                            >download</span
+                                                        >
+                                                        Télécharger
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr
+                                                class="hover:bg-stone-50/50 dark:hover:bg-stone-800/30 transition-colors"
+                                            >
+                                                <td class="px-6 py-5">
+                                                    <div
+                                                        class="flex items-center gap-3"
+                                                    >
+                                                        <div
+                                                            class="size-8 rounded bg-secondary-gold/10 flex items-center justify-center text-secondary-gold"
+                                                        >
+                                                            <span
+                                                                class="material-symbols-outlined text-xl"
+                                                                >group</span
+                                                            >
+                                                        </div>
+                                                        <div>
+                                                            <p
+                                                                class="text-sm font-bold text-stone-900 dark:text-white"
+                                                            >
+                                                                Nouveaux_Utilisateurs_Q3
+                                                            </p>
+                                                            <p
+                                                                class="text-xs text-stone-400"
+                                                            >
+                                                                Taille: 850 KB
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-5">
+                                                    <p
+                                                        class="text-sm text-stone-600 dark:text-stone-400 font-medium"
+                                                    >
+                                                        15 Oct 2023, 09:45
+                                                    </p>
+                                                </td>
+                                                <td
+                                                    class="px-6 py-5 text-center"
+                                                >
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-600 uppercase border border-emerald-200"
+                                                        >CSV</span
+                                                    >
+                                                </td>
+                                                <td
+                                                    class="px-6 py-5 text-right"
+                                                >
+                                                    <button
+                                                        class="inline-flex items-center gap-1 text-user-blue hover:text-blue-600 transition-colors font-bold text-sm"
+                                                    >
+                                                        <span
+                                                            class="material-symbols-outlined text-lg"
+                                                            >download</span
+                                                        >
+                                                        Télécharger
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr
+                                                class="hover:bg-stone-50/50 dark:hover:bg-stone-800/30 transition-colors"
+                                            >
+                                                <td class="px-6 py-5">
+                                                    <div
+                                                        class="flex items-center gap-3"
+                                                    >
+                                                        <div
+                                                            class="size-8 rounded bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-500"
+                                                        >
+                                                            <span
+                                                                class="material-symbols-outlined text-xl"
+                                                                >directions_car</span
+                                                            >
+                                                        </div>
+                                                        <div>
+                                                            <p
+                                                                class="text-sm font-bold text-stone-900 dark:text-white"
+                                                            >
+                                                                Rapport_Trajets_Sept_Final
+                                                            </p>
+                                                            <p
+                                                                class="text-xs text-stone-400"
+                                                            >
+                                                                Taille: 3.4 MB
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-5">
+                                                    <p
+                                                        class="text-sm text-stone-600 dark:text-stone-400 font-medium"
+                                                    >
+                                                        01 Oct 2023, 18:12
+                                                    </p>
+                                                </td>
+                                                <td
+                                                    class="px-6 py-5 text-center"
+                                                >
+                                                    <span
+                                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-red-100 text-red-600 uppercase border border-red-200"
+                                                        >PDF</span
+                                                    >
+                                                </td>
+                                                <td
+                                                    class="px-6 py-5 text-right"
+                                                >
+                                                    <button
+                                                        class="inline-flex items-center gap-1 text-user-blue hover:text-blue-600 transition-colors font-bold text-sm"
+                                                    >
+                                                        <span
+                                                            class="material-symbols-outlined text-lg"
+                                                            >download</span
+                                                        >
+                                                        Télécharger
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="px-6 py-4 bg-stone-50 dark:bg-stone-800/30 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between"
+                                >
+                                    <p class="text-xs text-stone-500">
+                                        Affichage de 3 sur 24 exports
+                                    </p>
+                                    <div class="flex gap-2">
+                                        <button
+                                            class="p-1 px-3 rounded border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold disabled:opacity-50"
+                                            disabled=""
+                                        >
+                                            Précédent
+                                        </button>
+                                        <button
+                                            class="p-1 px-3 rounded border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Info Alert -->
+                        <div
+                            class="bg-user-blue/10 border border-user-blue/20 rounded-xl p-4 flex gap-4"
+                        >
+                            <span
+                                class="material-symbols-outlined text-user-blue"
+                                >info</span
+                            >
+                            <div>
+                                <p
+                                    class="text-sm font-bold text-stone-900 dark:text-white"
+                                >
+                                    Conservation des fichiers
+                                </p>
+                                <p
+                                    class="text-xs text-stone-600 dark:text-stone-400 mt-1"
+                                >
+                                    Les rapports générés sont conservés pendant
+                                    90 jours sur nos serveurs avant suppression
+                                    automatique pour des raisons de conformité
+                                    RGPD.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <!-- Footer -->
+            <footer
+                class="bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 px-10 py-6 text-center"
+            >
+                <p class="text-stone-400 text-xs font-medium tracking-wide">
+                    © 2023 EcoRide Platform - Système d'Administration. Tous
+                    droits réservés.
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>

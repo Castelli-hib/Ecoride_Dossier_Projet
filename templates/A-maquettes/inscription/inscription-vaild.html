@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Création de compte</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#98B67F",
+                            "user-blue": "#80B5D0",
+                            "secondary-gold": "#B5A07C",
+                            "success-green": "#22C55E",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Plus Jakarta Sans", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.5rem",
+                            lg: "1rem",
+                            xl: "1.5rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style type="text/tailwindcss">
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+            .form-input:focus {
+                border-color: #98b67f !important;
+                box-shadow: 0 0 0 1px #98b67f !important;
+            }
+            .hero-banner {
+                background-image: linear-gradient(
+                        rgba(152, 182, 127, 0.4),
+                        rgba(25, 28, 22, 0.7)
+                    ),
+                    url("https://lh3.googleusercontent.com/aida-public/AB6AXuCK2dRPr_hyiatTPNhaZmdYWcWDvieCPP2HK8vekeEoIAffS2OXjy9RGedrV4XHnW74tXoTu-dKZ51NVW2os08pRLk72jiNqveOMPfvMsLuDa2AzFlF-FnDIVMbDoN5SIEFQ0oEeWOUgKJjLkvakvNIVOdtzzxGuPpRfWiWIfCYCuZ1CUqb1tMvgh0jSmp5f25f8puEixn5PL6t963Mdb2oO1QndEFXCCmSj26sYqSk5KuQGeFXeeXutYmUZMQLAJLclKdwTYjtaUg");
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark text-[#141712] dark:text-stone-100 transition-colors duration-200"
+    >
+        <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-3 sticky top-0 z-50 lg:px-40"
+            >
+                <div class="flex items-center gap-3">
+                    <div class="text-primary size-8">
+                        <svg
+                            fill="currentColor"
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                clip-rule="evenodd"
+                                d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                fill-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-extrabold tracking-tight">
+                        EcoRide
+                    </h2>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a
+                            class="text-sm font-semibold hover:text-primary transition-colors"
+                            href="#"
+                            >Aide</a
+                        >
+                        <a
+                            class="text-sm font-semibold hover:text-primary transition-colors"
+                            href="#"
+                            >Contact</a
+                        >
+                    </nav>
+                    <button
+                        class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold shadow-sm hover:bg-opacity-90 transition-all"
+                    >
+                        Se connecter
+                    </button>
+                </div>
+            </header>
+            <div class="relative w-full h-[320px] lg:h-[400px]">
+                <div
+                    class="absolute inset-0 bg-cover bg-center hero-banner"
+                ></div>
+                <div
+                    class="relative h-full flex flex-col items-center justify-center text-center px-4"
+                >
+                    <h1
+                        class="text-white text-4xl lg:text-5xl font-black tracking-tight mb-2"
+                    >
+                        Rejoignez l'aventure EcoRide
+                    </h1>
+                    <p class="text-white/90 text-base lg:text-lg max-w-2xl">
+                        Le covoiturage écologique et solidaire qui prend soin de
+                        notre planète, un trajet à la fois.
+                    </p>
+                </div>
+            </div>
+            <main class="flex-1 -mt-24 pb-20 px-4 relative z-10">
+                <div
+                    class="max-w-[860px] mx-auto bg-white dark:bg-stone-900 rounded-xl shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden"
+                >
+                    <div class="p-8 lg:p-12">
+                        <div class="mb-10 text-center lg:text-left">
+                            <h2
+                                class="text-3xl font-black text-[#141712] dark:text-white mb-2"
+                            >
+                                Création de compte
+                            </h2>
+                            <p class="text-stone-500 dark:text-stone-400">
+                                Remplissez le formulaire ci-dessous pour
+                                commencer votre voyage.
+                            </p>
+                        </div>
+                        <form class="space-y-10">
+                            <section>
+                                <div
+                                    class="flex items-center gap-2 mb-6 border-b border-stone-100 dark:border-stone-800 pb-2"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary"
+                                        >person</span
+                                    >
+                                    <h3 class="text-xl font-bold">
+                                        Informations personnelles
+                                    </h3>
+                                </div>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Prénom
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="Ex: Jean"
+                                            type="text"
+                                        />
+                                    </label>
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Nom
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="Ex: Dupont"
+                                            type="text"
+                                        />
+                                    </label>
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Nom d'utilisateur
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="Ex: jean_eco"
+                                            type="text"
+                                        />
+                                    </label>
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Email
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="jean@exemple.com"
+                                            type="email"
+                                        />
+                                    </label>
+                                    <label
+                                        class="flex flex-col gap-2 md:col-span-2"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Numéro de téléphone</span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="06 12 34 56 78"
+                                            type="tel"
+                                        />
+                                    </label>
+                                </div>
+                            </section>
+                            <section>
+                                <div
+                                    class="flex items-center gap-2 mb-6 border-b border-stone-100 dark:border-stone-800 pb-2"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary"
+                                        >location_on</span
+                                    >
+                                    <h3 class="text-xl font-bold">Adresse</h3>
+                                </div>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                >
+                                    <label
+                                        class="flex flex-col gap-2 md:col-span-2"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Rue
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="123 rue de la Paix"
+                                            type="text"
+                                        />
+                                    </label>
+                                    <label
+                                        class="flex flex-col gap-2 md:col-span-2"
+                                    >
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Complément d'adresse</span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="Appartement, Bâtiment, etc."
+                                            type="text"
+                                        />
+                                    </label>
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Code postal
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="75000"
+                                            type="text"
+                                        />
+                                    </label>
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Ville
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <input
+                                            class="form-input rounded-xl border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 h-12 px-4"
+                                            placeholder="Paris"
+                                            type="text"
+                                        />
+                                    </label>
+                                </div>
+                            </section>
+                            <section>
+                                <div
+                                    class="flex items-center gap-2 mb-6 border-b border-stone-100 dark:border-stone-800 pb-2"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary"
+                                        >directions_car</span
+                                    >
+                                    <h3 class="text-xl font-bold">Rôle</h3>
+                                </div>
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-4"
+                                >
+                                    <label
+                                        class="cursor-pointer group relative"
+                                    >
+                                        <input
+                                            checked=""
+                                            class="peer sr-only"
+                                            name="role"
+                                            type="radio"
+                                        />
+                                        <div
+                                            class="flex flex-col items-center justify-center p-6 border-2 border-stone-200 dark:border-stone-800 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-4xl mb-2 text-stone-400 peer-checked:text-primary"
+                                                >steering_wheel_heat</span
+                                            >
+                                            <span class="font-bold text-lg"
+                                                >Conducteur</span
+                                            >
+                                            <p
+                                                class="text-xs text-stone-500 text-center mt-2"
+                                            >
+                                                Je propose des trajets et réduis
+                                                mes frais
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-primary"
+                                                >check_circle</span
+                                            >
+                                        </div>
+                                    </label>
+                                    <label
+                                        class="cursor-pointer group relative"
+                                    >
+                                        <input
+                                            class="peer sr-only"
+                                            name="role"
+                                            type="radio"
+                                        />
+                                        <div
+                                            class="flex flex-col items-center justify-center p-6 border-2 border-stone-200 dark:border-stone-800 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-4xl mb-2 text-stone-400 peer-checked:text-primary"
+                                                >person_pin_circle</span
+                                            >
+                                            <span class="font-bold text-lg"
+                                                >Passager</span
+                                            >
+                                            <p
+                                                class="text-xs text-stone-500 text-center mt-2"
+                                            >
+                                                Je cherche des trajets
+                                                écologiques
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="absolute top-3 right-3 opacity-0 peer-checked:opacity-100"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-primary"
+                                                >check_circle</span
+                                            >
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
+                            <section>
+                                <div
+                                    class="flex items-center gap-2 mb-6 border-b border-stone-100 dark:border-stone-800 pb-2"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary"
+                                        >security</span
+                                    >
+                                    <h3 class="text-xl font-bold">Sécurité</h3>
+                                </div>
+                                <div class="space-y-4">
+                                    <label class="flex flex-col gap-2">
+                                        <span
+                                            class="text-sm font-bold text-stone-700 dark:text-stone-300"
+                                            >Mot de passe
+                                            <span class="text-secondary-gold"
+                                                >*</span
+                                            ></span
+                                        >
+                                        <div class="relative">
+                                            <input
+                                                class="form-input w-full rounded-xl border-success-green bg-green-50/30 dark:bg-green-900/10 h-12 px-4 focus:ring-success-green"
+                                                type="password"
+                                                value="EcoRide2024!"
+                                            />
+                                            <span
+                                                class="material-symbols-outlined absolute right-4 top-3 text-stone-400 cursor-pointer"
+                                                >visibility</span
+                                            >
+                                        </div>
+                                    </label>
+                                    <div class="space-y-4">
+                                        <div
+                                            class="flex justify-between items-center text-sm"
+                                        >
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <span
+                                                    class="font-medium text-stone-600 dark:text-stone-400"
+                                                    >Complexité du mot de
+                                                    passe</span
+                                                >
+                                            </div>
+                                            <div
+                                                class="flex items-center gap-1.5 text-success-green font-bold"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-lg"
+                                                    >check_circle</span
+                                                >
+                                                <span>Mot de passe : Fort</span>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="w-full bg-stone-200 dark:bg-stone-800 h-2.5 rounded-full overflow-hidden"
+                                        >
+                                            <div
+                                                class="bg-success-green h-full w-full rounded-full"
+                                            ></div>
+                                        </div>
+                                        <div
+                                            class="bg-stone-50 dark:bg-stone-800/50 p-4 rounded-xl border border-stone-100 dark:border-stone-800"
+                                        >
+                                            <p
+                                                class="text-xs font-bold text-stone-600 dark:text-stone-300 mb-3 uppercase tracking-wider"
+                                            >
+                                                Critères de validation :
+                                            </p>
+                                            <ul
+                                                class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4"
+                                            >
+                                                <li
+                                                    class="flex items-center gap-2 text-xs text-success-green font-semibold"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[16px]"
+                                                        >check_circle</span
+                                                    >
+                                                    Au moins 8 caractères
+                                                </li>
+                                                <li
+                                                    class="flex items-center gap-2 text-xs text-success-green font-semibold"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[16px]"
+                                                        >check_circle</span
+                                                    >
+                                                    Une majuscule
+                                                </li>
+                                                <li
+                                                    class="flex items-center gap-2 text-xs text-success-green font-semibold"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[16px]"
+                                                        >check_circle</span
+                                                    >
+                                                    Une minuscule
+                                                </li>
+                                                <li
+                                                    class="flex items-center gap-2 text-xs text-success-green font-semibold"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[16px]"
+                                                        >check_circle</span
+                                                    >
+                                                    Un chiffre
+                                                </li>
+                                                <li
+                                                    class="flex items-center gap-2 text-xs text-success-green font-semibold"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-[16px]"
+                                                        >check_circle</span
+                                                    >
+                                                    Un caractère spécial
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div
+                                class="pt-8 border-t border-stone-100 dark:border-stone-800 space-y-6"
+                            >
+                                <label
+                                    class="flex items-start gap-3 cursor-pointer"
+                                >
+                                    <input
+                                        class="rounded border-stone-300 text-primary focus:ring-primary mt-1"
+                                        type="checkbox"
+                                    />
+                                    <span
+                                        class="text-sm text-stone-600 dark:text-stone-400"
+                                    >
+                                        J'accepte les
+                                        <a
+                                            class="text-primary hover:underline font-semibold"
+                                            href="#"
+                                            >Conditions Générales
+                                            d'Utilisation</a
+                                        >
+                                        et la
+                                        <a
+                                            class="text-primary hover:underline font-semibold"
+                                            href="#"
+                                            >Politique de Confidentialité</a
+                                        >.
+                                    </span>
+                                </label>
+                                <button
+                                    class="w-full bg-primary hover:bg-opacity-90 text-white font-bold h-14 rounded-xl shadow-lg transition-all transform hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2"
+                                    type="submit"
+                                >
+                                    M'inscrire
+                                    <span class="material-symbols-outlined"
+                                        >arrow_forward</span
+                                    >
+                                </button>
+                                <div class="text-center">
+                                    <p class="text-sm text-stone-500">
+                                        Déjà inscrit ?
+                                        <a
+                                            class="text-user-blue hover:underline font-bold ml-1"
+                                            href="#"
+                                            >Se connecter</a
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <footer
+                class="bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 py-12 px-6 lg:px-40"
+            >
+                <div
+                    class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12"
+                >
+                    <div class="col-span-1 md:col-span-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="text-primary size-6">
+                                <svg
+                                    fill="currentColor"
+                                    viewBox="0 0 48 48"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                        fill-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-lg font-extrabold">EcoRide</h2>
+                        </div>
+                        <p class="text-sm text-stone-500 leading-relaxed">
+                            Le covoiturage durable au service de la planète.
+                            Simple, sûr et écologique.
+                        </p>
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-stone-900 dark:text-white mb-4"
+                        >
+                            Plateforme
+                        </h4>
+                        <ul class="text-sm text-stone-500 space-y-2">
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Comment ça marche</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Nos engagements</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Tarifs</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-stone-900 dark:text-white mb-4"
+                        >
+                            Support
+                        </h4>
+                        <ul class="text-sm text-stone-500 space-y-2">
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Centre d'aide</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Contactez-nous</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Règles de sécurité</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            class="font-bold text-stone-900 dark:text-white mb-4"
+                        >
+                            Légal
+                        </h4>
+                        <ul class="text-sm text-stone-500 space-y-2">
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Mentions légales</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Confidentialité</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="hover:text-primary transition-colors"
+                                    href="#"
+                                    >Cookies</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="mt-12 pt-8 border-t border-stone-100 dark:border-stone-800 text-center text-sm text-stone-400"
+                >
+                    <p>
+                        © 2024 EcoRide. Tous droits réservés.
+                        <span class="text-secondary-gold px-2">●</span> Voyagez
+                        avec sens.
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>

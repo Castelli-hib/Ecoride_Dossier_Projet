@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EcoRide - Covoiturage Écologique</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#99b681",
+                        "secondary": "#B5A07C",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#191c16",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            overflow: -webkit-paged-x;
+        }
+
+        .user-avatar {
+            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCeCMOkl0gcCe9JiRUs81dzTJxNE-MGlFsTU9vXW8OMOUHSUZvTrH5AYl86ikhUN45FVIRExEjT_J_nN3UwdgEoKeOlfLFORd9bonxF8fTAwnSDk2W51Hodgypa9GN2fnG_3yw6qSMdz2R2P375DS3frqX1OvItHK21U3kfhtOcLj7OrXMBYZH5gmJfnjJ-a1YLALND_ZF2Sr0CWFvXhwAEtDYOmXsSb6YYChH88ubs0YCDf8BKosd46mofYbFCHt-ib20VJcV6GA0");
+        }
+
+        .hero-section {
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(25, 28, 22, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-ifoQpSjReqPvlu9AK0x2GzWwFMidKljPmf3gQHWd0oe3B4Lg2ZXtvX9nBW-OJ3QydDLObzpRBbT0O11hhY6uUqu8ygCwB-n_l4Ck69n7AYzkNpVa3MIsagch9rhOwFPD7wsK5Tl6fwJFB5wrK95yplFm_k-pMZZ0N4Kd__SWG5pAZGpmR27Iu_NaepCB2HkFfINYMPYhw6I1r4j5YQTt5lZw6YI6b7i-PoKofc-KGB9RTFniGnmzPLt0cR-dPDKmc36lmceDKt0");
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-900 flex justify-center min-h-screen">
+    <!-- Mobile-First Container (constrained for desktop viewing) -->
+    <div
+        class="relative w-full max-w-[430px] bg-background-light dark:bg-background-dark min-h-screen flex flex-col shadow-2xl overflow-hidden border-x border-white/5">
+        <!-- TopNavBar -->
+        <header
+            class="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+            <div class="flex items-center gap-2 text-primary">
+                <div class="size-6">
+                    <svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h2 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-tight">EcoRide</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary/20 user-avatar"
+                    data-alt="User profile avatar icon">
+                </div>
+            </div>
+        </header>
+        <!-- Main Scrollable Content -->
+        <main class="flex-1 overflow-y-auto hide-scrollbar pb-24">
+            <!-- HeroSection with Overlay Search -->
+            <div class="relative">
+                <div class="@[480px]:px-0">
+                    <div class="bg-cover bg-center flex flex-col justify-end overflow-hidden min-h-64 hero-section"
+                        data-alt="Beautiful green landscape with a winding road">
+                        <div class="flex p-6 pb-12">
+                            <h1 class="text-white tracking-tight text-3xl font-extrabold leading-tight">Ben oui je
+                                reprend tout !</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- SearchBar Overlay -->
+                <div class="px-4 -mt-8 relative z-10">
+                    <div
+                        class="bg-white dark:bg-zinc-800 p-4 rounded-xl shadow-xl border border-zinc-200 dark:border-zinc-700 flex flex-col gap-3">
+                        <div
+                            class="flex items-center gap-3 bg-zinc-100 dark:bg-zinc-900/50 rounded-lg px-3 py-2 border border-zinc-200 dark:border-zinc-700">
+                            <span class="material-symbols-outlined text-primary text-xl">location_on</span>
+                            <input
+                                class="w-full bg-transparent border-none p-0 text-sm focus:ring-0 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
+                                placeholder="Départ..." type="text" />
+                        </div>
+                        <div
+                            class="flex items-center gap-3 bg-zinc-100 dark:bg-zinc-900/50 rounded-lg px-3 py-2 border border-zinc-200 dark:border-zinc-700">
+                            <span class="material-symbols-outlined text-secondary text-xl">near_me</span>
+                            <input
+                                class="w-full bg-transparent border-none p-0 text-sm focus:ring-0 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400"
+                                placeholder="Où allez-vous ?" type="text" />
+                        </div>
+                        <button
+                            class="bg-primary hover:bg-primary/90 text-zinc-900 font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">search</span>
+                            Rechercher
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- SectionHeader -->
+            <div class="px-4 pt-8 pb-2 flex items-center justify-between">
+                <h2 class="text-zinc-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Derniers
+                    covoiturages</h2>
+                <button class="text-primary text-sm font-semibold">Voir tout</button>
+            </div>
+            <!-- Ride Cards List -->
+            <div class="flex flex-col gap-4 px-4 pb-10">
+                <!-- Card 1 -->
+                <div
+                    class="flex flex-col gap-4 rounded-xl bg-white dark:bg-zinc-800/50 p-4 shadow-sm border border-zinc-200 dark:border-zinc-800 hover:border-primary/50 transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-medium">
+                                <span class="material-symbols-outlined text-sm">schedule</span>
+                                14:00 - 18:30
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-lg font-bold leading-tight">Paris <span
+                                    class="text-primary">→</span> Lyon</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <div class="size-6 rounded-full bg-zinc-300 bg-driver-1"
+                                    data-alt="Driver profile picture">
+                                </div>
+                                <p class="text-zinc-600 dark:text-zinc-400 text-sm">Jean-Luc • 4.8 <span
+                                        class="text-primary">★</span></p>
+                            </div>
+                        </div>
+                        <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-lg font-bold">25€</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-green-500/20">
+                            -12kg CO2
+                        </div>
+                        <div
+                            class="bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded">
+                            2 places restantes
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="flex flex-col gap-4 rounded-xl bg-white dark:bg-zinc-800/50 p-4 shadow-sm border border-zinc-200 dark:border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-medium">
+                                <span class="material-symbols-outlined text-sm">schedule</span>
+                                08:30 - 10:45
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-lg font-bold leading-tight">Bordeaux <span
+                                    class="text-primary">→</span> Anglet</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <div class="size-6 rounded-full bg-zinc-300 bg-driver-2"
+                                    data-alt="Driver profile picture">
+                                </div>
+                                <p class="text-zinc-600 dark:text-zinc-400 text-sm">Amélie • 4.9 <span
+                                        class="text-primary">★</span></p>
+                            </div>
+                        </div>
+                        <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-lg font-bold">18€</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-green-500/20">
+                            -8kg CO2
+                        </div>
+                        <div
+                            class="bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded">
+                            1 place restante
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="flex flex-col gap-4 rounded-xl bg-white dark:bg-zinc-800/50 p-4 shadow-sm border border-zinc-200 dark:border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <div class="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-medium">
+                                <span class="material-symbols-outlined text-sm">schedule</span>
+                                17:15 - 19:00
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-lg font-bold leading-tight">Nantes <span
+                                    class="text-primary">→</span> Rennes</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <div class="size-6 rounded-full bg-zinc-300 bg-driver-3"
+                                    data-alt="Driver profile picture">
+                                </div>
+                                <p class="text-zinc-600 dark:text-zinc-400 text-sm">Thomas • 4.5 <span
+                                        class="text-primary">★</span></p>
+                            </div>
+                        </div>
+                        <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-lg font-bold">12€</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-green-500/20">
+                            -5kg CO2
+                        </div>
+                        <div
+                            class="bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase px-2 py-0.5 rounded">
+                            3 places restantes
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Compact Footer -->
+            <footer class="px-6 py-8 border-t border-zinc-200 dark:border-zinc-800 text-center">
+                <div class="flex justify-center gap-4 text-xs text-zinc-500 mb-4">
+                    <a class="hover:text-primary transition-colors" href="#">Confidentialité</a>
+                    <a class="hover:text-primary transition-colors" href="#">Conditions</a>
+                    <a class="hover:text-primary transition-colors" href="#">Contact</a>
+                </div>
+                <p class="text-zinc-400 dark:text-zinc-600 text-[10px] uppercase tracking-widest font-bold">© 2024
+                    EcoRide Inc.</p>
+            </footer>
+        </main>
+        <!-- Bottom Navigation Bar -->
+        <nav
+            class="fixed bottom-0 w-full max-w-[430px] bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border-t border-zinc-200 dark:border-zinc-800 px-6 py-3 flex justify-between items-center z-50">
+            <a class="flex flex-col items-center gap-1 group" href="#">
+                <span class="material-symbols-outlined text-primary font-variation-fill">home</span>
+                <span class="text-[10px] font-bold text-primary">Accueil</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 group" href="#">
+                <span
+                    class="material-symbols-outlined text-zinc-400 group-hover:text-primary transition-colors">search</span>
+                <span
+                    class="text-[10px] font-medium text-zinc-400 group-hover:text-primary transition-colors">Explorer</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 group" href="#">
+                <span
+                    class="material-symbols-outlined text-zinc-400 group-hover:text-primary transition-colors">commute</span>
+                <span class="text-[10px] font-medium text-zinc-400 group-hover:text-primary transition-colors">Mes
+                    trajets</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 group" href="#">
+                <span
+                    class="material-symbols-outlined text-zinc-400 group-hover:text-primary transition-colors">person</span>
+                <span
+                    class="text-[10px] font-medium text-zinc-400 group-hover:text-primary transition-colors">Compte</span>
+            </a>
+        </nav>
+    </div>
+</body>
+
+</html>

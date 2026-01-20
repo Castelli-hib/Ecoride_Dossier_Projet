@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Mes Réservations</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                            "secondary-gold": "#B5A07C",
+                            "avatar-blue": "#80B5D0",
+                            "neutral-purple-grey": "#9B8B9C",
+                        },
+                        fontFamily: {
+                            display: ["Inter"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .material-symbols-outlined.filled {
+                font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .status-badge {
+                background-color: #b5a07c;
+                color: white;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark font-display text-[#141712] dark:text-stone-100"
+    >
+        <div class="flex min-h-screen">
+            <!-- Sidebar Navigation -->
+            <aside
+                class="w-72 border-r border-[#edefeb] dark:border-stone-800 bg-white dark:bg-[#1f221c] hidden lg:flex flex-col sticky top-0 h-screen"
+            >
+                <div class="p-6 flex flex-col h-full justify-between">
+                    <div class="flex flex-col gap-8">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="size-10 bg-primary rounded-full flex items-center justify-center text-white"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >eco</span
+                                >
+                            </div>
+                            <div class="flex flex-col">
+                                <h1
+                                    class="text-[#141712] dark:text-white text-base font-bold leading-none"
+                                >
+                                    EcoRide
+                                </h1>
+                                <p
+                                    class="text-[#717f66] dark:text-stone-400 text-xs mt-1"
+                                >
+                                    Plateforme de Covoiturage
+                                </p>
+                            </div>
+                        </div>
+                        <nav class="flex flex-col gap-2">
+                            <a
+                                class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >dashboard</span
+                                >
+                                <span class="text-sm font-medium"
+                                    >Tableau de bord</span
+                                >
+                            </a>
+                            <a
+                                class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined filled"
+                                    >directions_car</span
+                                >
+                                <span class="text-sm font-bold"
+                                    >Mes Réservations</span
+                                >
+                            </a>
+                            <a
+                                class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >publish</span
+                                >
+                                <span class="text-sm font-medium"
+                                    >Trajets publiés</span
+                                >
+                            </a>
+                            <a
+                                class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >chat</span
+                                >
+                                <span class="text-sm font-medium"
+                                    >Messages</span
+                                >
+                            </a>
+                            <a
+                                class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >person</span
+                                >
+                                <span class="text-sm font-medium">Profil</span>
+                            </a>
+                        </nav>
+                    </div>
+                    <div
+                        class="flex flex-col gap-2 pt-6 border-t border-[#edefeb] dark:border-stone-800"
+                    >
+                        <a
+                            class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >settings</span
+                            >
+                            <span class="text-sm font-medium">Paramètres</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >logout</span
+                            >
+                            <span class="text-sm font-medium">Déconnexion</span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            <!-- Main Content Area -->
+            <div class="flex-1 flex flex-col">
+                <!-- Header -->
+                <header
+                    class="h-16 border-b border-[#edefeb] dark:border-stone-800 bg-white dark:bg-[#1f221c] flex items-center justify-between px-8 sticky top-0 z-10"
+                >
+                    <div class="flex items-center gap-8 flex-1">
+                        <div
+                            class="flex lg:hidden items-center gap-2 text-primary"
+                        >
+                            <span class="material-symbols-outlined">eco</span>
+                        </div>
+                        <div class="max-w-md w-full relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xl"
+                                >search</span
+                            >
+                            <input
+                                class="w-full bg-stone-100 dark:bg-stone-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/50"
+                                placeholder="Rechercher un trajet..."
+                                type="text"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="flex items-center gap-2 text-stone-600 dark:text-stone-400 hover:text-primary transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >notifications</span
+                            >
+                        </button>
+                        <div
+                            class="w-px h-6 bg-stone-200 dark:bg-stone-700 mx-2"
+                        ></div>
+                        <div class="flex items-center gap-3">
+                            <p class="text-sm font-medium hidden md:block">
+                                Alexandre Martin
+                            </p>
+                            <div
+                                class="size-9 rounded-full bg-avatar-blue flex items-center justify-center text-white"
+                                data-alt="Avatar of user Alexandre Martin"
+                            >
+                                <span class="material-symbols-outlined text-xl"
+                                    >person</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <main class="flex-1 p-8 lg:p-12 max-w-5xl mx-auto w-full">
+                    <!-- Page Title -->
+                    <div class="mb-10">
+                        <h1
+                            class="text-4xl font-black tracking-tight text-[#141712] dark:text-white mb-2"
+                        >
+                            Mes Réservations
+                        </h1>
+                        <p class="text-[#717f66] dark:text-stone-400 text-lg">
+                            Gérez vos trajets à venir et consultez votre
+                            historique de voyage.
+                        </p>
+                    </div>
+                    <!-- Upcoming Section -->
+                    <section class="mb-14">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-bold tracking-tight">
+                                Prochaines réservations
+                            </h2>
+                            <span
+                                class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-wider"
+                                >2 trajets</span
+                            >
+                        </div>
+                        <div class="grid gap-6">
+                            <!-- Card 1 -->
+                            <div
+                                class="bg-white dark:bg-[#1f221c] border border-stone-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                            >
+                                <div class="flex flex-col md:flex-row">
+                                    <div
+                                        class="md:w-1/3 h-48 md:h-auto overflow-hidden relative"
+                                    >
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"
+                                            data-alt="Map representation of Paris to Lyon route"
+                                        ></div>
+                                        <div
+                                            class="absolute inset-0 flex items-center justify-center opacity-30"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-6xl text-primary"
+                                                >map</span
+                                            >
+                                        </div>
+                                        <div class="absolute bottom-4 left-4">
+                                            <span
+                                                class="px-3 py-1 status-badge text-xs font-bold rounded-full shadow-lg"
+                                                >Confirmé</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-6 flex-1 flex flex-col justify-between"
+                                    >
+                                        <div
+                                            class="flex justify-between items-start mb-4"
+                                        >
+                                            <div>
+                                                <div
+                                                    class="flex items-center gap-2 text-primary mb-1"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-sm"
+                                                        >calendar_today</span
+                                                    >
+                                                    <p
+                                                        class="text-xs font-bold uppercase tracking-wide"
+                                                    >
+                                                        12 Octobre • 08:30
+                                                    </p>
+                                                </div>
+                                                <p
+                                                    class="text-2xl font-bold tracking-tight"
+                                                >
+                                                    Paris
+                                                    <span
+                                                        class="text-primary mx-2"
+                                                        >→</span
+                                                    >
+                                                    Lyon
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="flex items-center gap-3 bg-stone-50 dark:bg-stone-800/50 p-2 rounded-lg border border-stone-100 dark:border-stone-700"
+                                            >
+                                                <div
+                                                    class="size-10 rounded-full bg-avatar-blue flex items-center justify-center text-white shrink-0"
+                                                    data-alt="Profile photo of driver Jean D."
+                                                >
+                                                    <span
+                                                        class="font-bold text-sm"
+                                                        >JD</span
+                                                    >
+                                                </div>
+                                                <div class="leading-none">
+                                                    <p
+                                                        class="text-xs text-stone-500 dark:text-stone-400 mb-1"
+                                                    >
+                                                        Conducteur
+                                                    </p>
+                                                    <p
+                                                        class="text-sm font-bold"
+                                                    >
+                                                        Jean D.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex items-center justify-between mt-4 pt-6 border-t border-stone-100 dark:border-stone-800"
+                                        >
+                                            <div class="flex gap-4">
+                                                <button
+                                                    class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg text-sm transition-colors"
+                                                >
+                                                    Détails
+                                                </button>
+                                                <button
+                                                    class="text-stone-400 hover:text-red-500 font-medium py-2 px-2 rounded-lg text-sm transition-colors flex items-center gap-1"
+                                                >
+                                                    Annuler
+                                                </button>
+                                            </div>
+                                            <div class="text-right">
+                                                <p
+                                                    class="text-xs text-stone-400 uppercase font-medium"
+                                                >
+                                                    Prix payé
+                                                </p>
+                                                <p
+                                                    class="text-xl font-black text-primary"
+                                                >
+                                                    32,50 €
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div
+                                class="bg-white dark:bg-[#1f221c] border border-stone-200 dark:border-stone-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                            >
+                                <div class="flex flex-col md:flex-row">
+                                    <div
+                                        class="md:w-1/3 h-48 md:h-auto overflow-hidden relative"
+                                    >
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-br from-secondary-gold/20 to-secondary-gold/5"
+                                            data-alt="Map representation of Lyon to Marseille route"
+                                        ></div>
+                                        <div
+                                            class="absolute inset-0 flex items-center justify-center opacity-30"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-6xl text-secondary-gold"
+                                                >pending_actions</span
+                                            >
+                                        </div>
+                                        <div class="absolute bottom-4 left-4">
+                                            <span
+                                                class="px-3 py-1 bg-white border border-secondary-gold text-secondary-gold text-xs font-bold rounded-full shadow-lg"
+                                                >En attente</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-6 flex-1 flex flex-col justify-between"
+                                    >
+                                        <div
+                                            class="flex justify-between items-start mb-4"
+                                        >
+                                            <div>
+                                                <div
+                                                    class="flex items-center gap-2 text-secondary-gold mb-1"
+                                                >
+                                                    <span
+                                                        class="material-symbols-outlined text-sm"
+                                                        >schedule</span
+                                                    >
+                                                    <p
+                                                        class="text-xs font-bold uppercase tracking-wide"
+                                                    >
+                                                        15 Octobre • 14:00
+                                                    </p>
+                                                </div>
+                                                <p
+                                                    class="text-2xl font-bold tracking-tight"
+                                                >
+                                                    Lyon
+                                                    <span
+                                                        class="text-primary mx-2"
+                                                        >→</span
+                                                    >
+                                                    Marseille
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="flex items-center gap-3 bg-stone-50 dark:bg-stone-800/50 p-2 rounded-lg border border-stone-100 dark:border-stone-700"
+                                            >
+                                                <div
+                                                    class="size-10 rounded-full bg-avatar-blue flex items-center justify-center text-white shrink-0"
+                                                    data-alt="Profile photo of driver Sarah L."
+                                                >
+                                                    <span
+                                                        class="font-bold text-sm"
+                                                        >SL</span
+                                                    >
+                                                </div>
+                                                <div class="leading-none">
+                                                    <p
+                                                        class="text-xs text-stone-500 dark:text-stone-400 mb-1"
+                                                    >
+                                                        Conducteur
+                                                    </p>
+                                                    <p
+                                                        class="text-sm font-bold"
+                                                    >
+                                                        Sarah L.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex items-center justify-between mt-4 pt-6 border-t border-stone-100 dark:border-stone-800"
+                                        >
+                                            <div class="flex gap-4">
+                                                <button
+                                                    class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg text-sm transition-colors"
+                                                >
+                                                    Détails
+                                                </button>
+                                                <button
+                                                    class="text-stone-400 hover:text-red-500 font-medium py-2 px-2 rounded-lg text-sm transition-colors flex items-center gap-1"
+                                                >
+                                                    Annuler
+                                                </button>
+                                            </div>
+                                            <div class="text-right">
+                                                <p
+                                                    class="text-xs text-stone-400 uppercase font-medium"
+                                                >
+                                                    Prix estimé
+                                                </p>
+                                                <p
+                                                    class="text-xl font-black text-secondary-gold"
+                                                >
+                                                    18,00 €
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- History Section -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-6">
+                            <h2 class="text-2xl font-bold tracking-tight">
+                                Historique des voyages
+                            </h2>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-[#1f221c] rounded-xl border border-stone-200 dark:border-stone-800 overflow-hidden"
+                        >
+                            <table class="w-full text-left">
+                                <thead
+                                    class="bg-stone-50 dark:bg-stone-900/50 border-b border-stone-200 dark:border-stone-800"
+                                >
+                                    <tr>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-neutral-purple-grey uppercase tracking-wider"
+                                        >
+                                            Trajet
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-neutral-purple-grey uppercase tracking-wider"
+                                        >
+                                            Date
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-neutral-purple-grey uppercase tracking-wider"
+                                        >
+                                            Conducteur
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-neutral-purple-grey uppercase tracking-wider"
+                                        >
+                                            Statut
+                                        </th>
+                                        <th
+                                            class="px-6 py-4 text-xs font-bold text-neutral-purple-grey uppercase tracking-wider text-right"
+                                        >
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    class="divide-y divide-stone-100 dark:divide-stone-800"
+                                >
+                                    <tr
+                                        class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <p class="font-semibold text-sm">
+                                                Nantes
+                                                <span class="text-primary"
+                                                    >→</span
+                                                >
+                                                Angers
+                                            </p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <p
+                                                class="text-sm text-neutral-purple-grey"
+                                            >
+                                                01 Sept. 2023
+                                            </p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <div
+                                                    class="size-6 rounded-full bg-avatar-blue text-[10px] font-bold text-white flex items-center justify-center"
+                                                    data-alt="Small avatar of driver Marc K."
+                                                >
+                                                    MK
+                                                </div>
+                                                <span
+                                                    class="text-sm font-medium"
+                                                    >Marc K.</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="text-[10px] px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-stone-500 font-bold uppercase tracking-tight"
+                                                >Terminé</span
+                                            >
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button
+                                                class="text-primary font-bold text-xs hover:underline"
+                                            >
+                                                Revoir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <p class="font-semibold text-sm">
+                                                Bordeaux
+                                                <span class="text-primary"
+                                                    >→</span
+                                                >
+                                                Toulouse
+                                            </p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <p
+                                                class="text-sm text-neutral-purple-grey"
+                                            >
+                                                20 Août 2023
+                                            </p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <div
+                                                    class="size-6 rounded-full bg-avatar-blue text-[10px] font-bold text-white flex items-center justify-center"
+                                                    data-alt="Small avatar of driver Lucie M."
+                                                >
+                                                    LM
+                                                </div>
+                                                <span
+                                                    class="text-sm font-medium"
+                                                    >Lucie M.</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="text-[10px] px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-stone-500 font-bold uppercase tracking-tight"
+                                                >Terminé</span
+                                            >
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button
+                                                class="text-primary font-bold text-xs hover:underline"
+                                            >
+                                                Revoir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <p class="font-semibold text-sm">
+                                                Lille
+                                                <span class="text-primary"
+                                                    >→</span
+                                                >
+                                                Paris
+                                            </p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <p
+                                                class="text-sm text-neutral-purple-grey"
+                                            >
+                                                15 Août 2023
+                                            </p>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <div
+                                                    class="size-6 rounded-full bg-avatar-blue text-[10px] font-bold text-white flex items-center justify-center"
+                                                    data-alt="Small avatar of driver Pierre V."
+                                                >
+                                                    PV
+                                                </div>
+                                                <span
+                                                    class="text-sm font-medium"
+                                                    >Pierre V.</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="text-[10px] px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/30 text-red-500 font-bold uppercase tracking-tight"
+                                                >Annulé</span
+                                            >
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button
+                                                class="text-primary font-bold text-xs hover:underline"
+                                            >
+                                                Revoir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div
+                                class="p-4 bg-stone-50 dark:bg-stone-900/50 flex justify-center"
+                            >
+                                <button
+                                    class="text-xs font-bold text-neutral-purple-grey hover:text-primary transition-colors flex items-center gap-1"
+                                >
+                                    Voir tout l'historique
+                                    <span
+                                        class="material-symbols-outlined text-xs"
+                                        >keyboard_arrow_down</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+                <!-- Footer -->
+                <footer
+                    class="mt-auto border-t border-[#edefeb] dark:border-stone-800 bg-white dark:bg-[#1f221c] p-8"
+                >
+                    <div
+                        class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
+                    >
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary"
+                                >eco</span
+                            >
+                            <span class="text-sm font-bold opacity-70"
+                                >© 2023 EcoRide Carpooling</span
+                            >
+                        </div>
+                        <div class="flex gap-8">
+                            <a
+                                class="text-xs font-medium text-stone-500 hover:text-primary"
+                                href="#"
+                                >Confidentialité</a
+                            >
+                            <a
+                                class="text-xs font-medium text-stone-500 hover:text-primary"
+                                href="#"
+                                >Conditions</a
+                            >
+                            <a
+                                class="text-xs font-medium text-stone-500 hover:text-primary"
+                                href="#"
+                                >Contact</a
+                            >
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

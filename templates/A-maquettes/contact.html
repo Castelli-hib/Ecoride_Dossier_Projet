@@ -1,0 +1,558 @@
+<!doctype html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Contactez-nous</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            "user-blue": "#80B5D0",
+                            "neutral-gray": "#9B8B9C",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.5rem",
+                            lg: "1rem",
+                            xl: "1.5rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .avatar-user {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbUJW2fIuC0oyATCzBoUGaAVZTDoW4dt-uBm5oTDaajt8Hkfr4xFfirdaFvG3TUyxRV1V0T9ZZuoxkNsEV41e7FAl2OegzdnCZC1ccR8Cp9d_salsC-OrEZ0Pc4D6Ln_ODSgaeAi20A2b-f-aDRWUI5S2N1YFWTTRU2-cyJ2wm9KBlZcQCibz8b4lNbyOWMUNbcn6X2swRZW-ngeL5JFP1cG9m1t8MoGDhYvmDTRZTA0-JQfkDZiC7YHDYVMi1ExwId_lmQkjFdRM");
+            }
+            .hero-section {
+                background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                    url("https://lh3.googleusercontent.com/aida-public/AB6AXuDmuEXeq2PW0uWmcPFTaHO1GrlHvXcydj-FTqEpuy-v1ttkzPm5TCBnsuNdmAnnT03aTkXwOUJhIJKQgNaFk7yT1beCOhhxyzRlqECDsiliZvbaNGP4VDpZiGfdvV9KUAm6K6aKHvbWHo_SxycdBxamQUaBlYTf8Itf6RUVkQqpwcjgdlXl36H0wvSSULKt5dsXaSZztzjAcMTEufQgZW8pk5RLFabjdWta2NIRi0dHc28nzC96O8jvVJROuaxBikAElGZ9oEeqrCY");
+            }
+            .map-section {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA34U3Z8m7z8Q_XrwDo8j-bFgJU89efWN90iAwxYs2njT_vOb0h2dymOlU9p7oad7h2BE-N7R3-O7GNlAexp-9FLEuvOncv9cT5BPe-St0lYl0NVTYML3QWFePFmY24ZKPyWoZ6ht9vEDTtLHV8t-dUmiVXMLmkpZ-dAPweePx0be6OIn1l6fs3e792XcA849mrEi1nJCot64g4_EvcA50acih3-L8czuY4buPtRw6maDI5YhvHkht3GEvO157mDdFjonFMkDd2sM8");
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark font-display text-[#141712] dark:text-stone-100"
+    >
+        <div
+            class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
+        >
+            <div class="layout-container flex h-full grow flex-col">
+                <!-- Header Section -->
+                <header
+                    class="flex items-center justify-between whitespace-nowrap border-b border-solid border-stone-200 dark:border-stone-800 px-10 py-3 bg-white dark:bg-stone-900 sticky top-0 z-50"
+                >
+                    <div class="flex items-center gap-8">
+                        <div
+                            class="flex items-center gap-4 text-[#141712] dark:text-white"
+                        >
+                            <div class="size-6 text-primary">
+                                <svg
+                                    fill="currentColor"
+                                    viewbox="0 0 48 48"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        clip-rule="evenodd"
+                                        d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                        fill-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <h2
+                                class="text-lg font-bold leading-tight tracking-[-0.015em]"
+                            >
+                                EcoRide
+                            </h2>
+                        </div>
+                        <nav class="hidden md:flex items-center gap-9">
+                            <a
+                                class="text-sm font-medium leading-normal hover:text-primary transition-colors"
+                                href="#"
+                                >Covoiturages</a
+                            >
+                            <a
+                                class="text-sm font-medium leading-normal hover:text-primary transition-colors"
+                                href="#"
+                                >Comment ça marche</a
+                            >
+                            <a
+                                class="text-sm font-medium leading-normal hover:text-primary transition-colors"
+                                href="#"
+                                >À propos</a
+                            >
+                            <a
+                                class="text-sm font-medium leading-normal text-primary"
+                                href="#"
+                                >Contact</a
+                            >
+                        </nav>
+                    </div>
+                    <div class="flex flex-1 justify-end gap-6 items-center">
+                        <label
+                            class="hidden lg:flex flex-col min-w-40 h-10 max-w-64"
+                        >
+                            <div
+                                class="flex w-full flex-1 items-stretch rounded-xl h-full"
+                            >
+                                <div
+                                    class="text-stone-500 flex border-none bg-stone-100 dark:bg-stone-800 items-center justify-center pl-4 rounded-l-xl"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-[20px]"
+                                        >search</span
+                                    >
+                                </div>
+                                <input
+                                    class="form-input flex w-full min-w-0 flex-1 border-none bg-stone-100 dark:bg-stone-800 focus:ring-0 h-full placeholder:text-neutral-gray text-base font-normal leading-normal px-4 rounded-r-xl"
+                                    placeholder="Rechercher un trajet"
+                                />
+                            </div>
+                        </label>
+                        <button
+                            class="flex min-w-[100px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold transition-opacity hover:opacity-90"
+                        >
+                            <span>Connexion</span>
+                        </button>
+                        <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-stone-200 dark:border-stone-700 avatar-user"
+                            data-alt="Avatar de l'utilisateur"
+                        ></div>
+                    </div>
+                </header>
+                <!-- Hero Section -->
+                <div class="w-full px-4 lg:px-40 py-5">
+                    <div class="@container">
+                        <div
+                            class="flex min-h-[320px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-8 relative overflow-hidden hero-section"
+                            data-alt="Forêt verdoyante et route de campagne"
+                        >
+                            <div class="flex flex-col gap-3 text-center z-10">
+                                <h1
+                                    class="text-white text-4xl font-black leading-tight tracking-tight md:text-5xl"
+                                >
+                                    Contactez-nous
+                                </h1>
+                                <p
+                                    class="text-white/90 text-base md:text-lg max-w-xl font-normal leading-relaxed"
+                                >
+                                    Une question ? Notre équipe est là pour vous
+                                    aider à voyager plus vert.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Content: Two Columns -->
+                <main class="flex-1 px-4 lg:px-40 py-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Left Column: Contact Info -->
+                        <div class="lg:col-span-5 flex flex-col gap-8">
+                            <div>
+                                <h2 class="text-2xl font-bold mb-2">
+                                    Nos coordonnées
+                                </h2>
+                                <p
+                                    class="text-neutral-gray dark:text-stone-400"
+                                >
+                                    Besoin d'un renseignement immédiat ?
+                                    Retrouvez-nous ou écrivez-nous directement.
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <!-- Address -->
+                                <div
+                                    class="flex items-start gap-4 p-5 rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-sm transition-all hover:shadow-md"
+                                >
+                                    <div
+                                        class="bg-primary/10 p-3 rounded-lg text-primary"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >location_on</span
+                                        >
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <h3 class="text-base font-bold">
+                                            Adresse
+                                        </h3>
+                                        <p
+                                            class="text-neutral-gray dark:text-stone-400 text-sm"
+                                        >
+                                            123 Rue de l'Écologie, 75001 Paris,
+                                            France
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- Email -->
+                                <div
+                                    class="flex items-start gap-4 p-5 rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-sm transition-all hover:shadow-md"
+                                >
+                                    <div
+                                        class="bg-primary/10 p-3 rounded-lg text-primary"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >mail</span
+                                        >
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <h3 class="text-base font-bold">
+                                            Email
+                                        </h3>
+                                        <p
+                                            class="text-user-blue text-sm font-medium"
+                                        >
+                                            support@ecoride.com
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- Phone -->
+                                <div
+                                    class="flex items-start gap-4 p-5 rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 shadow-sm transition-all hover:shadow-md"
+                                >
+                                    <div
+                                        class="bg-primary/10 p-3 rounded-lg text-primary"
+                                    >
+                                        <span class="material-symbols-outlined"
+                                            >phone</span
+                                        >
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <h3 class="text-base font-bold">
+                                            Téléphone
+                                        </h3>
+                                        <p
+                                            class="text-neutral-gray dark:text-stone-400 text-sm"
+                                        >
+                                            +33 (0)1 23 45 67 89
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Social Media -->
+                            <div class="mt-4">
+                                <h3
+                                    class="text-sm font-bold text-neutral-gray uppercase tracking-wider mb-4"
+                                >
+                                    Suivez-nous
+                                </h3>
+                                <div class="flex flex-wrap gap-4">
+                                    <div
+                                        class="flex flex-col items-center gap-2 group cursor-pointer"
+                                    >
+                                        <div
+                                            class="rounded-full bg-stone-100 dark:bg-stone-800 p-3 group-hover:bg-primary group-hover:text-white transition-all"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[20px]"
+                                                >public</span
+                                            >
+                                        </div>
+                                        <p class="text-xs font-medium">
+                                            Facebook
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center gap-2 group cursor-pointer"
+                                    >
+                                        <div
+                                            class="rounded-full bg-stone-100 dark:bg-stone-800 p-3 group-hover:bg-primary group-hover:text-white transition-all"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[20px]"
+                                                >share</span
+                                            >
+                                        </div>
+                                        <p class="text-xs font-medium">
+                                            Twitter
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center gap-2 group cursor-pointer"
+                                    >
+                                        <div
+                                            class="rounded-full bg-stone-100 dark:bg-stone-800 p-3 group-hover:bg-primary group-hover:text-white transition-all"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[20px]"
+                                                >photo_camera</span
+                                            >
+                                        </div>
+                                        <p class="text-xs font-medium">
+                                            Instagram
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="flex flex-col items-center gap-2 group cursor-pointer"
+                                    >
+                                        <div
+                                            class="rounded-full bg-stone-100 dark:bg-stone-800 p-3 group-hover:bg-primary group-hover:text-white transition-all"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[20px]"
+                                                >groups</span
+                                            >
+                                        </div>
+                                        <p class="text-xs font-medium">
+                                            LinkedIn
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Column: Contact Form -->
+                        <div class="lg:col-span-7">
+                            <div
+                                class="bg-white dark:bg-stone-900 p-8 rounded-xl shadow-sm border border-stone-200 dark:border-stone-800"
+                            >
+                                <form action="#" class="flex flex-col gap-6">
+                                    <div
+                                        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                    >
+                                        <div class="flex flex-col gap-2">
+                                            <label class="text-sm font-semibold"
+                                                >Nom</label
+                                            >
+                                            <input
+                                                class="rounded-lg border-stone-300 dark:border-stone-700 bg-transparent focus:border-primary focus:ring-primary placeholder:text-stone-400"
+                                                placeholder="Votre nom complet"
+                                                type="text"
+                                            />
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <label class="text-sm font-semibold"
+                                                >Email</label
+                                            >
+                                            <input
+                                                class="rounded-lg border-stone-300 dark:border-stone-700 bg-transparent focus:border-primary focus:ring-primary placeholder:text-stone-400"
+                                                placeholder="votre@email.com"
+                                                type="email"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <label class="text-sm font-semibold"
+                                            >Objet</label
+                                        >
+                                        <select
+                                            class="rounded-lg border-stone-300 dark:border-stone-700 bg-transparent focus:border-primary focus:ring-primary"
+                                            title="Sélectionnez l'objet de votre demande"
+                                        >
+                                            <option>Support technique</option>
+                                            <option>Devenir conducteur</option>
+                                            <option>
+                                                Problème de paiement
+                                            </option>
+                                            <option>Autre</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <label class="text-sm font-semibold"
+                                            >Message</label
+                                        >
+                                        <textarea
+                                            class="rounded-lg border-stone-300 dark:border-stone-700 bg-transparent focus:border-primary focus:ring-primary placeholder:text-stone-400 resize-none"
+                                            placeholder="Comment pouvons-nous vous aider ?"
+                                            rows="5"
+                                        ></textarea>
+                                    </div>
+                                    <button
+                                        class="bg-primary text-white font-bold py-4 rounded-xl hover:bg-opacity-90 transition-all flex items-center justify-center gap-2 mt-2"
+                                        type="submit"
+                                    >
+                                        Envoyer le message
+                                        <span class="material-symbols-outlined"
+                                            >send</span
+                                        >
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Map Section -->
+                <section
+                    class="w-full h-[400px] relative overflow-hidden mt-10"
+                    data-location="Paris, France"
+                >
+                    <div
+                        class="absolute inset-0 bg-stone-200 dark:bg-stone-800 flex items-center justify-center bg-cover bg-center map-section"
+                        data-alt="Carte stylisée de Paris avec marqueur d'emplacement"
+                    >
+                        <div
+                            class="bg-white/90 dark:bg-stone-900/90 p-4 rounded-lg shadow-xl z-10 border border-primary/20 flex items-center gap-3"
+                        >
+                            <div class="text-primary">
+                                <span class="material-symbols-outlined"
+                                    >location_on</span
+                                >
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm">Siège EcoRide</p>
+                                <p
+                                    class="text-xs text-stone-600 dark:text-stone-400"
+                                >
+                                    Ouvert de 9h à 18h
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Footer -->
+                <footer
+                    class="bg-white dark:bg-stone-900 px-4 lg:px-40 py-12 border-t border-stone-200 dark:border-stone-800"
+                >
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                        <div
+                            class="flex flex-col gap-4 col-span-1 md:col-span-1"
+                        >
+                            <div class="flex items-center gap-3 text-primary">
+                                <div class="size-6">
+                                    <svg
+                                        fill="currentColor"
+                                        viewbox="0 0 48 48"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            clip-rule="evenodd"
+                                            d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V44Z"
+                                            fill-rule="evenodd"
+                                            opacity="0"
+                                        ></path>
+                                        <path
+                                            d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                            fill="currentColor"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <h2
+                                    class="text-xl font-bold tracking-tight text-[#141712] dark:text-white"
+                                >
+                                    EcoRide
+                                </h2>
+                            </div>
+                            <p
+                                class="text-neutral-gray text-sm leading-relaxed"
+                            >
+                                La solution de covoiturage durable pour un
+                                avenir plus vert. Voyagez ensemble, sauvez la
+                                planète.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h3
+                                class="font-bold text-sm uppercase text-stone-400 tracking-wider"
+                            >
+                                Plateforme
+                            </h3>
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Trajets disponibles</a
+                            >
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Publier un trajet</a
+                            >
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Villes desservies</a
+                            >
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h3
+                                class="font-bold text-sm uppercase text-stone-400 tracking-wider"
+                            >
+                                Communauté
+                            </h3>
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Notre mission</a
+                            >
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Blog Éco-voyage</a
+                            >
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Avis clients</a
+                            >
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <h3
+                                class="font-bold text-sm uppercase text-stone-400 tracking-wider"
+                            >
+                                Aide
+                            </h3>
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Centre d'aide</a
+                            >
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Mentions légales</a
+                            >
+                            <a
+                                class="text-sm hover:text-primary transition-colors"
+                                href="#"
+                                >Confidentialité</a
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="mt-12 pt-8 border-t border-stone-200 dark:border-stone-800 flex flex-col md:flex-row justify-between items-center gap-4"
+                    >
+                        <p class="text-xs text-neutral-gray">
+                            © 2024 EcoRide SAS. Tous droits réservés.
+                        </p>
+                        <div class="flex gap-6 text-xs text-neutral-gray">
+                            <a class="hover:text-primary" href="#"
+                                >Conditions Générales</a
+                            >
+                            <a class="hover:text-primary" href="#">Cookies</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

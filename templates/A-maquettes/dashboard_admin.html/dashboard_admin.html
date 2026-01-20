@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide Admin Dashboard</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#99b681",
+                            "user-blue": "#80B5D0",
+                            "tertiary-yellow": "#E2C57F",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#191c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .admin-profile-image {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLRyYcmv4nAxIYjRQgpgasWEeFz8N4T27RJZoGvCuVx4q1UVhEu5vxC4Y0LgeyEn_AxlV2UXpdxzEUpB5Ia-LN8ZK9l9xa4VkipbouL2A5OQNfj576shY8gHKehKWmUSDeUb4Wvs6bUQJ83MkhjEMKYkCdCOrZVsjjNJe3CN34g0pU5jqIQKfdGaCIQF0_YpeXOwc9esRNDmJaYXVXXXjpTX1A8X_cCX-bB7M0o7U1yXSLB3qpCG7dR-oIQfySShjvcJhgeC2i_3I");
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark text-[#141712] dark:text-stone-200 transition-colors duration-200"
+    >
+        <div class="flex min-h-screen">
+            <!-- Sidebar Navigation -->
+            <aside
+                class="w-64 border-r border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 flex flex-col fixed h-full"
+            >
+                <div class="p-6 flex flex-col gap-8 h-full">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="bg-primary p-2 rounded-lg flex items-center justify-center"
+                        >
+                            <span class="material-symbols-outlined text-white"
+                                >eco</span
+                            >
+                        </div>
+                        <div class="flex flex-col">
+                            <h1
+                                class="text-[#141712] dark:text-white text-lg font-bold leading-tight"
+                            >
+                                EcoRide Admin
+                            </h1>
+                            <p
+                                class="text-[#717f66] dark:text-stone-400 text-xs"
+                            >
+                                Tableau de bord
+                            </p>
+                        </div>
+                    </div>
+                    <nav class="flex flex-col gap-1 grow">
+                        <a
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >dashboard</span
+                            >
+                            <span class="text-sm">Dashboard</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined">group</span>
+                            <span class="text-sm">Comptes utilisateurs</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >analytics</span
+                            >
+                            <span class="text-sm">Statistiques</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >description</span
+                            >
+                            <span class="text-sm">Rapports</span>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >rate_review</span
+                            >
+                            <span class="text-sm">Avis &amp; Modération</span>
+                        </a>
+                        <div
+                            class="mt-auto pt-4 border-t border-stone-100 dark:border-stone-800"
+                        >
+                            <a
+                                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >settings</span
+                                >
+                                <span class="text-sm">Paramètres</span>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+            <!-- Main Content Area -->
+            <main class="flex-1 ml-64 flex flex-col min-w-0">
+                <!-- Top Navigation Bar -->
+                <header
+                    class="h-16 border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 sticky top-0 z-10 flex items-center justify-between px-8"
+                >
+                    <div class="flex items-center gap-4 w-1/3">
+                        <div class="relative w-full max-w-md">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xl"
+                                >search</span
+                            >
+                            <input
+                                class="w-full pl-10 pr-4 py-2 bg-stone-100 dark:bg-stone-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/50 dark:text-white"
+                                placeholder="Rechercher un utilisateur, un trajet..."
+                                type="text"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="p-2 text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full relative"
+                        >
+                            <span class="material-symbols-outlined"
+                                >notifications</span
+                            >
+                            <span
+                                class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"
+                            ></span>
+                        </button>
+                        <div
+                            class="h-8 w-px bg-stone-200 dark:border-stone-800 mx-2"
+                        ></div>
+                        <div class="flex items-center gap-3 cursor-pointer">
+                            <div class="text-right">
+                                <p
+                                    class="text-sm font-semibold dark:text-white"
+                                >
+                                    Jean Admin
+                                </p>
+                                <p
+                                    class="text-[10px] text-stone-500 uppercase tracking-wider"
+                                >
+                                    Super Administrateur
+                                </p>
+                            </div>
+                            <div
+                                class="h-10 w-10 rounded-full bg-stone-200 dark:bg-stone-800 border border-stone-300 dark:border-stone-700 bg-cover bg-center admin-profile-image"
+                                data-alt="Admin user profile picture"
+                            ></div>
+                        </div>
+                    </div>
+                </header>
+                <!-- Page Body -->
+                <div class="p-8 space-y-8 max-w-[1400px]">
+                    <!-- Welcome & Alerts -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex justify-between items-end">
+                            <div class="space-y-1">
+                                <h2
+                                    class="text-3xl font-black tracking-tight dark:text-white"
+                                >
+                                    Tableau de Bord
+                                </h2>
+                                <p class="text-stone-500 dark:text-stone-400">
+                                    Bienvenue, voici les dernières performances
+                                    de la plateforme EcoRide.
+                                </p>
+                            </div>
+                            <button
+                                class="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-primary/90 transition-all shadow-sm"
+                            >
+                                <span class="material-symbols-outlined text-lg"
+                                    >download</span
+                                >
+                                Exporter les données
+                            </button>
+                        </div>
+                        <!-- Warning Alert -->
+                        <div
+                            class="bg-tertiary-yellow/10 border border-tertiary-yellow/30 p-4 rounded-xl flex items-center gap-3"
+                        >
+                            <span
+                                class="material-symbols-outlined text-tertiary-yellow"
+                                >warning</span
+                            >
+                            <p
+                                class="text-sm text-stone-700 dark:text-stone-300"
+                            >
+                                <span class="font-bold">Attention :</span> 12
+                                nouveaux rapports de modération nécessitent
+                                votre attention immédiate.
+                            </p>
+                            <a
+                                class="ml-auto text-sm font-bold text-tertiary-yellow underline"
+                                href="#"
+                                >Voir les rapports</a
+                            >
+                        </div>
+                    </div>
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div
+                            class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col gap-4"
+                        >
+                            <div class="flex items-center justify-between">
+                                <p
+                                    class="text-stone-500 dark:text-stone-400 font-medium"
+                                >
+                                    Utilisateurs Actifs
+                                </p>
+                                <div
+                                    class="bg-user-blue/20 text-user-blue p-2 rounded-lg"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >group</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <p class="text-3xl font-bold dark:text-white">
+                                    12,450
+                                </p>
+                                <p
+                                    class="text-green-600 text-sm font-bold mb-1"
+                                >
+                                    +5.2%
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col gap-4"
+                        >
+                            <div class="flex items-center justify-between">
+                                <p
+                                    class="text-stone-500 dark:text-stone-400 font-medium"
+                                >
+                                    Revenus (Crédits)
+                                </p>
+                                <div
+                                    class="bg-primary/20 text-primary p-2 rounded-lg"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >payments</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <p class="text-3xl font-bold dark:text-white">
+                                    45,200 CR
+                                </p>
+                                <p
+                                    class="text-green-600 text-sm font-bold mb-1"
+                                >
+                                    +12.4%
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-stone-900 p-6 rounded-xl border border-stone-200 dark:border-stone-800 shadow-sm flex flex-col gap-4"
+                        >
+                            <div class="flex items-center justify-between">
+                                <p
+                                    class="text-stone-500 dark:text-stone-400 font-medium"
+                                >
+                                    Impact CO2 Économisé
+                                </p>
+                                <div
+                                    class="bg-green-100 text-green-700 p-2 rounded-lg"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >eco</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="flex items-end gap-2">
+                                <p class="text-3xl font-bold dark:text-white">
+                                    850 Tonnes
+                                </p>
+                                <p
+                                    class="text-green-600 text-sm font-bold mb-1"
+                                >
+                                    +8.1%
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- User Management Table -->
+                    <div
+                        class="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 shadow-sm overflow-hidden"
+                    >
+                        <div
+                            class="px-6 py-5 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between"
+                        >
+                            <h3 class="text-lg font-bold dark:text-white">
+                                Gestion des Utilisateurs
+                            </h3>
+                            <div class="flex gap-2">
+                                <button
+                                    class="px-4 py-2 border border-stone-200 dark:border-stone-700 rounded-lg text-sm font-medium hover:bg-stone-50 dark:hover:bg-stone-800 dark:text-stone-300"
+                                >
+                                    Filtrer
+                                </button>
+                                <button
+                                    class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90"
+                                >
+                                    Ajouter
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr
+                                        class="bg-stone-50 dark:bg-stone-800/50 text-stone-500 dark:text-stone-400 text-xs font-semibold uppercase tracking-wider"
+                                    >
+                                        <th class="px-6 py-4">Utilisateur</th>
+                                        <th class="px-6 py-4">Rôle</th>
+                                        <th class="px-6 py-4">Status</th>
+                                        <th class="px-6 py-4">
+                                            Dernière activité
+                                        </th>
+                                        <th class="px-6 py-4 text-right">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    class="divide-y divide-stone-100 dark:divide-stone-800"
+                                >
+                                    <!-- Table Row 1 -->
+                                    <tr
+                                        class="hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-3"
+                                            >
+                                                <div
+                                                    class="h-9 w-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xs"
+                                                >
+                                                    MD
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <p
+                                                        class="text-sm font-semibold dark:text-white"
+                                                    >
+                                                        Marc Dubois
+                                                    </p>
+                                                    <p
+                                                        class="text-xs text-stone-500"
+                                                    >
+                                                        marc.dubois@email.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2.5 py-0.5 bg-user-blue/10 text-user-blue text-[10px] font-bold rounded-full uppercase tracking-wider"
+                                                >Conducteur</span
+                                            >
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-1.5"
+                                            >
+                                                <div
+                                                    class="h-2 w-2 rounded-full bg-green-500"
+                                                ></div>
+                                                <span
+                                                    class="text-xs font-medium dark:text-stone-300"
+                                                    >Actif</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-xs text-stone-500 dark:text-stone-400"
+                                        >
+                                            Il y a 2 heures
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button
+                                                class="p-1 hover:bg-stone-100 dark:hover:bg-stone-700 rounded"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-stone-400"
+                                                    >more_vert</span
+                                                >
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Table Row 2 -->
+                                    <tr
+                                        class="hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-3"
+                                            >
+                                                <div
+                                                    class="h-9 w-9 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center text-stone-500 font-bold text-xs"
+                                                >
+                                                    SL
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <p
+                                                        class="text-sm font-semibold dark:text-white"
+                                                    >
+                                                        Sophie Laurent
+                                                    </p>
+                                                    <p
+                                                        class="text-xs text-stone-500"
+                                                    >
+                                                        sophie.l@email.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2.5 py-0.5 bg-stone-100 dark:bg-stone-800 text-stone-500 text-[10px] font-bold rounded-full uppercase tracking-wider"
+                                                >Passager</span
+                                            >
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-1.5"
+                                            >
+                                                <div
+                                                    class="h-2 w-2 rounded-full bg-tertiary-yellow"
+                                                ></div>
+                                                <span
+                                                    class="text-xs font-medium dark:text-stone-300"
+                                                    >En attente</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-xs text-stone-500 dark:text-stone-400"
+                                        >
+                                            Hier, 18:45
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button
+                                                class="p-1 hover:bg-stone-100 dark:hover:bg-stone-700 rounded"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-stone-400"
+                                                    >more_vert</span
+                                                >
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Table Row 3 -->
+                                    <tr
+                                        class="hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors"
+                                    >
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-3"
+                                            >
+                                                <div
+                                                    class="h-9 w-9 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 font-bold text-xs"
+                                                >
+                                                    JV
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <p
+                                                        class="text-sm font-semibold dark:text-white"
+                                                    >
+                                                        Jean Valjean
+                                                    </p>
+                                                    <p
+                                                        class="text-xs text-stone-500"
+                                                    >
+                                                        jv.24601@email.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2.5 py-0.5 bg-user-blue/10 text-user-blue text-[10px] font-bold rounded-full uppercase tracking-wider"
+                                                >Conducteur</span
+                                            >
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div
+                                                class="flex items-center gap-1.5"
+                                            >
+                                                <div
+                                                    class="h-2 w-2 rounded-full bg-red-500"
+                                                ></div>
+                                                <span
+                                                    class="text-xs font-medium dark:text-stone-300"
+                                                    >Suspendu</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-xs text-stone-500 dark:text-stone-400"
+                                        >
+                                            3 oct. 2023
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 text-right flex items-center justify-end gap-2"
+                                        >
+                                            <button
+                                                class="text-xs text-red-500 font-bold hover:underline"
+                                            >
+                                                Lever la suspension
+                                            </button>
+                                            <button
+                                                class="p-1 hover:bg-stone-100 dark:hover:bg-stone-700 rounded"
+                                            >
+                                                <span
+                                                    class="material-symbols-outlined text-stone-400"
+                                                    >more_vert</span
+                                                >
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div
+                            class="px-6 py-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between"
+                        >
+                            <p class="text-xs text-stone-500">
+                                Affichage de 1-3 sur 12,450 utilisateurs
+                            </p>
+                            <div class="flex gap-1">
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center rounded border border-stone-200 dark:border-stone-700 text-stone-400 cursor-not-allowed"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >chevron_left</span
+                                    >
+                                </button>
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-bold text-xs"
+                                >
+                                    1
+                                </button>
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center rounded hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-400 font-bold text-xs border border-stone-200 dark:border-stone-700"
+                                >
+                                    2
+                                </button>
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center rounded hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-400 font-bold text-xs border border-stone-200 dark:border-stone-700"
+                                >
+                                    3
+                                </button>
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center rounded hover:bg-stone-50 dark:hover:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400"
+                                >
+                                    <span class="material-symbols-outlined"
+                                        >chevron_right</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer
+                    class="mt-auto border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 px-8 py-6"
+                >
+                    <div
+                        class="flex flex-col md:flex-row items-center justify-between gap-4"
+                    >
+                        <div class="flex items-center gap-2 text-stone-400">
+                            <span class="material-symbols-outlined text-lg"
+                                >eco</span
+                            >
+                            <p class="text-xs">
+                                © 2024 EcoRide Platform Inc. Tous droits
+                                réservés.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <a
+                                class="text-xs text-stone-500 hover:text-primary transition-colors"
+                                href="#"
+                                >Assistance</a
+                            >
+                            <a
+                                class="text-xs text-stone-500 hover:text-primary transition-colors"
+                                href="#"
+                                >Confidentialité</a
+                            >
+                            <a
+                                class="text-xs text-stone-500 hover:text-primary transition-colors"
+                                href="#"
+                                >Conditions d'utilisation</a
+                            >
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="text-[10px] text-stone-400 uppercase tracking-widest font-bold"
+                                    >Système:</span
+                                >
+                                <span
+                                    class="flex items-center gap-1 text-[10px] text-green-500 font-bold"
+                                    ><span
+                                        class="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"
+                                    ></span>
+                                    OPÉRATIONNEL</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </body>
+</html>

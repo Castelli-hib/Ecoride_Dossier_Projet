@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>EcoRide - Mes Préférences</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#b6b681",
+                            "background-light": "#f7f7f6",
+                            "background-dark": "#1c1c16",
+                        },
+                        fontFamily: {
+                            display: ["Inter"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
+                    "opsz" 24;
+            }
+            .filled-icon {
+                font-variation-settings: "FILL" 1;
+            }
+            .logo-bg {
+                background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXj93FzF1ZmNqHKUYCWppSIGS7-Vfe2CtJgNAtxbR3lr0JW9ZOClZUsrVwLdvS_LYUSj0G4fIkk_JzOIrgYlxpc8RczTFEPKrZ1lXpgvb2bZQQLZ4Pw73dv5QD7q6swmCVpGpcRLhRx3UZ56ciTDD7mszuFoOm1XKNWFSTIYY-QJFrjnL3BOkkTWPWphCh4PqPi_GMFTZF3hpT80yKKTcVCp9Cddu854cf9YvfCwUHLUEicZjzvOQUiTCa866XubAx0n-e_-XEXeg");
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background-light dark:bg-background-dark font-display text-[#171712] dark:text-[#f7f7f6]"
+    >
+        <div class="flex min-h-screen">
+            <!-- SideNavBar -->
+            <aside
+                class="w-64 border-r border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] sticky top-0 h-screen hidden lg:block"
+            >
+                <div class="flex flex-col h-full p-4">
+                    <div class="flex gap-3 mb-8 items-center">
+                        <div
+                            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 logo-bg"
+                            data-alt="EcoRide green leaf logo icon"
+                        ></div>
+                        <div class="flex flex-col">
+                            <h1
+                                class="text-[#171712] dark:text-white text-base font-bold leading-none"
+                            >
+                                EcoRide
+                            </h1>
+                            <p class="text-[#7f7f66] text-xs font-normal">
+                                Covoiturage Durable
+                            </p>
+                        </div>
+                    </div>
+                    <nav class="flex flex-col gap-1">
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#7f7f66] hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >dashboard</span
+                            >
+                            <p class="text-sm font-medium">Dashboard</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#7f7f66] hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >directions_car</span
+                            >
+                            <p class="text-sm font-medium">Mes Trajets</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-[#171712] dark:text-white"
+                            href="#"
+                        >
+                            <span
+                                class="material-symbols-outlined filled-icon text-primary"
+                                >settings</span
+                            >
+                            <p class="text-sm font-bold">Mes Préférences</p>
+                        </a>
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#7f7f66] hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >person</span
+                            >
+                            <p class="text-sm font-medium">Profil</p>
+                        </a>
+                    </nav>
+                    <div
+                        class="mt-auto pt-4 border-t border-[#dfdfd7] dark:border-[#33332d]"
+                    >
+                        <a
+                            class="flex items-center gap-3 px-3 py-2 text-[#7f7f66] hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg transition-colors"
+                            href="#"
+                        >
+                            <span class="material-symbols-outlined"
+                                >logout</span
+                            >
+                            <p class="text-sm font-medium">Déconnexion</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+            <!-- Main Content -->
+            <main class="flex-1 overflow-y-auto">
+                <div class="max-w-4xl mx-auto px-6 py-8">
+                    <!-- Breadcrumbs -->
+                    <nav class="flex flex-wrap gap-2 mb-4">
+                        <a
+                            class="text-[#7f7f66] text-sm font-medium hover:text-primary transition-colors"
+                            href="#"
+                            >Accueil</a
+                        >
+                        <span class="text-[#7f7f66] text-sm font-medium"
+                            >/</span
+                        >
+                        <span
+                            class="text-[#171712] dark:text-white text-sm font-bold"
+                            >Mes Préférences</span
+                        >
+                    </nav>
+                    <!-- PageHeading -->
+                    <header class="mb-8">
+                        <h2
+                            class="text-[#171712] dark:text-white text-4xl font-black leading-tight tracking-tight"
+                        >
+                            Mes Préférences
+                        </h2>
+                        <p class="text-[#7f7f66] text-base font-normal mt-2">
+                            Gérez votre confort et vos paramètres de voyage pour
+                            une expérience personnalisée.
+                        </p>
+                    </header>
+                    <!-- Section: Communication -->
+                    <section class="mb-10">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary"
+                                >notifications</span
+                            >
+                            <h3
+                                class="text-[#171712] dark:text-white text-xl font-bold"
+                            >
+                                Communication
+                            </h3>
+                        </div>
+                        <div class="space-y-3">
+                            <!-- ActionPanel 1 -->
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex flex-col gap-1">
+                                    <p
+                                        class="text-[#171712] dark:text-white text-base font-bold"
+                                    >
+                                        Notifications par Email
+                                    </p>
+                                    <p class="text-[#7f7f66] text-sm">
+                                        Recevoir des mises à jour sur mes
+                                        réservations par courriel.
+                                    </p>
+                                </div>
+                                <label
+                                    class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#efefeb] dark:bg-[#33332d] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200"
+                                >
+                                    <div
+                                        class="h-full w-[27px] rounded-full bg-white shadow-md"
+                                    ></div>
+                                    <input
+                                        checked=""
+                                        class="invisible absolute"
+                                        type="checkbox"
+                                        placeholder="Your placeholder"
+                                    />
+                                </label>
+                            </div>
+                            <!-- ActionPanel 2 -->
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex flex-col gap-1">
+                                    <p
+                                        class="text-[#171712] dark:text-white text-base font-bold"
+                                    >
+                                        Alertes SMS
+                                    </p>
+                                    <p class="text-[#7f7f66] text-sm">
+                                        Recevoir des notifications urgentes par
+                                        SMS 30 minutes avant le départ.
+                                    </p>
+                                </div>
+                                <label
+                                    class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#efefeb] dark:bg-[#33332d] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200"
+                                >
+                                    <div
+                                        class="h-full w-[27px] rounded-full bg-white shadow-md"
+                                    ></div>
+                                    <input
+                                        class="invisible absolute"
+                                        type="checkbox"
+                                        placeholder="Your placeholder"
+                                    />
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section: Travel Style -->
+                    <section class="mb-10">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary"
+                                >style</span
+                            >
+                            <h3
+                                class="text-[#171712] dark:text-white text-xl font-bold"
+                            >
+                                Style de Voyage
+                            </h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <!-- Conversation Level Selection Cards -->
+                            <div
+                                class="p-4 rounded-xl border-2 border-primary bg-primary/5 flex flex-col items-center text-center gap-2 cursor-pointer transition-all"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-3xl"
+                                    >chat_bubble</span
+                                >
+                                <p
+                                    class="font-bold text-[#171712] dark:text-white"
+                                >
+                                    Bavard
+                                </p>
+                                <p class="text-xs text-[#7f7f66]">
+                                    J'aime discuter pendant le trajet.
+                                </p>
+                            </div>
+                            <div
+                                class="p-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] flex flex-col items-center text-center gap-2 cursor-pointer hover:border-primary/50 transition-all"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[#7f7f66] text-3xl"
+                                    >volume_down</span
+                                >
+                                <p
+                                    class="font-bold text-[#171712] dark:text-white"
+                                >
+                                    Modéré
+                                </p>
+                                <p class="text-xs text-[#7f7f66]">
+                                    Je discute de temps en temps.
+                                </p>
+                            </div>
+                            <div
+                                class="p-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] flex flex-col items-center text-center gap-2 cursor-pointer hover:border-primary/50 transition-all"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[#7f7f66] text-3xl"
+                                    >volume_off</span
+                                >
+                                <p
+                                    class="font-bold text-[#171712] dark:text-white"
+                                >
+                                    Silencieux
+                                </p>
+                                <p class="text-xs text-[#7f7f66]">
+                                    Je préfère le calme complet.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <span
+                                        class="material-symbols-outlined text-[#7f7f66]"
+                                        >music_note</span
+                                    >
+                                    <div class="flex flex-col gap-1">
+                                        <p
+                                            class="text-[#171712] dark:text-white text-base font-bold"
+                                        >
+                                            Musique autorisée
+                                        </p>
+                                        <p class="text-[#7f7f66] text-sm">
+                                            Accepter ou proposer de la musique
+                                            pendant le voyage.
+                                        </p>
+                                    </div>
+                                </div>
+                                <label
+                                    class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#efefeb] dark:bg-[#33332d] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200"
+                                >
+                                    <div
+                                        class="h-full w-[27px] rounded-full bg-white shadow-md"
+                                    ></div>
+                                    <input
+                                        checked=""
+                                        class="invisible absolute"
+                                        type="checkbox"
+                                        placeholder="Your placeholder"
+                                    />
+                                </label>
+                            </div>
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <span
+                                        class="material-symbols-outlined text-[#7f7f66]"
+                                        >pets</span
+                                    >
+                                    <div class="flex flex-col gap-1">
+                                        <p
+                                            class="text-[#171712] dark:text-white text-base font-bold"
+                                        >
+                                            Animaux acceptés
+                                        </p>
+                                        <p class="text-[#7f7f66] text-sm">
+                                            Indiquez si vous acceptez les
+                                            animaux de compagnie.
+                                        </p>
+                                    </div>
+                                </div>
+                                <label
+                                    class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#efefeb] dark:bg-[#33332d] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200"
+                                >
+                                    <div
+                                        class="h-full w-[27px] rounded-full bg-white shadow-md"
+                                    ></div>
+                                    <input
+                                        class="invisible absolute"
+                                        type="checkbox"
+                                        placeholder="Your placeholder"
+                                    />
+                                </label>
+                            </div>
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex items-center gap-4">
+                                    <span
+                                        class="material-symbols-outlined text-[#7f7f66]"
+                                        >smoking_rooms</span
+                                    >
+                                    <div class="flex flex-col gap-1">
+                                        <p
+                                            class="text-[#171712] dark:text-white text-base font-bold"
+                                        >
+                                            Fumeur autorisé
+                                        </p>
+                                        <p class="text-[#7f7f66] text-sm">
+                                            Autoriser de fumer pendant les
+                                            pauses ou dans le véhicule.
+                                        </p>
+                                    </div>
+                                </div>
+                                <label
+                                    class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#efefeb] dark:bg-[#33332d] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200"
+                                >
+                                    <div
+                                        class="h-full w-[27px] rounded-full bg-white shadow-md"
+                                    ></div>
+                                    <input
+                                        class="invisible absolute"
+                                        type="checkbox"
+                                        placeholder="Your placeholder"
+                                    />
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Section: Security -->
+                    <section class="mb-12">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary"
+                                >security</span
+                            >
+                            <h3
+                                class="text-[#171712] dark:text-white text-xl font-bold"
+                            >
+                                Sécurité et Visibilité
+                            </h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex flex-col gap-1">
+                                    <p
+                                        class="text-[#171712] dark:text-white text-base font-bold"
+                                    >
+                                        Profil Public
+                                    </p>
+                                    <p class="text-[#7f7f66] text-sm">
+                                        Autoriser les utilisateurs non connectés
+                                        à voir mon profil.
+                                    </p>
+                                </div>
+                                <label
+                                    class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-[#efefeb] dark:bg-[#33332d] p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200"
+                                >
+                                    <div
+                                        class="h-full w-[27px] rounded-full bg-white shadow-md"
+                                    ></div>
+                                    <input
+                                        class="invisible absolute"
+                                        type="checkbox"
+                                        placeholder="Your placeholder"
+                                    />
+                                </label>
+                            </div>
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-[#dfdfd7] dark:border-[#33332d] bg-white dark:bg-[#25251e] p-5"
+                            >
+                                <div class="flex flex-col gap-1">
+                                    <p
+                                        class="text-[#171712] dark:text-white text-base font-bold"
+                                    >
+                                        Double Authentification (2FA)
+                                    </p>
+                                    <p class="text-[#7f7f66] text-sm">
+                                        Ajouter une couche de sécurité
+                                        supplémentaire à votre compte.
+                                    </p>
+                                </div>
+                                <button
+                                    class="px-4 py-2 bg-stone-100 dark:bg-stone-800 text-[#171712] dark:text-white text-sm font-bold rounded-lg border border-[#dfdfd7] dark:border-[#33332d] hover:bg-stone-200 transition-colors"
+                                >
+                                    Configurer
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Save Button -->
+                    <div
+                        class="flex justify-end pt-6 border-t border-[#dfdfd7] dark:border-[#33332d]"
+                    >
+                        <button
+                            class="bg-primary hover:bg-opacity-90 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg shadow-primary/20"
+                        >
+                            Enregistrer les modifications
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
