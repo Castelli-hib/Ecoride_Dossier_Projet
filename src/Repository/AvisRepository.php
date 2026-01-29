@@ -7,6 +7,7 @@ use App\Entity\Avis;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @extends ServiceEntityRepository<Avis>
  */
@@ -37,20 +38,20 @@ class AvisRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getAverageRating(User $user): float
+    public function getAverageRatingForUser(User $user): float
     {
         return (float) (
             $this->createQueryBuilder('a')
-                ->select('AVG(a.notation)')
-                ->where('a.userRated = :user')
-                ->setParameter('user', $user)
-                ->getQuery()
-                ->getSingleScalarResult()
+            ->select('AVG(a.notation)')
+            ->where('a.userRated = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getSingleScalarResult()
             ?? 0
         );
     }
 
-    // 🔒 RÈGLE MÉTIER : 1 avis max par utilisateur
+    // RÈGLE MÉTIER : 1 avis max par utilisateur
     public function hasUserRated(User $rater, User $rated): bool
     {
         return $this->createQueryBuilder('a')
@@ -61,5 +62,15 @@ class AvisRepository extends ServiceEntityRepository
             ->setParameter('rated', $rated)
             ->getQuery()
             ->getSingleScalarResult() > 0;
+    }
+
+    // src/Repository/AvisRepository.php
+
+    public function getAverageRating(): float
+    {
+        return (float) $this->createQueryBuilder('a')
+            ->select('AVG(a.notation)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }

@@ -1,0 +1,47 @@
+.hero-bg {
+    background: url('../images/vintagecar-road.jpg') center/cover no-repeat;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-bg h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    z-index: 1;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.9);
+    padding: 0.5rem;
+    border-radius: 12px;
+    position: absolute;
+    bottom: 20px;
+    font-family: "Roboto", sans-serif;
+}
+.search-bar input {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: "Roboto", sans-serif;
+}
+.search-bar button {
+    background-color: #94b07d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}

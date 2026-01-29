@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Admin Dashboard</h1>
+
+    <ul>
+        <li>Nombre de trajets : {{ totalRoutes }}</li>
+        <li>Nombre de réservations : {{ totalReservations }}</li>
+        <li>Taux de confirmation : {{ confirmationRate }}%</li>
+        <li>Moyenne des avis : {{ averageRating }}/5</li>
+        <li>Flux de crédits : {{ totalCredits }} €</li>
+    </ul>
+
+    <div>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const labels = {{ months|json_encode|raw }};
+        const dataRoutes = {{ routesPerMonth|json_encode|raw }};
+    </script>
+    
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Trajets par mois',
+                    data: dataRoutes,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

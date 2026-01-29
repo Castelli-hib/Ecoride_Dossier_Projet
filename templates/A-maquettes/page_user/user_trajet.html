@@ -7,11 +7,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>EcoRide - Mes Trajets</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
@@ -19,65 +21,64 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#99b681",
+                        "primary": "#99b681",
                         "user-blue": "#80B5D0",
                         "neutral-pg": "#9B8B9C",
                         "background-light": "#f7f7f6",
                         "background-dark": "#191c16",
                     },
                     fontFamily: {
-                        display: ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"]
                     },
                     borderRadius: {
-                        DEFAULT: "0.25rem",
-                        lg: "0.5rem",
-                        xl: "0.75rem",
-                        full: "9999px",
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
                     },
                 },
             },
-        };
+        }
     </script>
     <style>
         body {
-            font-family: "Inter", sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         .material-symbols-outlined {
-            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
-                "opsz" 24;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
         .fill-icon {
-            font-variation-settings: "FILL" 1;
+            font-variation-settings: 'FILL' 1;
         }
 
-        .profile-avatar {
-            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBotYflE_UprBG7QByeE5cBkXU-HmsOCJcVTtci_dIMXCPrniNpIXp0SnkgESqVyCUndLwmeH8aoAmG_jIsPNnoguSrelYH_QVBF881b1pg4uMCPlxxIzNJgpyHnQZT1lGoZIV6bGxx9qgj2QcE5Vp7qNx1g6Wn_HWqtdZxYngtO1pSEmHIOqg80JhpdLBTvRQyd3nwoNVonPlTDIr6NJoquEKqVcJ7KqQLqNU4h15yNc9k1a--sb13NvMdWJW79oFe6TQQCJJstyk");
+        .driver-avatar {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBotYflE_UprBG7QByeE5cBkXU-HmsOCJcVTtci_dIMXCPrniNpIXp0SnkgESqVyCUndLwmeH8aoAmG_jIsPNnoguSrelYH_QVBF881b1pg4uMCPlxxIzNJgpyHnQZT1lGoZIV6bGxx9qgj2QcE5Vp7qNx1g6Wn_HWqtdZxYngtO1pSEmHIOqg80JhpdLBTvRQyd3nwoNVonPlTDIr6NJoquEKqVcJ7KqQLqNU4h15yNc9k1a--sb13NvMdWJW79oFe6TQQCJJstyk');
         }
 
-        .trip-image-1 {
-            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-gRTkkvNi6vifSwqjsnc3Ulh9C6DHSUmOG9X7klnB8laAB7HrGhK5e_1WPf09XOK6FExAlG68a6X_j7P7FtdJR1a-Eiq61COkMTOv3ohHWk3nCJP9gmANhhgdfgfvnYGWH41F0Eysi7wdAj2lxRmg4ksQbSvt6HIcY29wvi_6Q0xEXJ1a_RqMN1C8PZVgARjZwZxGlW1GHZ9jGzKUeGw1QkssS0duH_Br8P7b1As02d2RnHNrqdGpWmh29Io2zarg_-Jvg33UCeU");
+        .trajet-bg-nantes-paris {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-gRTkkvNi6vifSwqjsnc3Ulh9C6DHSUmOG9X7klnB8laAB7HrGhK5e_1WPf09XOK6FExAlG68a6X_j7P7FtdJR1a-Eiq61COkMTOv3ohHWk3nCJP9gmANhhgdfgfvnYGWH41F0Eysi7wdAj2lxRmg4ksQbSvt6HIcY29wvi_6Q0xEXJ1a_RqMN1C8PZVgARjZwZxGlW1GHZ9jGzKUeGw1QkssS0duH_Br8P7b1As02d2RnHNrqdGpWmh29Io2zarg_-Jvg33UCeU');
         }
 
-        .trip-image-2 {
-            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBT_E3EflKJCoO6siaJr7SIwBOTrkBjulgF4vnxMyZwly7AvPHZNRAeNGApT-2U2tt9UYzfye1nXXqLKS6RKyRNAJhJ9yzn6voyCBF8n_a3kPdcjhCepWNQkZ7B0jqRIWnEDwzIlVgUG4qjDQAEcf179wVTZNA0X92ZzwpI7cp_KnlTp7CpzE-6ImxWaaKp62uQ85kGCauzzQUSDIzSX6LqlhT8yRHcgpEtz7y6yeAsIWuHqpTFkh2oNUqUuIpEStsM7UE1J5p7r-4");
+        .trajet-bg-lyon-bordeaux {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBT_E3EflKJCoO6siaJr7SIwBOTrkBjulgF4vnxMyZwly7AvPHZNRAeNGApT-2U2tt9UYzfye1nXXqLKS6RKyRNAJhJ9yzn6voyCBF8n_a3kPdcjhCepWNQkZ7B0jqRIWnEDwzIlVgUG4qjDQAEcf179wVTZNA0X92ZzwpI7cp_KnlTp7CpzE-6ImxWaaKp62uQ85kGCauzzQUSDIzSX6LqlhT8yRHcgpEtz7y6yeAsIWuHqpTFkh2oNUqUuIpEStsM7UE1J5p7r-4');
         }
 
-        .progress-bar-50 {
+        .width-50 {
             width: 50%;
         }
 
-        .progress-bar-100 {
+        .width-100 {
             width: 100%;
         }
 
-        .passenger-avatar-1 {
-            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDp4mNf4j0bxoDiUB6Ki9d4Ndq8L7V0uB0Kex089vNWHG7D8r08r8eG3RxYD4XLcZ9U6ukuvULudKvafQXyfh957wtRRpZgHGqY5W6ixEcOmD2yVDWcYTvtS1xYEkpU51biqGJ1dxQDb70I8bYLD4i83UpzwA8Y6Iub00JNx_-EEKnqel8OWt97AfhaOpQA8fJHs7h10uAYWMQ8GjCR1kgToY3a_qMfaXqlo9i9c2t2qNh6O2DpklDi0L_X4MwYIPAcRqRO6IYIMXk");
+        .avatar-passenger-1 {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDp4mNf4j0bxoDiUB6Ki9d4Ndq8L7V0uB0Kex089vNWHG7D8r08r8eG3RxYD4XLcZ9U6ukuvULudKvafQXyfh957wtRRpZgHGqY5W6ixEcOmD2yVDWcYTvtS1xYEkpU51biqGJ1dxQDb70I8bYLD4i83UpzwA8Y6Iub00JNx_-EEKnqel8OWt97AfhaOpQA8fJHs7h10uAYWMQ8GjCR1kgToY3a_qMfaXqlo9i9c2t2qNh6O2DpklDi0L_X4MwYIPAcRqRO6IYIMXk');
         }
 
-        .passenger-avatar-2 {
-            background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuRwNmvJ2w0pJXelrcF6SFUSx0-Fw4k_xkvtCj1btPCX6XGHmRMvaVy_t7XFuJSOHC0fqvuv3lUe77Mnc4OLZn0QjMeBFBzb01kDCYq8eioRgfrP_kVtH26R3uDT4f6yAj3PrLIerTrVraNqo4qoPuyY7mrKG1dRa9yDSPqFF3kwMktsZ-xKSRcGWZdcjH3b_S7u8hjHX0h-ZgY6phm8eF7CbNjeSEo0FuzFv48m0700BHLOVlZd8fDGQXq4BJ6z0bzEIfQ0LteNY");
+        .avatar-passenger-2 {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuRwNmvJ2w0pJXelrcF6SFUSx0-Fw4k_xkvtCj1btPCX6XGHmRMvaVy_t7XFuJSOHC0fqvuv3lUe77Mnc4OLZn0QjMeBFBzb01kDCYq8eioRgfrP_kVtH26R3uDT4f6yAj3PrLIerTrVraNqo4qoPuyY7mrKG1dRa9yDSPqFF3kwMktsZ-xKSRcGWZdcjH3b_S7u8hjHX0h-ZgY6phm8eF7CbNjeSEo0FuzFv48m0700BHLOVlZd8fDGQXq4BJ6z0bzEIfQ0LteNY');
         }
     </style>
 </head>
@@ -93,12 +94,8 @@
                         <span class="material-symbols-outlined block">eco</span>
                     </div>
                     <div class="flex flex-col">
-                        <h1 class="text-[#141712] dark:text-white text-lg font-bold leading-none">
-                            EcoRide
-                        </h1>
-                        <p class="text-primary text-xs font-medium uppercase tracking-wider">
-                            Driver
-                        </p>
+                        <h1 class="text-[#141712] dark:text-white text-lg font-bold leading-none">EcoRide</h1>
+                        <p class="text-primary text-xs font-medium uppercase tracking-wider">Driver</p>
                     </div>
                 </div>
                 <nav class="flex flex-col gap-2 grow">
@@ -129,11 +126,11 @@
                     </a>
                 </nav>
                 <div class="pt-4 border-t border-stone-200 dark:border-stone-800">
-                    <button
-                        class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm">
+                    <a href="add_trajet.html"
+                        class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm block">
                         <span class="material-symbols-outlined text-sm">add</span>
                         <span class="text-sm">Proposer un trajet</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </aside>
@@ -143,9 +140,7 @@
             <header
                 class="h-16 border-b border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#1f231b]/80 backdrop-blur-md px-8 flex items-center justify-between sticky top-0 z-10">
                 <div class="flex items-center gap-2">
-                    <h2 class="text-lg font-bold tracking-tight">
-                        Gestion des Trajets
-                    </h2>
+                    <h2 class="text-lg font-bold tracking-tight">Gestion des Trajets</h2>
                 </div>
                 <div class="flex items-center gap-6">
                     <div class="relative group">
@@ -165,15 +160,12 @@
                         </button>
                         <div class="flex items-center gap-3 cursor-pointer">
                             <div class="text-right hidden sm:block">
-                                <p class="text-xs font-bold leading-none">
-                                    Marc Durand
-                                </p>
-                                <p class="text-[10px] text-stone-500 font-medium">
-                                    Conducteur Premium
-                                </p>
+                                <p class="text-xs font-bold leading-none">Marc Durand</p>
+                                <p class="text-[10px] text-stone-500 font-medium">Conducteur Premium</p>
                             </div>
-                            <div class="w-9 h-9 rounded-full bg-cover bg-center ring-2 ring-primary/20 profile-avatar"
-                                data-alt="Portrait of a driver smiling"></div>
+                            <div class="w-9 h-9 rounded-full bg-cover bg-center ring-2 ring-primary/20 driver-avatar"
+                                data-alt="Portrait of a driver smiling">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,7 +181,7 @@
                         <!-- Trip Card 1 -->
                         <div
                             class="bg-white dark:bg-[#1f231b] rounded-xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 flex flex-col @container transition-transform hover:shadow-md">
-                            <div class="h-40 w-full bg-cover bg-center relative trip-image-1"
+                            <div class="h-40 w-full bg-cover bg-center relative trajet-bg-nantes-paris"
                                 data-alt="Aerial view of a highway route between Nantes and Paris">
                                 <div
                                     class="absolute top-4 right-4 bg-white/90 backdrop-blur dark:bg-black/50 px-3 py-1 rounded-full text-primary font-bold text-sm">
@@ -200,8 +192,7 @@
                                 <div class="flex justify-between items-start mb-4">
                                     <div>
                                         <h4 class="text-lg font-bold flex items-center gap-2">
-                                            Nantes
-                                            <span
+                                            Nantes <span
                                                 class="material-symbols-outlined text-stone-400 text-sm">arrow_forward</span>
                                             Paris
                                         </h4>
@@ -222,12 +213,9 @@
                                         <span>50%</span>
                                     </div>
                                     <div class="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
-                                        <div class="h-full bg-primary progress-bar-50"></div>
+                                        <div class="h-full bg-primary width-50"></div>
                                     </div>
-                                    <p class="text-xs text-stone-400">
-                                        2 places encore disponibles à la
-                                        réservation
-                                    </p>
+                                    <p class="text-xs text-stone-400">2 places encore disponibles à la réservation</p>
                                 </div>
                                 <div class="flex gap-3 mt-auto">
                                     <button
@@ -244,7 +232,7 @@
                         <!-- Trip Card 2 -->
                         <div
                             class="bg-white dark:bg-[#1f231b] rounded-xl overflow-hidden shadow-sm border border-stone-200 dark:border-stone-800 flex flex-col @container transition-transform hover:shadow-md">
-                            <div class="h-40 w-full bg-cover bg-center relative trip-image-2"
+                            <div class="h-40 w-full bg-cover bg-center relative trajet-bg-lyon-bordeaux"
                                 data-alt="Mountain road scenic route between Lyon and Bordeaux">
                                 <div
                                     class="absolute top-4 right-4 bg-white/90 backdrop-blur dark:bg-black/50 px-3 py-1 rounded-full text-primary font-bold text-sm">
@@ -255,8 +243,7 @@
                                 <div class="flex justify-between items-start mb-4">
                                     <div>
                                         <h4 class="text-lg font-bold flex items-center gap-2">
-                                            Lyon
-                                            <span
+                                            Lyon <span
                                                 class="material-symbols-outlined text-stone-400 text-sm">arrow_forward</span>
                                             Bordeaux
                                         </h4>
@@ -277,12 +264,10 @@
                                         <span>100%</span>
                                     </div>
                                     <div class="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
-                                        <div class="h-full bg-user-blue progress-bar-100"></div>
+                                        <div class="h-full bg-user-blue width-100"></div>
                                     </div>
-                                    <p class="text-xs text-user-blue font-medium">
-                                        Trajet complet ! Tous les passagers
-                                        ont validé.
-                                    </p>
+                                    <p class="text-xs text-user-blue font-medium">Trajet complet ! Tous les passagers
+                                        ont validé.</p>
                                 </div>
                                 <div class="flex gap-3 mt-auto">
                                     <button
@@ -301,12 +286,8 @@
                 <!-- History Section -->
                 <section>
                     <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-xl font-bold">
-                            Historique des trajets
-                        </h3>
-                        <button class="text-sm font-semibold text-primary hover:underline">
-                            Voir tout
-                        </button>
+                        <h3 class="text-xl font-bold">Historique des trajets</h3>
+                        <button class="text-sm font-semibold text-primary hover:underline">Voir tout</button>
                     </div>
                     <div
                         class="bg-white dark:bg-[#1f231b] rounded-xl shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden">
@@ -315,45 +296,36 @@
                                 <tr
                                     class="bg-stone-50 dark:bg-[#272c23] border-b border-stone-100 dark:border-stone-800">
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-pg">
-                                        Date
-                                    </th>
+                                        Date</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-pg">
-                                        Itinéraire
-                                    </th>
+                                        Itinéraire</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-pg">
-                                        Passagers
-                                    </th>
+                                        Passagers</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-pg">
-                                        Prix Total
-                                    </th>
+                                        Prix Total</th>
                                     <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-neutral-pg">
-                                        Statut
-                                    </th>
+                                        Statut</th>
                                     <th class="px-6 py-4"></th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-stone-100 dark:divide-stone-800">
                                 <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-medium text-neutral-pg">
-                                        05 Oct. 2023
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-bold">
-                                        Rennes → Nantes
-                                    </td>
+                                    <td class="px-6 py-4 text-sm font-medium text-neutral-pg">05 Oct. 2023</td>
+                                    <td class="px-6 py-4 text-sm font-bold">Rennes → Nantes</td>
                                     <td class="px-6 py-4">
                                         <div class="flex -space-x-2">
-                                            <div class="w-7 h-7 rounded-full border-2 border-white dark:border-[#1f231b] bg-cover passenger-avatar-1"
-                                                data-alt="Avatar passenger 1"></div>
-                                            <div class="w-7 h-7 rounded-full border-2 border-white dark:border-[#1f231b] bg-cover passenger-avatar-2"
-                                                data-alt="Avatar passenger 2"></div>
+                                            <div class="w-7 h-7 rounded-full border-2 border-white dark:border-[#1f231b] bg-cover avatar-passenger-1"
+                                                data-alt="Avatar passenger 1">
+                                            </div>
+                                            <div class="w-7 h-7 rounded-full border-2 border-white dark:border-[#1f231b] bg-cover avatar-passenger-2"
+                                                data-alt="Avatar passenger 2">
+                                            </div>
                                             <div
                                                 class="w-7 h-7 rounded-full border-2 border-white dark:border-[#1f231b] bg-cover flex items-center justify-center bg-stone-200 dark:bg-stone-700 text-[10px] font-bold text-stone-600 dark:text-stone-300">
-                                                +1
-                                            </div>
+                                                +1</div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 text-sm font-bold text-stone-800 dark:text-stone-200">
-                                        24,00€
+                                    <td class="px-6 py-4 text-sm font-bold text-stone-800 dark:text-stone-200">24,00€
                                     </td>
                                     <td class="px-6 py-4">
                                         <span
@@ -366,17 +338,10 @@
                                     </td>
                                 </tr>
                                 <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-medium text-neutral-pg">
-                                        01 Oct. 2023
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-bold">
-                                        Paris → Lyon
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-neutral-pg">
-                                        4 Passagers
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-bold text-stone-800 dark:text-stone-200">
-                                        112,00€
+                                    <td class="px-6 py-4 text-sm font-medium text-neutral-pg">01 Oct. 2023</td>
+                                    <td class="px-6 py-4 text-sm font-bold">Paris → Lyon</td>
+                                    <td class="px-6 py-4 text-sm text-neutral-pg">4 Passagers</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-stone-800 dark:text-stone-200">112,00€
                                     </td>
                                     <td class="px-6 py-4">
                                         <span
@@ -389,17 +354,10 @@
                                     </td>
                                 </tr>
                                 <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-medium text-neutral-pg">
-                                        28 Sept. 2023
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-bold">
-                                        Nantes → Angers
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-neutral-pg">
-                                        0 Passager
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-bold text-stone-800 dark:text-stone-200">
-                                        0,00€
+                                    <td class="px-6 py-4 text-sm font-medium text-neutral-pg">28 Sept. 2023</td>
+                                    <td class="px-6 py-4 text-sm font-bold">Nantes → Angers</td>
+                                    <td class="px-6 py-4 text-sm text-neutral-pg">0 Passager</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-stone-800 dark:text-stone-200">0,00€
                                     </td>
                                     <td class="px-6 py-4">
                                         <span

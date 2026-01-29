@@ -64,4 +64,14 @@ class RouteRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    // src/Repository/RouteRepository.php
+
+    public function countAllRoutes(): int
+    {
+        return (int) $this->createQueryBuilder('r')
+            ->select('COUNT(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

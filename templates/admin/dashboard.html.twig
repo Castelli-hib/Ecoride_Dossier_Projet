@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard Administrateur{% endblock %}
+
+{% block body %}
+<div class="container-fluid my-4">
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <aside class="col-12 col-md-3 col-lg-2 mb-4 mb-md-0">
+            <div class="card shadow-sm h-100">
+                <div class="card-body p-0">
+                    <nav class="nav flex-column">
+                        <span class="nav-link fw-bold text-uppercase text-muted small">
+                            Administration
+                        </span>
+
+                        <a href="{{ path('admin_dashboard') }}" class="nav-link active">
+                            📊 Dashboard
+                        </a>
+
+                        <a href="#" class="nav-link">
+                            🚗 Trajets
+                        </a>
+
+                        <a href="#" class="nav-link">
+                            ⭐ Avis
+                        </a>
+
+                        <a href="#" class="nav-link">
+                            💳 Crédits
+                        </a>
+
+                        <a href="#" class="nav-link">
+                            📅 Réservations
+                        </a>
+
+                        <a href="#" class="nav-link">
+                            👥 Utilisateurs
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="col-12 col-md-9 col-lg-10">
+
+            <!-- Titre -->
+            <div class="mb-4">
+                <h1 class="fw-bold">Dashboard administrateur</h1>
+                <p class="text-muted mb-0">
+                    Vue d’ensemble de l’activité de la plateforme
+                </p>
+            </div>
+
+            <!-- KPI -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="fs-4 fw-bold">{{ totalRoutes }}</div>
+                            <div class="text-muted small">Trajets</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="fs-4 fw-bold">{{ totalReservations }}</div>
+                            <div class="text-muted small">Réservations</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="fs-4 fw-bold">{{ confirmationRate }}%</div>
+                            <div class="text-muted small">Confirmations</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="fs-4 fw-bold">{{ averageRating }}/5</div>
+                            <div class="text-muted small">Avis moyens</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="fs-4 fw-bold">{{ totalCredits }} €</div>
+                            <div class="text-muted small">Flux de crédits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphique -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-white fw-semibold">
+                    Trajets créés par mois
+                </div>
+                <div class="card-body">
+                    <canvas id="myChart" height="120"></canvas>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = {{ months|json_encode|raw }};
+    const dataRoutes = {{ routesPerMonth|json_encode|raw }};
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Trajets par mois',
+                data: dataRoutes,
+                backgroundColor: 'rgba(13, 110, 253, 0.6)',
+                borderRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+{% endblock %}

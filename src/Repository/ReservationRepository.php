@@ -70,4 +70,27 @@ class ReservationRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    // src/Repository/ReservationRepository.php
+
+    public function countAllReservations(): int
+    {
+        return (int) $this->createQueryBuilder('res')
+            ->select('COUNT(res.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getGlobalConfirmationRate(): float
+    {
+        $qb = $this->createQueryBuilder('res');
+        $total = $qb->select('COUNT(res.id)')->getQuery()->getSingleScalarResult();
+        $confirmed = $qb->select('COUNT(res.id)')
+            ->where('res.isConfirmed = true')
+            ->getQuery()->getSingleScalarResult();
+
+        if ($total == 0) return 0;
+
+        return round(($confirmed / $total) * 100, 2);
+    }
 }

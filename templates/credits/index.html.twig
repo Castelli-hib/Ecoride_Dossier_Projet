@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes crédits{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-4">
+  <div class="row">
+
+    <!-- MENU LATERAL -->
+    <div class="col-md-3">
+      <div class="card p-2 mb-3" style="max-width: 12rem;">
+        <div class="list-group">
+          <a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action">
+            Mon compte
+          </a>
+
+          <a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action">
+            Mon profil
+          </a>
+
+          <a href="{{ path('credits_index') }}" class="list-group-item list-group-item-action active">
+            Mes crédits
+          </a>
+
+          <a href="{{ path('avis_index') }}" class="list-group-item list-group-item-action">
+            Mes avis
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENU PRINCIPAL -->
+    <div class="col-md-9">
+
+      <h2>Mes crédits</h2>
+
+      <p class="mb-4">
+        <strong>Solde actuel :</strong>
+        {{ balance|number_format(2, ',', ' ') }} €
+      </p>
+
+      {% if credits is not empty %}
+        <ul class="list-group mb-4">
+          {% for credit in credits %}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div>
+                <strong>{{ credit.type|capitalize }}</strong><br>
+                <small class="text-muted">
+                  {{ credit.createdAt|date('d/m/Y H:i') }}
+                </small>
+
+                {% if credit.description %}
+                  <div class="text-muted small">
+                    {{ credit.description }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <span class="badge bg-secondary fs-6">
+                {{ credit.amount }} €
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Aucun mouvement pour le moment.</p>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

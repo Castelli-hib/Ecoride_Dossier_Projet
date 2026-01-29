@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 
+
 /**
  * @see https://symfony.com/doc/current/security/custom_authenticator.html
  */
@@ -28,6 +30,9 @@ class UserAuthenticator extends AbstractAuthenticator
      * used for the request. Returning `false` will cause this authenticator
      * to be skipped.
      */
+    public function __construct(
+        private UrlGeneratorInterface $urlGenerator
+    ) {}
     public function supports(Request $request): ?bool
     {
         return $request->attributes->get('_route') === 'app_login'
@@ -47,7 +52,7 @@ class UserAuthenticator extends AbstractAuthenticator
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
                 new RememberMeBadge(),
             ]
-            );
+        );
         // $apiToken = $request->headers->get('X-AUTH-TOKEN');
         // if (null === $apiToken) {
         // The token header was empty, authentication fails with HTTP Status
@@ -62,11 +67,23 @@ class UserAuthenticator extends AbstractAuthenticator
         // return new SelfValidatingPassport(new UserBadge($userIdentifier));
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
-    {
-        // on success, let the request continue
-        // 
-        return new RedirectResponse('/'); // page d'accueil ou ton dashboard
+    public function onAuthenticationSuccess(
+        Request $request,
+        TokenInterface $token,
+        string $firewallName
+    ): ?Response {
+
+        $user = $token->getUser();
+
+        if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
+            return new RedirectResponse(
+                $this->urlGenerator->generate('admin_dashboard')
+            );
+        }
+
+        return new RedirectResponse(
+            $this->urlGenerator->generate('app_dashboard')
+        );
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response

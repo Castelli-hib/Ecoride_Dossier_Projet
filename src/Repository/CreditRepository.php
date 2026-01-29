@@ -42,4 +42,13 @@ class CreditRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    // src/Repository/CreditRepository.php
+
+    public function getTotalCredits(): float
+    {
+        return (float) $this->createQueryBuilder('c')
+            ->select('SUM(c.amount)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

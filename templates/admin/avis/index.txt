@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des avis{% endblock %}
+
+{% block body %}
+    <h1>Liste des avis</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Commentaire</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# pour l’instant vide, on ajoutera un findAll() plus tard #}
+        </tbody>
+    </table>
+{% endblock %}
