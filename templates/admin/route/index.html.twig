@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajets{% endblock %}
+
+{% block body %}
+<div class="container-fluid my-4">
+    <div class="row">
+
+        {% include 'partials/_admin_sidebar.html.twig' %}
+
+        <main class="col-12 col-md-9 col-lg-10">
+            <div class="mb-4">
+                <h1 class="fw-bold">Trajets</h1>
+
+                <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="card shadow-sm text-center">
+            <div class="card-body">
+                <div class="text-muted small">Total trajets</div>
+                <div class="fs-3 fw-bold">126</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-lg-3">
+        <div class="card shadow-sm text-center">
+            <div class="card-body">
+                <div class="text-muted small">Ce mois</div>
+                <div class="fs-3 fw-bold text-primary">+14</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-lg-3">
+        <div class="card shadow-sm text-center">
+            <div class="card-body">
+                <div class="text-muted small">Moyenne / jour</div>
+                <div class="fs-3 fw-bold">0.9</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-lg-3">
+        <div class="card shadow-sm text-center">
+            <div class="card-body">
+                <div class="text-muted small">Pic mensuel</div>
+                <div class="fs-3 fw-semibold text-success">Décembre</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <p class="text-muted mb-0">Liste des trajets créés sur la plateforme</p>
+            </div>
+
+<!-- Typologie des trajets -->
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-white fw-semibold">Typologie des trajets</div>
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-4">
+                <div class="fw-bold fs-4">42%</div>
+                <div class="text-muted small">Courts (&lt; 30 km)</div>
+            </div>
+            <div class="col-4">
+                <div class="fw-bold fs-4">38%</div>
+                <div class="text-muted small">Moyens</div>
+            </div>
+            <div class="col-4">
+                <div class="fw-bold fs-4">20%</div>
+                <div class="text-muted small">Longs</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Graphique simple -->
+            <p class="text-muted mb-0">
+                Vue d’ensemble de l’activité de la plateforme
+                <span class="badge bg-light text-dark ms-2">12 derniers mois</span>
+            </p>
+            <div class="card shadow-sm">
+                <div class="card-header bg-white fw-semibold">Trajets créés par mois</div>
+                <div class="card-body">
+                    <canvas id="chartRoutes" height="120"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctxRoutes = document.getElementById('chartRoutes').getContext('2d');
+
+const gradientRoutes = ctxRoutes.createLinearGradient(0, 0, 0, 200);
+gradientRoutes.addColorStop(0, 'rgba(13,110,253,0.7)');
+gradientRoutes.addColorStop(1, 'rgba(13,110,253,0.2)');
+
+new Chart(ctxRoutes, {
+    type: 'bar',
+    data: {
+        labels: {{ months|default(['Jan','Feb','Mar','Apr','Mai','Juin','Juil','Aout','Sept','Oct','Nov','Dec'])|json_encode|raw }},
+        datasets: [{
+            data: {{ routesPerMonth|default([5,8,6,10,7,9,11,8,6,7,15,14])|json_encode|raw }},
+            backgroundColor: gradientRoutes,
+            borderRadius: 8
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: '#212529',
+                padding: 10
+            }
+        },
+        scales: {
+            y: { beginAtZero: true }
+        }
+    }
+});
+</script>
+{% endblock %}
