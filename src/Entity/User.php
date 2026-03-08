@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Entity\Avis;
 use App\Entity\Credit;
 use App\Entity\Reservation;
@@ -28,14 +29,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Length(min: 3, max: 50)]
     private ?string $username = null;
 
+    // -------------------------
+    // Champs exposés dans route:read
+    // -------------------------
     #[ORM\Column(length: 50)]
+    #[Groups(['route:read'])]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['route:read'])]
     private ?string $lastname = null;
 
     #[ORM\Column(length: 100, unique: true)]
     #[Assert\Email]
+    #[Groups(['route:read'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 20, nullable: true)]
@@ -99,91 +106,155 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->avisGiven = new ArrayCollection();
     }
 
-    // -------------------------
+    // =========================
     // GETTERS / SETTERS
-    // -------------------------
-    public function getId(): ?int { return $this->id; }
+    // =========================
 
-    public function getUsername(): ?string { return $this->username; }
-    public function setUsername(string $username): static { $this->username = $username; return $this; }
-
-    public function getFirstname(): ?string { return $this->firstname; }
-    public function setFirstname(string $firstname): static { $this->firstname = $firstname; return $this; }
-
-    public function getLastname(): ?string { return $this->lastname; }
-    public function setLastname(string $lastname): static { $this->lastname = $lastname; return $this; }
-
-    public function getEmail(): ?string { return $this->email; }
-    public function setEmail(string $email): static { $this->email = $email; return $this; }
-
-    public function getPhoneNumber(): ?string { return $this->phoneNumber; }
-    public function setPhoneNumber(?string $phoneNumber): static { $this->phoneNumber = $phoneNumber; return $this; }
-
-    public function getStreet(): ?string { return $this->street; }
-    public function setStreet(?string $street): static { $this->street = $street; return $this; }
-
-    public function getAddressComplement(): ?string { return $this->addressComplement; }
-    public function setAddressComplement(?string $addressComplement): static { $this->addressComplement = $addressComplement; return $this; }
-
-    public function getPostalCode(): ?string { return $this->postalCode; }
-    public function setPostalCode(?string $postalCode): static { $this->postalCode = $postalCode; return $this; }
-
-    public function getCity(): ?string { return $this->city; }
-    public function setCity(?string $city): static { $this->city = $city; return $this; }
-
-    // Roles / Security
-    public function getRoles(): array { return array_unique(array_merge($this->roles, ['ROLE_USER'])); }
-    public function setRoles(array $roles): static { $this->roles = $roles; return $this; }
-    public function getPassword(): string { return $this->password; }
-    public function setPassword(string $password): static { $this->password = $password; return $this; }
-    public function getUserIdentifier(): string { return (string) $this->email; }
-    public function eraseCredentials(): void {}
-
-    // -------------------------
-    // Credits
-    // -------------------------
-    public function getCredits(): Collection { return $this->credits; }
-    public function addCredit(Credit $credit): static { if (!$this->credits->contains($credit)) { $this->credits->add($credit); $credit->setUser($this); } return $this; }
-    public function removeCredit(Credit $credit): static { if ($this->credits->removeElement($credit) && $credit->getUser() === $this) { $credit->setUser(null); } return $this; }
-    public function getBalance(): float { return array_sum(array_map(fn(Credit $c) => $c->getAmount(), $this->credits->toArray())); }
-
-    // -------------------------
-    // Avis
-    // -------------------------
-    public function getAvisReceived(): Collection { return $this->avisReceived; }
-    public function getAvisGiven(): Collection { return $this->avisGiven; }
-    public function getAverageRating(): float
+    public function getId(): ?int
     {
-        $count = $this->avisReceived->count();
-        if ($count === 0) return 0;
-        $total = array_sum(array_map(fn(Avis $a) => $a->getNotation(), $this->avisReceived->toArray()));
-        return round($total / $count, 1);
+        return $this->id;
     }
-    public function getAvisCount(): int { return $this->avisReceived->count(); }
 
     // -------------------------
-    // Preferences
+    // User info exposée dans route:read
     // -------------------------
-    public function getPreferences(): ?Preferences { return $this->preferences; }
-    public function setPreferences(?Preferences $preferences): static
+    #[Groups(['route:read'])]
+    public function getFirstname(): ?string
     {
-        $this->preferences = $preferences;
-        if ($preferences !== null && $preferences->getUser() !== $this) {
-            $preferences->setUser($this);
-        }
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): static
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    #[Groups(['route:read'])]
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): static
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
+    #[Groups(['route:read'])]
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
         return $this;
     }
 
     // -------------------------
-    // Verification
+    // Autres champs (non exposés)
     // -------------------------
-    public function isVerified(): bool { return $this->isVerified; }
-    public function setIsVerified(bool $isVerified): static { $this->isVerified = $isVerified; return $this; }
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+    public function setPhoneNumber(?string $phoneNumber): static
+    {
+        $this->phoneNumber = $phoneNumber;
+        return $this;
+    }
+
+    public function getStreet(): ?string
+    {
+        return $this->street;
+    }
+    public function setStreet(?string $street): static
+    {
+        $this->street = $street;
+        return $this;
+    }
+
+    public function getAddressComplement(): ?string
+    {
+        return $this->addressComplement;
+    }
+    public function setAddressComplement(?string $addressComplement): static
+    {
+        $this->addressComplement = $addressComplement;
+        return $this;
+    }
+
+    public function getPostalCode(): ?string
+    {
+        return $this->postalCode;
+    }
+    public function setPostalCode(?string $postalCode): static
+    {
+        $this->postalCode = $postalCode;
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+    public function setCity(?string $city): static
+    {
+        $this->city = $city;
+        return $this;
+    }
 
     // -------------------------
-    // Helpers
+    // Roles / Password / Security
     // -------------------------
-    public function hasVehicle(): bool { return !$this->vehicles->isEmpty(); }
-    public function hasReservation(): bool { return !$this->reservations->isEmpty(); }
-    public function hasRoutes(): bool { return !$this->routes->isEmpty(); }
+    public function getRoles(): array
+    {
+        return array_unique(array_merge($this->roles, ['ROLE_USER']));
+    }
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+        return $this;
+    }
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+    public function eraseCredentials(): void {}
+    // -------------------------
+    // Email verification
+    // -------------------------
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
 }

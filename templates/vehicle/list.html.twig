@@ -7,38 +7,10 @@
 	<div class="container-fluid mt-4">
 		<div
 			class="row">
-			<!-- MENU LATÉRAL -->
-			<div class="col-md-3">
-				<h1 class="h2">Dashboard</h1>
-				<div class="list-group">
-					<a href="{{ path('app_dashboard') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_dashboard' %}active{% endif %}">
-						Mon compte
-					</a>
-					<a href="{{ path('app_user_profile') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_profile' %}active{% endif %}">
-						Mon profil
-					</a>
-					<a href="{{ path('app_user_routes') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_routes' %}active{% endif %}">
-						Mes trajets
-					</a>
-					{% if "ROLE_CONDUCTEUR" in app.user.roles %}
-						<a href="{{ path('app_user_vehicles') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_vehicles' %}active{% endif %}">
-							Mes véhicules
-						</a>
-						<a href="{{ path('app_dashboard_add_vehicle') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_dashboard_add_vehicle' %}active{% endif %}">
-							Ajouter un véhicule
-						</a>
-					{% endif %}
-					<a href="{{ path('credits_index') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'credits_index' %}active{% endif %}">
-						Mes crédits
-					</a>
-					<a href="{{ path('avis_index') }}" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'avis_index' %}active{% endif %}">
-						Avis
-					</a>
-					<a href="#" class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_preferences' %}active{% endif %}">
-						Mes préférences
-					</a>
-				</div>
-			</div>
+			{# =======================
+           MENU LATÉRAL
+        ======================= #}
+        {% include 'dashboard/_sidebar.html.twig' %}
 
 			<!-- CONTENU PRINCIPAL -->
 			<div class="col-md-9">

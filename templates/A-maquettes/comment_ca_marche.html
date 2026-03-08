@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EcoRide - Covoiturage Éco-responsable</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#99b681",
+                        "secondary-blue": "#80B5D0",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#191c16",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#141513] dark:text-white min-h-screen">
+    <!-- Header Navigation -->
+    <header
+        class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-[#e0e2df] dark:border-white/10 px-6 py-4">
+        <div class="max-w-[960px] mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="text-primary">
+                    <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">EcoRide</h1>
+            </div>
+            <button class="p-2 rounded-lg bg-[#f2f3f2] dark:bg-white/10 hover:bg-gray-200 transition-colors">
+                <span class="material-symbols-outlined block">menu</span>
+            </button>
+        </div>
+    </header>
+    <main class="max-w-[960px] mx-auto px-6 py-8">
+        <!-- Hero Section -->
+        <div class="mb-12">
+            <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-tight mb-4">Voyagez éco-responsable</h2>
+            <p class="text-[#757b6f] dark:text-gray-400 text-lg">Rejoignez la plus grande communauté de covoiturage vert
+                et réduisez votre empreinte carbone.</p>
+        </div>
+        <!-- Search Bar Section (High Z-Index Focus) -->
+        <div class="relative z-40 -mt-4 mb-16">
+            <div
+                class="bg-white dark:bg-zinc-900 rounded-xl shadow-xl border border-[#e0e2df] dark:border-white/10 p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm font-semibold uppercase tracking-wider text-gray-500">Départ</p>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-xl">location_on</span>
+                            <input
+                                class="w-full pl-10 pr-4 py-3 rounded-lg border border-[#e0e2df] dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                placeholder="Ville de départ" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm font-semibold uppercase tracking-wider text-gray-500">Arrivée</p>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-xl">flag</span>
+                            <input
+                                class="w-full pl-10 pr-4 py-3 rounded-lg border border-[#e0e2df] dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                placeholder="Ville d'arrivée" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm font-semibold uppercase tracking-wider text-gray-500">Date</p>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-xl">calendar_today</span>
+                            <input
+                                class="w-full pl-10 pr-4 py-3 rounded-lg border border-[#e0e2df] dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                placeholder="JJ/MM/AAAA" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm font-semibold uppercase tracking-wider text-gray-500">Passagers</p>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-xl">group</span>
+                            <input
+                                class="w-full pl-10 pr-4 py-3 rounded-lg border border-[#e0e2df] dark:border-zinc-700 bg-transparent focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                                placeholder="1" type="number" />
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="w-full mt-6 bg-primary text-white font-bold py-4 rounded-lg hover:brightness-105 transition-all shadow-md">
+                    Rechercher un trajet
+                </button>
+            </div>
+        </div>
+        <!-- Celebratory Stats -->
+        <div class="mb-16 bg-primary/10 border border-primary/20 rounded-xl p-8 text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-primary/20 rounded-full mb-4">
+                <span class="material-symbols-outlined text-primary text-3xl">eco</span>
+            </div>
+            <h3 class="text-3xl font-black text-primary mb-2">120k Tonnes CO2 sauvées</h3>
+            <p class="text-gray-600 dark:text-gray-400">Grâce à vos trajets partagés, la planète respire mieux chaque
+                jour.</p>
+        </div>
+        <!-- V2 Modern Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            <!-- How it works (Large Card) -->
+            <div
+                class="md:col-span-2 bg-white dark:bg-zinc-900 rounded-xl border border-[#e0e2df] dark:border-white/10 overflow-hidden shadow-sm">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-8">Comment ça marche ?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <span class="material-symbols-outlined text-3xl">search</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">1. Recherchez</h4>
+                            <p class="text-gray-500 text-sm">Entrez votre destination et trouvez des conducteurs
+                                vérifiés.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <span class="material-symbols-outlined text-3xl">check_circle</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">2. Réservez</h4>
+                            <p class="text-gray-500 text-sm">Sélectionnez votre trajet et réservez votre place
+                                instantanément.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 transition-transform group-hover:scale-110">
+                                <span class="material-symbols-outlined text-3xl">directions_car</span>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">3. Voyagez</h4>
+                            <p class="text-gray-500 text-sm">Partez en toute sérénité et économisez sur vos frais de
+                                route.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sign Up Card -->
+            <div
+                class="bg-secondary-blue/10 dark:bg-secondary-blue/5 rounded-xl border border-secondary-blue/20 p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Comment s'inscrire ?</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Créez votre profil en 2 minutes et rejoignez la
+                        révolution du transport éco-responsable.</p>
+                </div>
+                <button
+                    class="bg-secondary-blue text-white px-6 py-3 rounded-lg font-bold w-fit hover:brightness-105 transition-all">
+                    Créer mon compte
+                </button>
+            </div>
+            <!-- Contact Card -->
+            <div
+                class="bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-[#e0e2df] dark:border-white/10 p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Besoin d'aide ?</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Notre équipe de support est là pour vous
+                        accompagner 24h/24 et 7j/7.</p>
+                </div>
+                <button
+                    class="border-2 border-[#141513] dark:border-white px-6 py-2.5 rounded-lg font-bold w-fit hover:bg-[#141513] hover:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition-all">
+                    Nous contacter
+                </button>
+            </div>
+        </div>
+        <!-- Features Grid -->
+        <div class="mb-16">
+            <h3 class="text-3xl font-bold mb-10 text-center">Pourquoi choisir EcoRide ?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-[#e0e2df] dark:border-white/10">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">shield</span>
+                    <h4 class="font-bold text-lg mb-2">Sécurité maximale</h4>
+                    <p class="text-gray-500 text-sm">Profils vérifiés et avis certifiés pour chaque conducteur et
+                        passager.</p>
+                </div>
+                <div
+                    class="p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-[#e0e2df] dark:border-white/10">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">payments</span>
+                    <h4 class="font-bold text-lg mb-2">Économique</h4>
+                    <p class="text-gray-500 text-sm">Réduisez vos frais de transport de plus de 50% sur vos trajets
+                        quotidiens.</p>
+                </div>
+                <div
+                    class="p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-sm border border-[#e0e2df] dark:border-white/10">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">forest</span>
+                    <h4 class="font-bold text-lg mb-2">100% Éco</h4>
+                    <p class="text-gray-500 text-sm">Chaque trajet partagé est un geste concret pour préserver
+                        l'environnement.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-zinc-100 dark:bg-zinc-950 py-12 px-6 border-t border-[#e0e2df] dark:border-white/10">
+        <div class="max-w-[960px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="text-primary">
+                            <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 48 48"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+                                    fill-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold">EcoRide</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Plus qu'une application, un engagement pour une mobilité durable et solidaire.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Plateforme</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a class="hover:text-primary transition-colors" href="#">Chercher un trajet</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Proposer un trajet</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Comment ça marche</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Entreprise</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a class="hover:text-primary transition-colors" href="#">À propos</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Impact CO2</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Recrutement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Suivez-nous</h4>
+                    <div class="flex gap-4">
+                        <a class="w-10 h-10 rounded-full bg-white dark:bg-white/10 border border-[#e0e2df] dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary hover:border-primary transition-all"
+                            href="#">
+                            <span class="material-symbols-outlined text-xl">share</span>
+                        </a>
+                        <a class="w-10 h-10 rounded-full bg-white dark:bg-white/10 border border-[#e0e2df] dark:border-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-primary hover:border-primary transition-all"
+                            href="#">
+                            <span class="material-symbols-outlined text-xl">public</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-[#e0e2df] dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+                <p>© 2024 EcoRide SAS. Tous droits réservés.</p>
+                <div class="flex gap-6">
+                    <a class="hover:text-primary" href="#">CGU</a>
+                    <a class="hover:text-primary" href="#">Confidentialité</a>
+                    <a class="hover:text-primary" href="#">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

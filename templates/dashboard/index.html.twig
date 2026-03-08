@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- MENU LATERAL -->
+    <!-- Sidebar -->
+        {% include 'dashboard/_sidebar.html.twig' %}
+
+        <!-- CONTENU PRINCIPAL -->
+        <div class="col-md-9">
+
+            {# {% if "ROLE_PASSAGER" in app.user.roles %}
+                <h2 id="preferences">Mes préférences</h2>
+                {% if (routes|default([])) is empty %}
+                    <p>Vous n’avez pas encore ajouté de préférences.</p>
+                {% else %}
+                    <ul>
+                        {% for route in routes|default([]) %}
+                            <li>{{ route.departureTown }} → {{ route.arrivalTown }} ({{ route.departureDay|date('d/m/Y') }})</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %} #}
+
+            {% if "ROLE_CONDUCTEUR" in app.user.roles %}
+                <h2 id="trajets">Mes trajets</h2>
+                {% if (routes|default([])) is empty %}
+                    <p>Vous n’avez pas encore ajouté de trajet.</p>
+                {% else %}
+                    <ul>
+                        {% for route in routes|default([]) %}
+                            <li>{{ route.departureTown }} → {{ route.arrivalTown }} ({{ route.departureDay|date('d/m/Y') }})</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+
+            {% if "ROLE_PASSAGER" in app.user.roles %}
+                <h2 id="reservations">Mes réservations</h2>
+                {% if (reservations|default([])) is empty %}
+                    <p>Vous n’avez pas encore réservé de trajet.</p>
+                {% else %}
+                    <ul>
+                        {% for resa in reservations|default([]) %}
+                            <li>{{ resa.route.departureTown }} → {{ resa.route.arrivalTown }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

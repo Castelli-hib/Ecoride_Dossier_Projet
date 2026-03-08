@@ -1,33 +1,28 @@
 ######################################################
-# 1 - IMAGE ESSENTIELLE - Installation des dépendances système et PHP
+# 1 - IMAGE ESSENTIELLE - Installation des dépendances PHP
 ######################################################
 FROM php:8.3-apache AS essential
 
-# Installe les dépendances système et PHP nécessaires
+# Installer les dépendances système pour PHP et MongoDB
 RUN apt-get update && apt-get install -y \
-    unzip \
-    zip \
-    libonig-dev \
-    libxml2-dev \
-    libzip-dev \
-    libicu-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libwebp-dev \
-    libfreetype6-dev \
-    zlib1g-dev \
-    build-essential \
-    curl \
-    g++ \
-    && docker-php-ext-install pdo pdo_mysql intl opcache zip bcmath \
-    && pecl install apcu \
-    && docker-php-ext-enable apcu
+    unzip zip libonig-dev libxml2-dev libzip-dev libicu-dev \
+    libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev zlib1g-dev \
+    build-essential curl g++ \
+    && docker-php-ext-install pdo pdo_mysql intl opcache zip bcmath
 
-# Active les modules Apache utiles pour Symfony
+# Installer APCu
+RUN pecl install apcu && docker-php-ext-enable apcu
+
+# Installer MongoDB extension
+RUN pecl install mongodb && docker-php-ext-enable mongodb
+
+# Activer les modules Apache nécessaires
 RUN a2enmod rewrite ssl socache_shmcb
 
-# Copie la configuration Apache
+# Copier la config Apache
 COPY ./apache/default.conf /etc/apache2/sites-available/000-default.conf
+
+WORKDIR /app
 
 ######################################################
 # 2 - BUILD IMAGE - Installer les dépendances et compiler les assets
@@ -39,13 +34,13 @@ WORKDIR /app
 ENV APP_ENV=prod
 ENV DEBUG=0
 
-# Copier Composer depuis l'image officielle
+# Copier Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Copier tout le projet
 COPY . .
 
-# Installer toutes les dépendances, y compris dev pour builder correctement
+# Installer toutes les dépendances Composer
 RUN composer install --no-interaction --optimize-autoloader
 
 # Compiler les assets et importmap
@@ -75,18 +70,22 @@ FROM php:8.3-apache AS prod
 
 WORKDIR /var/www
 
-# Installer les extensions PHP de base et bcmath pour prod
-RUN apt-get update && apt-get install -y \
-    libonig-dev libxml2-dev libzip-dev libicu-dev libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev zlib1g-dev \
-    && docker-php-ext-install pdo pdo_mysql intl opcache zip bcmath \
-    && pecl install apcu \
-    && docker-php-ext-enable apcu \
-    && a2enmod rewrite ssl socache_shmcb
-
 # Copier l'application buildée
 COPY --from=build-node /app /var/www/
 
-# Créer les dossiers cache/log et permissions
-RUN mkdir -p var/cache var/log \
-    && chown -R www-data:www-data /var/www \
-    && chmod -R 775 var
+# Réinstaller les extensions PHP essentielles pour prod
+RUN apt-get update && apt-get install -y \
+    libonig-dev libxml2-dev libzip-dev libicu-dev \
+    libpng-dev libjpeg-dev libwebp-dev libfreetype6-dev zlib1g-dev \
+    build-essential curl g++ \
+    && docker-php-ext-install pdo pdo_mysql intl opcache zip bcmath
+
+# APCu + MongoDB + Apache
+RUN pecl install apcu mongodb \
+    && docker-php-ext-enable apcu mongodb \
+    && a2enmod rewrite ssl socache_shmcb
+
+# Créer les dossiers cache/log avec bonnes permissions
+RUN mkdir -p /var/www/var/cache /var/www/var/log \
+    && chown -R www-data:www-data /var/www/var \
+    && chmod -R 775 /var/www/var

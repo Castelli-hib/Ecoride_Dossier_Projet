@@ -21,7 +21,11 @@
 	<body>
 
 		{% if app.user %}
-			{% include 'partials/_navbar_deco.html.twig' %}
+			{% if is_granted('ROLE_ADMIN') %}
+				{% include 'partials/_navbar_admin.html.twig' %}
+			{% else %}
+				{% include 'partials/_navbar_deco.html.twig' %}
+			{% endif %}
 		{% else %}
 			{% include 'partials/_navbar.html.twig' %}
 		{% endif %}
@@ -46,8 +50,8 @@
 		{% block javascripts %}{% endblock %}
 
 		{# {% block javascripts %}
-			{{ parent() }}
-			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-		{% endblock %} #}
+					{{ parent() }}
+					<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+				{% endblock %} #}
 	</body>
 </html>
