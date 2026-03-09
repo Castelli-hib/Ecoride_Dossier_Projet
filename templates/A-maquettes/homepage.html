@@ -80,6 +80,9 @@
                 background-size: cover;
                 background-position: center;
             }
+            .roboto-serif {
+                font-family: 'Roboto', serif;
+            }
         </style>
 </head>
 
@@ -96,14 +99,34 @@
                         class="text-primary">Ride</span></span>
             </div>
 
-            <nav class="hidden md:flex items-center gap-10">
+            <nav class="hidden md:flex items-center gap-10 relative">
                 <a class="font-medium hover:text-primary transition-colors" href="homepage.html">Accueil</a>
                 <a class="font-medium hover:text-primary transition-colors" href="covoiturage.html">Covoiturage</a>
-                <a class="font-medium hover:text-primary transition-colors" href="connexion.html">Connexion</a>
+
+                <!-- Dropdown -->
+                <div class="relative group">
+                    <button class="font-medium hover:text-primary transition-colors flex items-center gap-1">
+                        Connexion
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+                    </button>
+
+                    <!-- Sous-menu -->
+                    <div
+                        class="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <a href="connexion.html"
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                            Se connecter
+                        </a>
+                        <a href="inscription.html"
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                            S'inscrire
+                        </a>
+                    </div>
+                </div>
+
                 <a class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-primary/20"
                     href="contact.html">Contact</a>
             </nav>
-
             <button class="md:hidden text-gray-600 dark:text-gray-300">
                 <span class="material-symbols-outlined">menu</span>
             </button>
@@ -116,7 +139,7 @@
 
             <div class="text-center z-10 text-white max-w-3xl mt-32 mb-16">
                 <h1 class="text-5xl md:text-6xl font-display font-extrabold mb-6 drop-shadow-lg">
-                    Voyagez vert, voyagez ensemble
+                    Voyagez vert, <br>Allez tous en enfer
                 </h1>
                 <p class="text-xl md:text-2xl font-light opacity-90 mb-8">
                     La première solution de mobilité partagée en Corse, du
@@ -124,11 +147,11 @@
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
                     <a href="page_user/add_trajet.html"
-                        class="bg-primary hover:bg-opacity-90 text-white px-8 py-4 rounded-full font-bold shadow-lg transition-all text-lg inline-block">
-                        Proposer un trajet
+                        class="bg-primary hover:bg-opacity-90 text-white px-8 py-4 rounded-[15px] font-bold shadow-lg transition-all text-lg inline-block">
+                        Chercher un trajet
                     </a>
                     <a href="apropos1.html"
-                        class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-bold transition-all text-lg inline-block">En
+                        class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-[15px] font-bold transition-all text-lg inline-block">En
                         savoir plus</a>
                 </div>
             </div>
@@ -188,7 +211,7 @@
         </section>
 
         <section class="py-20 bg-surface-light dark:bg-surface-dark border-b border-gray-100 dark:border-gray-800">
-            <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-5xl mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
                         Comment ça marche
@@ -253,7 +276,7 @@
         </section>
         <section class="py-20 text-center px-6">
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
-                Alors ? On roule !
+                Vous n'avez pas d'ami(e)s ? Roulez !
             </h2>
             <div class="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
         </section>
@@ -264,17 +287,18 @@
                 </div>
                 <img alt="EcoRide Concept" class="relative rounded-3xl shadow-2xl object-cover h-[500px] w-full"
                     src="images/logo.png" />
+                <!-- 
                 <div
                     class="absolute bottom-6 left-6 right-6 p-6 bg-white/90 dark:bg-gray-900/90 backdrop-blur rounded-2xl">
                     <p class="text-primary font-bold text-xl">
                         EcoRide : L'authenticité avant tout
                     </p>
-                </div>
+                </div>-->
             </div>
             <div class="space-y-8">
-                <h3 class="text-4xl font-bold leading-tight text-gray-900 dark:text-white">
-                    EcoRide : Le goût de l'authenticité, <br />
-                    <span class="text-primary">le plaisir du partage</span>
+                <h3 class="text-4xl font-bold leading-tight text-gray-900 dark:text-white roboto-serif">
+                    EcoRide : Le goût du vrai, <br />
+                    <span class="text-primary">Le plaisir de partir</span>
                 </h3>
                 <div class="space-y-6">
                     <div class="flex gap-4">
@@ -323,7 +347,7 @@
                     </div>
                 </div>
                 <a href="inscription/inscription.html"
-                    class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-full font-bold shadow-lg shadow-primary/20 transform hover:-translate-y-1 transition-all">
+                    class="inline-block bg-primary hover:bg-opacity-90 text-white px-10 py-4 rounded-[15px] font-bold shadow-lg shadow-primary/20 transform hover:-translate-y-1 transition-all">
                     S'inscrire gratuitement
                 </a>
             </div>
@@ -461,7 +485,7 @@
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQpOV-rL_7-xlIycW83-2RjpRiQQ7ZfyrDb7KPwJ47PGdnxyeVZufgiZ6aNhKOHvCG-U4UMNapy4VrgeFF-g2cDOxAJggCyFADSJG_Azloc6uhv_lWjXhaMdwTAKwYh5ubo8r6BQVfubsYUDzXa85Lmpqi_2-vT4KG2uiZ2JeCJSxlrAUBetx2g_8i_TCm7PHDjVLDhcV3bdfbtEfng7hT4ARdar0kfc2qlJAszPhDdqlA3F0C1GqjJl0qmWlIVbTK33OWX04Ai20" />
                             <div>
                                 <h4 class="font-bold text-primary">
-                                    Sarah L.
+                                    Ghulia N.
                                 </h4>
                                 <div class="flex text-primary">
                                     <span class="material-symbols-outlined star-filled text-sm">star</span>
@@ -484,7 +508,7 @@
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7j2QxZ9iPBFlAx-vMVNrZL-tVtJ6KJkvyC184NHD9i1UQq5FYJUkkxsB-SKaSI46gpAEYQBB42odyDPdH9JzfdirmgLVBYU7HivWB-CoifbpkxoxlN62hhLkyj3-JPZQu7hexoRsILtYFZtkHYipH6vlF1KCriwey_P7tJAZKOY4582_0d7VYBE1We7fkNIDRmpQo-3GbV9pDNo4a18IPncwo49oBxPGa5Rmv2lU4I13_o0Zkqc1MmfJInA-beWKC6ou8BUSmSPU" />
                             <div>
                                 <h4 class="font-bold text-primary">
-                                    Thomas D.
+                                    Thoms C.
                                 </h4>
                                 <div class="flex text-primary">
                                     <span class="material-symbols-outlined star-filled text-sm">star</span>
@@ -507,7 +531,7 @@
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi7EIATF2RptamYXbv7BILk4EyNTNo5jS1O3m57TCharHAO--86xzV0YsR5JOFcSSrbTRxNba2jYl7FDYYhl0Ban6RPnAMAAyPKgReQIcCAkXR7JmBPM69yMBvpX6mT9Ir2Ac8I1em8h6DG5P0m_5tGzzXPq24Etg4cpNRwer97yO3ZOXqQ6sIfzsduHDaLpZJMdhzE9UXrU95zBlIBf2sQGo-wNLfrsFu5K4Ufwh-1A30_NB_ntRm2kmTfszNLWqEthRACAZdCJg" />
                             <div>
                                 <h4 class="font-bold text-primary">
-                                    Léa M.
+                                    Lea M.
                                 </h4>
                                 <div class="flex text-primary">
                                     <span class="material-symbols-outlined star-filled text-sm">star</span>
@@ -542,11 +566,11 @@
                     <div class="space-y-4 text-gray-600 dark:text-gray-400">
                         <div class="flex gap-3">
                             <span class="material-symbols-outlined text-primary">location_on</span>
-                            <p>Route de Muratello, 20137 Porto-Vecchio</p>
+                            <p> 20137 Porto-Vecchio</p>
                         </div>
                         <div class="flex gap-3">
                             <span class="material-symbols-outlined text-primary">phone</span>
-                            <p>06 18 53 04 13</p>
+                            <p>06 08 03 04 30</p>
                         </div>
                         <div class="flex gap-3">
                             <span class="material-symbols-outlined text-primary">mail</span>
@@ -595,9 +619,12 @@
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uDb_rNijnqMT2_yrdbbEbv-8g5Rr3RPvwV4lfKW0frWrVvyHusJx-M6OSQ1ZwhxAMOTlEfyDSaK4IwrnBHbbILzzEJ7ZddILCxweeVbmIfysn8BG-SeOQIO4Oq-fF71nLRuCS5U8X9ykIF7pTOdwHkdiOonjK102V2D2cepHO-kUnFgye9Y04bRNr58hR6jQ-bYNnbND1677_B8PDP3u9rWzb6STkwdZEXcGI8RAH896CyuGc9_BuhFzxbJdL1f1nI5p-qKgvFs" />
                         </div>
                         <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
-                            <div class="w-full h-full bg-primary/20 flex items-center justify-center text-primary">
-                                <span class="material-symbols-outlined">add</span>
-                            </div>
+                            <img alt="Landscape" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uDb_rNijnqMT2_yrdbbEbv-8g5Rr3RPvwV4lfKW0frWrVvyHusJx-M6OSQ1ZwhxAMOTlEfyDSaK4IwrnBHbbILzzEJ7ZddILCxweeVbmIfysn8BG-SeOQIO4Oq-fF71nLRuCS5U8X9ykIF7pTOdwHkdiOonjK102V2D2cepHO-kUnFgye9Y04bRNr58hR6jQ-bYNnbND1677_B8PDP3u9rWzb6STkwdZEXcGI8RAH896CyuGc9_BuhFzxbJdL1f1nI5p-qKgvFs" />
+                        </div>
+                        <div class="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+                            <img alt="Landscape" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4uDb_rNijnqMT2_yrdbbEbv-8g5Rr3RPvwV4lfKW0frWrVvyHusJx-M6OSQ1ZwhxAMOTlEfyDSaK4IwrnBHbbILzzEJ7ZddILCxweeVbmIfysn8BG-SeOQIO4Oq-fF71nLRuCS5U8X9ykIF7pTOdwHkdiOonjK102V2D2cepHO-kUnFgye9Y04bRNr58hR6jQ-bYNnbND1677_B8PDP3u9rWzb6STkwdZEXcGI8RAH896CyuGc9_BuhFzxbJdL1f1nI5p-qKgvFs" />
                         </div>
                     </div>
                 </div>

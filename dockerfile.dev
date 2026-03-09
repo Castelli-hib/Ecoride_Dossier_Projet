@@ -46,4 +46,8 @@ RUN git config --global user.email "marie.castelli@adiktionstudio.com" \
 RUN apt-get update && \
     apt-get install -y ca-certificates curl && \
     mkdir -p /etc/ssl/certs && \
-    update-ca-certificates    
+    update-ca-certificates
+
+# Installer MongoDB
+RUN pecl install mongodb \
+    && docker-php-ext-enable mongodb

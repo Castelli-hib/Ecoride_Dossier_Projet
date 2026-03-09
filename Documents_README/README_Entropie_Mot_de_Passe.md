@@ -12,23 +12,23 @@ L’**entropie** (mesurée en **bits**) représente la quantité d’information
 
 ---
 
-## 🧮 2. Exemple concret
+## 2. Exemple concret
 
-| Type de mot de passe | Longueur | Caractères possibles | Entropie (approx.) | Niveau de sécurité |
+| Type de mot de passe | Longueur  | Caractères possibles  | Entropie (approx.) | Niveau de sécurité |
 |----------------------|-----------|-----------------------|--------------------|--------------------|
-| `azerty`             | 6         | 26 lettres            | ~28 bits           | Très faible       |
-| `Azerty1`            | 7         | 62 caractères         | ~42 bits           | Moyen |
-| `Aze$1tY7!`          | 8         | 94 caractères (tous)  | ~52 bits           | Bon   |
-| `qT7#Lz@R9pK3`       | 12        | 94 caractères          | ~78 bits           | Excellent  |
+| `azerty`             | 6         | 26 lettres            | ~28 bits           | Très faible        |
+| `Azerty1`            | 7         | 62 caractères         | ~42 bits           | Moyen              |
+| `Aze$1tY7!`          | 8         | 94 caractères (tous)  | ~52 bits           | Bon                |
+| `qT7#Lz@R9pK3`       | 12        | 94 caractères         | ~78 bits           | Excellent          |
 
 ---
 
-##  3. Pourquoi c’est important pour la sécurité
+## 3. Pourquoi c’est important pour la sécurité
 
 ### a- Protection contre les attaques par force brute
 
 Les hackers testent des **milliards de combinaisons par seconde**.  
-➡️ Une **haute entropie** rend le mot de passe **impossible à casser rapidement**.
+Une **haute entropie** rend le mot de passe **impossible à casser rapidement**.
 
 ### b-Protection contre les attaques par dictionnaire
 
@@ -54,13 +54,13 @@ Cela permet d’**éduquer l’utilisateur** et de **renforcer la sécurité** s
 
 ## 5. Résumé simple
 
-| Faible entropie | Haute entropie |
-|-----------------|----------------|
-| Facile à retenir, facile à casser | Difficile à deviner, très sûr |
-| Mots courants, schémas simples | Mélange varié et long |
-| Risque élevé de piratage | Protection durable même si hash volé |
+| Faible entropie                   | Haute entropie                        |
+|-----------------------------------|---------------------------------------|
+| Facile à retenir, facile à casser | Difficile à deviner, très sûr         |
+| Mots courants, schémas simples    | Mélange varié et long                 |
+| Risque élevé de piratage          | Protection durable même si hash volé  |
 
 ## 6. pour aller plus loin
 
-https://www.pleacher.com/mp/mlessons/algebra/entropy.html
-https://owasp.org/www-project-top-ten/
+[https://www.pleacher.com/mp/mlessons/algebra/entropy.html]
+[https://owasp.org/www-project-top-ten/]

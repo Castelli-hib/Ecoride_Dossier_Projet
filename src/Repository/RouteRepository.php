@@ -74,4 +74,15 @@ class RouteRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+    public function countPerMonthLast12(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->select('MONTH(r.departureDay) as month, COUNT(r.id) as total')
+            ->where('r.departureDay >= :date')
+            ->setParameter('date', new \DateTime('-12 months'))
+            ->groupBy('month')
+            ->orderBy('month', 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

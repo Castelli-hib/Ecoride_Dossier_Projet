@@ -1,150 +1,228 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard Administrateur{% endblock %}
+{% block title %}Dashboard Administrateur
+{% endblock %}
 
 {% block body %}
-<div class="container-fluid my-4">
-    <div class="row">
+	<div class="container-fluid my-4">
+		<div class="row">
 
-        <!-- SIDEBAR -->
-        <aside class="col-12 col-md-3 col-lg-2 mb-4 mb-md-0">
-            <div class="card shadow-sm h-100">
-                <div class="card-body p-0">
-                    <nav class="nav flex-column">
-                        <span class="nav-link fw-bold text-uppercase text-muted small">
-                            Administration
-                        </span>
 
-                        <a href="{{ path('admin_dashboard') }}" class="nav-link active">
-                            📊 Dashboard
-                        </a>
+			{% include 'partials/_admin_sidebar.html.twig' %}
 
-                        <a href="#" class="nav-link">
-                            🚗 Trajets
-                        </a>
+			<!-- CONTENU PRINCIPAL -->
+			<main
+				class="col-12 col-md-9 col-lg-10">
 
-                        <a href="#" class="nav-link">
-                            ⭐ Avis
-                        </a>
+				<!-- Titre -->
+				<div class="mb-4">
+					<h1 class="fw-bold">Dashboard administrateur</h1>
+					<p class="text-muted mb-0">
+						Vue d’ensemble de l’activité de la plateforme
+					</p>
+				</div>
 
-                        <a href="#" class="nav-link">
-                            💳 Crédits
-                        </a>
+				<div class="row mt-4 g-4">
 
-                        <a href="#" class="nav-link">
-                            📅 Réservations
-                        </a>
+					<div class="col-lg-6">
+						<div class="card shadow-sm">
+							<div class="card-header bg-white fw-semibold">
+								Réservations par mois
+							</div>
+							<div class="card-body">
+								<canvas id="reservationsChart"></canvas>
+							</div>
+						</div>
+					</div>
 
-                        <a href="#" class="nav-link">
-                            👥 Utilisateurs
-                        </a>
-                    </nav>
-                </div>
-            </div>
-        </aside>
+					<div class="col-lg-6">
+						<div class="card shadow-sm">
+							<div class="card-header bg-white fw-semibold">
+								Nouveaux utilisateurs
+							</div>
+							<div class="card-body">
+								<canvas id="usersChart"></canvas>
+							</div>
+						</div>
+					</div>
 
-        <!-- CONTENU PRINCIPAL -->
-        <main class="col-12 col-md-9 col-lg-10">
+				</div>
+				<!-- KPI -->
+				<div class="row g-4 mb-5">
+					<div class="col-md-4 col-lg-2">
+						<div class="card shadow-sm text-center h-100">
+							<div class="card-body">
+								<div class="fs-4 fw-bold">{{ totalRoutes }}</div>
+								<div class="text-muted small">Trajets</div>
+							</div>
+						</div>
+					</div>
 
-            <!-- Titre -->
-            <div class="mb-4">
-                <h1 class="fw-bold">Dashboard administrateur</h1>
-                <p class="text-muted mb-0">
-                    Vue d’ensemble de l’activité de la plateforme
-                </p>
-            </div>
+					<div class="col-md-4 col-lg-2">
+						<div class="card shadow-sm text-center h-100">
+							<div class="card-body">
+								<div class="fs-4 fw-bold">{{ totalReservations }}</div>
+								<div class="text-muted small">Réservations</div>
+							</div>
+						</div>
+					</div>
 
-            <!-- KPI -->
-            <div class="row g-4 mb-5">
-                <div class="col-md-4 col-lg-2">
-                    <div class="card shadow-sm text-center h-100">
-                        <div class="card-body">
-                            <div class="fs-4 fw-bold">{{ totalRoutes }}</div>
-                            <div class="text-muted small">Trajets</div>
-                        </div>
-                    </div>
-                </div>
+					<div class="col-md-4 col-lg-2">
+						<div class="card shadow-sm text-center h-100">
+							<div class="card-body">
+								<div class="fs-4 fw-bold">{{ confirmationRate }}%</div>
+								<div class="text-muted small">Confirmations</div>
+							</div>
+						</div>
+					</div>
 
-                <div class="col-md-4 col-lg-2">
-                    <div class="card shadow-sm text-center h-100">
-                        <div class="card-body">
-                            <div class="fs-4 fw-bold">{{ totalReservations }}</div>
-                            <div class="text-muted small">Réservations</div>
-                        </div>
-                    </div>
-                </div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card shadow-sm text-center h-100">
+							<div class="card-body">
+								<div class="fs-4 fw-bold">{{ averageRating }}/5</div>
+								<div class="text-muted small">Avis moyens</div>
+							</div>
+						</div>
+					</div>
 
-                <div class="col-md-4 col-lg-2">
-                    <div class="card shadow-sm text-center h-100">
-                        <div class="card-body">
-                            <div class="fs-4 fw-bold">{{ confirmationRate }}%</div>
-                            <div class="text-muted small">Confirmations</div>
-                        </div>
-                    </div>
-                </div>
+					<div class="col-md-6 col-lg-3">
+						<div class="card shadow-sm text-center h-100">
+							<div class="card-body">
+								<div class="fs-4 fw-bold">{{ totalCredits }}
+									€</div>
+								<div class="text-muted small">Flux de crédits</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <div class="col-md-6 col-lg-3">
-                    <div class="card shadow-sm text-center h-100">
-                        <div class="card-body">
-                            <div class="fs-4 fw-bold">{{ averageRating }}/5</div>
-                            <div class="text-muted small">Avis moyens</div>
-                        </div>
-                    </div>
-                </div>
+				<div class="row mt-3 text-muted small">
+					<div class="col-md-4">📆 Pic d’activité :
+						<strong>Janvier</strong>
+					</div>
+					<div class="col-md-4">📉 Mois creux :
+						<strong>Mai</strong>
+					</div>
+					<div class="col-md-4">📊 Moyenne mensuelle :
+						<strong>10 trajets</strong>
+					</div>
+				</div>
 
-                <div class="col-md-6 col-lg-3">
-                    <div class="card shadow-sm text-center h-100">
-                        <div class="card-body">
-                            <div class="fs-4 fw-bold">{{ totalCredits }} €</div>
-                            <div class="text-muted small">Flux de crédits</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<!-- Graphique -->
+				<div class="card shadow-sm">
+					<div class="card-header bg-white fw-semibold">
+						Trajets créés par mois
+					</div>
+					<div class="card-body">
+						<canvas id="myChart" height="120"></canvas>
+					</div>
+				</div>
 
-            <!-- Graphique -->
-            <div class="card shadow-sm">
-                <div class="card-header bg-white fw-semibold">
-                    Trajets créés par mois
-                </div>
-                <div class="card-body">
-                    <canvas id="myChart" height="120"></canvas>
-                </div>
-            </div>
+			</main>
+		</div>
+	</div>
 
-        </main>
-    </div>
-</div>
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+		const labels = {{ months|json_encode|raw }};
+const dataRoutes = {{ routesPerMonth|default([])|json_encode|raw }};
+const dataReservations = {{ reservationsPerMonth|default([])|json_encode|raw }};
+const dataUsers = {{ usersPerMonth|default([])|json_encode|raw }};
 
-<script>
-    const labels = {{ months|json_encode|raw }};
-    const dataRoutes = {{ routesPerMonth|json_encode|raw }};
+const ctx = document.getElementById('myChart');
 
-    const ctx = document.getElementById('myChart');
+new Chart(ctx, {
+type: 'bar',
+data: {
+labels: labels,
+datasets: [
+{
+label: 'Trajets par mois',
+data: dataRoutes,
+backgroundColor: 'rgba(13, 110, 253, 0.6)',
+borderRadius: 6
+}
+]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+display: false
+}
+},
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+});
+const ctxReservations = document.getElementById('reservationsChart');
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Trajets par mois',
-                data: dataRoutes,
-                backgroundColor: 'rgba(13, 110, 253, 0.6)',
-                borderRadius: 6
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: false }
-            },
-            scales: {
-                y: { beginAtZero: true }
-            }
-        }
-    });
-</script>
+new Chart(ctxReservations, {
+type: 'line',
+data: {
+labels: labels,
+datasets: [
+{
+label: 'Réservations',
+data: dataReservations,
+borderColor: 'rgba(25,135,84,1)',
+backgroundColor: 'rgba(25,135,84,0.2)',
+tension: 0.4,
+fill: true
+}
+]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+display: false
+}
+},
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+});
+const ctxUsers = document.getElementById('usersChart');
+
+new Chart(ctxUsers, {
+type: 'line',
+data: {
+labels: labels,
+datasets: [
+{
+label: 'Utilisateurs',
+data: dataUsers,
+borderColor: 'rgba(255,193,7,1)',
+backgroundColor: 'rgba(255,193,7,0.3)',
+tension: 0.4,
+fill: true
+}
+]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+display: false
+}
+},
+scales: {
+y: {
+beginAtZero: true
+}
+}
+}
+});
+	</script>
+
+
 {% endblock %}

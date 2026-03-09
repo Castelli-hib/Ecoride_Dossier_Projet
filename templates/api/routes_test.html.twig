@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Routes & Dashboard - Ecoride{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4">Liste des trajets</h1>
+
+    <table class="table table-bordered" id="routes-table">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Départ</th>
+                <th>Arrivée</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Durée (min)</th>
+                <th>Utilisateur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Les lignes seront injectées par JS -->
+        </tbody>
+    </table>
+
+    <hr class="my-5">
+
+    <h2 class="mb-4">Dashboard - Trajets par ville de départ</h2>
+    <canvas id="routesChart" width="400" height="200"></canvas>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tableBody = document.querySelector('#routes-table tbody');
+    const chartCanvas = document.getElementById('routesChart');
+
+    fetch('/api/routes')
+        .then(response => response.json())
+        .then(data => {
+            const cityCounts = {}; // Pour le graphique
+
+            data.forEach(route => {
+                // === Remplissage du tableau ===
+                const user = route.user ? route.user.firstname + ' ' + route.user.lastname : 'Inconnu';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${route.id}</td>
+                    <td>${route.departureTown}</td>
+                    <td>${route.arrivalTown}</td>
+                    <td>${route.departureDay}</td>
+                    <td>${route.departureTime}</td>
+                    <td>${route.travelTime}</td>
+                    <td>${user}</td>
+                `;
+                tableBody.appendChild(row);
+
+                // === Comptage des villes pour le graphique ===
+                if(route.departureTown) {
+                    cityCounts[route.departureTown] = (cityCounts[route.departureTown] || 0) + 1;
+                }
+            });
+
+            // === Création du graphique ===
+            const ctx = chartCanvas.getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(cityCounts),
+                    datasets: [{
+                        label: 'Nombre de trajets',
+                        data: Object.values(cityCounts),
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    }
+                }
+            });
+        })
+        .catch(err => {
+            console.error('Erreur API:', err);
+            tableBody.innerHTML = '<tr><td colspan="7" class="text-center text-danger">Impossible de récupérer les données</td></tr>';
+        });
+});
+</script>
+{% endblock %}

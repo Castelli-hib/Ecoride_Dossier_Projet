@@ -9,100 +9,48 @@
         {# =======================
            MENU LATÉRAL
         ======================= #}
-        <aside class="col-md-3 col-lg-2">
-            <h1 class="h2 mb-3">Dashboard</h1>
+        {% include 'dashboard/_sidebar.html.twig' %}
 
-            <div class="list-group">
-                <a href="{{ path('app_dashboard') }}"
-                   class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_dashboard' %}active{% endif %}">
-                    Mon compte
-                </a>
+          {# CONTENU (reste 9 colonnes) #}
+        <main class="col-12 col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
 
-                <a href="{{ path('app_user_profile') }}"
-                   class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_profile' %}active{% endif %}">
-                    Modifier mon profil
-                </a>
+                    <h1 class="h4 mb-4">Modifier mon profil</h1>
 
-                <a href="{{ path('app_user_routes') }}"
-                   class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_routes' %}active{% endif %}">
-                    Mes trajets
-                </a>
+                    {{ form_start(profilForm) }}
 
-                {% if 'ROLE_CONDUCTEUR' in app.user.roles %}
-                    <a href="{{ path('app_user_vehicles') }}"
-                       class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_vehicles' %}active{% endif %}">
-                        Mes véhicules
-                    </a>
+                    <div class="row g-3">
 
-                    <a href="{{ path('app_dashboard_add_vehicle') }}"
-                       class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_dashboard_add_vehicle' %}active{% endif %}">
-                        Ajouter un véhicule
-                    </a>
-                {% endif %}
+                        {# COLONNE GAUCHE #}
+                        <div class="col-12 col-md-6">
+                            {{ form_row(profilForm.firstname) }}
+                            {{ form_row(profilForm.phoneNumber) }}
+                            {{ form_row(profilForm.street) }}
+                            {{ form_row(profilForm.postalCode) }}
+                        </div>
 
-                <a href="{{ path('credits_index') }}"
-                   class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'credits_index' %}active{% endif %}">
-                    Mes crédits
-                </a>
-
-                <a href="{{ path('avis_index') }}"
-                   class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'avis_index' %}active{% endif %}">
-                    Avis
-                </a>
-
-                <a href="#"
-                   class="list-group-item list-group-item-action {% if app.request.attributes.get('_route') == 'app_user_preferences' %}active{% endif %}">
-                    Mes préférences
-                </a>
-            </div>
-        </aside>
-
-        {# =======================
-           CONTENU PRINCIPAL
-        ======================= #}
-        <main class="col-md-9 col-lg-10">
-            <div class="container profile">
-                <div class="profile__container">
-                    <div class="profile__card">
-
-                        <h1 class="profile__title mb-4">
-                            Modifier mon profil
-                        </h1>
-
-                        {{ form_start(profilForm, { attr: { class: 'profile__form' } }) }}
-
-                            <div class="profile__section">
-                                {{ form_row(profilForm.firstname) }}
-                                {{ form_row(profilForm.lastname) }}
-                            </div>
-
-                            <div class="profile__section">
-                                {{ form_row(profilForm.phoneNumber) }}
-                            </div>
-
-                            <div class="profile__section">
-                                {{ form_row(profilForm.street) }}
-                                {{ form_row(profilForm.addressComplement) }}
-                            </div>
-
-                            <div class="profile__section profile__grid profile__grid--2">
-                                {{ form_row(profilForm.postalCode) }}
-                                {{ form_row(profilForm.city) }}
-                            </div>
+                        {# COLONNE DROITE #}
+                        <div class="col-12 col-md-6">
+                            {{ form_row(profilForm.lastname) }}
+                            {{ form_row(profilForm.addressComplement) }}
+                            {{ form_row(profilForm.city) }}
 
                             {% if profilForm.roles is defined %}
-                                <div class="profile__section">
-                                    {{ form_row(profilForm.roles) }}
-                                </div>
+                                {{ form_row(profilForm.roles) }}
                             {% endif %}
-
-                            <button class="eco-btn eco-btn--primary profile__submit">
-                                Mettre à jour
-                            </button>
-
-                        {{ form_end(profilForm) }}
+                        </div>
 
                     </div>
+
+                    <div class="text-end mt-4">
+                        <button class="btn btn-primary">
+                            Mettre à jour
+                        </button>
+                    </div>
+
+                    {{ form_end(profilForm) }}
+
                 </div>
             </div>
         </main>

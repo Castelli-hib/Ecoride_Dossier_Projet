@@ -28,7 +28,7 @@ final class DashboardController extends AbstractController
         // Si passager → récupérer ses réservations (à compléter si nécessaire)
         $reservations = $isPassager ? [] : [];
 
-        return $this->render('pages/user/dashboard.html.twig', [
+        return $this->render('dashboard/index.html.twig', [
             'user'         => $user,
             'isConducteur' => $isConducteur,
             'isPassager'   => $isPassager,

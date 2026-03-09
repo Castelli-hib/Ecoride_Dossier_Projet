@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container-fluid my-4">
+    <div class="row">
+
+        {% include 'partials/_admin_sidebar.html.twig' %}
+
+        <main class="col-12 col-md-9 col-lg-10">
+
+            {# TITRE #}
+            <div class="mb-4">
+                <h1 class="fw-bold">Utilisateurs</h1>
+                <p class="text-muted mb-0">
+                    Évolution des inscriptions sur la plateforme
+                </p>
+            </div>
+
+            {# KPI UTILISATEURS #}
+            <div class="row g-4 mb-5">
+
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="text-muted small">Total utilisateurs</div>
+                            <div class="fs-3 fw-bold">486</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="text-muted small">Nouveaux ce mois</div>
+                            <div class="fs-3 fw-bold text-success">+32</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="text-muted small">Moyenne mensuelle</div>
+                            <div class="fs-3 fw-bold">24,1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="card shadow-sm text-center h-100">
+                        <div class="card-body">
+                            <div class="text-muted small">Tendance</div>
+                            <div class="fs-4 fw-semibold text-success">↗ En hausse</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {# GRAPHIQUE UTILISATEURS #}
+            <div class="card shadow-sm">
+                <div class="card-header bg-white fw-semibold">
+                    Nouveaux utilisateurs par mois
+                </div>
+                <div class="card-body">
+                    <canvas id="chartUsers" height="120"></canvas>
+
+                    {# MINI LECTURE #}
+                    <div class="row mt-3 text-muted small">
+                        <div class="col-md-4">📆 Pic d’inscriptions : <strong>Septembre</strong></div>
+                        <div class="col-md-4">📉 Mois le plus calme : <strong>Février</strong></div>
+                        <div class="col-md-4">📊 Croissance régulière sur l’année</div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+{# CHART.JS #}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+/* ==========================
+   KIT UTILISATEURS — AUTONOME
+   ========================== */
+
+const USER_MONTHS = [
+    'Jan','Feb','Mar','Apr','Mai','Juin',
+    'Juil','Aout','Sept','Oct','Nov','Dec'
+];
+
+const USER_VALUES = [
+    12, 9, 15, 18,
+    22, 25, 27, 30,
+    34, 29, 32, 38
+];
+
+const ctx = document.getElementById('chartUsers').getContext('2d');
+
+const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+gradient.addColorStop(0, 'rgba(13,202,240,0.6)');
+gradient.addColorStop(1, 'rgba(13,202,240,0.15)');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: USER_MONTHS,
+        datasets: [{
+            label: 'Nouveaux utilisateurs',
+            data: USER_VALUES,
+            fill: true,
+            backgroundColor: gradient,
+            borderColor: 'rgba(13,202,240,0.9)',
+            tension: 0.35,
+            pointRadius: 4,
+            pointBackgroundColor: '#0dcaf0'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            y: { beginAtZero: true }
+        }
+    }
+});
+</script>
+{% endblock %}

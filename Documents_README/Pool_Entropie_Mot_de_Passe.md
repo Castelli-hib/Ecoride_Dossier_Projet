@@ -8,11 +8,11 @@ Plus le pool est **grand**, plus le mot de passe est **difficile à deviner**.
 ### Catégories classiques
 
 | Catégorie    | Exemples          | Taille |
-|-------------|-------------------|--------|
-| Minuscules  | a-z               | 26     |
-| Majuscules  | A-Z               | 26     |
-| Chiffres    | 0-9               | 10     |
-| Symboles    | !@#$%^&*()_+ etc. | ~32    |
+|------------- |-------------------|--------|
+| Minuscules   | a-z               | 26     |
+| Majuscules   | A-Z               | 26     |
+| Chiffres     | 0-9               | 10     |
+| Symboles     | !@#$%^&*()_+ etc. | ~32    |
 
 > Exemple : un mot de passe utilisant minuscules + chiffres → pool = 26 + 10 = 36 caractères possibles.
 
@@ -40,7 +40,6 @@ Mot de passe : `Ab3$`
 Entropie :
 
 Entropie = log2(94^4) ≈ 26.25 bits
-
 
 ---
 
@@ -85,13 +84,13 @@ function entropy(password) {
 
 ---
 
-## 5️⃣ Exemples comparatifs
+## Exemples comparatifs
 
 | Mot de passe       | Pool | Longueur | Entropie (approx.) | Interprétation |
-|-------------------|------|----------|--------------------:|----------------|
-| `abcd`             | 26   | 4        | ~18.8 bits         | Faible ⚠️      |
-| `Ab3$`             | 94   | 4        | ~26.3 bits         | Moyen ⚙️       |
-| `qT7#Lz@R9pK3`     | 94   | 12       | ~78 bits           | Très forte 🔒  |
+|------------------- |------|----------|--------------------|----------------|
+| `abcd`             | 26   | 4        | ~18.8 bits         | Faible         |
+| `Ab3$`             | 94   | 4        | ~26.3 bits         | Moyen          |
+| `qT7#Lz@R9pK3`     | 94   | 12       | ~78 bits           | Très forte     |
 
 ---
 
@@ -109,15 +108,16 @@ function entropy(password) {
 - Approche simple basée sur la théorie de l'information (entropie en bits).  
 - Méthodes plus avancées (zxcvbn, estimation par pattern) existent pour évaluer la résistance réelle d’un mot de passe.  
 
-Constante                    Signification
+Constante                                       Signification
+----------------------------|----------------|------------------------------------------
 STRENGTH.VERY_WEAK           Très faible     – le mot de passe est facilement devinable
 STRENGTH.WEAK                Faible          – faible sécurité, risque d’attaque simple
 STRENGTH.MEDIUM              Moyen           – acceptable mais pourrait être amélioré
 STRENGTH.STRONG              Fort            – bon niveau de sécurité
 STRENGTH.VERY_STRONG         Très fort       – mot de passe complexe et sécurisé
 
-## https://www.pleacher.com/mp/mlessons/algebra/entropy.html
+## [https://www.pleacher.com/mp/mlessons/algebra/entropy.html]
 
-## https://rumkin.com/tools/password/
+## [https://rumkin.com/tools/password/]
 
-## https://owasp.org/www-project-top-ten/
+## [https://owasp.org/www-project-top-ten/]

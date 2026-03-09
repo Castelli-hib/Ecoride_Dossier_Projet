@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajets{% endblock %}
+
+{% block body %}
+<div class="container-fluid my-4">
+    <div class="row">
+        {% include 'partials/_admin_sidebar.html.twig' %}
+
+        <main class="col-12 col-md-9 col-lg-10">
+            <div class="mb-4">
+                <h1 class="fw-bold">Trajets</h1>
+
+                <!-- KPI Cards -->
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-lg-3">
+                        <div class="card shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="text-muted small">Total trajets</div>
+                                <div class="fs-3 fw-bold" id="totalRoutes">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="card shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="text-muted small">Ce mois</div>
+                                <div class="fs-3 fw-bold text-primary" id="thisMonth">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="card shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="text-muted small">Moyenne / jour</div>
+                                <div class="fs-3 fw-bold" id="avgPerDay">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="card shadow-sm text-center">
+                            <div class="card-body">
+                                <div class="text-muted small">Pic mensuel</div>
+                                <div class="fs-3 fw-semibold text-success" id="peakMonth">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted mb-0">Liste des trajets créés sur la plateforme</p>
+            </div>
+
+            <!-- Typologie des trajets -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white fw-semibold">Typologie des trajets</div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <div class="fw-bold fs-4">42%</div>
+                            <div class="text-muted small">Courts (&lt; 30 km)</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="fw-bold fs-4">38%</div>
+                            <div class="text-muted small">Moyens</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="fw-bold fs-4">20%</div>
+                            <div class="text-muted small">Longs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphiques -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white fw-semibold">Trajets créés par mois</div>
+                <div class="card-body">
+                    <canvas id="chartRoutes" height="120"></canvas>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white fw-semibold">Trajets par ville</div>
+                <div class="card-body">
+                    <canvas id="chartVilles" height="150"></canvas>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-white fw-semibold">Trajets par jour</div>
+                <div class="card-body">
+                    <canvas id="chartJours" height="150"></canvas>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // --- Fetch API pour récupérer les données dynamiques ---
+        fetch('{{ path("api_admin_stats") }}')
+            .then(response => response.json())
+            .then(data => {
+
+                // KPI
+                document.getElementById('totalRoutes').textContent = data.total_routes;
+                // Exemples simples : calcul moyenne/jour et pic
+                document.getElementById('avgPerDay').textContent = (data.total_routes / data.routes_par_jour.length).toFixed(1);
+                if(data.routes_par_jour.length) {
+                    const peak = data.routes_par_jour.reduce((a,b) => a.total > b.total ? a : b);
+                    document.getElementById('peakMonth').textContent = peak.day.split('-')[1]; // retourne le mois
+                }
+
+                // --- Trajets par ville ---
+                const villesLabels = data.routes_par_ville.map(r => r.town);
+                const villesData = data.routes_par_ville.map(r => r.total);
+
+                const ctxVilles = document.getElementById('chartVilles').getContext('2d');
+                new Chart(ctxVilles, {
+                    type: 'bar',
+                    data: {
+                        labels: villesLabels,
+                        datasets: [{
+                            label: 'Nombre de trajets par ville',
+                            data: villesData,
+                            backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: true } }
+                    }
+                });
+
+                // --- Trajets par jour ---
+                const joursLabels = data.routes_par_jour.map(r => r.day.split('T')[0]);
+                const joursData = data.routes_par_jour.map(r => r.total);
+
+                const ctxJours = document.getElementById('chartJours').getContext('2d');
+                new Chart(ctxJours, {
+                    type: 'line',
+                    data: {
+                        labels: joursLabels,
+                        datasets: [{
+                            label: 'Nombre de trajets par jour',
+                            data: joursData,
+                            fill: false,
+                            borderColor: '#FFCE56',
+                            tension: 0.2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: true } }
+                    }
+                });
+
+                // --- Trajets par mois (exemple : calcul à partir des trajets par jour) ---
+                const monthsLabels = ['Jan','Feb','Mar','Apr','Mai','Juin','Juil','Aout','Sept','Oct','Nov','Dec'];
+                const routesPerMonth = Array(12).fill(0);
+                joursLabels.forEach(day => {
+                    const monthIndex = new Date(day).getMonth();
+                    routesPerMonth[monthIndex]++;
+                });
+
+                const ctxRoutes = document.getElementById('chartRoutes').getContext('2d');
+                const gradientRoutes = ctxRoutes.createLinearGradient(0,0,0,200);
+                gradientRoutes.addColorStop(0,'rgba(13,110,253,0.7)');
+                gradientRoutes.addColorStop(1,'rgba(13,110,253,0.2)');
+
+                new Chart(ctxRoutes, {
+                    type: 'bar',
+                    data: {
+                        labels: monthsLabels,
+                        datasets: [{
+                            data: routesPerMonth,
+                            backgroundColor: gradientRoutes,
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { backgroundColor:'#212529', padding:10 }
+                        },
+                        scales: { y: { beginAtZero:true } }
+                    }
+                });
+
+            })
+            .catch(err => console.error('Erreur API stats:', err));
+    </script>
+{% endblock %}
+{% endblock %}

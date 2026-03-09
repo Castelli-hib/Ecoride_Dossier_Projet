@@ -30,7 +30,7 @@ class AdminDashboardController extends AbstractController
         $averageRating = $avisRepo->getAverageRating();
         $totalCredits = $creditRepo->getTotalCredits();
 
-        // DONNÉES DU GRAPHIQUE (mockées volontairement)
+        // DONNÉES DU GRAPHIQUE 
         $months = [
             'Janvier',
             'Février',

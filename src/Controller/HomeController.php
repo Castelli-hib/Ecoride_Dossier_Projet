@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Route as AppRoute;
 use App\Repository\RouteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Contact;
 use App\Form\ContactType;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request; 
 
 final class HomeController extends AbstractController
 {
@@ -45,6 +44,5 @@ public function contact(Request $request, EntityManagerInterface $em): Response
         'form' => $form->createView(),
     ]);
 }
-
 
 }
