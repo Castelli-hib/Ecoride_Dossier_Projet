@@ -49,4 +49,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getQuery()
             ->getResult();
     }
+    public function countPerMonthLast12(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->select('MONTH(u.createdAt) as month, COUNT(u.id) as total')
+            ->where('u.createdAt >= :date')
+            ->setParameter('date', new \DateTime('-12 months'))
+            ->groupBy('month')
+            ->orderBy('month', 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

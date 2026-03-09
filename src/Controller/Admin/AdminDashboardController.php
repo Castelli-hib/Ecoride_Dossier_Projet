@@ -6,6 +6,7 @@ use App\Repository\RouteRepository;
 use App\Repository\ReservationRepository;
 use App\Repository\UserRepository;
 use App\Repository\AvisRepository;
+use App\Service\MongoService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,16 +21,22 @@ class AdminDashboardController extends AbstractController
         RouteRepository $routeRepo,
         ReservationRepository $reservationRepo,
         UserRepository $userRepo,
-        AvisRepository $avisRepo
-    ): Response
-    {
+        AvisRepository $avisRepo,
+        MongoService $mongo
+    ): Response {
         // Trajets
         $totalRoutes = count($routeRepo->findAll());
         $routesPerMonth = $routeRepo->countPerMonthLast12();
+        $reservationsPerMonth = $reservationRepo->countPerMonthLast12();
+        $usersPerMonth = $userRepo->countPerMonthLast12();
+        
+        $routesPerMonth = array_column($routesPerMonth, 'total');
+        $reservationsPerMonth = array_column($reservationsPerMonth, 'total');
+        $usersPerMonth = array_column($usersPerMonth, 'total');
 
         // Réservations
         $totalReservations = count($reservationRepo->findAll());
-        $confirmationRate = $reservationRepo->getConfirmationRate();
+        $confirmationRate = $reservationRepo->getGlobalConfirmationRate();
 
         // Utilisateurs
         $totalUsers = count($userRepo->findAll());
@@ -41,8 +48,13 @@ class AdminDashboardController extends AbstractController
         // Flux crédits
         $totalCredits = $reservationRepo->getTotalCredits();
 
+        $activityLogs = $mongo
+            ->getCollection('ecoride', 'activity')
+            ->find([], ['limit' => 5])
+            ->toArray();
+
         // Mois
-        $months = ['Jan','Feb','Mar','Apr','Mai','Juin','Juil','Aout','Sept','Oct','Nov','Dec'];
+        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Juin', 'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'];
 
         // RENDER
         return $this->render('admin/dashboard.html.twig', [
@@ -54,7 +66,10 @@ class AdminDashboardController extends AbstractController
             'averageUsersPerMonth' => $averageUsersPerMonth,
             'averageRating' => $averageRating,
             'totalCredits' => $totalCredits,
-            'months' => $months
+            'months' => $months,
+            'activityLogs' => $activityLogs,
+            'reservationsPerMonth' => $reservationsPerMonth,
+            'usersPerMonth' => $usersPerMonth,
         ]);
     }
 }

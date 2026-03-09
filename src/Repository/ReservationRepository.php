@@ -93,4 +93,15 @@ class ReservationRepository extends ServiceEntityRepository
 
         return round(($confirmed / $total) * 100, 2);
     }
+    public function countPerMonthLast12(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->select('MONTH(r.dateReservation) as month, COUNT(r.id) as total')
+            ->where('r.dateReservation >= :date')
+            ->setParameter('date', new \DateTime('-12 months'))
+            ->groupBy('month')
+            ->orderBy('month', 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }
